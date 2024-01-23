@@ -50,7 +50,7 @@ const DashboardDrawer = () => {
         <span className="text-white">Network</span>
       </Link>
       <hr className="border my-7" />
-      <Link to={"profile"}>
+      <Link to={"profile/1"}>
         <img
           src={ProfileIcon}
           alt=""

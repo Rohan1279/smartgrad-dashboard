@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Form from "../../../components/Form/Form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Profile = () => {
   const { id } = useParams();
   const [formManager, setFormManager] = useState({});
   const [currentTab, setCurrentTab] = useState(1 || id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/profile-form-data.json")
@@ -26,7 +27,7 @@ const Profile = () => {
       </p>
 
       <ul className="flex items-center flex-wrap mt-16 pl-[10px]">
-        {formManager?.form?.map((item, idx) => {
+        {formManager?.form?.map((item) => {
           return (
             <a
               key={item?.form_id}
@@ -35,16 +36,18 @@ const Profile = () => {
               mr-[42px]
                 ${
                   currentTab === item?.form_id
-                    ? "text-[#09D5D7] font-bold border-b  border-b-[#09D5D7] "
+                    ? "text-[#09D5D7] font-bold  relative"
                     : ""
                 }
               `}
               onClick={(e) => {
                 e.preventDefault();
                 setCurrentTab(item?.form_id);
+                navigate("/dashboard/profile/" + item?.form_id);
               }}
             >
               {item.name}
+              <hr className="  border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2" />
             </a>
           );
         })}

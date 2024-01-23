@@ -10,10 +10,10 @@ const Form = ({ formManager, currentTab, id }) => {
   const sub_title = formSettings?.sub_title;
   const inputs = formSettings?.inputs;
   const handleFormSubmit = (event) => {
-    event.preventDefault(); // Prevent the form from refreshing the page
+    event.preventDefault();
 
     const form = event.target;
-    const inputs = form.elements; // This is an HTMLCollection of all fields in the form
+    const inputs = form.elements;
 
     for (let i = 0; i < inputs.length; i++) {
       console.log(inputs[i].name, inputs[i].value);
@@ -24,21 +24,90 @@ const Form = ({ formManager, currentTab, id }) => {
       <h1 className="text-[20px] font-bold uppercase">{formSettings?.title}</h1>
       <form
         onSubmit={handleFormSubmit}
-        className="grid grid-cols-2 w-full grid-rows-3"
+        className="grid grid-cols-2 w-full grid-rows-3 items-center"
       >
+        {/* IMPLEMENT THE PRIORITY PROPERTY */}
         {inputs?.map((input, index) => {
           return (
             <div key={index}>
-              <label htmlFor={input.name} className="block text-base">
-                {input.label}
-              </label>
-              <input
-                type={input.type}
-                name={input.name}
-                id={input.name}
-                defaultValue={input.value}
-                className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
-              />
+              {(input.type === "string" ||
+                input.type === "number" ||
+                input.type === "email" ||
+                input.type === "password") && (
+                <>
+                  <label htmlFor={input.name} className="block text-base">
+                    {input.label}
+                  </label>
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    id={input.name}
+                    defaultValue={input.value}
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                  />
+                </>
+              )}
+              {input.type === "select" && (
+                <>
+                  <label htmlFor={input.name} className="block text-base">
+                    {input.label}
+                  </label>
+                  <select
+                    name={input.name}
+                    id={input.name}
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                  >
+                    {input.options?.map((option, index) => {
+                      return (
+                        <option
+                          key={index}
+                          value={option.value}
+                          name={option.name}
+                        >
+                          {option.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </>
+              )}
+              {input.type === "checkbox" && (
+                <div className="flex items-center">
+                  <label htmlFor={input.name} className="block text-base">
+                    {input.label}
+                  </label>
+                  <input
+                    id={input.name}
+                    type={input.type}
+                    name={input.name}
+                    defaultChecked={input.value}
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                  />
+                </div>
+              )}
+              {input.type === "radio" && (
+                <div className="">
+                  <label htmlFor={input.name} className="block text-base">
+                    {input.label}
+                  </label>
+                  {input.options?.map((option, index) => {
+                    return (
+                      <div key={index} className="flex items-center">
+                        <label htmlFor={`${input.name}-${index}`}>
+                          {option.name}
+                        </label>
+                        <input
+                          id={`${input.name}-${index}`}
+                          type={input.type}
+                          name={input.name}
+                          value={option.value}
+                          className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           );
         })}
