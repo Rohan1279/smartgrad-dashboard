@@ -4,16 +4,18 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const Profile = () => {
   const { id } = useParams();
+  // console.log("id", id);
   const [formManager, setFormManager] = useState({});
-  const [currentTab, setCurrentTab] = useState(1 || id);
+  const [currentTab, setCurrentTab] = useState(id);
+  // console.log("currentTab", currentTab);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/profile-form-data.json")
+    fetch("/personal-info-form.json")
       .then((res) => res.json())
       .then((res) => {
         setFormManager(res?.data);
-        console.log(formManager);
+        // console.log(formManager);
       });
   }, []);
   return (
@@ -35,7 +37,7 @@ const Profile = () => {
               className={`  
               mr-[42px]
                 ${
-                  currentTab === item?.form_id
+                  parseInt(currentTab) === item?.form_id
                     ? "text-[#09D5D7] font-bold  relative"
                     : ""
                 }

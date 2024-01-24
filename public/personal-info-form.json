@@ -1,0 +1,107 @@
+{
+  "data": {
+    "name": "Application Form",
+    "type": "tabs",
+    "form": [
+      {
+        "action": "/application/personal-information",
+        "form_id": 1,
+        "name": "Personal Information",
+        "title": "PERSONAL INFORMATION",
+        "sub_title": "",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name",
+            "label": "Name",
+            "min": 1,
+            "max": 100,
+            "value": "",
+            "priority": 1
+          },
+          {
+            "type": "select",
+            "name": "gender",
+            "label": "Gender",
+            "value": "",
+            "options": [
+              {
+                "name": "Male",
+                "value": "male"
+              },
+              {
+                "name": "Female",
+                "value": "female"
+              },
+              {
+                "name": "Other",
+                "value": "other"
+              }
+            ],
+            "priority": 2
+          },
+          {
+            "type": "string",
+            "name": "date_of_birth",
+            "label": "Date of Birth",
+            "min": 1,
+            "max": 50,
+            "value": "",
+            "priority": 3
+          },
+          {
+            "type": "string",
+            "name": "email_address",
+            "label": "Email Address",
+            "min": 5,
+            "max": 100,
+            "value": "",
+            "priority": 4
+          },
+          {
+            "type": "select",
+            "name": "nationality",
+            "label": "Nationality",
+            "value": "",
+            "options": [
+              {
+                "name": "American",
+                "value": "american"
+              },
+              {
+                "name": "Canadian",
+                "value": "canadian"
+              },
+              {
+                "name": "French",
+                "value": "french"
+              }
+            ],
+            "priority": 5
+          },
+          {
+            "type": "select",
+            "name": "country_of_residence",
+            "label": "Country of Residence",
+            "value": "",
+            "options": [
+              {
+                "name": "United States",
+                "value": "united_states"
+              },
+              {
+                "name": "Canada",
+                "value": "canada"
+              },
+              {
+                "name": "France",
+                "value": "france"
+              }
+            ],
+            "priority": 6
+          }
+        ]
+      }
+    ]
+  }
+}

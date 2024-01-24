@@ -64,7 +64,7 @@
             "type": "number",
             "label": "Ielts score",
             "value": 10,
-            "name": "preference",
+            "name": "ielts_score",
             "priority": 5,
             "min": 5,
             "max": 8,

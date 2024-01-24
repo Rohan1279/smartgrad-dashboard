@@ -1,5 +1,7 @@
 const Form = ({ formManager, currentTab, id }) => {
-  const formSettings = formManager?.form?.find((item) => item?.form_id === id);
+  const formSettings = formManager?.form?.find(
+    (item) => item?.form_id === parseInt(currentTab)
+  );
   console.log("currentTab", currentTab);
 
   //   const { action, form_id, name, title, sub_title, inputs } = formSettings;
@@ -11,20 +13,32 @@ const Form = ({ formManager, currentTab, id }) => {
   const inputs = formSettings?.inputs;
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
     const form = event.target;
     const inputs = form.elements;
-
+    let formData = {};
     for (let i = 0; i < inputs.length; i++) {
-      console.log(inputs[i].name, inputs[i].value);
+      const input = inputs[i];
+      if (!input.name) continue;
+      if (input.type === "checkbox") {
+        // store the checked state as a boolean
+        formData[input.name] = input.checked;
+      } else if (input.type === "radio") {
+        if (input.checked) {
+          // only add radio buttons that are checked
+          formData[input.name] = input.value;
+        }
+      } else {
+        formData[input.name] = input.value;
+      }
     }
+    console.log(formData);
   };
   return (
     <div id={`#${id}`} className="mt-10 ">
       <h1 className="text-[20px] font-bold uppercase">{formSettings?.title}</h1>
       <form
         onSubmit={handleFormSubmit}
-        className="grid grid-cols-2 w-full grid-rows-3 items-center"
+        className="md:grid grid-cols-2 w-full grid-rows-3  items-center"
       >
         {/* IMPLEMENT THE PRIORITY PROPERTY */}
         {inputs?.map((input, index) => {
@@ -80,38 +94,38 @@ const Form = ({ formManager, currentTab, id }) => {
                     id={input.name}
                     type={input.type}
                     name={input.name}
-                    defaultChecked={input.value}
+                    // value={input.value}
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
                   />
                 </div>
               )}
               {input.type === "radio" && (
-                <div className="">
-                  <label htmlFor={input.name} className="block text-base">
-                    {input.label}
-                  </label>
-                  {input.options?.map((option, index) => {
-                    return (
-                      <div key={index} className="flex items-center">
-                        <label htmlFor={`${input.name}-${index}`}>
-                          {option.name}
-                        </label>
-                        <input
-                          id={`${input.name}-${index}`}
-                          type={input.type}
-                          name={input.name}
-                          value={option.value}
-                          className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
-                        />
-                      </div>
-                    );
-                  })}
+                <div>
+                  <label>{input.label}</label>
+                  {input.options?.map((option, index) => (
+                    <div key={index}>
+                      <input
+                        type="radio"
+                        id={option.value}
+                        name={input.name}
+                        value={option.value}
+                      />
+                      <label htmlFor={option.value}>{option.name}</label>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
           );
         })}
-        <button type="submit">Submit</button>
+        <div className=" flex justify-center md:block">
+          <button
+            type="submit"
+            className="bg-[#D9D9D9] text-[#595959] font-bold px-9 py-3 rounded-md hover:bg-[#09D5D7] hover:text-white active:scale-95 transition-all"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
