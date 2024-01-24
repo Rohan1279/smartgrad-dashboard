@@ -1,0 +1,92 @@
+{
+  "data": {
+    "name": "Application Form",
+    "type": "tabs",
+    "form": [
+      {
+        "action": "/application/apply",
+        "form_id": 1,
+        "name": "Apply",
+        "title": "APPLY FORM",
+        "sub_title": "",
+        "inputs": [
+          {
+            "type": "select",
+            "name": "discipline",
+            "label": "Choose Discipline",
+            "value": "",
+            "options": [
+              { "name": "Arts and Humanities", "value": "arts_humanities" },
+              {
+                "name": "Science and Technology",
+                "value": "science_technology"
+              },
+              {
+                "name": "Business and Economics",
+                "value": "business_economics"
+              }
+            ],
+            "priority": 1
+          },
+          {
+            "type": "select",
+            "name": "subject",
+            "label": "Choose Subject",
+            "value": "",
+            "options": [
+              { "name": "Subject A", "value": "subject_a" },
+              { "name": "Subject B", "value": "subject_b" },
+              { "name": "Subject C", "value": "subject_c" }
+            ],
+            "priority": 2
+          },
+          {
+            "type": "select",
+            "name": "country",
+            "label": "Choose Country",
+            "value": "",
+            "options": [
+              { "name": "United States", "value": "united_states" },
+              { "name": "Canada", "value": "canada" },
+              { "name": "United Kingdom", "value": "united_kingdom" }
+            ],
+            "priority": 3
+          },
+          {
+            "type": "number",
+            "name": "living_cost",
+            "label": "Living Cost",
+            "value": "",
+            "priority": 4
+          },
+          {
+            "type": "select",
+            "name": "semester",
+            "label": "Choose Semester",
+            "value": "",
+            "options": [
+              { "name": "Fall", "value": "fall" },
+              { "name": "Spring", "value": "spring" },
+              { "name": "Summer", "value": "summer" }
+            ],
+            "priority": 5
+          }
+        ]
+      },
+      {
+        "action": "/application/apply",
+        "form_id": 2,
+        "name": "Recommended By smartgrad",
+        "title": "",
+        "sub_title": ""
+      },
+      {
+        "action": "/application/apply",
+        "form_id": 3,
+        "name": "Applications",
+        "title": "",
+        "sub_title": ""
+      }
+    ]
+  }
+}
