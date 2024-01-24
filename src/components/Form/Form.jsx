@@ -118,10 +118,10 @@ const Form = ({ formManager, currentTab, id }) => {
             </div>
           );
         })}
-        <div className=" flex justify-center md:block">
+        <div className=" flex justify-center md:block col-span-full">
           <button
             type="submit"
-            className="bg-[#D9D9D9] text-[#595959] font-bold px-9 py-3 rounded-md hover:bg-[#09D5D7] hover:text-white active:scale-95 transition-all"
+            className="bg-[#D9D9D9] text-[#595959] font-bold px-9 py-3 rounded-md hover:bg-[#09D5D7] hover:text-white active:scale-95 transition-all "
           >
             Save
           </button>

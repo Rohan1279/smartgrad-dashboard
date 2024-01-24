@@ -11,7 +11,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/personal-info-form.json")
+    fetch("/profile-dashboard-form.json")
       .then((res) => res.json())
       .then((res) => {
         setFormManager(res?.data);

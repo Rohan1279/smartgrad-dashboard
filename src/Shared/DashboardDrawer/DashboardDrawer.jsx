@@ -18,7 +18,7 @@ const DashboardDrawer = () => {
         <span className="text-white">Dashboard</span>
       </Link>
       <Link
-        to={"university"}
+        to={"university/1"}
         className="flex justify-start items-center space-x-4 px-4 py-2  "
       >
         {/* <img src={UniversitiesIcon} alt="" /> */}
