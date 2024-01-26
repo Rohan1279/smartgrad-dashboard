@@ -41,7 +41,7 @@
             "priority": 2
           },
           {
-            "type": "string",
+            "type": "date",
             "name": "date_of_birth",
             "label": "Date of Birth",
             "min": 1,
@@ -99,6 +99,30 @@
               }
             ],
             "priority": 6
+          },
+          {
+            "type": "checkbox",
+            "label": "Notify new offers",
+            "value": true,
+            "name": "notify",
+            "priority": 3
+          },
+          {
+            "type": "radio",
+            "label": "Select preferences",
+            "value": ["bsc", "msc"],
+            "name": "preference",
+            "options": [
+              {
+                "name": "BSC",
+                "value": "bsc"
+              },
+              {
+                "name": "MSC",
+                "value": "msc"
+              }
+            ],
+            "priority": 4
           }
         ]
       },

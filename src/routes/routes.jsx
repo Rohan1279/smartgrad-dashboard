@@ -32,6 +32,10 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
         path: "university/:id",
         element: <UniversityDashboard />,
       },

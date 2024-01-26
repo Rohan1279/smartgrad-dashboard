@@ -1,16 +1,40 @@
-const Form = ({ formManager, currentTab, id }) => {
-  const formSettings = formManager?.form?.find(
-    (item) => item?.form_id === parseInt(currentTab)
-  );
-  console.log("currentTab", currentTab);
+import PropTypes from "prop-types";
 
-  //   const { action, form_id, name, title, sub_title, inputs } = formSettings;
-  const action = formSettings?.action;
-  const form_id = formSettings?.form_id;
-  const name = formSettings?.name;
-  const title = formSettings?.title;
-  const sub_title = formSettings?.sub_title;
-  const inputs = formSettings?.inputs;
+const Form = ({ currentForm, currentTab, setCurrentForm }) => {
+  const action = currentForm?.action;
+  const form_id = currentForm?.form_id;
+  const name = currentForm?.name;
+  const sub_title = currentForm?.sub_title;
+  const title = currentForm?.title;
+  const inputs = currentForm?.inputs;
+  const sortedInputs = inputs?.sort((a, b) => a.priority - b.priority);
+  console.log(currentForm);
+  const handleInputChange = (e) => {
+    const currentInput = currentForm.inputs.find(
+      (input) => input.name === e.target.name
+    );
+    if (currentInput.type === "checkbox") {
+      // store the checked state as a boolean
+      currentInput.value = e.target.checked;
+      console.log(currentInput);
+    } else if (currentInput.type === "radio") {
+      if (currentInput.checked) {
+        // only add radio buttons that are checked
+        currentInput.value = e.target.value;
+      }
+    }
+    currentInput.value = e.target.value;
+    const newInputs = currentForm.inputs.filter(
+      (input) => input.name !== e.target.name
+    );
+    setCurrentForm((form) => {
+      return {
+        ...form,
+        inputs: [currentInput, ...newInputs],
+      };
+    });
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -33,15 +57,16 @@ const Form = ({ formManager, currentTab, id }) => {
     }
     console.log(formData);
   };
+
   return (
-    <div id={`#${id}`} className="mt-10 ">
-      <h1 className="text-[20px] font-bold uppercase">{formSettings?.title}</h1>
+    <div className="mt-10 ">
+      <h1 className="text-[20px] font-bold uppercase">{title}</h1>
       <form
         onSubmit={handleFormSubmit}
-        className="md:grid grid-cols-2 w-full grid-rows-3  items-center"
+        className="md:grid grid-cols-2 w-full grid-rows-3  items-center justify-items-start"
       >
         {/* IMPLEMENT THE PRIORITY PROPERTY */}
-        {inputs?.map((input, index) => {
+        {sortedInputs?.map((input, index) => {
           return (
             <div key={index}>
               {(input.type === "string" ||
@@ -57,6 +82,7 @@ const Form = ({ formManager, currentTab, id }) => {
                     name={input.name}
                     id={input.name}
                     defaultValue={input.value}
+                    onChange={handleInputChange}
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
                   />
                 </>
@@ -67,6 +93,8 @@ const Form = ({ formManager, currentTab, id }) => {
                     {input.label}
                   </label>
                   <select
+                    defaultValue={input.value}
+                    onChange={handleInputChange}
                     name={input.name}
                     id={input.name}
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
@@ -86,34 +114,50 @@ const Form = ({ formManager, currentTab, id }) => {
                 </>
               )}
               {input.type === "checkbox" && (
-                <div className="flex items-center">
+                <div className="flex items-center w-full">
                   <label htmlFor={input.name} className="block text-base">
                     {input.label}
                   </label>
                   <input
+                    onChange={handleInputChange}
                     id={input.name}
                     type={input.type}
                     name={input.name}
-                    // value={input.value}
+                    defaultChecked={input.value}
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
                   />
                 </div>
               )}
               {input.type === "radio" && (
-                <div>
-                  <label>{input.label}</label>
+                <div className="flex">
+                  <label className="flex-1">{input.label}</label>
                   {input.options?.map((option, index) => (
-                    <div key={index}>
+                    <div key={index} className="flex-1">
                       <input
                         type="radio"
                         id={option.value}
                         name={input.name}
-                        value={option.value}
+                        defaultValue={option.value}
                       />
                       <label htmlFor={option.value}>{option.name}</label>
                     </div>
                   ))}
                 </div>
+              )}
+              {input.type === "date" && (
+                <>
+                  <label htmlFor={input.name} className="block text-base">
+                    {input.label}
+                  </label>
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    id={input.name}
+                    defaultValue={input.value}
+                    onChange={handleInputChange}
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                  />
+                </>
               )}
             </div>
           );
@@ -132,3 +176,17 @@ const Form = ({ formManager, currentTab, id }) => {
 };
 
 export default Form;
+
+Form.propTypes = {
+  currentForm: PropTypes.shape({
+    action: PropTypes.string,
+    form_id: PropTypes.number,
+    name: PropTypes.string,
+    title: PropTypes.string,
+    sub_title: PropTypes.string,
+    inputs: PropTypes.arrayOf(PropTypes.object),
+  }),
+  currentTab: PropTypes.number,
+  id: PropTypes.string,
+  setCurrentForm: PropTypes.func,
+};
