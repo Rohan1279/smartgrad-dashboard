@@ -98,7 +98,7 @@ export default function Navbar() {
                 <span className="">Networks</span>
               </a>
               <Link
-                to={"dashboard"}
+                to={"/dashboard"}
                 className="flex items-center justify-center space-x-2 "
               >
                 {/* <img src={NetworkIcon} alt="" className="w-4" /> */}
