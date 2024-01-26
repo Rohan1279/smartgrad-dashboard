@@ -7,21 +7,32 @@ import UniversityDashboard from "../Pages/Dashboard/UniversityDashboard/Universi
 import CareerDashboard from "../Pages/Dashboard/CareerDashboard/CareerDashboard";
 import AptitudeDashboard from "../Pages/Dashboard/AptitudeDashboard/AptitudeDashboard";
 import NetworkDashboard from "../Pages/Dashboard/NetworkDashboard/NetworkDashboard";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    // children: [
-    //   {
-    //     path: "",
-    //     element: < />,
-    //   },
-    // ],
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "",

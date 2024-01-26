@@ -1,6 +1,6 @@
 import NavIcon from "/assets/images/navbar/smart-grad.png";
 import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import UniversitiesMenu from "./Menus/UniversitiesMenu";
 import CareersMenu from "./Menus/CareersMenu";
 import AptitudesMenu from "./Menus/AptitudesMenu";
@@ -13,8 +13,11 @@ import AptitudeIcon from "/assets/images/navbar/aptitudes.svg";
 import NetworkIcon from "/assets/images/navbar/network.svg";
 import BellIcon from "/assets/images/navbar/bell.svg";
 import AvatarIcon from "/assets/images/navbar/avatar-icon.svg";
+import { Authcontext } from "../../contexts/AuthContextProvider";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const { user } = useContext(Authcontext);
   const [hovering, sethovering] = useState(null);
   const [popOverLeft, setPopOverLeft] = useState(0);
   const [popOverHeight, setPopOverHeight] = useState(0);
@@ -34,7 +37,7 @@ export default function Navbar() {
       onMouseLeave={() => {
         sethovering(null);
       }}
-      className="bg-white shadow-md text-[#595959] fixed w-full top-0 z-50"
+      className="bg-white shadow-sm text-[#595959] fixed w-full top-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
@@ -94,6 +97,13 @@ export default function Navbar() {
                 <img src={NetworkIcon} alt="" className="w-4" />
                 <span className="">Networks</span>
               </a>
+              <Link
+                to={"dashboard"}
+                className="flex items-center justify-center space-x-2 "
+              >
+                {/* <img src={NetworkIcon} alt="" className="w-4" /> */}
+                <span className="">Dashboard</span>
+              </Link>
             </div>
           </div>
 
@@ -152,11 +162,19 @@ export default function Navbar() {
               alt="bell-icon"
               className="w-5 cursor-pointer transition-all"
             />
-            <img
-              src={AvatarIcon}
-              alt="avatar-icon"
-              className="w-5 cursor-pointer transition-all"
-            />
+            {user ? (
+              <img
+                src={AvatarIcon}
+                alt="avatar-icon"
+                className="w-5 cursor-pointer transition-all"
+              />
+            ) : (
+              <button className="bg-[#09D5D7] hover:shadow-md transition-all text-white text-[12px] rounded-xl px-4 py-2">
+                <Link to="/login" className="">
+                  Login
+                </Link>
+              </button>
+            )}
           </div>
         </div>
       </div>

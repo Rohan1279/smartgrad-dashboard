@@ -26,7 +26,7 @@ const UniversityDashboard = () => {
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">
-          <h1 className="text-[40px] font-bold ">Hello User,</h1>
+          <h1 className="text-[40px] font-bold ">My Dashboard</h1>
           <p className="pt-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

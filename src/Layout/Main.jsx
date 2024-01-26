@@ -1,10 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Main = () => {
   return (
     <>
-      <h1>This is the Main Layout</h1>
-      <Outlet />
+      <Navbar />
+      <div className="min-h-[100svh] pt-16">
+        <Outlet />
+      </div>
     </>
   );
 };
