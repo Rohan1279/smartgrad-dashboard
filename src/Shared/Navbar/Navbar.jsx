@@ -16,6 +16,7 @@ import { Authcontext } from "../../contexts/AuthContextProvider";
 import { Link } from "react-router-dom";
 import ProfileMenu from "./Menus/ProfileMenu";
 import NotificationMenu from "./Menus/NotificationMenu";
+import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 
 export default function Navbar() {
   const { user } = useContext(Authcontext);
@@ -103,7 +104,7 @@ export default function Navbar() {
                 to={"/dashboard"}
                 className="flex items-center justify-center space-x-2 "
               >
-                {/* <img src={NetworkIcon} alt="" className="w-4" /> */}
+                <img src={DashboardIcon} alt="" className="w-4" />
                 <span className="">Dashboard</span>
               </Link>
             </div>
