@@ -12,12 +12,14 @@ import CareerIcon from "/assets/images/navbar/bag.svg";
 import AptitudeIcon from "/assets/images/navbar/aptitudes.svg";
 import NetworkIcon from "/assets/images/navbar/network.svg";
 import BellIcon from "/assets/images/navbar/bell.svg";
-import AvatarIcon from "/assets/images/navbar/avatar-icon.svg";
 import { Authcontext } from "../../contexts/AuthContextProvider";
 import { Link } from "react-router-dom";
+import ProfileMenu from "./Menus/ProfileMenu";
+import NotificationMenu from "./Menus/NotificationMenu";
 
 export default function Navbar() {
   const { user } = useContext(Authcontext);
+
   const [hovering, sethovering] = useState(null);
   const [popOverLeft, setPopOverLeft] = useState(0);
   const [popOverHeight, setPopOverHeight] = useState(0);
@@ -157,24 +159,8 @@ export default function Navbar() {
               alt="globe-icon"
               className="w-7 cursor-pointer transition-all"
             />
-            <img
-              src={BellIcon}
-              alt="bell-icon"
-              className="w-5 cursor-pointer transition-all"
-            />
-            {user ? (
-              <img
-                src={AvatarIcon}
-                alt="avatar-icon"
-                className="w-5 cursor-pointer transition-all"
-              />
-            ) : (
-              <button className="bg-[#09D5D7] hover:shadow-md transition-all text-white text-[12px] rounded-xl px-4 py-2">
-                <Link to="/login" className="">
-                  Login
-                </Link>
-              </button>
-            )}
+            <NotificationMenu />
+            <ProfileMenu user={user} />
           </div>
         </div>
       </div>

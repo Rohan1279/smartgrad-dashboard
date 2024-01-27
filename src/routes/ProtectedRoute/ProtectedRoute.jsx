@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(Authcontext);
-  console.log(user);
+  console.log("user", user);
   if (loading) {
     return (
       <p className="w-20 h-20 rounded-full border-8 border-primary border-dashed animate-spin mx-auto mt-10"></p>
