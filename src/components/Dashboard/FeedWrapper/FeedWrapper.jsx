@@ -3,7 +3,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 const FeedWrapper = () => {
   return (
     <>
-      <ScrollArea className="w-full h-[100svh]">
+      <ScrollArea className="w-full h-[100svh] pr-5">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat animi
         esse distinctio vero! Quidem minima, enim labore reiciendis deleniti
         quis repellat tempore cum voluptatum nemo. Quia, dignissimos alias?

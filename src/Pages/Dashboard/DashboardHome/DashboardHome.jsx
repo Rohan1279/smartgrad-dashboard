@@ -24,11 +24,11 @@ const DashboardHome = () => {
       {/* GRID */}
       <h2 className=" mt-5 pl-[10px]">Feed</h2>
       <hr className="w-2/3 border mt-[10px] border-[#D9D9D9]" />
-      <div className="grid grid-cols-3 h-full gap-x-[25px]">
+      <div className="grid grid-cols-3 h-full">
         <div className="col-span-2  ">
           <FeedWrapper />
         </div>
-        <div className="col-span-1  ">
+        <div className="col-span-1  ml-[25px]">
           <div className="grid grid-rows-4 gap-y-[20px]">
             <UniversitiesCard />
             <CoursesCard />

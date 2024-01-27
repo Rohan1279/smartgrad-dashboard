@@ -56,7 +56,9 @@ const UniversitiesCard = () => {
           </ScrollArea>
         </div>
         <div className="h-full ml-auto flex flex-col justify-between">
-          <p className="text-6xl font-bold text-right">{universities.length}</p>
+          <p className="text-6xl font-bold text-center">
+            {universities.length}
+          </p>
           <button className="px-3 py-1 bg-zinc-300 rounded-lg ">
             View All
           </button>
