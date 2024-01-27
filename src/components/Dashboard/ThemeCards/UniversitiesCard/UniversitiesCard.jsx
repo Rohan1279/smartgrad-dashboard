@@ -13,17 +13,17 @@ const UniversitiesCard = () => {
     {
       name: "Southwest Minnesota University",
       status: "Awating Approval",
-      progress: 33,
+      progress: 93,
     },
     {
       name: "Southwest Minnesota University",
       status: "Awating Approval",
-      progress: 33,
+      progress: 43,
     },
     {
       name: "Southwest Minnesota University",
       status: "Awating Approval",
-      progress: 33,
+      progress: 73,
     },
   ];
   return (

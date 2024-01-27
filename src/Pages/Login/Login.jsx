@@ -3,6 +3,7 @@ import { Authcontext } from "../../contexts/AuthContextProvider";
 import { useForm } from "react-hook-form";
 import NavIcon from "/assets/images/navbar/smart-grad.png";
 import { Link } from "react-router-dom";
+import { Separator } from "@/components/ui/separator";
 
 const Login = () => {
   const { createUser, login } = useContext(Authcontext);
@@ -63,6 +64,23 @@ const Login = () => {
           </Link>
           <button className=" w-[272px] h-[50px] text-white font-bold rounded-md bg-[#00D4D6]">
             Get Started
+          </button>
+        </div>
+        <div className="w-full">
+          <div className="flex  justify-center items-center space-x-6 mt-14">
+            <Separator className="w-1/4 bg-[#595959]" />
+            <span>Or</span>
+            <Separator className="w-1/4 bg-[#595959]" />
+          </div>
+          <button className="mx-auto  bg-white px-5 py-2 rounded-md shadow-lg active:shadow-none mt-5 transition-all border flex justify-center items-center space-x-2">
+            <img
+              src={
+                "https://cdn3.iconfinder.com/data/icons/3d-applications/256/app_icons_social_media_search___google_logo_engine_software.png"
+              }
+              alt="google-icon"
+              className="w-5"
+            />
+            <span>Google</span>
           </button>
         </div>
 
