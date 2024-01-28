@@ -1,4 +1,4 @@
-import { DasboardCard } from "../../DasboardCard/DasboardCard";
+import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 import { Progress } from "@/components/ui/progress";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -27,7 +27,7 @@ const UniversitiesCard = () => {
     },
   ];
   return (
-    <DasboardCard>
+    <DasboardCardTheme>
       <div className="flex h-full">
         <div>
           <h1>Universities Applied</h1>
@@ -64,7 +64,7 @@ const UniversitiesCard = () => {
           </button>
         </div>
       </div>
-    </DasboardCard>
+    </DasboardCardTheme>
   );
 };
 

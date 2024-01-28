@@ -1,11 +1,11 @@
 import React from "react";
-import { DasboardCard } from "../../DasboardCard/DasboardCard";
+import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 
 const OpputunitiesCard = () => {
   return (
-    <DasboardCard>
+    <DasboardCardTheme>
       <h1>Opputunities</h1>
-    </DasboardCard>
+    </DasboardCardTheme>
   );
 };
 

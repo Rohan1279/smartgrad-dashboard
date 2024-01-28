@@ -1,5 +1,5 @@
 import React from "react";
-import { DasboardCard } from "../../DasboardCard/DasboardCard";
+import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Progress } from "@/components/ui/progress";
 
@@ -28,7 +28,7 @@ const CoursesCard = () => {
     },
   ];
   return (
-    <DasboardCard>
+    <DasboardCardTheme>
       <div className="flex h-full">
         <div>
           <h1>Courses Completed</h1>
@@ -63,7 +63,7 @@ const CoursesCard = () => {
           </button>
         </div>
       </div>
-    </DasboardCard>
+    </DasboardCardTheme>
   );
 };
 
