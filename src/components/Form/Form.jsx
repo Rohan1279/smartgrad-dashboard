@@ -62,7 +62,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
       <h1 className="text-[20px] font-bold uppercase">{title}</h1>
       <form
         onSubmit={handleFormSubmit}
-        className="md:grid grid-cols-2 w-full grid-rows-3  items-center justify-items-start"
+        className="md:grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full grid-rows-3  items-center justify-start"
       >
         {/* IMPLEMENT THE PRIORITY PROPERTY */}
         {sortedInputs?.map((input, index) => {
@@ -82,7 +82,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     id={input.name}
                     defaultValue={input.value}
                     onChange={handleInputChange}
-                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
                   />
                 </>
               )}
@@ -96,7 +96,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     onChange={handleInputChange}
                     name={input.name}
                     id={input.name}
-                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
                   >
                     {input.options?.map((option, index) => {
                       return (
@@ -123,7 +123,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     type={input.type}
                     name={input.name}
                     defaultChecked={input.value}
-                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
                   />
                 </div>
               )}
@@ -154,7 +154,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     id={input.name}
                     defaultValue={input.value}
                     onChange={handleInputChange}
-                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-[450px] my-4"
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
                   />
                 </>
               )}
