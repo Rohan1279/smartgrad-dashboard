@@ -7,8 +7,42 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useEffect, useRef, useState } from "react";
+// Import Swiper styles
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const DasboardCardPost = ({ author, author_image, time, images, content }) => {
+  const slider = useRef();
+  const imageContainerRef = useRef(null);
+  const [parentWidth, setParentWidth] = useState(400);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  useEffect(() => {
+    const updateParentWidth = () => {
+      if (imageContainerRef.current) {
+        const newParentWidth = imageContainerRef.current.clientWidth;
+        setParentWidth(newParentWidth - 100);
+      }
+    };
+
+    // Update the parent width initially and add a resize event listener
+    updateParentWidth();
+    window.addEventListener("resize", updateParentWidth);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateParentWidth);
+    };
+  }, []);
   return (
     <>
       <Card className={"min-w-full my-5 border-none shadow-none"}>
@@ -21,7 +55,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
             </div>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="m-w-fit contentCard" ref={imageContainerRef}>
           <p>{content}</p>
           {images &&
             (images.length === 1 ? (
@@ -30,7 +64,28 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
               </div>
             ) : (
               // Carousal
-              <h1>Requires Carousal</h1>
+              // <h1>Requires Carousal</h1>
+              <div
+                className="slide-container ss"
+                style={{
+                  maxWidth: parentWidth + "px",
+                }}
+              >
+                <Slider
+                  ref={slider}
+                  className="custom-carousel-container"
+                  {...settings}
+                >
+                  {images.map((item, k) => (
+                    <div
+                      key={k}
+                      className="w-full h-[200px] mt-2 rounded-xl overflow-hidden"
+                    >
+                      <img src={item} alt="" className="w-full h-full" />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
             ))}
         </CardContent>
         <CardFooter>

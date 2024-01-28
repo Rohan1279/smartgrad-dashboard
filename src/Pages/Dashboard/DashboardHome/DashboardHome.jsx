@@ -11,6 +11,18 @@ const DashboardHome = () => {
     {
       author: "Parrot Scott",
       author_image: "https://picsum.photos/200",
+      content: "Innovation 2024 is here. Register now, Guys",
+      images: [
+        "https://picsum.photos/400",
+        "https://picsum.photos/200",
+        "https://picsum.photos/300",
+        "https://picsum.photos/500",
+      ],
+      time: "2 days ago",
+    },
+    {
+      author: "Parrot Scott",
+      author_image: "https://picsum.photos/200",
       content: "Innovation 2023 is here. Register now, Guys",
       images: ["https://picsum.photos/200"],
       time: "2 days ago",
@@ -34,7 +46,7 @@ const DashboardHome = () => {
   ];
   return (
     <div className="text-[#595959]">
-      <div className="flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
+      <div className="flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">
@@ -48,8 +60,8 @@ const DashboardHome = () => {
         </div>
       </div>
       {/* GRID */}
-      <div className="grid grid-cols-3 h-full mt-5 ">
-        <FeedWrapper className="col-span-2 bg-[#F5F5F5] rounded-xl px-5 py-3">
+      <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
+        <FeedWrapper className="order-2 lg:order-1 col-span-3 lg:col-span-2 bg-[#F5F5F5] rounded-xl px-5 py-3">
           <div>
             <h2 className=" pl-[10px] font-semibold">Feed</h2>
             <hr className="border mt-[10px] border-[#D9D9D9]" />
@@ -67,8 +79,8 @@ const DashboardHome = () => {
             })}
           </div>
         </FeedWrapper>
-        <div className="col-span-1  ml-[25px]">
-          <div className="grid grid-rows-4 gap-y-[20px]">
+        <div className="col-span-3 lg:col-span-1 order-1 lg:order-2 mmd:ml-[25px]">
+          <div className="grid grid-rows-2 grid-cols-2 gap-x-2 lg:grid-cols-1 mmd:grid-rows-4 gap-y-[20px]">
             <UniversitiesCard />
             <CoursesCard />
             <OpputunitiesCard />

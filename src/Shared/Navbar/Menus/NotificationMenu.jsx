@@ -17,7 +17,6 @@ const NotificationMenu = () => {
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger>
-          {" "}
           <img
             src={NotificationIcon}
             alt="avatar-icon"

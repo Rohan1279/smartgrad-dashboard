@@ -7,7 +7,7 @@ import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 import ProfileIcon from "/assets/images/dashboard/dashboard-drawer-avatar.png";
 const DashboardDrawer = () => {
   return (
-    <aside className=" flex flex-col w-fit border bg-[#595959] py-5 rounded-r-xl overflow-hidden">
+    <aside className=" flex flex-row h-[50px] w-full rounded-lg sm:rounded-auto sm:h-auto sm:flex-col sm:w-fit border bg-[#595959] py-5 rounded-r-xl overflow-hidden mt-16 sm:mt-none justify-center sm:justify-auto pointer-events-auto">
       <NavLink
         to="/dashboard"
         className={({ isActive }) =>
@@ -20,7 +20,7 @@ const DashboardDrawer = () => {
           <img src={DashboardIcon} alt="" className="w-full" />
         </div>
 
-        <span className="">Dashboard</span>
+        <span className="hidden mmd:flex">Dashboard</span>
       </NavLink>
       <NavLink
         to="university/1"
@@ -33,7 +33,7 @@ const DashboardDrawer = () => {
         <div className="w-4 h-4">
           <img src={UniversitiesIcon} alt="" className="w-full" />
         </div>
-        <span className="">University</span>
+        <span className="hidden mmd:flex">University</span>
       </NavLink>
       <NavLink
         to="career"
@@ -46,7 +46,7 @@ const DashboardDrawer = () => {
         <div className="w-4 h-4">
           <img src={CareerIcon} alt="" className="w-full" />
         </div>
-        <span className="">Career</span>
+        <span className="hidden mmd:flex">Career</span>
       </NavLink>
       <NavLink
         to="aptitude"
@@ -59,7 +59,7 @@ const DashboardDrawer = () => {
         <div className="w-4 h-4">
           <img src={AptitudeIcon} alt="" className="w-full" />
         </div>
-        <span className="">Aptitude</span>
+        <span className="hidden mmd:flex">Aptitude</span>
       </NavLink>
       <NavLink
         to="network"
@@ -72,7 +72,7 @@ const DashboardDrawer = () => {
         <div className="w-4 h-4">
           <img src={NetworkIcon} alt="" className="w-full" />
         </div>
-        <span className="">Network</span>
+        <span className="hidden mmd:flex">Network</span>
       </NavLink>
 
       <hr className="border my-7" />
@@ -86,7 +86,7 @@ const DashboardDrawer = () => {
         }
       >
         <img src={ProfileIcon} alt="" className="w-4" />
-        <span className="">Profile</span>
+        <span className="hidden mmd:flex">Profile</span>
       </NavLink>
     </aside>
   );

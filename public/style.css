@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.slide-container {
+  max-width: 400px;
+  margin: 0 auto;
+}

@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Fragment } from "react";
 
 const FeedWrapper = ({ children, className }) => {
   return (
-    <>
+    <Fragment>
       <ScrollArea className={`w-full h-[100vmin] ${className}`}>
         {children}
       </ScrollArea>
-    </>
+    </Fragment>
   );
 };
 

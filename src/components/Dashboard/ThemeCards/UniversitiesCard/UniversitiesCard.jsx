@@ -28,10 +28,10 @@ const UniversitiesCard = () => {
   ];
   return (
     <DasboardCardTheme>
-      <div className="flex h-full">
+      <div className="flex flex-col mmd:flex-row h-full">
         <div>
           <h1>Universities Applied</h1>
-          <ScrollArea className="h-[120px] pr-4">
+          <ScrollArea className="hidden mmd:block h-[120px] pr-4">
             {universities?.map((item, idx) => {
               return (
                 <div
@@ -55,7 +55,7 @@ const UniversitiesCard = () => {
             })}
           </ScrollArea>
         </div>
-        <div className="h-full ml-auto flex flex-col justify-between">
+        <div className="h-full mmd:ml-auto flex flex-col justify-center mmd:justify-between">
           <p className="text-6xl font-bold text-center">
             {universities.length}
           </p>
