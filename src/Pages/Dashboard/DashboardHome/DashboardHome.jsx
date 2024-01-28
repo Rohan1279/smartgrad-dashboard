@@ -22,11 +22,11 @@ const DashboardHome = () => {
         </div>
       </div>
       {/* GRID */}
-      <h2 className=" mt-5 pl-[10px]">Feed</h2>
-      <hr className="w-2/3 border mt-[10px] border-[#D9D9D9]" />
-      <div className="grid grid-cols-3 h-full">
-        <div className="col-span-2  ">
-          <FeedWrapper />
+      <div className="grid grid-cols-3 h-full mt-5 ">
+        <div className="col-span-2  bg-[#F5F5F5] rounded-xl px-5 py-3">
+          <h2 className=" pl-[10px] font-semibold">Feed</h2>
+          <hr className="border mt-[10px] border-[#D9D9D9]" />
+          <FeedWrapper></FeedWrapper>
         </div>
         <div className="col-span-1  ml-[25px]">
           <div className="grid grid-rows-4 gap-y-[20px]">
