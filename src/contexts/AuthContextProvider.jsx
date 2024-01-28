@@ -6,7 +6,7 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(user);
+  // console.log(user);
   //   REGISTER USER
   const createUser = (email, password) => {
     setLoading(true);

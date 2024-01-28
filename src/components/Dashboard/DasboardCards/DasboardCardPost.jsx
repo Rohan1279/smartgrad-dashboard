@@ -7,6 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { AiOutlineEllipsis } from "react-icons/ai";
 import { useEffect, useRef, useState } from "react";
 // Import Swiper styles
 import "slick-carousel/slick/slick.css";
@@ -47,12 +54,25 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
     <>
       <Card className={"min-w-full my-5 border-none shadow-none"}>
         <CardHeader>
-          <div className="flex items-center justify-start space-x-2">
-            <img src={author_image} alt="" className="w-11 rounded-xl" />
-            <div>
-              <CardTitle className={"text-base"}>{author}</CardTitle>
-              <CardDescription className={"text-xs"}>{time}</CardDescription>
+          <div className="flex justify-between items-start">
+            <div className="flex items-center justify-start space-x-2">
+              <img src={author_image} alt="" className="w-11 rounded-xl" />
+              <div>
+                <CardTitle className={"text-base"}>{author}</CardTitle>
+                <CardDescription className={"text-xs"}>{time}</CardDescription>
+              </div>
             </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <AiOutlineEllipsis className="text-2xl cursor-pointer transition-all outline-none" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuItem>Subscription</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </CardHeader>
         <CardContent className="m-w-fit contentCard" ref={imageContainerRef}>

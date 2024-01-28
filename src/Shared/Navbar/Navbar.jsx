@@ -46,7 +46,7 @@ export default function Navbar() {
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
           <div className="flex-1 flex items-center sm:items-stretch justify-start">
             {/* Logo and Brand Name */}
-            <div className="flex-shrink-0 flex items-center">
+            <Link to={"/"} className="flex-shrink-0 flex items-center">
               <img
                 className="block lg:hidden w-24"
                 src={NavIcon}
@@ -57,7 +57,7 @@ export default function Navbar() {
                 src={NavIcon}
                 alt="Your Logo"
               />
-            </div>
+            </Link>
             {/* Navigation Links */}
             <div className="hidden mmd:flex justify-center items-center space-x-4 mmd:space-x-11 sm:ml-8 ">
               <Link
