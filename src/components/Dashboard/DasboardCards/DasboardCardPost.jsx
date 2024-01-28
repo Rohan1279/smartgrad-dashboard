@@ -8,23 +8,35 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const DasboardCardPost = ({ title, time, images, content }) => {
+const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   return (
     <>
-      <Card>
+      <Card className={"min-w-full my-5 border-none shadow-none"}>
         <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>{time}</CardDescription>
+          <div className="flex items-center justify-start space-x-2">
+            <img src={author_image} alt="" className="w-11 rounded-xl" />
+            <div>
+              <CardTitle className={"text-base"}>{author}</CardTitle>
+              <CardDescription className={"text-xs"}>{time}</CardDescription>
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
           <p>{content}</p>
+          {images &&
+            (images.length === 1 ? (
+              <div className="w-full h-[200px] mt-2 rounded-xl overflow-hidden">
+                <img src={images} alt="" className="w-full h-full" />
+              </div>
+            ) : (
+              // Carousal
+              <h1>Requires Carousal</h1>
+            ))}
         </CardContent>
         <CardFooter>
           <div className="flex items-center space-x-1">
-            <button className="w-[44.74px] h-[21.63px] bg-neutral-100 rounded-[5px]">
-              Like
-            </button>
-            <button className="w-[44.74px] h-[21.63px] bg-neutral-100 rounded-[5px]">
+            <button className="px-3 py-1 bg-[#F5F5F5] rounded-lg ">Like</button>
+            <button className="px-3 py-1 bg-[#F5F5F5] rounded-lg ">
               Share
             </button>
           </div>
@@ -35,7 +47,8 @@ const DasboardCardPost = ({ title, time, images, content }) => {
 };
 
 DasboardCardPost.propTypes = {
-  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  author_image: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   images: PropTypes.string,
   content: PropTypes.string.isRequired,
