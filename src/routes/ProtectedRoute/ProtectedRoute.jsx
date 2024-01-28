@@ -3,7 +3,6 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
-  console.log(user);
   const location = useLocation();
 
   return user ? (
