@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import useAuth from "../../hooks/useAuth";
 import axios from "@/api/axios";
 import { toast } from "sonner";
+import { setAuthToken } from "@/utils/setAuthToken";
 const Login = () => {
   const { setUser } = useAuth();
   const navigate = useNavigate();
@@ -20,16 +21,16 @@ const Login = () => {
     const password = formData.password;
     try {
       const response = await axios.post(
-        "http://localhost:5000/login",
+        "/login",
         JSON.stringify({ email: email, pwd: password }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
+      setAuthToken(accessToken);
       setUser({ email, password, roles, accessToken });
       toast("Login Successful", {
         action: {
