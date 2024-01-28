@@ -8,7 +8,6 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
   const title = currentForm?.title;
   const inputs = currentForm?.inputs;
   const sortedInputs = inputs?.sort((a, b) => a.priority - b.priority);
-  console.log(currentForm);
   const handleInputChange = (e) => {
     const currentInput = currentForm.inputs.find(
       (input) => input.name === e.target.name

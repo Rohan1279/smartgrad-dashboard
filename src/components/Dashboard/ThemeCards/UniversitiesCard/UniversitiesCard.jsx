@@ -36,13 +36,13 @@ const UniversitiesCard = () => {
               return (
                 <div
                   key={idx}
-                  className="flex items-center space-x-2 space-y-2 cursor-pointer"
+                  className="flex items-center space-x-2 mb-1 cursor-pointer "
                 >
                   <div className="w-12">
                     <img
                       src={UniversityImage}
                       alt="university-logo"
-                      className=""
+                      className="mt-auto"
                     />
                   </div>
                   <div className="text-xs">

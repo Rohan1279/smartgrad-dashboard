@@ -37,7 +37,7 @@ const CoursesCard = () => {
               return (
                 <div
                   key={idx}
-                  className="flex items-center space-x-2 space-y-2 cursor-pointer"
+                  className="flex items-center space-x-2 mb-1 cursor-pointer "
                 >
                   <div className="w-12 h-12 rounded-md overflow-hidden mt-auto">
                     <img

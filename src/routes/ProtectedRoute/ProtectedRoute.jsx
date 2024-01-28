@@ -1,20 +1,16 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
-import { Authcontext } from "../../contexts/AuthContextProvider";
-import { Navigate } from "react-router-dom";
-
+import { Navigate, useLocation } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useContext(Authcontext);
-  console.log("user", user);
-  if (loading) {
-    return (
-      <p className="w-20 h-20 rounded-full border-8 border-primary border-dashed animate-spin mx-auto mt-10"></p>
-    );
-  }
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-  return children;
+  const { user } = useAuth();
+  console.log(user);
+  const location = useLocation();
+
+  return user ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 export default ProtectedRoute;

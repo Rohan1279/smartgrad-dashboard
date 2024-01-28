@@ -1,6 +1,6 @@
 import NavIcon from "/assets/images/navbar/smart-grad.png";
 import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import UniversitiesMenu from "./Menus/UniversitiesMenu";
 import CareersMenu from "./Menus/CareersMenu";
 import AptitudesMenu from "./Menus/AptitudesMenu";
@@ -12,20 +12,19 @@ import CareerIcon from "/assets/images/navbar/bag.svg";
 import AptitudeIcon from "/assets/images/navbar/aptitudes.svg";
 import NetworkIcon from "/assets/images/navbar/network.svg";
 import BellIcon from "/assets/images/navbar/bell.svg";
-import { Authcontext } from "../../contexts/AuthContextProvider";
+
 import { Link } from "react-router-dom";
 import ProfileMenu from "./Menus/ProfileMenu";
 import NotificationMenu from "./Menus/NotificationMenu";
 import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 
 export default function Navbar() {
-  const { user } = useContext(Authcontext);
-
   const [hovering, sethovering] = useState(null);
   const [popOverLeft, setPopOverLeft] = useState(0);
   const [popOverHeight, setPopOverHeight] = useState(0);
   const [popOverWidth, setPopOverWidth] = useState(0);
   const refs = useRef([]);
+
   const onMouseEnter = (index, element) => {
     sethovering(index);
     setPopOverLeft(element.offsetLeft);
@@ -60,46 +59,46 @@ export default function Navbar() {
             </div>
             {/* Navigation Links */}
             <div className="hidden sm:flex justify-center items-center space-x-11 sm:ml-8 ">
-              <a
+              <Link
                 onMouseEnter={(e) => {
                   onMouseEnter(1, e.currentTarget);
                 }}
-                href=""
+                to="/"
                 className="flex items-center justify-center space-x-2"
               >
                 <img src={UniversitiesIcon} alt="" className="w-4" />
                 <span className="">Universities</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 onMouseEnter={(e) => {
                   onMouseEnter(2, e.currentTarget);
                 }}
-                href=""
+                to="/"
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={CareerIcon} alt="" className="w-4" />
                 <span className="">Careers</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 onMouseEnter={(e) => {
                   onMouseEnter(3, e.currentTarget);
                 }}
-                href=""
+                to="/"
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={AptitudeIcon} alt="" className="w-4" />
                 <span className="">Aptitudes</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 onMouseEnter={(e) => {
                   onMouseEnter(4, e.currentTarget);
                 }}
-                href=""
+                to="/"
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={NetworkIcon} alt="" className="w-4" />
                 <span className="">Networks</span>
-              </a>
+              </Link>
               <Link
                 to={"/dashboard"}
                 className="flex items-center justify-center space-x-2 "
@@ -161,7 +160,7 @@ export default function Navbar() {
               className="w-7 cursor-pointer transition-all"
             />
             <NotificationMenu />
-            <ProfileMenu user={user} />
+            <ProfileMenu />
           </div>
         </div>
       </div>

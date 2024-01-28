@@ -10,12 +10,19 @@ import NetworkDashboard from "../Pages/Dashboard/NetworkDashboard/NetworkDashboa
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import ErrorPage from "@/Shared/ErrorPage/ErrorPage";
+import Home from "@/Pages/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     element: <Main />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/login",
         element: <Login />,
@@ -28,6 +35,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    errorElement: <ErrorPage />,
+
     element: (
       <ProtectedRoute>
         <DashboardLayout />

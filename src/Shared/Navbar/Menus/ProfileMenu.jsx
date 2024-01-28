@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AvatarIcon from "/assets/images/navbar/avatar-icon.svg";
 import LogOutIcon from "/assets/images/navbar/profile/logout.svg";
 import LogOutIconActive from "/assets/images/navbar/profile/logout-active.svg";
@@ -15,7 +15,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-const ProfileMenu = ({ user }) => {
+import useAuth from "@/hooks/useAuth";
+const ProfileMenu = () => {
+  const navigate = useNavigate();
+  const { user, setUser } = useAuth();
+  const logout = async () => {
+    // if used in more components, this should be in context
+    // axios to /logout endpoint
+    setUser(null);
+    navigate("/");
+  };
   const location = useLocation();
   const isActive = location.pathname === "/dashboard/profile";
   return (
@@ -50,18 +59,24 @@ const ProfileMenu = ({ user }) => {
               <img src={SettingIcon} alt="" />
               <span>Settings</span>
             </DropdownMenuItem>
-            <DropdownMenuItem className="flex space-x-3 cursor-pointer">
-              <img src={LogOutIcon} alt="" />
-              <span>Logout</span>
+            <DropdownMenuItem>
+              <button
+                onClick={logout}
+                className="flex space-x-3 cursor-pointer"
+              >
+                <img src={LogOutIcon} alt="" />
+                <span>Logout</span>
+              </button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <button className="bg-[#09D5D7] hover:shadow-md transition-all text-white text-[12px] rounded-xl px-4 py-2">
-          <Link to="/login" className="">
-            Login
-          </Link>
-        </button>
+        <Link
+          to="/login"
+          className="bg-[#09D5D7] hover:shadow-md transition-all text-white text-[12px] rounded-xl px-4 py-2"
+        >
+          Login
+        </Link>
       )}
     </div>
   );

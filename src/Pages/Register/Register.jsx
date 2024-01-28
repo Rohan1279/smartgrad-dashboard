@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import NavIcon from "/assets/images/navbar/smart-grad.png";
-import { Authcontext } from "../../contexts/AuthContextProvider";
-import { useContext } from "react";
+
 import { Link, Navigate } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
-  const { createUser, user } = useContext(Authcontext);
+  const {} = useAuth();
 
   const {
     register,
@@ -15,16 +15,16 @@ const Register = () => {
   } = useForm();
   const handleRegister = (formData) => {
     // console.log(formData);
-    createUser(formData.email, formData.password);
+    // createUser(formData.email, formData.password);
   };
   return (
-    <div className="grid grid-cols-3 w-full min-h-screen text-[#595959]">
-      <div className="w-full col-span-1 flex justify-center items-center">
+    <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
+      <div className="w-full col-span-4 flex justify-center items-center">
         <img src={NavIcon} alt="" />
       </div>
       <form
         onSubmit={handleSubmit(handleRegister)}
-        className="w-full col-span-2 bg-[#F5F5F5] flex flex-col justify-end items-start px-48 "
+        className="w-full col-span-3 bg-[#F5F5F5] flex flex-col justify-end items-start px-28"
       >
         <h1 className="text-left text-3xl font-bold mb-5 uppercase mt-auto">
           Register Now!
@@ -73,7 +73,10 @@ const Register = () => {
             <span>Or</span>
             <Separator className="w-1/4 bg-[#595959]" />
           </div>
-          <button className="mx-auto  bg-white px-5 py-2 rounded-md shadow-lg active:shadow-none mt-5 transition-all border flex justify-center items-center space-x-2">
+          <button
+            type="button"
+            className="mx-auto  bg-white px-5 py-2 rounded-md shadow-lg active:shadow-none mt-5 transition-all border flex justify-center items-center space-x-2"
+          >
             <img
               src={
                 "https://cdn3.iconfinder.com/data/icons/3d-applications/256/app_icons_social_media_search___google_logo_engine_software.png"
