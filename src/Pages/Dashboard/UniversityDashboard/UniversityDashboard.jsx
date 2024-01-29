@@ -9,6 +9,7 @@ const UniversityDashboard = () => {
   // console.log("id", id);
   const [formManager, setFormManager] = useState({});
   const [currentTab, setCurrentTab] = useState(id);
+  const [currentForm, setCurrentForm] = useState({});
   // console.log("currentTab", currentTab);
   const navigate = useNavigate();
 
@@ -18,6 +19,17 @@ const UniversityDashboard = () => {
       .then((res) => {
         setFormManager(res?.data);
         // console.log(formManager);
+        setCurrentTab(
+          () =>
+            res?.data?.form.find((item) => item?.form_id === parseInt(id))
+              ?.form_id || res.data.form[0].form_id
+        );
+        // default sets the first form or the first form
+        setCurrentForm(
+          () =>
+            res?.data?.form.find((item) => item?.form_id === parseInt(id)) ||
+            res.data.form[0]
+        );
       });
   }, []);
 
@@ -55,15 +67,18 @@ const UniversityDashboard = () => {
           </TabsTrigger>
         </TabsList>
         <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
-        <TabsContent value="apply-form">Apply form</TabsContent>
+        <TabsContent value="apply-form">
+          <Form
+            currentForm={currentForm}
+            setCurrentForm={setCurrentForm}
+            formManager={formManager}
+            currentTab={currentTab}
+            id={currentTab}
+            setFormManager={setFormManager}
+          />
+        </TabsContent>
         <TabsContent value="recommended">Rocommended by smartgrad</TabsContent>
         <TabsContent value="application">Applications</TabsContent>
-        <Form
-          formManager={formManager}
-          currentTab={currentTab}
-          id={currentTab}
-          setFormManager={setFormManager}
-        />
       </Tabs>
     </div>
   );

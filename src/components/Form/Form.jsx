@@ -1,3 +1,4 @@
+import SelectInput from "../../core/SelectInput";
 import PropTypes from "prop-types";
 
 const Form = ({ currentForm, currentTab, setCurrentForm }) => {
@@ -12,7 +13,9 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
     const currentInput = currentForm.inputs.find(
       (input) => input.name === e.target.name
     );
-    if (currentInput.type === "checkbox") {
+    if (currentInput.hasSelect2) {
+      currentInput.value = e.obj;
+    } else if (currentInput.type === "checkbox") {
       // store the checked state as a boolean
       currentInput.value = e.target.checked;
       console.log(currentInput);
@@ -86,7 +89,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                   />
                 </>
               )}
-              {input.type === "select" && (
+              {input.type === "select" && !input.hasSelect2 && (
                 <>
                   <label htmlFor={input.name} className="block text-base">
                     {input.label}
@@ -110,6 +113,29 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                       );
                     })}
                   </select>
+                </>
+              )}
+              {input.type === "select" && input.hasSelect2 && (
+                <>
+                  <label htmlFor={input.name} className="block text-base mb-3">
+                    {input.label}
+                  </label>
+                  <SelectInput
+                    name={input.name}
+                    dropLabel={"name"}
+                    dropValue={"value"}
+                    options={input.options}
+                    changeMethod={(e) => {
+                      handleInputChange({
+                        target: { name: input.name },
+                        obj: e,
+                      });
+                    }}
+                    placeholder={input.label}
+                    values={input.value}
+                    borderColor={"#595959"}
+                    className={"mb-3"}
+                  />
                 </>
               )}
               {input.type === "checkbox" && (
