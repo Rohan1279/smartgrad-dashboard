@@ -1,4 +1,3 @@
-import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
 import React from "react";
 
 const CareerDashboard = () => {
@@ -11,7 +10,6 @@ const CareerDashboard = () => {
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.{" "}
       </p>
-      <RecommendationCard />
     </div>
   );
 };

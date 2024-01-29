@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import Form from "../../../components/Form/Form";
 import { useNavigate, useParams } from "react-router-dom";
+import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
 const UniversityDashboard = () => {
   const { id } = useParams();
   // console.log("id", id);
@@ -12,6 +13,41 @@ const UniversityDashboard = () => {
   const [currentForm, setCurrentForm] = useState({});
   // console.log("currentTab", currentTab);
   const navigate = useNavigate();
+  const recommendationData = [
+    {
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+  ];
 
   useEffect(() => {
     fetch("/university-dashboard-forms.json")
@@ -77,7 +113,26 @@ const UniversityDashboard = () => {
             setFormManager={setFormManager}
           />
         </TabsContent>
-        <TabsContent value="recommended">Rocommended by smartgrad</TabsContent>
+        <TabsContent value="recommended">
+          <div className="flex justify-start space-x-9 items-center mt-5">
+            {recommendationData.map((item) => {
+              return (
+                <RecommendationCard
+                  key={item.name}
+                  name={item.name}
+                  subject={item.subject}
+                  academic_expense={item.academic_expense}
+                  card_image={item.card_image}
+                  cost={item.cost}
+                  job_permit={item.job_permit}
+                  logo={item.logo}
+                  offer_rate={item.offer_rate}
+                  ratings={item.ratings}
+                />
+              );
+            })}
+          </div>
+        </TabsContent>
         <TabsContent value="application">Applications</TabsContent>
       </Tabs>
     </div>
