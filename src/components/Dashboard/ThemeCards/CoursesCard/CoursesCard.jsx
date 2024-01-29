@@ -29,10 +29,10 @@ const CoursesCard = () => {
   ];
   return (
     <DasboardCardTheme>
-      <div className="flex flex-col mmd:flex-row h-full">
+      <div className="flex flex-row rounded-lg">
         <div>
           <h1>Courses Completed</h1>
-          <ScrollArea className="hidden mmd:block h-[120px] pr-4">
+          <ScrollArea className="h-[120px] pr-4">
             {courses?.map((item, idx) => {
               return (
                 <div
@@ -56,7 +56,7 @@ const CoursesCard = () => {
             })}
           </ScrollArea>
         </div>
-        <div className="h-full mmd:ml-auto flex flex-col justify-center mmd:justify-between">
+        <div className="h-full ml-auto flex flex-col justify-between">
           <p className="text-6xl font-bold text-center">{courses.length}</p>
           <button className="px-3 py-1 bg-zinc-300 rounded-lg ">
             View All

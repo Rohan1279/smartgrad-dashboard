@@ -5,8 +5,14 @@ import CoursesCard from "@/components/Dashboard/ThemeCards/CoursesCard/CoursesCa
 import OpputunitiesCard from "@/components/Dashboard/ThemeCards/OpputunitiesCard/OpputunitiesCard";
 import NetworksCard from "@/components/Dashboard/ThemeCards/NetworksCard/NetworksCard";
 import DasboardCardPost from "@/components/Dashboard/DasboardCards/DasboardCardPost";
+import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
+import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
+import { useEffect, useState } from "react";
+import useWindowDimensions from "@/core/windowsDimention";
 
 const DashboardHome = () => {
+  const { width } = useWindowDimensions();
+  const [activeKey, setActiveKey] = useState("part1");
   const posts = [
     {
       author: "Parrot Scott",
@@ -44,6 +50,13 @@ const DashboardHome = () => {
       time: "2 days ago",
     },
   ];
+  useEffect(() => {
+    if (width > 992) {
+      setActiveKey("part1");
+    }
+    return () => {};
+  }, [width]);
+
   return (
     <div className="text-[#595959]">
       <div className="flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
@@ -60,31 +73,61 @@ const DashboardHome = () => {
         </div>
       </div>
       {/* GRID */}
-      <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
-        <FeedWrapper className="order-2 lg:order-1 col-span-3 lg:col-span-2 bg-[#F5F5F5] rounded-xl px-5 py-3">
-          <div>
-            <h2 className=" pl-[10px] font-semibold">Feed</h2>
-            <hr className="border mt-[10px] border-[#D9D9D9]" />
-            {posts?.map((item, idx) => {
-              return (
-                <DasboardCardPost
-                  key={idx}
-                  content={item.content}
-                  images={item.images}
-                  time={item.time}
-                  author={item.author}
-                  author_image={item.author_image}
-                />
-              );
-            })}
-          </div>
-        </FeedWrapper>
-        <div className="col-span-3 lg:col-span-1 order-1 lg:order-2 mmd:ml-[25px]">
-          <div className="grid grid-rows-2 grid-cols-2 gap-x-2 lg:grid-cols-1 mmd:grid-rows-4 gap-y-[20px]">
-            <UniversitiesCard />
-            <CoursesCard />
-            <OpputunitiesCard />
-            <NetworksCard />
+      <div className="hidden lg:block">
+        <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
+          <FeedContent posts={posts} />
+          <DashCardContent />
+        </div>
+      </div>
+      <div className="block lg:hidden">
+        <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
+          <div
+            className={`col-span-3 bg-[#F5F5F5] rounded-xl ${
+              activeKey === "part2" ? "px-1" : "px-5"
+            } py-3`}
+          >
+            <div className={`flex ${activeKey === "part2" && "px-4"}`}>
+              <a
+                className={`${
+                  activeKey === "part1"
+                    ? "text-[#09D5D7] font-bold"
+                    : " text-[#7A7C87]"
+                } cursor-default pl-[10px] flex flex-col`}
+                onClick={() => {
+                  setActiveKey("part1");
+                }}
+              >
+                Feed
+                {/* {activeKey === "part1" && (
+                  <hr className="  border mt-[10px] border-[#09D5D7] w-1/2 -bottom-[11px] translate-x-1/2" />
+                )} */}
+              </a>
+
+              <a
+                className={`${
+                  activeKey === "part2"
+                    ? "text-[#09D5D7] font-bold"
+                    : " text-[#7A7C87]"
+                } cursor-default pl-[10px]`}
+                onClick={() => {
+                  setActiveKey("part2");
+                }}
+              >
+                Dashboard
+                {/* {activeKey === "part2" && (
+                  <hr className="  border mt-[10px] border-[#09D5D7] w-1/2 -bottom-[11px] translate-x-1/2" />
+                )} */}
+              </a>
+            </div>
+            <div className={` ${activeKey === "part2" && "px-4"}`}>
+              <hr className="border mt-[10px] border-[#D9D9D9] px-3" />
+            </div>
+
+            {activeKey === "part1" ? (
+              <FeedContent posts={posts} />
+            ) : (
+              activeKey === "part2" && <DashCardContent />
+            )}
           </div>
         </div>
       </div>
