@@ -171,14 +171,16 @@ const UniversityDashboard = () => {
                     <StarIcon className="text-yellow-400 h-5 w-5" />
                     <StarIcon className="text-gray-300 h-5 w-5" />
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-gray-600 mt-1 italic">
                     Applied on June 23, 2023
                   </p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-sm font-medium">Application ID : 30459</p>
-                <p className="text-sm text-blue-600">
+                <p className="text-sm font-medium italic">
+                  Application ID : 30459
+                </p>
+                <p className="text-sm  italic">
                   status : Application In-review
                 </p>
               </div>
