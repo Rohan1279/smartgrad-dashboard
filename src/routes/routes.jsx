@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "university/:id",
+        path: "university",
         element: <UniversityDashboard />,
       },
       {
