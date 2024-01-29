@@ -60,8 +60,8 @@ const Profile = () => {
           </p>
         </div>
       </div>
-      <div className="">
-        <ul className="flex items-center flex-wrap mt-5 gap-y-4 pl-[10px]">
+      <div className="bg-red-200">
+        <ul className="bg-blue-200  flex items-center flex-wrap mt-5 gap-y-4 pl-[10px]">
           {formManager?.form?.map((item) => {
             return (
               <button
