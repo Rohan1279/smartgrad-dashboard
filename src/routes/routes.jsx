@@ -34,8 +34,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    // path: "/dashboard",
-    // errorElement: <ErrorPage />,
+    path: "/dashboard",
+    errorElement: <ErrorPage />,
 
     element: (
       // <ProtectedRoute>
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "university/:id",
+        path: "university",
         element: <UniversityDashboard />,
       },
       {

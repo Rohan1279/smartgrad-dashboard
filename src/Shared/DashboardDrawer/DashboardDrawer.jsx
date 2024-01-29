@@ -23,7 +23,7 @@ const DashboardDrawer = () => {
         <span className="hidden mmd:flex">Dashboard</span>
       </NavLink>
       <NavLink
-        to="university/1"
+        to="university"
         className={({ isActive }) =>
           isActive
             ? "text-[#09D5D7]  flex justify-start items-center space-x-4 px-4 py-2"
