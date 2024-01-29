@@ -59,7 +59,7 @@ const DashboardHome = () => {
 
   return (
     <div className="text-[#595959]">
-      <div className="flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
+      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">

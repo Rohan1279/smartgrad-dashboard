@@ -62,7 +62,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                 <CardDescription className={"text-xs"}>{time}</CardDescription>
               </div>
             </div>
-            <DropdownMenu>
+            {/* <DropdownMenu>
               <DropdownMenuTrigger>
                 <AiOutlineEllipsis className="text-2xl cursor-pointer transition-all outline-none" />
               </DropdownMenuTrigger>
@@ -72,14 +72,14 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Subscription</DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
           </div>
         </CardHeader>
         <CardContent className="m-w-fit contentCard" ref={imageContainerRef}>
           <p>{content}</p>
           {images &&
             (images.length === 1 ? (
-              <div className="w-full h-[200px] mt-2 rounded-xl overflow-hidden">
+              <div className="w-full h-[250px] mt-2 rounded-xl overflow-hidden">
                 <img src={images} alt="" className="w-full h-full" />
               </div>
             ) : (
@@ -99,7 +99,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                   {images.map((item, k) => (
                     <div
                       key={k}
-                      className="w-full h-[200px] mt-2 rounded-xl overflow-hidden"
+                      className="w-full h-[250px] mt-2 rounded-xl overflow-hidden"
                     >
                       <img src={item} alt="" className="w-full h-full" />
                     </div>

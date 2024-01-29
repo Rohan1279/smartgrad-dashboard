@@ -55,13 +55,13 @@ const UniversitiesCard = () => {
             })}
           </ScrollArea>
         </div>
-        <div className="h-full ml-auto flex flex-col justify-between">
+        <div className="ml-auto flex flex-col justify-between items-center">
+          <a className=" py-1 underline text-[12px] rounded-lg whitespace-nowrap">
+            View All
+          </a>
           <p className="text-6xl font-bold text-center">
             {universities.length}
           </p>
-          <button className="px-3 py-1 bg-zinc-300 rounded-lg ">
-            View All
-          </button>
         </div>
       </div>
     </DasboardCardTheme>

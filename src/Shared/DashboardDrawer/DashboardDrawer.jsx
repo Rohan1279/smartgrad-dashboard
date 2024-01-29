@@ -7,7 +7,7 @@ import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 import ProfileIcon from "/assets/images/dashboard/dashboard-drawer-avatar.png";
 const DashboardDrawer = () => {
   return (
-    <aside className=" flex flex-row h-[50px] w-full rounded-lg mmd:rounded-auto mmd:h-auto mmd:flex-col mmd:w-fit border bg-[#595959] py-5 rounded-r-xl overflow-hidden mt-16 mmd:mt-none justify-center mmd:justify-auto pointer-events-auto">
+    <aside className=" flex flex-row h-[50px] rounded-lg mmd:rounded-auto mmd:h-auto mmd:flex-col w-[94%] mmd:w-fit mb-[10px] mmd:mb-auto border bg-[#595959] py-5 rounded-r-xl overflow-hidden mt-16 mmd:mt-none justify-center mmd:justify-auto pointer-events-auto">
       <NavLink
         to="/dashboard"
         className={({ isActive }) =>

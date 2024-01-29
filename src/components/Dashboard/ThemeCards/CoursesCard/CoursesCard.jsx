@@ -56,11 +56,11 @@ const CoursesCard = () => {
             })}
           </ScrollArea>
         </div>
-        <div className="h-full ml-auto flex flex-col justify-between">
-          <p className="text-6xl font-bold text-center">{courses.length}</p>
-          <button className="px-3 py-1 bg-zinc-300 rounded-lg ">
+        <div className="ml-auto flex flex-col justify-between">
+          <a className=" py-1 underline text-[12px] rounded-lg whitespace-nowrap">
             View All
-          </button>
+          </a>
+          <p className="text-6xl font-bold text-center">{courses.length}</p>
         </div>
       </div>
     </DasboardCardTheme>
