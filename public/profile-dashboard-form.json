@@ -306,6 +306,206 @@
             "priority": 7
           }
         ]
+      },
+      {
+        "action": "/application/academic-background",
+        "form_id": 4,
+        "name": "Budget Assessment",
+        "title": "Budget Assessment",
+        "sub_title": "",
+        "inputs": [
+          {
+            "type": "select",
+            "name": "degree_level",
+            "label": "Degree Level",
+            "value": "",
+            "options": [
+              { "name": "Bachelor's", "value": "bachelor" },
+              { "name": "Master's", "value": "master" },
+              { "name": "PhD", "value": "phd" }
+            ],
+            "priority": 1
+          },
+          {
+            "type": "select",
+            "name": "country_of_study",
+            "label": "Which country did you study in?",
+            "value": "",
+            "options": [
+              { "name": "United States", "value": "united_states" },
+              { "name": "United Kingdom", "value": "united_kingdom" },
+              { "name": "Australia", "value": "australia" }
+            ],
+            "priority": 2
+          },
+          {
+            "type": "select",
+            "name": "university",
+            "label": "Which university did you study in?",
+            "value": "",
+            "options": [
+              { "name": "University A", "value": "university_a" },
+              { "name": "University B", "value": "university_b" },
+              { "name": "University C", "value": "university_c" }
+            ],
+            "priority": 3
+          },
+          {
+            "type": "select",
+            "name": "discipline",
+            "label": "Which discipline did you study?",
+            "value": "",
+            "options": [
+              { "name": "Computer Science", "value": "computer_science" },
+              {
+                "name": "Business Administration",
+                "value": "business_administration"
+              },
+              {
+                "name": "Mechanical Engineering",
+                "value": "mechanical_engineering"
+              }
+            ],
+            "priority": 4
+          },
+          {
+            "type": "select",
+            "name": "grading_system",
+            "label": "Grading System",
+            "value": "",
+            "options": [
+              { "name": "A-F", "value": "a_f" },
+              { "name": "1-10", "value": "one_ten" },
+              { "name": "Percentage", "value": "percentage" }
+            ],
+            "priority": 5
+          },
+          {
+            "type": "select",
+            "name": "obtained_grade",
+            "label": "Obtained Grade",
+            "value": "",
+            "options": [
+              { "name": "A", "value": "a" },
+              { "name": "B", "value": "b" },
+              { "name": "C", "value": "c" }
+            ],
+            "priority": 6
+          },
+          {
+            "type": "select",
+            "name": "graduation_duration",
+            "label": "Graduation Duration",
+            "value": "",
+            "options": [
+              { "name": "1 year", "value": "1_year" },
+              { "name": "2 years", "value": "2_years" },
+              { "name": "3 years", "value": "3_years" },
+              { "name": "4 years", "value": "4_years" }
+            ],
+            "priority": 7
+          }
+        ]
+      },
+      {
+        "action": "/application/academic-background",
+        "form_id": 5,
+        "name": "Language Proficiency",
+        "title": "Language Proficiency",
+        "sub_title": "",
+        "inputs": [
+          {
+            "type": "select",
+            "name": "degree_level",
+            "label": "Degree Level",
+            "value": "",
+            "options": [
+              { "name": "Bachelor's", "value": "bachelor" },
+              { "name": "Master's", "value": "master" },
+              { "name": "PhD", "value": "phd" }
+            ],
+            "priority": 1
+          },
+          {
+            "type": "select",
+            "name": "country_of_study",
+            "label": "Which country did you study in?",
+            "value": "",
+            "options": [
+              { "name": "United States", "value": "united_states" },
+              { "name": "United Kingdom", "value": "united_kingdom" },
+              { "name": "Australia", "value": "australia" }
+            ],
+            "priority": 2
+          },
+          {
+            "type": "select",
+            "name": "university",
+            "label": "Which university did you study in?",
+            "value": "",
+            "options": [
+              { "name": "University A", "value": "university_a" },
+              { "name": "University B", "value": "university_b" },
+              { "name": "University C", "value": "university_c" }
+            ],
+            "priority": 3
+          },
+          {
+            "type": "select",
+            "name": "discipline",
+            "label": "Which discipline did you study?",
+            "value": "",
+            "options": [
+              { "name": "Computer Science", "value": "computer_science" },
+              {
+                "name": "Business Administration",
+                "value": "business_administration"
+              },
+              {
+                "name": "Mechanical Engineering",
+                "value": "mechanical_engineering"
+              }
+            ],
+            "priority": 4
+          },
+          {
+            "type": "select",
+            "name": "grading_system",
+            "label": "Grading System",
+            "value": "",
+            "options": [
+              { "name": "A-F", "value": "a_f" },
+              { "name": "1-10", "value": "one_ten" },
+              { "name": "Percentage", "value": "percentage" }
+            ],
+            "priority": 5
+          },
+          {
+            "type": "select",
+            "name": "obtained_grade",
+            "label": "Obtained Grade",
+            "value": "",
+            "options": [
+              { "name": "A", "value": "a" },
+              { "name": "B", "value": "b" },
+              { "name": "C", "value": "c" }
+            ],
+            "priority": 6
+          },
+          {
+            "type": "select",
+            "name": "graduation_duration",
+            "label": "Graduation Duration",
+            "value": "",
+            "options": [
+              { "name": "1 year", "value": "1_year" },
+              { "name": "2 years", "value": "2_years" },
+              { "name": "3 years", "value": "3_years" },
+              { "name": "4 years", "value": "4_years" }
+            ],
+            "priority": 7
+          }
+        ]
       }
     ]
   }

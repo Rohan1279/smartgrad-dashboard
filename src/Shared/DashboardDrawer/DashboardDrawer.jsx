@@ -52,7 +52,7 @@ const DashboardDrawer = () => {
         to="aptitude"
         className={({ isActive }) =>
           isActive
-            ? "text-[#09D5D7]  flex justify-start items-center space-x-4 px-4 py-2"
+            ? "text-[#09D5D7] flex justify-start items-center space-x-4 px-4 py-2"
             : "text-white flex justify-start items-center space-x-4 px-4 py-2 "
         }
       >
