@@ -85,7 +85,7 @@ const UniversityDashboard = () => {
           </p>
         </div>
       </div>
-      <div className=" min-h-screen  bg-[#F5F5F5] mt-5 px-9 py-5 rounded-xl">
+      <div className=" min-h-screen  bg-[#F5F5F5] mt-5 px-4 sm:px-9 py-5 rounded-xl">
         <Tabs defaultValue="apply-form" className="">
           <TabsList>
             <TabsTrigger
