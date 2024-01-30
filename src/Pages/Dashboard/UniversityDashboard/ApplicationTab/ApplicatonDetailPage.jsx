@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
-import NetworksCard from "@/components/Dashboard/ThemeCards/NetworksCard/NetworksCard";
+import Information from "./TabContents/Information";
+import Documents from "./TabContents/Documents";
 
 const ApplicatonDetailPage = () => {
   const universityData = {
@@ -18,9 +18,9 @@ const ApplicatonDetailPage = () => {
   const { id } = useParams();
   console.log("id", id);
   return (
-    <div className="grid grid-cols-4">
+    <div className="">
       {/* MAKE 2 DIVS HERE */}
-      <div className=" bg-white p-4 rounded-xl col-span-3">
+      <div className=" bg-white p-4 rounded-xl ">
         <div className="flex items-center space-x-4">
           <img
             alt="University Logo"
@@ -71,34 +71,13 @@ const ApplicatonDetailPage = () => {
           <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
           <TabsContent value="information" className={"pt-8"}>
-            <div className="grid grid-cols-3 pl-5">
-              <div className="leading-[33px]">
-                <h2 className="font-bold">Name</h2>
-                <h2 className="font-bold">Date of Birth</h2>
-                <h2 className="font-bold">Nationality</h2>
-                <h2 className="font-bold">Educational Background</h2>
-              </div>
-              <div className="leading-[33px]">
-                <p>Atif Rahman</p>
-                <p>31st December 1993</p>
-                <p>Bangladesh</p>
-                <p>Computer Science Engineering</p>
-              </div>
-              <div className="">
-                <img
-                  src={DashboardAvatar}
-                  alt="avatar"
-                  className="w-40 mx-auto"
-                />
-              </div>
-            </div>
+            <Information />
           </TabsContent>
-          <TabsContent value="documents">documents</TabsContent>
+          <TabsContent value="documents">
+            <Documents />
+          </TabsContent>
           <TabsContent value="status">status</TabsContent>
         </Tabs>
-      </div>
-      <div>
-        <NetworksCard />
       </div>
     </div>
   );
