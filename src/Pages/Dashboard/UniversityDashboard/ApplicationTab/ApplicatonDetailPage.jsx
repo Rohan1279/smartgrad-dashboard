@@ -21,7 +21,7 @@ const ApplicatonDetailPage = () => {
     <div className="">
       {/* MAKE 2 DIVS HERE */}
       <div className=" bg-white p-4 rounded-xl ">
-        <div className="flex flex-col mmd:flex-row items-center space-x-4">
+        <div className="flex items-center space-x-4">
           <img
             alt="University Logo"
             className="h-16 w-16 rounded-full"
@@ -31,7 +31,7 @@ const ApplicatonDetailPage = () => {
               objectFit: "cover",
             }}
           />
-          <div className="mt-8 mmd:mt-auto">
+          <div>
             <h2 className="text-lg font-semibold">{universityData?.subject}</h2>
             <p className="text-sm text-gray-600">{universityData?.name}</p>
             <div className="flex items-center mt-1">
@@ -42,7 +42,7 @@ const ApplicatonDetailPage = () => {
               <StarIcon className="text-gray-300 h-5 w-5" />
             </div>
 
-            <p className="text-sm font-medium italic mt-4 sm:mt-auto">
+            <p className="text-sm font-medium italic">
               Application ID : {universityData?.applicationId}
             </p>
             <p className="text-sm  italic">status : {universityData?.status}</p>
