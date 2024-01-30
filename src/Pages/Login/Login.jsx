@@ -74,12 +74,12 @@ const Login = () => {
   };
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
-      <div className="w-full col-span-4 flex justify-center items-center">
+      <div className="hidden mmd:flex w-full col-span-4 flex justify-center items-center">
         <img src={NavIcon} alt="" />
       </div>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="w-full col-span-3 bg-[#F5F5F5] flex flex-col justify-end items-start px-28 "
+        className="w-full col-span-7 mmd:col-span-3 bg-[#F5F5F5] flex flex-col justify-end items-start px-10 sm:px-28 "
       >
         <h1 className="text-left text-3xl font-bold mb-5 uppercase mt-auto">
           Login Now!
@@ -114,7 +114,7 @@ const Login = () => {
             {errors.password?.type === "required" && "Password is required"}
           </p>
         </div>
-        <div className="w-full flex justify-end items-center mt-10 space-x-10">
+        <div className="w-full flex flex-col justify-center items-center mt-10 space-y-5">
           <Link to="/register" className="hover:underline ">
             New User? Register Now
           </Link>
@@ -143,7 +143,7 @@ const Login = () => {
           </button>
         </div>
 
-        <p className="uppercase my-auto text-xs pr-40">
+        <p className="uppercase my-auto text-center mmd:text-start text-xs">
           your virtual education and career advisor, for life. Smartgrad is a
           brand owned by Yugen Group Limited,registered in UK.
         </p>
