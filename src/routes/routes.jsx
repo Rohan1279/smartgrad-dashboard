@@ -40,8 +40,8 @@ const router = createBrowserRouter([
 
     element: (
       // <ProtectedRoute>
-      <DashboardLayout />
       // </ProtectedRoute>
+      <DashboardLayout />
     ),
     children: [
       {

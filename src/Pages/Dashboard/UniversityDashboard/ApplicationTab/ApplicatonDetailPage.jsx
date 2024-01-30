@@ -3,6 +3,7 @@ import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Information from "./TabContents/Information";
 import Documents from "./TabContents/Documents";
+import Status from "./TabContents/Status";
 
 const ApplicatonDetailPage = () => {
   const universityData = {
@@ -76,7 +77,9 @@ const ApplicatonDetailPage = () => {
           <TabsContent value="documents">
             <Documents />
           </TabsContent>
-          <TabsContent value="status">status</TabsContent>
+          <TabsContent value="status">
+            <Status />
+          </TabsContent>
         </Tabs>
       </div>
     </div>
