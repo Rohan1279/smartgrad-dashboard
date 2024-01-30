@@ -1,6 +1,3 @@
-import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
-import React from "react";
-
 const CareerDashboard = () => {
   return (
     <div className="text-[#595959]">
@@ -11,7 +8,6 @@ const CareerDashboard = () => {
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.{" "}
       </p>
-      <RecommendationCard />
     </div>
   );
 };
