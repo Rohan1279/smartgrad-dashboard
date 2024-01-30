@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import UniversitiesIcon from "/assets/images/navbar/convocation-cap.svg";
-import CareerIcon from "/assets/images/navbar/bag.svg";
-import AptitudeIcon from "/assets/images/navbar/aptitudes.svg";
-import NetworkIcon from "/assets/images/navbar/network.svg";
+import CareerIcon from "/assets/images/navbar/career.png";
+import AptitudeIcon from "/assets/images/navbar/aptitudes.png";
+import NetworkIcon from "/assets/images/navbar/network.png";
 import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 import ProfileIcon from "/assets/images/dashboard/dashboard-drawer-avatar.png";
 const DashboardDrawer = () => {
