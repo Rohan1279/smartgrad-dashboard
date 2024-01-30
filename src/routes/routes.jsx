@@ -12,6 +12,7 @@ import Register from "../Pages/Register/Register";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import ErrorPage from "@/Shared/ErrorPage/ErrorPage";
 import Home from "@/Pages/Home/Home";
+import ApplicatonDetailPage from "@/Pages/Dashboard/UniversityDashboard/ApplicationTab/ApplicatonDetailPage";
 
 const router = createBrowserRouter([
   {

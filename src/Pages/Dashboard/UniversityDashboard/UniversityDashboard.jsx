@@ -3,8 +3,9 @@ import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import Form from "../../../components/Form/Form";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
+import ApplicationTab from "./ApplicationTab/ApplicationTab";
 const UniversityDashboard = () => {
   const { id } = useParams();
   // console.log("id", id);
@@ -105,7 +106,7 @@ const UniversityDashboard = () => {
             </TabsTrigger>
             <TabsTrigger
               className="mr-[42px] relative group"
-              value="application"
+              value="applications"
             >
               Applications
               <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
@@ -125,10 +126,10 @@ const UniversityDashboard = () => {
           </TabsContent>
           <TabsContent value="recommended">
             <div className="flex justify-start space-x-9 items-center mt-10 ">
-              {recommendationData.map((item) => {
+              {recommendationData.map((item, idx) => {
                 return (
                   <RecommendationCard
-                    key={item.name}
+                    key={idx}
                     name={item.name}
                     subject={item.subject}
                     academic_expense={item.academic_expense}
@@ -143,48 +144,9 @@ const UniversityDashboard = () => {
               })}
             </div>
           </TabsContent>
-          <TabsContent value="application">
-            <div className="flex items-center justify-between bg-white p-4 rounded-xl mt-10 ">
-              <div className="flex items-center space-x-4">
-                <img
-                  alt="University Logo"
-                  className="h-12 w-12 rounded-full"
-                  height="50"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "50/50",
-                    objectFit: "cover",
-                  }}
-                  width="50"
-                />
-                <div>
-                  <h2 className="text-lg font-semibold">
-                    Master of Business Administration
-                  </h2>
-                  <p className="text-sm text-gray-600">
-                    Southeast Minnesota State University
-                  </p>
-                  <div className="flex items-center mt-1">
-                    <StarIcon className="text-yellow-400 h-5 w-5" />
-                    <StarIcon className="text-yellow-400 h-5 w-5" />
-                    <StarIcon className="text-yellow-400 h-5 w-5" />
-                    <StarIcon className="text-yellow-400 h-5 w-5" />
-                    <StarIcon className="text-gray-300 h-5 w-5" />
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1 italic">
-                    Applied on June 23, 2023
-                  </p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-sm font-medium italic">
-                  Application ID : 30459
-                </p>
-                <p className="text-sm  italic">
-                  status : Application In-review
-                </p>
-              </div>
-            </div>
+          {/* pass added university data later */}
+          <TabsContent value="applications">
+            <ApplicationTab />
           </TabsContent>
         </Tabs>
       </div>
@@ -193,22 +155,3 @@ const UniversityDashboard = () => {
 };
 
 export default UniversityDashboard;
-
-function StarIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
-  );
-}
