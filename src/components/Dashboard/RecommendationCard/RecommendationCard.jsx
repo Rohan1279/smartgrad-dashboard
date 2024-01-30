@@ -11,7 +11,7 @@ const RecommendationCard = ({
   offer_rate,
 }) => {
   return (
-    <Card className="w-[250px] rounded-lg overflow-hidden shadow-lg">
+    <Card className="w-full max-w-[250px] m-auto rounded-lg overflow-hidden shadow-lg">
       <img
         alt="Southeast Minnesota State University"
         className="w-full h-[135px] object-cover"

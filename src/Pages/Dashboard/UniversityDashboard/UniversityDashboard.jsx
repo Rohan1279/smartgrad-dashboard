@@ -48,6 +48,39 @@ const UniversityDashboard = () => {
       offer_rate: "20%",
       ratings: 4.5,
     },
+    {
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
   ];
 
   useEffect(() => {
@@ -125,7 +158,7 @@ const UniversityDashboard = () => {
             />
           </TabsContent>
           <TabsContent value="recommended">
-            <div className="flex justify-start space-x-9 items-center mt-10 ">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center items-center mt-10 ">
               {recommendationData.map((item, idx) => {
                 return (
                   <RecommendationCard
