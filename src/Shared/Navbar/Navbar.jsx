@@ -43,7 +43,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
-          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
+          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
           <div className="flex-1 flex items-center sm:items-stretch justify-start">
             {/* Logo and Brand Name */}
             <Link to={"/"} className="flex-shrink-0 flex items-center">

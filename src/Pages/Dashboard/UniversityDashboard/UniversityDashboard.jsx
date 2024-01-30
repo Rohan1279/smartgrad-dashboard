@@ -105,7 +105,7 @@ const UniversityDashboard = () => {
 
   return (
     <div className="text-[#595959] min-h-screen">
-      <div className="flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
+      <div className="hidden md:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">
@@ -132,9 +132,10 @@ const UniversityDashboard = () => {
               className="mr-[42px] relative group"
               value="recommended"
             >
-              Rocommended by{" "}
+              {/* Rocommended by{" "}
               <span className="text-[#09D5D7] font-bold">smart</span>
-              <span className="font-bold">grad</span>
+              <span className="font-bold">grad</span> */}
+              Magic Recommendations
               <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger

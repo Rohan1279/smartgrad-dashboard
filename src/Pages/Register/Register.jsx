@@ -1,21 +1,45 @@
 import { useForm } from "react-hook-form";
 import NavIcon from "/assets/images/navbar/smart-grad.png";
-
-import { Link, Navigate } from "react-router-dom";
+import axios from "@/api/axios";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import useAuth from "../../hooks/useAuth";
+import { setAuthToken } from "@/utils/setAuthToken";
+import { toast } from "sonner";
 
 const Register = () => {
-  const {} = useAuth();
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const handleRegister = (formData) => {
-    // console.log(formData);
-    // createUser(formData.email, formData.password);
+  const handleRegister = async (formData) => {
+    const email = formData.email;
+    const password = formData.password;
+    const response = await axios.post(
+      "/register",
+      JSON.stringify({ email: email, pwd: password }),
+      {
+        headers: { "Content-Type": "application/json" },
+        // withCredentials: true,
+      }
+    );
+    const accessToken = response?.data?.accessToken;
+    const roles = response?.data?.roles;
+    setAuthToken(accessToken);
+    setUser({ email, password, roles, accessToken });
+    toast("Login Successful", {
+      action: {
+        label: "Close",
+        onClick: () => console.log(""),
+      },
+    });
+
+    navigate(from, { replace: true });
   };
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">

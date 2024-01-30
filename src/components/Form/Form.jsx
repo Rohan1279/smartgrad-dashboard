@@ -139,8 +139,8 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                 </>
               )}
               {input.type === "checkbox" && (
-                <div className="flex items-center w-full">
-                  <label htmlFor={input.name} className="block text-base">
+                <div className="flex items-center justify-between w-full ">
+                  <label htmlFor={input.name} className="block text-base  ">
                     {input.label}
                   </label>
                   <input
@@ -149,7 +149,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     type={input.type}
                     name={input.name}
                     defaultChecked={input.value}
-                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 mx-auto my-4"
                   />
                 </div>
               )}
@@ -170,6 +170,21 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                 </div>
               )}
               {input.type === "date" && (
+                <>
+                  <label htmlFor={input.name} className="block text-base">
+                    {input.label}
+                  </label>
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    id={input.name}
+                    defaultValue={input.value}
+                    onChange={handleInputChange}
+                    className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
+                  />
+                </>
+              )}
+              {input.type === "file" && (
                 <>
                   <label htmlFor={input.name} className="block text-base">
                     {input.label}
