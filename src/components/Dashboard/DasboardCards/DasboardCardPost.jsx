@@ -86,7 +86,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
               // Carousal
               // <h1>Requires Carousal</h1>
               <div
-                className="slide-container ss"
+                className="slide-container"
                 style={{
                   maxWidth: parentWidth + "px",
                 }}
