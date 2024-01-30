@@ -11,25 +11,19 @@ const RecommendationCard = ({
   offer_rate,
 }) => {
   return (
-    <Card className="w-[350px] rounded-lg overflow-hidden shadow-lg">
+    <Card className="w-[250px] rounded-lg overflow-hidden shadow-lg">
       <img
         alt="Southeast Minnesota State University"
-        className="w-full h-48 object-cover"
-        height="200"
-        src="/placeholder.svg"
+        className="w-full h-[135px] object-cover"
+        src="https://picsum.photos/400"
         style={{
           aspectRatio: "350/200",
           objectFit: "cover",
         }}
-        width="350"
       />
-      <CardContent className="p-4">
-        <h2 className="text-xl font-semibold">
-          Master of Business Administration
-        </h2>
-        <p className="text-sm text-gray-500">
-          Southeast Minnesota State University
-        </p>
+      <CardContent className="p-2">
+        <h2 className="text-sm font-semibold">{subject}</h2>
+        <p className="text-xs text-gray-500">{name}</p>
         <div className="flex mt-2">
           <StarIcon className="text-yellow-400" />
           <StarIcon className="text-yellow-400" />
@@ -37,20 +31,23 @@ const RecommendationCard = ({
           <StarIcon className="text-yellow-400" />
           <StarIcon className="text-gray-300" />
         </div>
-        <ul className="mt-3 text-sm">
+        <ul className="mt-3 text-xs">
           <li>
-            <strong>Living Cost:</strong> USD 8888/year
+            <strong>Living Cost:</strong> {cost}
           </li>
           <li>
-            <strong>Academic Expense:</strong> USD 333/month
+            <strong>Academic Expense:</strong> {academic_expense}
           </li>
           <li>
-            <strong>Job Permit:</strong> Part-time
+            <strong>Job Permit:</strong> {job_permit}
           </li>
         </ul>
       </CardContent>
-      <CardFooter className="flex justify-between items-center bg-[#f0f4f8] p-4">
-        <span className="text-lg">20% OFF</span>
+      <CardFooter className="flex justify-between text-white p-0 bg-[#34343E] text-xs px-3 py-2">
+        <div>
+          <span className="text-sm text-[#FFC24C] font-bold">{offer_rate}</span>{" "}
+          <span>OFF</span>
+        </div>
         <span>Get Now!</span>
       </CardFooter>
     </Card>
@@ -62,8 +59,8 @@ function StarIcon(props) {
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

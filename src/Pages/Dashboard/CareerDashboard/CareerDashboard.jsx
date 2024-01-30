@@ -1,3 +1,5 @@
+import React from "react";
+
 const CareerDashboard = () => {
   return (
     <div className="text-[#595959]">
