@@ -68,7 +68,7 @@ export default function Navbar() {
                 className="flex items-center justify-center space-x-2"
               >
                 <img src={UniversitiesIcon} alt="" className="w-4" />
-                <span className="">Universities</span>
+                <span className="text-base">Universities</span>
               </Link>
               <Link
                 onMouseEnter={(e) => {
@@ -78,7 +78,7 @@ export default function Navbar() {
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={CareerIcon} alt="" className="w-4" />
-                <span className="">Careers</span>
+                <span className="text-base">Careers</span>
               </Link>
               <Link
                 onMouseEnter={(e) => {
@@ -88,7 +88,7 @@ export default function Navbar() {
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={AptitudeIcon} alt="" className="w-4" />
-                <span className="">Aptitudes</span>
+                <span className="text-base">Aptitudes</span>
               </Link>
               <Link
                 onMouseEnter={(e) => {
@@ -98,14 +98,14 @@ export default function Navbar() {
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={NetworkIcon} alt="" className="w-4" />
-                <span className="">Networks</span>
+                <span className="text-base">Networks</span>
               </Link>
               <Link
                 to={"/dashboard"}
                 className="flex items-center justify-center space-x-2 "
               >
                 <img src={DashboardIcon} alt="" className="w-4" />
-                <span className="">Dashboard</span>
+                <span className="text-base">Dashboard</span>
               </Link>
             </div>
           </div>
