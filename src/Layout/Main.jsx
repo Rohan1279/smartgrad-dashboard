@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <Fragment>
       <Navbar />
-      <div className="min-h-[100svh] pt-16">
+      <div className="min-h-[100svh]">
         <Outlet />
       </div>
     </Fragment>
