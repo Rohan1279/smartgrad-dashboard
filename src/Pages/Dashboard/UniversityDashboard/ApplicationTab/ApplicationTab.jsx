@@ -59,7 +59,7 @@ const ApplicationTab = () => {
               </TabsList>
               <TabsContent value={university.applicationId} className={""}>
                 <div className="">
-                  {!tabVisible && (
+                  {/* {!tabVisible && (
                     <button
                       onClick={() => setTabVisible(true)}
                       type="button"
@@ -68,7 +68,7 @@ const ApplicationTab = () => {
                       <IoIosArrowBack />
                       <span>Back</span>
                     </button>
-                  )}
+                  )} */}
                   <div className=" bg-white p-4 rounded-xl ">
                     <div className="flex items-center space-x-4">
                       <img
