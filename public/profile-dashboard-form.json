@@ -506,6 +506,85 @@
             "priority": 7
           }
         ]
+      },
+      {
+        "action": "/application/academic-background",
+        "form_id": 6,
+        "name": "Documents",
+        "title": "Documents",
+        "sub_title": "",
+        "inputs": [
+          {
+            "type": "file",
+            "name": "ssc_certificate",
+            "label": "SSC Certificate",
+            "value": "",
+            "priority": 1
+          },
+          {
+            "type": "file",
+            "name": "ssc_marksheet",
+            "label": "SSC Marksheet",
+            "value": "",
+            "priority": 2
+          },
+          {
+            "type": "file",
+            "name": "ssc_testimonial",
+            "label": "SSC Testimonial",
+            "value": "",
+            "priority": 2
+          },
+          {
+            "type": "file",
+            "name": "hsc_certificate",
+            "label": "HSC Certificate",
+            "value": "",
+            "priority": 3
+          },
+          {
+            "type": "file",
+            "name": "hsc_marksheet",
+            "label": "HSC Marksheet",
+            "value": "",
+            "priority": 4
+          },
+          {
+            "type": "file",
+            "name": "hsc_testimonial",
+            "label": "HSC Testimonial",
+            "value": "",
+            "priority": 5
+          },
+          {
+            "type": "file",
+            "name": "university_certificate",
+            "label": "University Certificate",
+            "value": "",
+            "priority": 6
+          },
+          {
+            "type": "file",
+            "name": "university_marksheet",
+            "label": "University Marksheet",
+            "value": "",
+            "priority": 7
+          },
+          {
+            "type": "file",
+            "name": "university_testimonial",
+            "label": "University Testimonial",
+            "value": "",
+            "priority": 8
+          },
+          {
+            "type": "file",
+            "name": "university_recommendation_letter",
+            "label": "University Recommendation Letter",
+            "value": "",
+            "priority": 9
+          }
+        ]
       }
     ]
   }

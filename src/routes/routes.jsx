@@ -39,9 +39,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
 
     element: (
-      <ProtectedRoute>
-        <DashboardLayout />
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      // </ProtectedRoute>
+      <DashboardLayout />
     ),
     children: [
       {
