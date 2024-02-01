@@ -7,7 +7,7 @@ import axios from "@/api/axios";
 import { toast } from "sonner";
 import { setAuthToken } from "@/utils/setAuthToken";
 const Login = () => {
-  const { setUser } = useAuth();
+  const { setUser, setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -17,21 +17,24 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const handleLogin = async (formData) => {
+    toast.loading("Loading");
     const email = formData.email;
     const password = formData.password;
     try {
       const response = await axios.post(
         "/login",
-        JSON.stringify({ email: email, pwd: password }),
+        { email: email, password: password },
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: true,
+          // withCredentials: true,
         }
       );
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
+      console.log(response);
+
+      const accessToken = response?.data?.access_token;
       setAuthToken(accessToken);
-      setUser({ email, password, roles, accessToken });
+      setAuth(true);
+      setUser(response?.data?.user);
       toast("Login Successful", {
         action: {
           label: "Close",
@@ -39,7 +42,7 @@ const Login = () => {
         },
       });
 
-      navigate(from, { replace: true });
+      navigate("/dashboard");
     } catch (err) {
       console.log(err.response.status);
       switch (err.response.status) {
@@ -84,6 +87,7 @@ const Login = () => {
         <h1 className="text-left text-3xl font-bold mb-5 uppercase mt-auto">
           Login Now!
         </h1>
+
         <div className="w-full  ">
           <label htmlFor="email" className="text-left block">
             Email Address
@@ -96,7 +100,9 @@ const Login = () => {
             className="border border-[#595959] w-full px-[10px] py-2 rounded-md mb-3"
             placeholder="Email"
           />
-          <p>{errors.email?.type === "required" && "Email is required"}</p>
+          <p className="text-red-400">
+            {errors.email?.type === "required" && "Email is required"}
+          </p>
         </div>
         <div className="w-full  ">
           <label htmlFor="password" className="text-left block">
@@ -110,7 +116,7 @@ const Login = () => {
             className="border border-[#595959] w-full px-[10px] py-2 rounded-md"
             placeholder="Password"
           />
-          <p>
+          <p className="text-red-400">
             {errors.password?.type === "required" && "Password is required"}
           </p>
         </div>
@@ -119,7 +125,7 @@ const Login = () => {
             New User? Register Now
           </Link>
           <button className=" w-[272px] h-[50px] text-white font-bold rounded-md bg-[#00D4D6]">
-            Get Started
+            Login
           </button>
         </div>
         <div className="w-full">

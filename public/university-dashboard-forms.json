@@ -36,7 +36,7 @@
             "type": "select",
             "hasSelect2": true,
             "name": "subject",
-            "label": "Choose Subject",
+            "label": "Preferred Programme",
             "value": "",
             "options": [
               {
@@ -58,7 +58,7 @@
             "type": "select",
             "name": "country",
             "hasSelect2": true,
-            "label": "Choose Country",
+            "label": "Preferred Location",
             "value": "",
             "options": [
               {
@@ -79,7 +79,7 @@
           {
             "type": "number",
             "name": "living_cost",
-            "label": "Living Cost",
+            "label": "Budget in $",
             "value": "",
             "priority": 4
           },

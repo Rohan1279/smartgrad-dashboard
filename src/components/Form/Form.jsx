@@ -1,7 +1,12 @@
+import axios from "@/api/axios";
 import SelectInput from "../../core/SelectInput";
 import PropTypes from "prop-types";
+import { useContext, useState } from "react";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 
 const Form = ({ currentForm, currentTab, setCurrentForm }) => {
+  const { user } = useContext(Authcontext);
+  console.log(user);
   const action = currentForm?.action;
   const form_id = currentForm?.form_id;
   const name = currentForm?.name;
@@ -9,23 +14,47 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
   const title = currentForm?.title;
   const inputs = currentForm?.inputs;
   const sortedInputs = inputs?.sort((a, b) => a.priority - b.priority);
+  // console.log(sortedInputs);
+
+  // const [files, setFiles] = useState(
+  //   sortedInputs?.map((input) => {
+  //      if (input.type === "file") {
+
+  //     }
+  //   })
+  // );
+  // console.log(
+  //   sortedInputs?.map((input) => input.type === "file" && input.name)
+  // );
+
   const handleInputChange = (e) => {
+    // handle file inputs
+
+    console.log(e.target);
+
     const currentInput = currentForm.inputs.find(
       (input) => input.name === e.target.name
     );
+    // console.log(currentInput.type);
     if (currentInput.hasSelect2) {
       currentInput.value = e.obj;
     } else if (currentInput.type === "checkbox") {
       // store the checked state as a boolean
       currentInput.value = e.target.checked;
-      console.log(currentInput);
+      // console.log(currentInput);
+    } else if (currentInput.type === "file") {
+      // handle file inputs
+      if (e.target.files.length > 0) {
+        // Store the file object separately
+        currentInput.file = e.target.files[0];
+      }
     } else if (currentInput.type === "radio") {
       if (currentInput.checked) {
         // only add radio buttons that are checked
         currentInput.value = e.target.value;
       }
     }
-    currentInput.value = e.target.value;
+    // currentInput.value = e.target.value;
     const newInputs = currentForm.inputs.filter(
       (input) => input.name !== e.target.name
     );
@@ -53,17 +82,49 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
           // only add radio buttons that are checked
           formData[input.name] = input.value;
         }
+      } else if (input.type === "file") {
+        // handle file inputs
+        formData[input.name] = input.files[0];
       } else {
         formData[input.name] = input.value;
       }
     }
-    console.log(formData);
+    let structuredData = {};
+    structuredData[currentForm?.section_name] = formData;
+
+    console.log("structuredData", structuredData);
+    // fetch(currentForm?.action, {
+    //   method: "POST", // or 'PUT'
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Success:", data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
+    axios
+      .post(
+        `${currentForm?.action}?token=${localStorage.getItem("token")}`,
+        structuredData
+      )
+      .then((response) => {
+        console.log("Success:", response);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
     <div className="mt-10 ">
       <h1 className="text-[20px] font-bold uppercase">{title}</h1>
       <form
+        // action={currentForm?.action}
         onSubmit={handleFormSubmit}
         className="md:grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full grid-rows-3  items-center justify-start"
       >
@@ -71,7 +132,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
         {sortedInputs?.map((input, index) => {
           return (
             <div key={index}>
-              {(input.type === "string" ||
+              {(input.type === "text" ||
                 input.type === "number" ||
                 input.type === "email" ||
                 input.type === "password") && (
@@ -162,7 +223,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                         type="radio"
                         id={option.value}
                         name={input.name}
-                        defaultValue={option.value}
+                        value={input.value}
                       />
                       <label htmlFor={option.value}>{option.name}</label>
                     </div>
@@ -193,7 +254,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     type={input.type}
                     name={input.name}
                     id={input.name}
-                    defaultValue={input.value}
+                    // defaultValue={input.value}
                     onChange={handleInputChange}
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
                   />

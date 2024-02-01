@@ -111,10 +111,10 @@ const UniversityDashboard = () => {
         <div className="text-center md:text-left">
           <h1 className="text-[40px] font-bold ">My Dashboard</h1>
           <p className="pt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.{" "}
+            Your Smartgrad dashboard streamlines the application process,
+            offering personalized university recommendations. Simplify your
+            journey to higher education with tailored options that align with
+            your ambitions and preferences.
           </p>
         </div>
       </div>

@@ -5,9 +5,9 @@ import DasboardCardPost from "../DasboardCards/DasboardCardPost";
 const FeedContent = ({ posts }) => {
   return (
     <Fragment>
-      <FeedWrapper className="col-span-3 lg:col-span-2 bg-[#F5F5F5] rounded-xl lg:px-5 lg:py-3">
+      <FeedWrapper className="col-span-3  lg:col-span-2 bg-[#F5F5F5] rounded-xl lg:px-5 lg:py-3">
         <div>
-          <h1 className="hidden lg:block cursor-default pl-[10px] font-semibold">
+          <h1 className="hidden lg:block cursor-default pl-[10px]  font-semibold">
             Feed
           </h1>
           <hr className="hidden lg:block border mt-[10px] border-[#D9D9D9]" />

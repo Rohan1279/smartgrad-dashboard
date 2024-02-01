@@ -1,6 +1,6 @@
 import NavIcon from "/assets/images/navbar/smart-grad.png";
 import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import UniversitiesMenu from "./Menus/UniversitiesMenu";
 import CareersMenu from "./Menus/CareersMenu";
 import AptitudesMenu from "./Menus/AptitudesMenu";
@@ -13,7 +13,7 @@ import AptitudeIcon from "/assets/images/navbar/aptitudes.svg";
 import NetworkIcon from "/assets/images/navbar/network.svg";
 import BellIcon from "/assets/images/navbar/bell.svg";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProfileMenu from "./Menus/ProfileMenu";
 import NotificationMenu from "./Menus/NotificationMenu";
 import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
@@ -24,6 +24,9 @@ export default function Navbar() {
   const [popOverHeight, setPopOverHeight] = useState(0);
   const [popOverWidth, setPopOverWidth] = useState(0);
   const refs = useRef([]);
+  const location = useLocation();
+  useEffect(() => {}, []);
+  console.log(location.pathname.includes("login" || "register"));
 
   const onMouseEnter = (index, element) => {
     sethovering(index);
@@ -39,7 +42,12 @@ export default function Navbar() {
       onMouseLeave={() => {
         sethovering(null);
       }}
-      className="bg-white shadow-sm text-[#595959] sticky w-full top-0 z-50"
+      className={`bg-white shadow-sm text-[#595959] sticky w-full top-0 z-50 ${
+        location?.pathname.includes("login") ||
+        location?.pathname.includes("register")
+          ? "hidden"
+          : "block"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">

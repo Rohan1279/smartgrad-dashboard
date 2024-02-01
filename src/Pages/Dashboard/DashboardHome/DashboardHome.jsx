@@ -7,46 +7,62 @@ import NetworksCard from "@/components/Dashboard/ThemeCards/NetworksCard/Network
 import DasboardCardPost from "@/components/Dashboard/DasboardCards/DasboardCardPost";
 import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
 import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useWindowDimensions from "@/core/windowsDimention";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 
 const DashboardHome = () => {
   const { width } = useWindowDimensions();
+  const { user } = useContext(Authcontext);
+  console.log(user);
   const [activeKey, setActiveKey] = useState("part1");
   const posts = [
     {
-      author: "Parrot Scott",
-      author_image: "https://picsum.photos/200",
+      author: "Fardeen Ahmed",
+      author_image: "/assets/images/about-us/TeamImages/fardin.jpg",
+      content:
+        "📲 Contact our friendly team today and take the first step towards a brighter future.",
+      images: ["/assets/images/dashboard/posts/post-9.jpg"],
+      time: "2 days ago",
+    },
+    {
+      author: "Smartgrad",
+      author_image: "https://smartgrad.org/assets/favicon-32x32.png",
       content: "Innovation 2024 is here. Register now, Guys",
       images: [
-        "https://picsum.photos/400",
-        "https://picsum.photos/200",
-        "https://picsum.photos/300",
-        "https://picsum.photos/500",
+        "https://smartgrad.org/assets/image/slider/slider-4.jpg",
+        "https://smartgrad.org/assets/image/news-event/u.jpeg",
+        "https://smartgrad.org/assets/image/news-event/y.jpeg",
       ],
       time: "2 days ago",
     },
     {
-      author: "Parrot Scott",
-      author_image: "https://picsum.photos/200",
-      content: "Innovation 2023 is here. Register now, Guys",
-      images: ["https://picsum.photos/200"],
-      time: "2 days ago",
-    },
-    {
-      author: "Parrot Scott",
-      author_image: "https://picsum.photos/200",
+      author: "Sakib Ahmed",
+      author_image: "/assets/images/about-us/TeamImages/member2.png",
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget etiam sit amet nisl purus in mollis nunc sed. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Eget velit aliquet sagittis id consectetur purus ut faucibus. ",
+        "Internships are the gateway to gain that valuable experience companies are looking for. Calling all talented individuals! Our company is offering exciting internship opportunities. If you’re passionate about working with us then we’d love to hear from you!",
 
       time: "2 days ago",
     },
     {
+      author: "R. Mansur",
+      author_image: "/assets/images/about-us/TeamImages/member3.png",
+      content:
+        "We appreciate your support and hope to see you at future events. Keep shining bright!✨🌎🎓",
+      images: ["/assets/images/dashboard/posts/post-12.jpg"],
+      time: "2 days ago",
+    },
+    {
       author: "Parrot Scott",
       author_image: "https://picsum.photos/200",
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget etiam sit amet nisl purus in mollis nunc sed. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Eget velit aliquet sagittis id consectetur purus ut faucibus. ",
-      images: ["https://picsum.photos/200"],
+        "Celebrating success with a heart full of gratitude! 🌟 Big thanks to our partner, MDX, for making yet another succesfull campaign. And to our amazing students, for their exceptional collaboration—here’s to the magic we create together #studyindubai #studyabroad #smartgrad",
+      images: [
+        "/assets/images/dashboard/posts/post-7.jpg",
+        "/assets/images/dashboard/posts/post-8.jpg",
+        "/assets/images/dashboard/posts/post-10.jpg",
+        "/assets/images/dashboard/posts/post-11.jpg",
+      ],
       time: "2 days ago",
     },
   ];
@@ -65,10 +81,10 @@ const DashboardHome = () => {
         <div className="text-center md:text-left">
           <h1 className="text-[40px] font-bold ">Hello User,</h1>
           <p className="pt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.{" "}
+            Explore your personalized dashboard to track university
+            applications, course progress, and opportunities. Stay updated with
+            our feed featuring the latest in educational innovation and
+            community highlights.
           </p>
         </div>
       </div>

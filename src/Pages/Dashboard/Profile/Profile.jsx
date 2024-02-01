@@ -1,12 +1,15 @@
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Form from "../../../components/Form/Form";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "@/api/axios";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 
 const Profile = () => {
   const { id } = useParams();
   // console.log("id", id);
+  const { user } = useContext(Authcontext);
   const [formManager, setFormManager] = useState({});
   const [currentForm, setCurrentForm] = useState({});
   const [currentTab, setCurrentTab] = useState(null);
@@ -21,9 +24,21 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    fetch("/profile-dashboard-form.json")
+    // const response = axios.get("/form/profile", {
+    //   params: {
+    //     token: localStorage.getItem("token"),
+    //   },
+    // });
+    // console.log("response", response);
+
+    fetch(
+      `${
+        import.meta.env.VITE_BASE_URL
+      }form/profile?token=${localStorage.getItem("token")}`
+    )
       .then((res) => res.json())
       .then((res) => {
+        console.log(res?.data);
         setFormManager(res?.data);
         // default sets the first tab or the first tab
         setCurrentTab(
@@ -47,7 +62,7 @@ const Profile = () => {
   }, []);
   return (
     <div className="text-[#595959]">
-      <div className="flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
+      <div className="hidden md:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">
@@ -61,13 +76,13 @@ const Profile = () => {
         </div>
       </div>
       <div className="">
-        <ul className=" flex items-center flex-wrap mt-5 gap-y-4 pl-[10px]">
+        <ul className="max-w-80 md:max-w-full overflow-x-scroll overflow-y-hidden md:overflow-y-hidden md:overflow-x-hidden flex items-center  mt-5 gap-y-4 pl-[10px]">
           {formManager?.form?.map((item) => {
             return (
               <button
                 key={item?.form_id}
                 className={`  
-              mr-[42px] relative flex-1 
+                mr-[42px] relative flex-1 
                 ${
                   parseInt(currentTab) === item?.form_id
                     ? "text-[#09D5D7] font-bold  "
@@ -83,7 +98,7 @@ const Profile = () => {
               >
                 {item.name}
                 {parseInt(currentTab) === item?.form_id && (
-                  <hr className="  border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2" />
+                  <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2" />
                 )}
               </button>
             );

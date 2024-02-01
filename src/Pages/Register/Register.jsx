@@ -6,8 +6,11 @@ import { Separator } from "@/components/ui/separator";
 import useAuth from "../../hooks/useAuth";
 import { setAuthToken } from "@/utils/setAuthToken";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+  const [registrationStatus, setRegistrationStatus] = useState(false);
   const { setUser } = useAuth();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -18,28 +21,43 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const handleRegister = async (formData) => {
+    setLoading(true);
+
+    const name = formData.name;
     const email = formData.email;
     const password = formData.password;
+    console.log(name, email, password);
     const response = await axios.post(
       "/register",
-      JSON.stringify({ email: email, pwd: password }),
+      { name: name, email: email, password: password },
       {
         headers: { "Content-Type": "application/json" },
         // withCredentials: true,
       }
     );
-    const accessToken = response?.data?.accessToken;
-    const roles = response?.data?.roles;
-    setAuthToken(accessToken);
-    setUser({ email, password, roles, accessToken });
-    toast("Login Successful", {
-      action: {
-        label: "Close",
-        onClick: () => console.log(""),
-      },
-    });
+    console.log(response);
+    if (response?.status === 200) {
+      setLoading(false);
+      setRegistrationStatus(true);
+    }
+    // const accessToken = response?.data?.accessToken;
+    // const roles = response?.data?.roles;
+    // setAuthToken(accessToken);
+    // setUser({ email, password, roles, accessToken });
+    // toast("Account Creation Successful", {
+    //   action: {
+    //     label: "Close",
+    //     onClick: () => console.log(""),
+    //   },
+    // });
+    // toast("A Verification link has been sent to your email", {
+    //   action: {
+    //     label: "Close",
+    //     onClick: () => console.log(""),
+    //   },
+    // });
 
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   };
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
@@ -50,9 +68,28 @@ const Register = () => {
         onSubmit={handleSubmit(handleRegister)}
         className="w-full col-span-7 mmd:col-span-3 bg-[#F5F5F5] flex flex-col justify-end items-start  px-10 sm:px-28"
       >
+        {registrationStatus && (
+          <div className="w-full h-10 bg-[#00D4D6] text-center text-white rounded-b-xl">
+            <p className="leading-8">Verification Link Has Been Sent!</p>
+          </div>
+        )}
         <h1 className="text-left text-3xl font-bold mb-5 uppercase mt-auto">
           Register Now!
         </h1>
+        <div className="w-full  ">
+          <label htmlFor="name" className="text-left block">
+            Name
+          </label>
+          <input
+            {...register("name", { required: true })}
+            id="name"
+            type="name"
+            name="name"
+            className="border border-[#595959] w-full px-[10px] py-2 rounded-md mb-3"
+            placeholder="Enter Your Name"
+          />
+          <p>{errors.email?.type === "required" && "Email is required"}</p>
+        </div>
         <div className="w-full  ">
           <label htmlFor="email" className="text-left block">
             Email Address

@@ -80,7 +80,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
           {images &&
             (images.length === 1 ? (
               <div className="w-full h-[250px] mt-2 rounded-xl overflow-hidden">
-                <img src={images} alt="" className="w-full h-full" />
+                <img src={images} alt="" className="w-full h-full " />
               </div>
             ) : (
               // Carousal
@@ -101,7 +101,11 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                       key={k}
                       className="w-full h-[250px] mt-2 rounded-xl overflow-hidden"
                     >
-                      <img src={item} alt="" className="w-full h-full" />
+                      <img
+                        src={item}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   ))}
                 </Slider>

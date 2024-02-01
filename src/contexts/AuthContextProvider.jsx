@@ -1,3 +1,4 @@
+import useAuthToken from "@/utils/useAuthToken";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 
@@ -5,8 +6,13 @@ export const Authcontext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [auth, setAuth] = useState(false);
+  console.log(`user`, user);
+  // console.log(`auth`, auth);
+
   const [loading, setLoading] = useState(false);
-  // console.log(user);
+  // const authToken = useAuthToken();
+  // console.log(authToken);
+
   //   REGISTER USER
   const createUser = (email, password) => {
     setLoading(true);
@@ -16,36 +22,8 @@ const AuthContextProvider = ({ children }) => {
       password,
       accessToken,
     };
-    console.log(newUser);
 
     setLoading(false);
-
-    // const savedUsers = localStorage.getItem("users");
-    // localStorage.setItem(
-    //   "users",
-    //   JSON.stringify([
-    //     ...JSON.parse(savedUsers),
-    //     { email, password, accessToken },
-    //   ])
-    // );
-
-    // fetch("http://localhost:5000/api/v1/user/register", {
-    //   method: "POST",
-    //   body: JSON.stringify({ email, password }),
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     // localStorage.setItem("accessToken", accessToken);
-    //     // localStorage.setItem(users, JSON.stringify(users));
-    //     setLoading(false);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     setLoading(false);
-    //   });
   };
   //   LOGIN USER
   const login = (email, password) => {
@@ -55,7 +33,12 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("accessToken");
     return null;
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const authToken = localStorage.getItem("token");
+    if (authToken) {
+      setAuth(true);
+    }
+  }, []);
 
   const authInfo = {
     auth,

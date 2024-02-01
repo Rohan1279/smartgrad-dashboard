@@ -16,20 +16,51 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import useAuth from "@/hooks/useAuth";
+import axios from "@/api/axios";
+import getAuthToken from "@/utils/useAuthToken";
+import { toast } from "sonner";
+// const authToken = getAuthToken();
 const ProfileMenu = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useAuth();
+  const { auth, setAuth } = useAuth();
   const logout = async () => {
-    // if used in more components, this should be in context
-    // axios to /logout endpoint
-    setUser(null);
-    navigate("/");
+    toast.loading("Loading");
+
+    const authToken = localStorage.getItem("token");
+    try {
+      console.log(authToken);
+      const response = await axios.post(
+        "/logout",
+        { authToken },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          // withCredentials: true,
+        }
+      );
+      if (response?.status === 200) {
+        localStorage.removeItem("token");
+        setAuth(false);
+        toast("Logout Successful", {
+          action: {
+            label: "Close",
+            onClick: () => console.log(""),
+          },
+        });
+        navigate("/login");
+      }
+      // navigate(from, { replace: true });
+    } catch (err) {
+      console.log(err.response.status);
+    }
   };
   const location = useLocation();
   const isActive = location.pathname === "/dashboard/profile";
   return (
     <div>
-      {user ? (
+      {auth ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
             {" "}
