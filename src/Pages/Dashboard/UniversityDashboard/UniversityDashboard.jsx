@@ -15,82 +15,93 @@ const UniversityDashboard = () => {
   const [currentForm, setCurrentForm] = useState({});
   const [isUserEligible, setIsUserEligible] = useState(false);
   const [isEligibilityLoading, setIsEligibilityLoading] = useState(false);
+  const [recommendationData, setRecommendationData] = useState([]);
 
   const navigate = useNavigate();
-  const recommendationData = [
-    {
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-  ];
+  // const recommendationData = [
+  //   {
+  //     name: "Southeast Minnesota State University",
+  //     subject: "Master of Business Administration",
+  //     academic_expense: "USD 333/month",
+  //     card_image: "https://picsum.photos/400",
+  //     cost: "USD 8888/year",
+  //     job_permit: "Part-time",
+  //     logo: "https://picsum.photos/200",
+  //     offer_rate: "20%",
+  //     ratings: 4.5,
+  //   },
+  //   {
+  //     name: "Southeast Minnesota State University",
+  //     subject: "Master of Business Administration",
+  //     academic_expense: "USD 333/month",
+  //     card_image: "https://picsum.photos/400",
+  //     cost: "USD 8888/year",
+  //     job_permit: "Part-time",
+  //     logo: "https://picsum.photos/200",
+  //     offer_rate: "20%",
+  //     ratings: 4.5,
+  //   },
+  //   {
+  //     name: "Southeast Minnesota State University",
+  //     subject: "Master of Business Administration",
+  //     academic_expense: "USD 333/month",
+  //     card_image: "https://picsum.photos/400",
+  //     cost: "USD 8888/year",
+  //     job_permit: "Part-time",
+  //     logo: "https://picsum.photos/200",
+  //     offer_rate: "20%",
+  //     ratings: 4.5,
+  //   },
+  //   {
+  //     name: "Southeast Minnesota State University",
+  //     subject: "Master of Business Administration",
+  //     academic_expense: "USD 333/month",
+  //     card_image: "https://picsum.photos/400",
+  //     cost: "USD 8888/year",
+  //     job_permit: "Part-time",
+  //     logo: "https://picsum.photos/200",
+  //     offer_rate: "20%",
+  //     ratings: 4.5,
+  //   },
+  //   {
+  //     name: "Southeast Minnesota State University",
+  //     subject: "Master of Business Administration",
+  //     academic_expense: "USD 333/month",
+  //     card_image: "https://picsum.photos/400",
+  //     cost: "USD 8888/year",
+  //     job_permit: "Part-time",
+  //     logo: "https://picsum.photos/200",
+  //     offer_rate: "20%",
+  //     ratings: 4.5,
+  //   },
+  //   {
+  //     name: "Southeast Minnesota State University",
+  //     subject: "Master of Business Administration",
+  //     academic_expense: "USD 333/month",
+  //     card_image: "https://picsum.photos/400",
+  //     cost: "USD 8888/year",
+  //     job_permit: "Part-time",
+  //     logo: "https://picsum.photos/200",
+  //     offer_rate: "20%",
+  //     ratings: 4.5,
+  //   },
+  // ];
   const formCallbacks = {
     success: () => setIsUserEligible(false),
     error: () => setIsUserEligible(true),
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios
+      .get("/university/recommendations", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setRecommendationData(data?.data);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -182,7 +193,7 @@ const UniversityDashboard = () => {
             ) : (
               <div className=" flex flex-col items-center my-[70px]">
                 <img src={SearchLockIcon} alt="" className="w-[520px] " />
-                <p className="mt-4 w-1/2 text-center">
+                <p className="mt-4  w-full md:w-1/2  text-center">
                   Smartgrad is looking for best universities that matches your
                   interest. Thank you for your patience and be in touch.
                 </p>
@@ -195,15 +206,15 @@ const UniversityDashboard = () => {
                 return (
                   <RecommendationCard
                     key={idx}
-                    name={item.name}
-                    subject={item.subject}
-                    academic_expense={item.academic_expense}
-                    card_image={item.card_image}
-                    cost={item.cost}
-                    job_permit={item.job_permit}
-                    logo={item.logo}
-                    offer_rate={item.offer_rate}
-                    ratings={item.ratings}
+                    discipline={item.discipline}
+                    programme={item.programme}
+                    score={item.score}
+                    start_date={item.start_date}
+                    tuition_fees={item.tuition_fees}
+                    university={item.university}
+                    duration={item.duration}
+                    format={item.format}
+                    university_image={item.university_image}
                   />
                 );
               })}

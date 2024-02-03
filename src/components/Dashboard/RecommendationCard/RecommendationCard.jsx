@@ -1,45 +1,47 @@
 import { CardContent, CardFooter, Card } from "@/components/ui/card";
 const RecommendationCard = ({
-  logo,
-  card_image,
-  name,
-  subject,
-  ratings,
-  cost,
-  academic_expense,
-  job_permit,
-  offer_rate,
+  discipline,
+  duration,
+  format,
+  programme,
+  score,
+  start_date,
+  tuition_fees,
+  university,
+  university_image,
 }) => {
+  const totalStars = 5;
+  const stars = [...Array(totalStars)].map((_, i) => {
+    return i < score ? (
+      <StarIcon key={i} className="text-yellow-400 w-[11px]" />
+    ) : (
+      <StarIcon key={i} className="text-gray-300 w-[11px]" />
+    );
+  });
   return (
     <Card className="w-[219px] h-[306px] m-auto rounded-lg overflow-hidden shadow-lg">
       <img
-        alt="Southeast Minnesota State University"
+        alt={university}
         className="w-full h-[135px] object-cover"
-        src="https://picsum.photos/400"
+        src={university_image}
         style={{
           aspectRatio: "350/200",
           objectFit: "cover",
         }}
       />
       <CardContent className="p-2 relative">
-        <h2 className="text-xs font-semibold">{subject}</h2>
-        <p className="text-xs text-gray-500">{name}</p>
-        <div className="flex mt-2">
-          <StarIcon className="text-yellow-400 w-[11px]" />
-          <StarIcon className="text-yellow-400 w-[11px]" />
-          <StarIcon className="text-yellow-400 w-[11px]" />
-          <StarIcon className="text-yellow-400 w-[11px]" />
-          <StarIcon className="text-gray-300 w-[11px]" />
-        </div>
+        <h2 className="text-xs font-semibold">{programme}</h2>
+        <p className="text-xs text-gray-500">{university}</p>
+        <div className="flex mt-2">{stars}</div>
         <ul className="mt-3 text-[10px]">
           <li>
-            <strong>Living Cost:</strong> {cost}
+            <strong>Tuition Fee:</strong> {tuition_fees}
           </li>
           <li>
-            <strong>Academic Expense:</strong> {academic_expense}
+            <strong>Duration:</strong> {duration}
           </li>
           <li>
-            <strong>Job Permit:</strong> {job_permit}
+            <strong>Format:</strong> {format}
           </li>
         </ul>
       </CardContent>
