@@ -165,6 +165,7 @@ const UniversityDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="recommended"
+              disabled={isUserEligible}
             >
               Magic Recommendations
               <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
