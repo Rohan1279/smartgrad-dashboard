@@ -14,6 +14,8 @@ const UniversityDashboard = () => {
   const [currentTab, setCurrentTab] = useState(id);
   const [currentForm, setCurrentForm] = useState({});
   const [isUserEligible, setIsUserEligible] = useState(false);
+  const [isEligibilityLoading, setIsEligibilityLoading] = useState(false);
+
   const navigate = useNavigate();
   const recommendationData = [
     {
@@ -83,8 +85,22 @@ const UniversityDashboard = () => {
       ratings: 4.5,
     },
   ];
+  const formCallbacks = {
+    success: () => setIsUserEligible(false),
+    error: () => setIsUserEligible(true),
+  };
 
   useEffect(() => {
+    axios
+      .get("/university/eligible", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setIsUserEligible(data?.status);
+      });
+
     // MAKE THIS A CUSTOM HOOK FOR FORM MANGER
     axios
       .get("/form/uni-apply", {
@@ -159,6 +175,7 @@ const UniversityDashboard = () => {
                 currentTab={currentTab}
                 id={currentTab}
                 setFormManager={setFormManager}
+                cb={formCallbacks}
               />
             ) : (
               <div className=" flex flex-col items-center my-[70px]">

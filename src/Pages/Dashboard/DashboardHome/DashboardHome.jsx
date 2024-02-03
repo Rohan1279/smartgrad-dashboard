@@ -14,7 +14,6 @@ import { Authcontext } from "@/contexts/AuthContextProvider";
 const DashboardHome = () => {
   const { width } = useWindowDimensions();
   const { user } = useContext(Authcontext);
-  console.log(user);
   const [activeKey, setActiveKey] = useState("part1");
   const posts = [
     {

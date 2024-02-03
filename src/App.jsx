@@ -10,7 +10,7 @@ function App() {
     <>
       <AuthContextProvider>
         <RouterProvider router={router} />
-        <Toaster />
+        <Toaster richColors />
       </AuthContextProvider>
     </>
   );

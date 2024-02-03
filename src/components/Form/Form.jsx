@@ -3,10 +3,10 @@ import SelectInput from "../../core/SelectInput";
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import { toast } from "sonner";
 
-const Form = ({ currentForm, currentTab, setCurrentForm }) => {
+const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
   const { user } = useContext(Authcontext);
-  console.log(user);
   const action = currentForm?.action;
   const form_id = currentForm?.form_id;
   const name = currentForm?.name;
@@ -95,8 +95,6 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
     let structuredData = {};
     structuredData[currentForm?.section_name] = formData;
 
-    console.log("structuredData", structuredData);
-
     axios
       .post(
         `${currentForm?.action}?token=${localStorage.getItem("token")}`,
@@ -109,9 +107,27 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
       )
       .then((response) => {
         console.log("Success:", response);
+        cb?.success();
+        toast("Saved successfully", {
+          action: {
+            label: "Close",
+            onClick: () => console.log(""),
+          },
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
+        cb?.error;
+        toast.error(
+          error?.response?.data?.message ||
+            "Something went wrong, please try again",
+          {
+            action: {
+              label: "Close",
+              onClick: () => console.log(""),
+            },
+          }
+        );
       });
   };
 
@@ -160,6 +176,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     {input.options?.map((option, index) => {
                       return (
                         <option
+                          placeholder={`Choose your desired ${input.label}`}
                           key={index}
                           value={option.value}
                           name={option.name}
@@ -177,6 +194,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                     {input.label}
                   </label>
                   <SelectInput
+                    required={input.required ?? false}
                     name={input.name}
                     dropLabel={"name"}
                     dropValue={"value"}

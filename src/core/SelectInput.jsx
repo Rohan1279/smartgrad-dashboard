@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Select from "react-select";
 
 const SelectInput = ({
+  required,
   label,
   className,
   name,
@@ -87,6 +88,7 @@ const SelectInput = ({
           </h6>
         )}
         <Select
+          required={required}
           name={name}
           className={`${className}`}
           classNamePrefix="react-select"
