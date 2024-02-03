@@ -142,7 +142,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
         {/* IMPLEMENT THE PRIORITY PROPERTY */}
         {sortedInputs?.map((input, index) => {
           return (
-            <div key={index}>
+            <div key={input.name}>
               {(input.type === "text" ||
                 input.type === "number" ||
                 input.type === "email" ||

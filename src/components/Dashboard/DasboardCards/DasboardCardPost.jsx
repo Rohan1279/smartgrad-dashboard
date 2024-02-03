@@ -129,7 +129,7 @@ DasboardCardPost.propTypes = {
   author: PropTypes.string.isRequired,
   author_image: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
-  images: PropTypes.string,
+  images: PropTypes.array,
   content: PropTypes.string.isRequired,
   children: PropTypes.node,
 };

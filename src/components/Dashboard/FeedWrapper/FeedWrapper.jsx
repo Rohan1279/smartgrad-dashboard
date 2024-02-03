@@ -16,7 +16,7 @@ const FeedWrapper = ({ children, className }) => {
 
 FeedWrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.node.string,
+  className: PropTypes.string,
 };
 
 export default FeedWrapper;

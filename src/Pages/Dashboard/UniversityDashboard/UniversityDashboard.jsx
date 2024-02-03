@@ -90,6 +90,8 @@ const UniversityDashboard = () => {
     error: () => setIsUserEligible(true),
   };
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     axios
       .get("/university/eligible", {
