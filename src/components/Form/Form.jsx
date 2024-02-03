@@ -14,7 +14,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
   const title = currentForm?.title;
   const inputs = currentForm?.inputs;
   const sortedInputs = inputs?.sort((a, b) => a.priority - b.priority);
-  // console.log(sortedInputs);
+  console.log(sortedInputs);
 
   // const [files, setFiles] = useState(
   //   sortedInputs?.map((input) => {
@@ -126,7 +126,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
       <form
         // action={currentForm?.action}
         onSubmit={handleFormSubmit}
-        className="md:grid grid-cols-1 sm:grid-cols-2 gap-x-4 w-full grid-rows-3  items-center justify-start"
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-4 w-full  items-center justify-start"
       >
         {/* IMPLEMENT THE PRIORITY PROPERTY */}
         {sortedInputs?.map((input, index) => {
@@ -219,11 +219,13 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                   <label className="flex-1">{input.label}</label>
                   {input.options?.map((option, index) => (
                     <div key={index} className="flex-1">
+                      {/* OPTIONS */}
                       <input
                         type="radio"
                         id={option.value}
                         name={input.name}
-                        value={input.value}
+                        // value={input.value}
+                        defaultChecked={input.value === option.value}
                       />
                       <label htmlFor={option.value}>{option.name}</label>
                     </div>
@@ -253,7 +255,6 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
                   <input
                     type={input.type}
                     name={input.name}
-                    id={input.name}
                     // defaultValue={input.value}
                     onChange={handleInputChange}
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
