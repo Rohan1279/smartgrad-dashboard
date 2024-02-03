@@ -203,22 +203,32 @@ const UniversityDashboard = () => {
           </TabsContent>
           <TabsContent value="recommended">
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-center items-center mt-10 ">
-              {recommendationData.map((item, idx) => {
-                return (
-                  <RecommendationCard
-                    key={idx}
-                    discipline={item.discipline}
-                    programme={item.programme}
-                    score={item.score}
-                    start_date={item.start_date}
-                    tuition_fees={item.tuition_fees}
-                    university={item.university}
-                    duration={item.duration}
-                    format={item.format}
-                    university_image={item.university_image}
-                  />
-                );
-              })}
+              {recommendationData.length === 0 ? (
+                <div className="col-span-full flex flex-col items-center my-[70px]">
+                  <img src={SearchLockIcon} alt="" className="w-[520px] " />
+                  <p className="mt-4  w-full md:w-1/2  text-center">
+                    Smartgrad is looking for best universities that matches your
+                    interest. Thank you for your patience and be in touch.
+                  </p>
+                </div>
+              ) : (
+                recommendationData.map((item, idx) => {
+                  return (
+                    <RecommendationCard
+                      key={idx}
+                      discipline={item.discipline}
+                      programme={item.programme}
+                      score={item.score}
+                      start_date={item.start_date}
+                      tuition_fees={item.tuition_fees}
+                      university={item.university}
+                      duration={item.duration}
+                      format={item.format}
+                      university_image={item.university_image}
+                    />
+                  );
+                })
+              )}
             </div>
           </TabsContent>
           {/* pass added university data later */}
