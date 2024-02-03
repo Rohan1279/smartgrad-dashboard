@@ -6,12 +6,9 @@ export const Authcontext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [auth, setAuth] = useState(false);
-  console.log(`user`, user);
-  // console.log(`auth`, auth);
 
   const [loading, setLoading] = useState(false);
   // const authToken = useAuthToken();
-  // console.log(authToken);
 
   //   REGISTER USER
   const createUser = (email, password) => {
@@ -34,9 +31,13 @@ const AuthContextProvider = ({ children }) => {
     return null;
   };
   useEffect(() => {
-    const authToken = localStorage.getItem("token");
-    if (authToken) {
-      setAuth(true);
+    // const authToken = localStorage.getItem("token");
+    // if (authToken) {
+    //   setAuth(true);
+    // }
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 

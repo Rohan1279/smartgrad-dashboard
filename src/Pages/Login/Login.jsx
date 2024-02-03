@@ -35,6 +35,7 @@ const Login = () => {
       setAuthToken(accessToken);
       setAuth(true);
       setUser(response?.data?.user);
+      localStorage.setItem("user", JSON.stringify(response?.data?.user));
       toast("Login Successful", {
         action: {
           label: "Close",

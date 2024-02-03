@@ -7,11 +7,12 @@
         "action": "/application/personal-information",
         "form_id": 1,
         "name": "Personal Information",
+        "section_name": "personal_information",
         "title": "PERSONAL INFORMATION",
         "sub_title": "",
         "inputs": [
           {
-            "type": "string",
+            "type": "text",
             "name": "name",
             "label": "Name",
             "min": 1,
@@ -110,7 +111,7 @@
           {
             "type": "radio",
             "label": "Select preferences",
-            "value": ["bsc", "msc"],
+            "value": "msc",
             "name": "preference",
             "options": [
               {
@@ -123,6 +124,13 @@
               }
             ],
             "priority": 4
+          },
+          {
+            "type": "file",
+            "name": "university_recommendation_letter",
+            "label": "University Recommendation Letter",
+            "value": "",
+            "priority": 9
           }
         ]
       },
@@ -576,13 +584,6 @@
             "label": "University Testimonial",
             "value": "",
             "priority": 8
-          },
-          {
-            "type": "file",
-            "name": "university_recommendation_letter",
-            "label": "University Recommendation Letter",
-            "value": "",
-            "priority": 9
           }
         ]
       }

@@ -8,12 +8,12 @@ import { Authcontext } from "@/contexts/AuthContextProvider";
 
 const Profile = () => {
   const { id } = useParams();
-  // console.log("id", id);
+
   const { user } = useContext(Authcontext);
   const [formManager, setFormManager] = useState({});
   const [currentForm, setCurrentForm] = useState({});
   const [currentTab, setCurrentTab] = useState(null);
-  // console.log("currentTab", currentTab);
+
   const navigate = useNavigate();
 
   const handleTabChange = (form_id) => {
@@ -24,33 +24,28 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    // const response = axios.get("/form/profile", {
-    //   params: {
-    //     token: localStorage.getItem("token"),
-    //   },
-    // });
-    // console.log("response", response);
+    // MAKE THIS A CUSTOM HOOK FOR FORM MANGER
 
-    fetch(
-      `${
-        import.meta.env.VITE_BASE_URL
-      }form/profile?token=${localStorage.getItem("token")}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res?.data);
-        setFormManager(res?.data);
+    axios
+      .get("/form/profile", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setFormManager(data?.data);
+
         // default sets the first tab or the first tab
         setCurrentTab(
           () =>
-            res?.data?.form.find((item) => item?.form_id === parseInt(id))
-              ?.form_id || res.data.form[0].form_id
+            data?.data?.form.find((item) => item?.form_id === parseInt(id))
+              ?.form_id || data.data.form[0].form_id
         );
         // default sets the first form or the first form
         setCurrentForm(
           () =>
-            res?.data?.form.find((item) => item?.form_id === parseInt(id)) ||
-            res.data.form[0]
+            data?.data?.form.find((item) => item?.form_id === parseInt(id)) ||
+            data?.data.form[0]
         );
       });
 
@@ -66,7 +61,7 @@ const Profile = () => {
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">
-          <h1 className="text-[40px] font-bold ">Hello User,</h1>
+          <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
           <p className="pt-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

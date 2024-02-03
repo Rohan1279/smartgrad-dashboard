@@ -14,7 +14,6 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
   const title = currentForm?.title;
   const inputs = currentForm?.inputs;
   const sortedInputs = inputs?.sort((a, b) => a.priority - b.priority);
-  console.log(sortedInputs);
 
   // const [files, setFiles] = useState(
   //   sortedInputs?.map((input) => {
@@ -30,7 +29,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
   const handleInputChange = (e) => {
     // handle file inputs
 
-    console.log(e.target);
+    // console.log(e.target);
 
     const currentInput = currentForm.inputs.find(
       (input) => input.name === e.target.name
@@ -54,7 +53,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
         currentInput.value = e.target.value;
       }
     }
-    // currentInput.value = e.target.value;
+    currentInput.value = e.target.value;
     const newInputs = currentForm.inputs.filter(
       (input) => input.name !== e.target.name
     );
@@ -77,40 +76,36 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
       if (input.type === "checkbox") {
         // store the checked state as a boolean
         formData[input.name] = input.checked;
+        //  [input.name] = input.checked;
       } else if (input.type === "radio") {
         if (input.checked) {
           // only add radio buttons that are checked
           formData[input.name] = input.value;
+          //  [input.name] = input.value;
         }
       } else if (input.type === "file") {
         // handle file inputs
         formData[input.name] = input.files[0];
+        //  [input.name] = input.files[0];
       } else {
         formData[input.name] = input.value;
+        //  [input.name] = input.value;
       }
     }
     let structuredData = {};
     structuredData[currentForm?.section_name] = formData;
 
     console.log("structuredData", structuredData);
-    // fetch(currentForm?.action, {
-    //   method: "POST", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+
     axios
       .post(
         `${currentForm?.action}?token=${localStorage.getItem("token")}`,
-        structuredData
+        structuredData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       )
       .then((response) => {
         console.log("Success:", response);
@@ -250,13 +245,13 @@ const Form = ({ currentForm, currentTab, setCurrentForm }) => {
               {input.type === "file" && (
                 <>
                   <label htmlFor={input.name} className="block text-base">
-                    {input.label}
+                    {input.label} <span>({input.value})</span>
                   </label>
                   <input
                     type={input.type}
                     name={input.name}
-                    // defaultValue={input.value}
                     onChange={handleInputChange}
+                    accept="image/*"
                     className="outline-none border border-[#595959] rounded-md px-4 py-2 w-full m-w-[450px] my-4"
                   />
                 </>

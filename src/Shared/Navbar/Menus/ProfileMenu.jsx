@@ -21,6 +21,7 @@ import getAuthToken from "@/utils/useAuthToken";
 import { toast } from "sonner";
 // const authToken = getAuthToken();
 const ProfileMenu = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const { auth, setAuth } = useAuth();
   const logout = async () => {
@@ -60,7 +61,7 @@ const ProfileMenu = () => {
   const isActive = location.pathname === "/dashboard/profile";
   return (
     <div>
-      {auth ? (
+      {user ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
             {" "}

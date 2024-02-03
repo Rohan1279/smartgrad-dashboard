@@ -11,7 +11,7 @@ const RecommendationCard = ({
   offer_rate,
 }) => {
   return (
-    <Card className="w-full max-w-[250px] m-auto rounded-lg overflow-hidden shadow-lg">
+    <Card className="w-[219px] h-[306px] m-auto rounded-lg overflow-hidden shadow-lg">
       <img
         alt="Southeast Minnesota State University"
         className="w-full h-[135px] object-cover"
@@ -21,17 +21,17 @@ const RecommendationCard = ({
           objectFit: "cover",
         }}
       />
-      <CardContent className="p-2">
-        <h2 className="text-sm font-semibold">{subject}</h2>
+      <CardContent className="p-2 relative">
+        <h2 className="text-xs font-semibold">{subject}</h2>
         <p className="text-xs text-gray-500">{name}</p>
         <div className="flex mt-2">
-          <StarIcon className="text-yellow-400" />
-          <StarIcon className="text-yellow-400" />
-          <StarIcon className="text-yellow-400" />
-          <StarIcon className="text-yellow-400" />
-          <StarIcon className="text-gray-300" />
+          <StarIcon className="text-yellow-400 w-[11px]" />
+          <StarIcon className="text-yellow-400 w-[11px]" />
+          <StarIcon className="text-yellow-400 w-[11px]" />
+          <StarIcon className="text-yellow-400 w-[11px]" />
+          <StarIcon className="text-gray-300 w-[11px]" />
         </div>
-        <ul className="mt-3 text-xs">
+        <ul className="mt-3 text-[10px]">
           <li>
             <strong>Living Cost:</strong> {cost}
           </li>
@@ -43,12 +43,8 @@ const RecommendationCard = ({
           </li>
         </ul>
       </CardContent>
-      <CardFooter className="flex justify-between text-white p-0 bg-[#34343E] text-xs px-3 py-2">
-        <div>
-          <span className="text-sm text-[#FFC24C] font-bold">{offer_rate}</span>{" "}
-          <span>OFF</span>
-        </div>
-        <span>Get Now!</span>
+      <CardFooter className="mt-[9px] flex justify-between text-white p-0 bg-[#34343E] h-[35px] text-[10px] px-3 py-2">
+        <button className="text-center w-full font-bold ">Apply Now</button>
       </CardFooter>
     </Card>
   );

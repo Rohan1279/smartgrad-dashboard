@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import Form from "../../../components/Form/Form";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
+import axios from "@/api/axios";
+import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
 const UniversityDashboard = () => {
   const { id } = useParams();
-  // console.log("id", id);
+
   const [formManager, setFormManager] = useState({});
   const [currentTab, setCurrentTab] = useState(id);
   const [currentForm, setCurrentForm] = useState({});
-  // console.log("currentTab", currentTab);
+  const [isUserEligible, setIsUserEligible] = useState(false);
   const navigate = useNavigate();
   const recommendationData = [
     {
@@ -84,21 +85,25 @@ const UniversityDashboard = () => {
   ];
 
   useEffect(() => {
-    fetch("/university-dashboard-forms.json")
-      .then((res) => res.json())
-      .then((res) => {
-        setFormManager(res?.data);
-        // console.log(formManager);
+    // MAKE THIS A CUSTOM HOOK FOR FORM MANGER
+    axios
+      .get("/form/uni-apply", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setFormManager(data?.data);
         setCurrentTab(
           () =>
-            res?.data?.form.find((item) => item?.form_id === parseInt(id))
-              ?.form_id || res.data.form[0].form_id
+            data?.data?.form.find((item) => item?.form_id === parseInt(id))
+              ?.form_id || data.data.form[0].form_id
         );
         // default sets the first form or the first form
         setCurrentForm(
           () =>
-            res?.data?.form.find((item) => item?.form_id === parseInt(id)) ||
-            res.data.form[0]
+            data?.data?.form.find((item) => item?.form_id === parseInt(id)) ||
+            data?.data.form[0]
         );
       });
   }, []);
@@ -118,23 +123,20 @@ const UniversityDashboard = () => {
           </p>
         </div>
       </div>
-      <div className=" min-h-screen  bg-[#F5F5F5] mt-5 px-4 sm:px-9 py-5 rounded-xl">
-        <Tabs defaultValue="apply-form" className="">
+      <div className=" h-fit bg-[#F5F5F5] mt-5 px-4 sm:px-9 py-5 rounded-xl">
+        <Tabs defaultValue="search-form" className="">
           <TabsList>
             <TabsTrigger
               className="mr-[42px] relative group"
-              value="apply-form"
+              value="search-form"
             >
-              Apply
+              Search
               <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
               className="mr-[42px] relative group"
               value="recommended"
             >
-              {/* Rocommended by{" "}
-              <span className="text-[#09D5D7] font-bold">smart</span>
-              <span className="font-bold">grad</span> */}
               Magic Recommendations
               <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
@@ -148,18 +150,28 @@ const UniversityDashboard = () => {
           </TabsList>
           <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
-          <TabsContent value="apply-form">
-            <Form
-              currentForm={currentForm}
-              setCurrentForm={setCurrentForm}
-              formManager={formManager}
-              currentTab={currentTab}
-              id={currentTab}
-              setFormManager={setFormManager}
-            />
+          <TabsContent value="search-form">
+            {isUserEligible ? (
+              <Form
+                currentForm={currentForm}
+                setCurrentForm={setCurrentForm}
+                formManager={formManager}
+                currentTab={currentTab}
+                id={currentTab}
+                setFormManager={setFormManager}
+              />
+            ) : (
+              <div className=" flex flex-col items-center my-[70px]">
+                <img src={SearchLockIcon} alt="" className="w-[520px] " />
+                <p className="mt-4 w-1/2 text-center">
+                  Smartgrad is looking for best universities that matches your
+                  interest. Thank you for your patience and be in touch.
+                </p>
+              </div>
+            )}
           </TabsContent>
           <TabsContent value="recommended">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center items-center mt-10 ">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-center items-center mt-10 ">
               {recommendationData.map((item, idx) => {
                 return (
                   <RecommendationCard

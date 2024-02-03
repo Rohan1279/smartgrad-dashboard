@@ -25,8 +25,6 @@ export default function Navbar() {
   const [popOverWidth, setPopOverWidth] = useState(0);
   const refs = useRef([]);
   const location = useLocation();
-  useEffect(() => {}, []);
-  console.log(location.pathname.includes("login" || "register"));
 
   const onMouseEnter = (index, element) => {
     sethovering(index);

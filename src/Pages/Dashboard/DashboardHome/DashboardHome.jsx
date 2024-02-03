@@ -79,7 +79,7 @@ const DashboardHome = () => {
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">
-          <h1 className="text-[40px] font-bold ">Hello User,</h1>
+          <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
           <p className="pt-2">
             Explore your personalized dashboard to track university
             applications, course progress, and opportunities. Stay updated with
