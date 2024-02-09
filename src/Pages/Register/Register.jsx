@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import useAuth from "../../hooks/useAuth";
 import { setAuthToken } from "@/utils/setAuthToken";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -20,26 +20,43 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const handleRegister = async (formData) => {
     setLoading(true);
 
     const name = formData.name;
     const email = formData.email;
     const password = formData.password;
-    console.log(name, email, password);
-    const response = await axios.post(
-      "/register",
-      { name: name, email: email, password: password },
-      {
-        headers: { "Content-Type": "application/json" },
-        // withCredentials: true,
+    try {
+      const response = await axios.post(
+        "/register",
+        { name: name, email: email, password: password },
+        {
+          headers: { "Content-Type": "application/json" },
+          // withCredentials: true,
+        }
+      );
+      console.log(response);
+      if (response?.status === 200) {
+        toast.success(response?.data?.message);
+        setLoading(false);
+        setRegistrationStatus(true);
       }
-    );
-    console.log(response);
-    if (response?.status === 200) {
+    } catch (error) {
       setLoading(false);
-      setRegistrationStatus(true);
+      const errors = error?.response?.data?.error;
+
+      if (errors.email) {
+        toast.error(errors?.email[0]);
+      } else if (errors.password) {
+        toast.error(errors?.password[0]);
+      } else if (errors.name) {
+        toast.error(errors?.name[0]);
+      } else {
+        toast.error("An error occured, please try again");
+      }
     }
+
     // const accessToken = response?.data?.accessToken;
     // const roles = response?.data?.roles;
     // setAuthToken(accessToken);
@@ -59,6 +76,11 @@ const Register = () => {
 
     // navigate(from, { replace: true });
   };
+  useEffect(() => {
+    if (loading) {
+      toast.loading("Creating Account");
+    }
+  }, [loading]);
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
       <div className="hidden mmd:flex w-full col-span-4 flex justify-center items-center">
@@ -76,7 +98,7 @@ const Register = () => {
         <h1 className="text-left text-3xl font-bold mb-5 uppercase mt-auto">
           Register Now!
         </h1>
-        <div className="w-full  ">
+        <div className="w-full  mb-3">
           <label htmlFor="name" className="text-left block">
             Name
           </label>
@@ -85,10 +107,16 @@ const Register = () => {
             id="name"
             type="name"
             name="name"
-            className="border border-[#595959] w-full px-[10px] py-2 rounded-md mb-3"
+            className={`  w-full px-[10px] py-2 rounded-md outline-none ${
+              errors.name?.type === "required"
+                ? "border border-red-500"
+                : "border border-[#595959]"
+            }`}
             placeholder="Enter Your Name"
           />
-          <p>{errors.email?.type === "required" && "Email is required"}</p>
+          <p className="text-red-500">
+            {errors.name?.type === "required" && "Name is required"}
+          </p>
         </div>
         <div className="w-full  ">
           <label htmlFor="email" className="text-left block">

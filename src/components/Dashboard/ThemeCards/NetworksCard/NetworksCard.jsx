@@ -59,7 +59,7 @@ const NetworksCard = () => {
     };
   }, []);
   return (
-    <div className="w-full h-auto min-h-[166px] bg-white lg:bg-[#F5F5F5] rounded-[10px] px-4 py-2 pb-[30px] text-base">
+    <div className="w-full h-auto min-h-[166px] bg-white/70 rounded-[10px] px-4 py-2 pb-[30px] text-base">
       <h1>Networks</h1>
       <div className="flex flex-row rounded-lg mt-4" ref={imageContainerRef}>
         <div

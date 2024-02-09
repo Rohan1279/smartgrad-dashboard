@@ -73,7 +73,7 @@ const DashboardHome = () => {
   }, [width]);
 
   return (
-    <div className="text-[#595959]">
+    <div className="text-[#4B4E6D]">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
@@ -135,7 +135,7 @@ const DashboardHome = () => {
               </a>
             </div>
             <div className={` ${activeKey === "part2" && "px-4"}`}>
-              <hr className="border mt-[10px] border-[#D9D9D9] px-3" />
+              <hr className="border mt-[10px] border-[#4B4E6D] px-3" />
             </div>
 
             {activeKey === "part1" ? (

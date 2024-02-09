@@ -29,7 +29,7 @@ const UniversitiesCard = () => {
   ];
   return (
     <DasboardCardTheme>
-      <div className="flex flex-row rounded-lg gap-x-4">
+      <div className="flex flex-row rounded-lg gap-x-4 ">
         <div className=" flex-1">
           <h1>Universities Applied</h1>
           <ScrollArea className="h-[120px] pr-4 ">
@@ -37,7 +37,7 @@ const UniversitiesCard = () => {
               return (
                 <div
                   key={idx}
-                  className="flex items-center space-x-2 mb-1 cursor-pointer "
+                  className="flex items-center space-x-2 mb-2 p-1 cursor-pointer bg-white rounded-md hover:shadow-sm transition-all"
                 >
                   <div className="w-12">
                     <img

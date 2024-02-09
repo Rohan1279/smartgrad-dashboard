@@ -40,7 +40,7 @@ export default function Navbar() {
       onMouseLeave={() => {
         sethovering(null);
       }}
-      className={`bg-white shadow-sm text-[#595959] sticky w-full top-0 z-50 ${
+      className={`bg-white shadow-sm text-[#595959] sticky w-full top-0 z-50  ${
         location?.pathname.includes("login") ||
         location?.pathname.includes("register")
           ? "hidden"

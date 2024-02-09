@@ -20,7 +20,7 @@ const NetworkCardDetais = ({ item }) => {
           </div>
           <div className="flex flex-col mt-4">
             <p className="text-xs text-justify line-clamp-3">{item?.content}</p>
-            <button className="px-3 py-1 w-full bg-[#05D5D7] text-sm text-[#ffffff] rounded-lg mt-2">
+            <button className="px-3 py-1 w-full bg-[#4B4E6D] text-sm text-[#ffffff] rounded-lg mt-2">
               Connect Now
             </button>
           </div>
