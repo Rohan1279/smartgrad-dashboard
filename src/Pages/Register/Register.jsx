@@ -127,10 +127,16 @@ const Register = () => {
             id="email"
             type="email"
             name="email"
-            className="border border-[#595959] w-full px-[10px] py-2 rounded-md mb-3"
+            className={`  w-full px-[10px] py-2 rounded-md outline-none ${
+              errors.email?.type === "required"
+                ? "border border-red-500"
+                : "border border-[#595959]"
+            }`}
             placeholder="Email"
           />
-          <p>{errors.email?.type === "required" && "Email is required"}</p>
+          <p className="text-red-500">
+            {errors.email?.type === "required" && "Email is required"}
+          </p>
         </div>
         <div className="w-full  ">
           <label htmlFor="password" className="text-left block">
@@ -141,10 +147,14 @@ const Register = () => {
             id="password"
             type="password"
             name="password"
-            className="border border-[#595959] w-full px-[10px] py-2 rounded-md"
+            className={`  w-full px-[10px] py-2 rounded-md outline-none ${
+              errors.password?.type === "required"
+                ? "border border-red-500"
+                : "border border-[#595959]"
+            }`}
             placeholder="Password"
           />
-          <p>
+          <p className="text-red-500">
             {errors.password?.type === "required" && "Password is required"}
           </p>
         </div>
