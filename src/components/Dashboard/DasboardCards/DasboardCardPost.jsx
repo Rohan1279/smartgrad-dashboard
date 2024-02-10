@@ -80,7 +80,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
           <p>{content}</p>
           {images &&
             (images.length === 1 ? (
-              <div className="w-[720px] h-[540px] mt-2 rounded-xl overflow-hidden">
+              <div className="mmd:w-[720px] mmd:h-[540px] mt-2 rounded-xl overflow-hidden">
                 <PhotoProvider
                   className=""
                   maskOpacity=".8"
@@ -110,7 +110,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                   {images.map((item, k) => (
                     <div
                       key={k}
-                      className="w-[720px] h-[540px] mt-2 rounded-xl overflow-hidden"
+                      className="mmd:w-[720px] mmd:h-[540px] mt-2 rounded-xl overflow-hidden"
                     >
                       <PhotoProvider
                         className=""

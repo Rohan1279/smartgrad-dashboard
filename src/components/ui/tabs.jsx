@@ -14,7 +14,7 @@ const TabsTrigger = React.forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "data-[state=active]:text-[#09D5D7] data-[state=active]:font-semibold transition-all",
+      "data-[state=active]:text-primary data-[state=active]:font-semibold transition-all",
       className
     )}
     {...props}

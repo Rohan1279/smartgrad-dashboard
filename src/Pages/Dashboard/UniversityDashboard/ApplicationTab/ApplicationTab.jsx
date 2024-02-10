@@ -66,7 +66,7 @@ const ApplicationTab = () => {
                     <button
                       onClick={() => setTabVisible(true)}
                       type="button"
-                      className=" flex items-center font-bold px-3  py-2 rounded-md bg-[#09D5D7] text-white active:scale-95 transition-all mb-4"
+                      className=" flex items-center font-bold px-3  py-2 rounded-md bg-primary text-white active:scale-95 transition-all mb-4"
                     >
                       <IoIosArrowBack />
                       <span>Back</span>
@@ -80,38 +80,41 @@ const ApplicationTab = () => {
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                       }}
-                      className="flex items-center space-x-4 bg-gradient-to-r from-white to-white/10 h-[252px]"
+                      className="flex relative items-center space-x-4  h-[252px] rounded-[10px] overflow-hidden"
                     >
-                      <img
-                        alt="University Logo"
-                        className="h-16 w-16 rounded-full"
-                        src={UniversityImage}
-                        style={{
-                          aspectRatio: "50/50",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <div>
-                        <h2 className="text-lg font-semibold">
-                          {university?.subject}
-                        </h2>
-                        <p className="text-sm text-gray-600">
-                          {university?.name}
-                        </p>
-                        <div className="flex items-center mt-1">
-                          <StarIcon className="text-yellow-400 h-5 w-5" />
-                          <StarIcon className="text-yellow-400 h-5 w-5" />
-                          <StarIcon className="text-yellow-400 h-5 w-5" />
-                          <StarIcon className="text-yellow-400 h-5 w-5" />
-                          <StarIcon className="text-gray-300 h-5 w-5" />
-                        </div>
+                      <div className="bg-gradient-to-r from-white to-white/10 absolute w-full h-full z-0"></div>
+                      <div className="z-10">
+                        <img
+                          alt="University Logo"
+                          className="h-16 w-16 rounded-full"
+                          src={UniversityImage}
+                          style={{
+                            aspectRatio: "50/50",
+                            objectFit: "cover",
+                          }}
+                        />
+                        <div>
+                          <h2 className="text-lg font-semibold">
+                            {university?.subject}
+                          </h2>
+                          <p className="text-sm text-gray-600">
+                            {university?.name}
+                          </p>
+                          <div className="flex items-center mt-1">
+                            <StarIcon className="text-yellow-400 h-5 w-5" />
+                            <StarIcon className="text-yellow-400 h-5 w-5" />
+                            <StarIcon className="text-yellow-400 h-5 w-5" />
+                            <StarIcon className="text-yellow-400 h-5 w-5" />
+                            <StarIcon className="text-gray-300 h-5 w-5" />
+                          </div>
 
-                        <p className="text-sm font-medium italic">
-                          Application ID : {university?.applicationId}
-                        </p>
-                        <p className="text-sm  italic">
-                          status : {university?.status}
-                        </p>
+                          <p className="text-sm font-medium italic">
+                            Application ID : {university?.applicationId}
+                          </p>
+                          <p className="text-sm  italic">
+                            status : {university?.status}
+                          </p>
+                        </div>
                       </div>
                     </div>
                     {/* ADD STATUS COMPONENT HERE */}
@@ -123,21 +126,21 @@ const ApplicationTab = () => {
                           value="information"
                         >
                           Information
-                          <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
+                          <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
                         </TabsTrigger>
                         <TabsTrigger
                           className="mr-[42px] relative group"
                           value="documents"
                         >
                           Documents
-                          <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
+                          <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
                         </TabsTrigger>
                         <TabsTrigger
                           className="mr-[42px] relative group"
                           value="status"
                         >
                           Status
-                          <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
+                          <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
                         </TabsTrigger>
                       </TabsList>
                       <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />

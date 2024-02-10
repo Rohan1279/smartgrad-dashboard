@@ -56,7 +56,7 @@ const DashboardDrawer = () => {
         }
       >
         <AptitudeIcon
-          className={"w-8  group-[.active]:stroke-[#09D5D7] stroke-primary"}
+          className={"w-8  group-[.active]:stroke-primary stroke-primary"}
         />
 
         <span className="hidden mmd:flex">Aptitude</span>

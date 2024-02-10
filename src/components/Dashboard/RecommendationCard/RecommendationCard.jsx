@@ -1,64 +1,65 @@
-import { CardContent, CardFooter, Card } from "@/components/ui/card";
-const RecommendationCard = ({
-  discipline,
-  duration,
-  format,
-  programme,
-  score,
-  start_date,
-  tuition_fees,
-  university,
-  university_image,
-}) => {
-  const totalStars = 5;
-  const stars = [...Array(totalStars)].map((_, i) => {
-    return i < score ? (
-      <StarIcon key={i} className="text-yellow-400 w-[11px]" />
-    ) : (
-      <StarIcon key={i} className="text-gray-300 w-[11px]" />
-    );
-  });
+import { Link } from "react-router-dom";
+import UniversityImage from "/assets/images/dashboard/university-logo.png";
+
+const RecommendationCard = ({ university }) => {
+  const {
+    id,
+    subject,
+    name,
+    rating,
+    universityImage,
+    tuition_fees,
+    duration,
+    format,
+  } = university;
+
   return (
-    <Card className="w-[219px] h-[306px] m-auto rounded-lg overflow-hidden shadow-lg">
-      <img
-        alt={university}
-        className="w-full h-[135px] object-cover"
-        src={university_image}
-        style={{
-          aspectRatio: "350/200",
-          objectFit: "cover",
-        }}
-      />
-      <CardContent className="p-2 relative">
-        <h2 className="text-xs font-semibold">{programme}</h2>
-        <p className="text-xs text-gray-500">{university}</p>
-        <div className="flex mt-2">{stars}</div>
-        <ul className="mt-3 text-[10px]">
-          <li>
-            <strong>Tuition Fee:</strong> {tuition_fees}
-          </li>
-          <li>
-            <strong>Duration:</strong> {duration}
-          </li>
-          <li>
-            <strong>Format:</strong> {format}
-          </li>
-        </ul>
-      </CardContent>
-      <CardFooter className="mt-[9px] flex justify-between text-white p-0 bg-[#34343E] h-[35px] text-[10px] px-3 py-2">
-        <button className="text-center w-full font-bold ">Apply Now</button>
-      </CardFooter>
-    </Card>
+    <Link className="w-full flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all mb-4">
+      <div className="flex items-center space-x-4">
+        <img
+          alt="University Logo"
+          className="h-16 w-16 rounded-full"
+          src={UniversityImage}
+          style={{
+            aspectRatio: "50/50",
+            objectFit: "cover",
+          }}
+        />
+        <div className="text-left">
+          <h2 className="text-lg font-semibold">{subject}</h2>
+          <p className="text-sm text-gray-600">{name}</p>
+          <div className="flex items-center mt-1">
+            <StarIcon className="text-yellow-400 h-4 w-4" />
+            <StarIcon className="text-yellow-400 h-4 w-4" />
+            <StarIcon className="text-yellow-400 h-4 w-4" />
+            <StarIcon className="text-yellow-400 h-4 w-4" />
+            <StarIcon className="text-gray-300 h-4 w-4" />
+          </div>
+          <ul className="mt-5 text-[12px] ">
+            <li>
+              <strong>Tuition Fee:</strong> USD 8888/year
+            </li>
+            <li>
+              <strong>Duration:</strong> USD 333/year
+            </li>
+            <li>
+              <strong>Format:</strong> Part-time
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Link>
   );
 };
 
+export default RecommendationCard;
 function StarIcon(props) {
   return (
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -70,4 +71,3 @@ function StarIcon(props) {
     </svg>
   );
 }
-export default RecommendationCard;

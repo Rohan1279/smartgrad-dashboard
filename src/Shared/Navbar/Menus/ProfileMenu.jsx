@@ -94,9 +94,7 @@ const ProfileMenu = () => {
             <DropdownMenuItem>
               <NavLink
                 to="/dashboard/profile"
-                className={
-                  (isActive ? "text-[#09D5D7]" : "") + " flex space-x-3"
-                }
+                className={(isActive ? "text-primary" : "") + " flex space-x-3"}
               >
                 {isActive ? (
                   <img src={ProfileIconActive} alt="" className="" />
@@ -124,7 +122,7 @@ const ProfileMenu = () => {
       ) : (
         <Link
           to="/login"
-          className="bg-[#09D5D7] hover:shadow-md transition-all text-white text-[12px] rounded-xl px-4 py-2"
+          className="bg-primary hover:shadow-md transition-all text-white text-[12px] rounded-xl px-4 py-2"
         >
           Login
         </Link>

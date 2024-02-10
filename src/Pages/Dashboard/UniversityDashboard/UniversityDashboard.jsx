@@ -7,6 +7,7 @@ import RecommendationCard from "@/components/Dashboard/RecommendationCard/Recomm
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import axios from "@/api/axios";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
+import { ScrollArea } from "@/components/ui/scroll-area";
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -18,74 +19,80 @@ const UniversityDashboard = () => {
   const [recommendationData, setRecommendationData] = useState([]);
 
   const navigate = useNavigate();
-  // const recommendationData = [
-  //   {
-  //     name: "Southeast Minnesota State University",
-  //     subject: "Master of Business Administration",
-  //     academic_expense: "USD 333/month",
-  //     card_image: "https://picsum.photos/400",
-  //     cost: "USD 8888/year",
-  //     job_permit: "Part-time",
-  //     logo: "https://picsum.photos/200",
-  //     offer_rate: "20%",
-  //     ratings: 4.5,
-  //   },
-  //   {
-  //     name: "Southeast Minnesota State University",
-  //     subject: "Master of Business Administration",
-  //     academic_expense: "USD 333/month",
-  //     card_image: "https://picsum.photos/400",
-  //     cost: "USD 8888/year",
-  //     job_permit: "Part-time",
-  //     logo: "https://picsum.photos/200",
-  //     offer_rate: "20%",
-  //     ratings: 4.5,
-  //   },
-  //   {
-  //     name: "Southeast Minnesota State University",
-  //     subject: "Master of Business Administration",
-  //     academic_expense: "USD 333/month",
-  //     card_image: "https://picsum.photos/400",
-  //     cost: "USD 8888/year",
-  //     job_permit: "Part-time",
-  //     logo: "https://picsum.photos/200",
-  //     offer_rate: "20%",
-  //     ratings: 4.5,
-  //   },
-  //   {
-  //     name: "Southeast Minnesota State University",
-  //     subject: "Master of Business Administration",
-  //     academic_expense: "USD 333/month",
-  //     card_image: "https://picsum.photos/400",
-  //     cost: "USD 8888/year",
-  //     job_permit: "Part-time",
-  //     logo: "https://picsum.photos/200",
-  //     offer_rate: "20%",
-  //     ratings: 4.5,
-  //   },
-  //   {
-  //     name: "Southeast Minnesota State University",
-  //     subject: "Master of Business Administration",
-  //     academic_expense: "USD 333/month",
-  //     card_image: "https://picsum.photos/400",
-  //     cost: "USD 8888/year",
-  //     job_permit: "Part-time",
-  //     logo: "https://picsum.photos/200",
-  //     offer_rate: "20%",
-  //     ratings: 4.5,
-  //   },
-  //   {
-  //     name: "Southeast Minnesota State University",
-  //     subject: "Master of Business Administration",
-  //     academic_expense: "USD 333/month",
-  //     card_image: "https://picsum.photos/400",
-  //     cost: "USD 8888/year",
-  //     job_permit: "Part-time",
-  //     logo: "https://picsum.photos/200",
-  //     offer_rate: "20%",
-  //     ratings: 4.5,
-  //   },
-  // ];
+  const recommendationDataDummy = [
+    {
+      id: 1,
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      id: 2,
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      id: 3,
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      id: 4,
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      id: 5,
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+    {
+      id: 6,
+      name: "Southeast Minnesota State University",
+      subject: "Master of Business Administration",
+      academic_expense: "USD 333/month",
+      card_image: "https://picsum.photos/400",
+      cost: "USD 8888/year",
+      job_permit: "Part-time",
+      logo: "https://picsum.photos/200",
+      offer_rate: "20%",
+      ratings: 4.5,
+    },
+  ];
   const formCallbacks = {
     success: () => setIsUserEligible(false),
     error: () => setIsUserEligible(true),
@@ -160,7 +167,7 @@ const UniversityDashboard = () => {
               value="search-form"
             >
               Search
-              <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
+              <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
               className="mr-[42px] relative group"
@@ -168,14 +175,14 @@ const UniversityDashboard = () => {
               disabled={isUserEligible}
             >
               Magic Recommendations
-              <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
+              <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
               className="mr-[42px] relative group"
               value="applications"
             >
               Applications
-              <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
+              <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
           </TabsList>
           <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
@@ -202,8 +209,8 @@ const UniversityDashboard = () => {
             )}
           </TabsContent>
           <TabsContent value="recommended">
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 justify-center items-center mt-10 ">
-              {recommendationData.length === 0 ? (
+            <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10">
+              {recommendationDataDummy.length === 0 ? (
                 <div className="col-span-full flex flex-col items-center my-[70px]">
                   <img src={SearchLockIcon} alt="" className="w-[520px] " />
                   <p className="mt-4  w-full md:w-1/2  text-center">
@@ -212,24 +219,11 @@ const UniversityDashboard = () => {
                   </p>
                 </div>
               ) : (
-                recommendationData.map((item, idx) => {
-                  return (
-                    <RecommendationCard
-                      key={idx}
-                      discipline={item.discipline}
-                      programme={item.programme}
-                      score={item.score}
-                      start_date={item.start_date}
-                      tuition_fees={item.tuition_fees}
-                      university={item.university}
-                      duration={item.duration}
-                      format={item.format}
-                      university_image={item.university_image}
-                    />
-                  );
+                recommendationDataDummy.map((item, idx) => {
+                  return <RecommendationCard key={idx} university={item} />;
                 })
               )}
-            </div>
+            </ScrollArea>
           </TabsContent>
           {/* pass added university data later */}
           <TabsContent value="applications">

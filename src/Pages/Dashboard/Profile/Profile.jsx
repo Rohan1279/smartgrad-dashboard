@@ -77,7 +77,7 @@ const Profile = () => {
                 mr-[42px] relative flex-1 
                 ${
                   parseInt(currentTab) === item?.form_id
-                    ? "text-[#09D5D7] font-bold  "
+                    ? "text-primary font-bold  "
                     : ""
                 }
               `}
@@ -90,7 +90,7 @@ const Profile = () => {
               >
                 {item.name}
                 {parseInt(currentTab) === item?.form_id && (
-                  <hr className="border mt-[10px] border-[#09D5D7] w-1/2 absolute -bottom-[11px] translate-x-1/2" />
+                  <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2" />
                 )}
               </button>
             );

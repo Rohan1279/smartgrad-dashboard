@@ -25,7 +25,7 @@ const ApplicationCard = ({ university }) => {
             objectFit: "cover",
           }}
         />
-        <div>
+        <div className="text-left">
           <h2 className="text-lg font-semibold">{subject}</h2>
           <p className="text-sm text-gray-600">{name}</p>
           <div className="flex items-center mt-1">
