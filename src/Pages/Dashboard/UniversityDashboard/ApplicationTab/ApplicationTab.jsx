@@ -6,6 +6,9 @@ import Documents from "./TabContents/Documents";
 import Status from "./TabContents/Status";
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import UniversityImage from "/assets/images/dashboard/university-logo.png";
+import UniversityBackgroundImage from "/assets/images/dashboard/university-background.png";
+
 const ApplicationTab = () => {
   const [tabVisible, setTabVisible] = useState(true);
   const universitiesData = [
@@ -42,7 +45,7 @@ const ApplicationTab = () => {
   ];
 
   return (
-    <div className="py-4 rounded-xl  flex flex-col space-y-3">
+    <div className="py-4 rounded-xl  flex flex-col space-y-3 text-primary ">
       <Tabs defaultValue="" className="">
         {universitiesData?.map((university, idx) => {
           return (
@@ -70,11 +73,19 @@ const ApplicationTab = () => {
                     </button>
                   )} */}
                   <div className=" bg-white p-4 rounded-xl ">
-                    <div className="flex items-center space-x-4">
+                    <div
+                      style={{
+                        backgroundImage: `url(${UniversityBackgroundImage})`,
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                      }}
+                      className="flex items-center space-x-4 bg-gradient-to-r from-white to-white/10 h-[252px]"
+                    >
                       <img
                         alt="University Logo"
                         className="h-16 w-16 rounded-full"
-                        src={"UniversityImage"}
+                        src={UniversityImage}
                         style={{
                           aspectRatio: "50/50",
                           objectFit: "cover",

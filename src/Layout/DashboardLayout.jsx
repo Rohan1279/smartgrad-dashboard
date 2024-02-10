@@ -19,7 +19,7 @@ const DashboardLayout = () => {
       </div>
       <div className="pt-4 sm:pt-8 min-h-[100svh] px-4 sm:px-12 grid grid-col-5 mmd:grid-cols-7 justify-items-center pb-16 mmd:pb-10">
         <div className="col-span-1 w-full "></div>
-        <div className="col-span-6 xl:col-span-5">
+        <div className="col-span-6 xl:col-span-5 w-full">
           <Outlet />
         </div>
         <div className="col-span-1 w-full"></div>

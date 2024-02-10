@@ -115,7 +115,7 @@ export default function Navbar() {
                 to={"/dashboard"}
                 className="flex items-center justify-center space-x-2 "
               >
-                <DashboardIcon className={"w-5 stroke-primary "} />
+                <DashboardIcon className={"w-5 fill-primary"} />
 
                 <span className="">Dashboard</span>
               </Link>

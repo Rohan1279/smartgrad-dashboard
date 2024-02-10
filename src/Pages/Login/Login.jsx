@@ -37,7 +37,7 @@ const Login = () => {
         setAuth(true);
         setUser(response?.data?.user);
         localStorage.setItem("user", JSON.stringify(response?.data?.user));
-        navigate("/dashboard");
+        navigate("/dashboard/home");
         return "Logged in successfully";
       },
       error: (err) => {

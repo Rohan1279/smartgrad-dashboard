@@ -80,7 +80,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
           <p>{content}</p>
           {images &&
             (images.length === 1 ? (
-              <div className="w-full h-[290px] mt-2 rounded-xl overflow-hidden">
+              <div className="w-[720px] h-[540px] mt-2 rounded-xl overflow-hidden">
                 <PhotoProvider
                   className=""
                   maskOpacity=".8"
@@ -110,13 +110,8 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                   {images.map((item, k) => (
                     <div
                       key={k}
-                      className="w-full h-[250px] mt-2 rounded-xl overflow-hidden"
+                      className="w-[720px] h-[540px] mt-2 rounded-xl overflow-hidden"
                     >
-                      {/* <img
-                        src={item}
-                        alt=""
-                        className="w-full h-full object-cover"
-                      /> */}
                       <PhotoProvider
                         className=""
                         maskOpacity=".8"
@@ -127,7 +122,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                           <img
                             src={item}
                             alt=""
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-top"
                           />
                         </PhotoView>
                       </PhotoProvider>
