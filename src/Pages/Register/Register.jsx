@@ -103,7 +103,9 @@ const Register = () => {
             Name
           </label>
           <input
-            {...register("name", { required: true })}
+            {...register("name", {
+              required: true,
+            })}
             id="name"
             type="name"
             name="name"

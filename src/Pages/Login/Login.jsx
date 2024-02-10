@@ -17,64 +17,43 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const handleLogin = async (formData) => {
-    toast.loading("Loading");
     const email = formData.email;
     const password = formData.password;
-    try {
-      const response = await axios.post(
+
+    const loginPromise = () =>
+      axios.post(
         "/login",
         { email: email, password: password },
         {
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true,
         }
       );
-      console.log(response);
 
-      const accessToken = response?.data?.access_token;
-      setAuthToken(accessToken);
-      setAuth(true);
-      setUser(response?.data?.user);
-      localStorage.setItem("user", JSON.stringify(response?.data?.user));
-      toast("Login Successful", {
-        action: {
-          label: "Close",
-          onClick: () => console.log(""),
-        },
-      });
-
-      navigate("/dashboard");
-    } catch (err) {
-      console.log(err.response.status);
-      switch (err.response.status) {
-        case 400: {
-          toast.error("Invalid Credentials", {
-            action: {
-              label: "Close",
-              onClick: () => console.log(""),
-            },
-          });
-          break;
+    toast.promise(loginPromise, {
+      loading: "Logging in...",
+      success: (response) => {
+        const accessToken = response?.data?.access_token;
+        setAuthToken(accessToken);
+        setAuth(true);
+        setUser(response?.data?.user);
+        localStorage.setItem("user", JSON.stringify(response?.data?.user));
+        navigate("/dashboard");
+        return "Logged in successfully";
+      },
+      error: (err) => {
+        switch (err?.response?.status) {
+          case 400: {
+            return "Invalid Credentials";
+          }
+          case 401: {
+            return "Unauthorized";
+          }
+          default: {
+            return "Something went wrong";
+          }
         }
-        case 401: {
-          toast.error("Unauthorized", {
-            action: {
-              label: "Close",
-              onClick: () => console.log(""),
-            },
-          });
-          break;
-        }
-        default: {
-          toast.error("Something went wrong", {
-            action: {
-              label: "Close",
-              onClick: () => console.log(""),
-            },
-          });
-        }
-      }
-    }
+      },
+    });
   };
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">

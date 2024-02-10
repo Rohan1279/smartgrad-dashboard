@@ -73,7 +73,7 @@ const DashboardHome = () => {
   }, [width]);
 
   return (
-    <div className="text-[#4B4E6D]">
+    <div className="text-[#4B4E6D] ">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
@@ -105,7 +105,7 @@ const DashboardHome = () => {
               <a
                 className={`${
                   activeKey === "part1"
-                    ? "text-[#09D5D7] font-bold"
+                    ? "text-[#4B4E6D] font-bold"
                     : " text-[#7A7C87]"
                 } cursor-default pl-[10px] flex flex-col`}
                 onClick={() => {
@@ -114,14 +114,14 @@ const DashboardHome = () => {
               >
                 Feed
                 {/* {activeKey === "part1" && (
-                  <hr className="  border mt-[10px] border-[#09D5D7] w-1/2 -bottom-[11px] translate-x-1/2" />
+                  <hr className="  border mt-[10px] border-[#4B4E6D] w-1/2 -bottom-[11px] translate-x-1/2" />
                 )} */}
               </a>
 
               <a
                 className={`${
                   activeKey === "part2"
-                    ? "text-[#09D5D7] font-bold"
+                    ? "text-[#4B4E6D] font-bold"
                     : " text-[#7A7C87]"
                 } cursor-default pl-[10px]`}
                 onClick={() => {

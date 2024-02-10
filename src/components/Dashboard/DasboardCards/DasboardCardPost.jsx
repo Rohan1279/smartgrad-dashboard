@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   const slider = useRef();
@@ -79,12 +80,22 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
           <p>{content}</p>
           {images &&
             (images.length === 1 ? (
-              <div className="w-full h-[250px] mt-2 rounded-xl overflow-hidden">
-                <img src={images} alt="" className="w-full h-full " />
+              <div className="w-full h-[290px] mt-2 rounded-xl overflow-hidden">
+                <PhotoProvider
+                  className=""
+                  maskOpacity=".8"
+                  bannerVisible={false}
+                >
+                  <PhotoView src={images}>
+                    <img
+                      src={images}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </PhotoView>
+                </PhotoProvider>
               </div>
             ) : (
-              // Carousal
-              // <h1>Requires Carousal</h1>
               <div
                 className="slide-container"
                 style={{
@@ -101,11 +112,25 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                       key={k}
                       className="w-full h-[250px] mt-2 rounded-xl overflow-hidden"
                     >
-                      <img
+                      {/* <img
                         src={item}
                         alt=""
                         className="w-full h-full object-cover"
-                      />
+                      /> */}
+                      <PhotoProvider
+                        className=""
+                        maskOpacity=".8"
+                        maskClassName=""
+                        bannerVisible={false}
+                      >
+                        <PhotoView src={item}>
+                          <img
+                            src={item}
+                            alt=""
+                            className="w-full h-full object-cover"
+                          />
+                        </PhotoView>
+                      </PhotoProvider>
                     </div>
                   ))}
                 </Slider>

@@ -25,12 +25,10 @@ const ProfileMenu = () => {
   const navigate = useNavigate();
   const { auth, setAuth } = useAuth();
   const logout = async () => {
-    toast.loading("Loading");
-
     const authToken = localStorage.getItem("token");
-    try {
-      console.log(authToken);
-      const response = await axios.post(
+    // try {
+    const logoutPromise = () =>
+      axios.post(
         "/logout",
         { authToken },
         {
@@ -41,21 +39,42 @@ const ProfileMenu = () => {
           // withCredentials: true,
         }
       );
-      if (response?.status === 200) {
+
+    toast.promise(logoutPromise, {
+      loading: "Logging out...",
+      success: () => {
         localStorage.removeItem("token");
         setAuth(false);
-        toast("Logout Successful", {
-          action: {
-            label: "Close",
-            onClick: () => console.log(""),
-          },
-        });
+
         navigate("/login");
-      }
-      // navigate(from, { replace: true });
-    } catch (err) {
-      console.log(err.response.status);
-    }
+        return "Logged out successfully";
+      },
+      error: (err) => {
+        switch (err?.response?.status) {
+          case 400: {
+            return "Invalid Credentials";
+          }
+          case 401: {
+            return "Unauthorized";
+          }
+          default: {
+            return "Something went wrong";
+          }
+        }
+      },
+    });
+
+    // if (response?.status === 200) {
+    //   localStorage.removeItem("token");
+    //   setAuth(false);
+    //   toast("Logout Successful", {
+    //     action: {
+    //       label: "Close",
+    //       onClick: () => console.log(""),
+    //     },
+    //   });
+    //   navigate("/login");
+    // }
   };
   const location = useLocation();
   const isActive = location.pathname === "/dashboard/profile";

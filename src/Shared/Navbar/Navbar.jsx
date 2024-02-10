@@ -7,16 +7,17 @@ import AptitudesMenu from "./Menus/AptitudesMenu";
 import NetworksMenu from "./Menus/NetworksMenu";
 import clsx from "clsx";
 import SlideWrapper from "./SlideWrapper";
-import UniversitiesIcon from "/assets/images/navbar/convocation-cap.svg";
-import CareerIcon from "/assets/images/navbar/bag.svg";
-import AptitudeIcon from "/assets/images/navbar/aptitudes.svg";
-import NetworkIcon from "/assets/images/navbar/network.svg";
 import BellIcon from "/assets/images/navbar/bell.svg";
+import UniversityIcon from "../../components/ThemeIcons/UniversityIcon";
+import CareerIcon from "../../components/ThemeIcons/CareerIcon";
+import AptitudeIcon from "../../components/ThemeIcons/AptitudeIcon";
+import NetworkIcon from "../../components/ThemeIcons/NetworkIcon";
+import DashboardIcon from "../../components/ThemeIcons/DashboardIcon";
 
 import { Link, useLocation } from "react-router-dom";
 import ProfileMenu from "./Menus/ProfileMenu";
 import NotificationMenu from "./Menus/NotificationMenu";
-import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
+// import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 
 export default function Navbar() {
   const [hovering, sethovering] = useState(null);
@@ -71,9 +72,10 @@ export default function Navbar() {
                   onMouseEnter(1, e.currentTarget);
                 }}
                 to="/"
-                className="flex items-center justify-center space-x-2"
+                className="flex items-center justify-center space-x-2 "
               >
-                <img src={UniversitiesIcon} alt="" className="w-4" />
+                {/* <img src={} alt="" className="w-4" /> */}
+                <UniversityIcon className={"w-8 fill-primary "} />
                 <span className="">Universities</span>
               </Link>
               <Link
@@ -83,7 +85,8 @@ export default function Navbar() {
                 to="/"
                 className="flex items-center justify-center space-x-2 "
               >
-                <img src={CareerIcon} alt="" className="w-4" />
+                <CareerIcon className={"w-8 stroke-primary  fill-none"} />
+
                 <span className="">Careers</span>
               </Link>
               <Link
@@ -93,7 +96,8 @@ export default function Navbar() {
                 to="/"
                 className="flex items-center justify-center space-x-2 "
               >
-                <img src={AptitudeIcon} alt="" className="w-4" />
+                <AptitudeIcon className={"w-8 stroke-primary  fill-none"} />
+
                 <span className="">Aptitudes</span>
               </Link>
               <Link
@@ -103,14 +107,16 @@ export default function Navbar() {
                 to="/"
                 className="flex items-center justify-center space-x-2 "
               >
-                <img src={NetworkIcon} alt="" className="w-4" />
+                <NetworkIcon className={"w-8 stroke-primary  fill-none"} />
+
                 <span className="">Networks</span>
               </Link>
               <Link
                 to={"/dashboard"}
                 className="flex items-center justify-center space-x-2 "
               >
-                <img src={DashboardIcon} alt="" className="w-4" />
+                <DashboardIcon className={"w-5 stroke-primary "} />
+
                 <span className="">Dashboard</span>
               </Link>
             </div>

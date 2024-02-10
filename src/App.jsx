@@ -5,6 +5,8 @@ import AuthContextProvider from "./contexts/AuthContextProvider";
 import { Toaster } from "./components/ui/sonner";
 import { QueryClient } from "@tanstack/react-query";
 // const queryClient = new QueryClient();
+import "react-photo-view/dist/react-photo-view.css";
+
 function App() {
   return (
     <>

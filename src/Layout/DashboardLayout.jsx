@@ -1,10 +1,18 @@
 import { Outlet } from "react-router-dom";
 import DashboardDrawer from "../Shared/DashboardDrawer/DashboardDrawer";
 import Navbar from "../Shared/Navbar/Navbar";
-
+import DashboardBackground from "/assets/images/dashboard/dashboard-background.png";
 const DashboardLayout = () => {
   return (
-    <div className="relative bg-[#DDEBFF]">
+    <div
+      // style={{
+      //   backgroundImage: `url(${DashboardBackground})`,
+      //   backgroundSize: "contain",
+      //   backgroundRepeat: "no-repeat",
+      //   backgroundPosition: "center",
+      // }}
+      className="relative "
+    >
       <Navbar />
       <div className="fixed bottom-0 mmd:bottom-auto z-50 pointer-events-none mmd:pointer-events-auto mmd:absolute flex items-end mmd:items-center justify-center w-full mmd:w-auto  h-screen">
         <DashboardDrawer />
