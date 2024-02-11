@@ -3,6 +3,7 @@ import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
+import AptitudeIcon from "../../../ThemeIcons/AptitudeIcon";
 
 const CoursesCard = () => {
   const courses = [
@@ -32,7 +33,12 @@ const CoursesCard = () => {
     <DasboardCardTheme>
       <div className="flex flex-row rounded-lg gap-x-4">
         <div className="flex-1">
-          <h1>Courses Completed</h1>
+          <div className="flex items-center gap-x-2">
+            <AptitudeIcon
+              className={"min-w-8 max-w-8 fill-none stroke-primary"}
+            />
+            <h1>Courses Completed</h1>
+          </div>
           <ScrollArea className="h-[120px] pr-4 ">
             {courses?.map((item, idx) => {
               return (

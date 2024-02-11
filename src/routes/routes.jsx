@@ -16,25 +16,25 @@ import ApplicatonDetailPage from "@/Pages/Dashboard/UniversityDashboard/Applicat
 import AboutUs from "@/Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    errorElement: <ErrorPage />,
-    element: <Main />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-    ],
-  },
+  // {
+  //   path: "/",
+  //   errorElement: <ErrorPage />,
+  //   element: <Main />,
+  //   children: [
+  //     {
+  //       path: "/",
+  //       element: <Home />,
+  //     },
+  //     {
+  //       path: "/login",
+  //       element: <Login />,
+  //     },
+  //     {
+  //       path: "/register",
+  //       element: <Register />,
+  //     },
+  //   ],
+  // },
   {
     path: "/dashboard",
     errorElement: <ErrorPage />,

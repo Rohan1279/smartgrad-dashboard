@@ -9,7 +9,6 @@ import { toast } from "sonner";
 import { useEffect, useState } from "react";
 
 const Register = () => {
-  const [loading, setLoading] = useState(false);
   const [registrationStatus, setRegistrationStatus] = useState(false);
   const { setUser } = useAuth();
   const navigate = useNavigate();
@@ -22,13 +21,12 @@ const Register = () => {
   } = useForm();
 
   const handleRegister = async (formData) => {
-    setLoading(true);
-
     const name = formData.name;
     const email = formData.email;
     const password = formData.password;
-    try {
-      const response = await axios.post(
+
+    const registerPromise = () =>
+      axios.post(
         "/register",
         { name: name, email: email, password: password },
         {
@@ -36,51 +34,29 @@ const Register = () => {
           // withCredentials: true,
         }
       );
-      console.log(response);
-      if (response?.status === 200) {
-        toast.success(response?.data?.message);
-        setLoading(false);
+
+    toast.promise(registerPromise, {
+      loading: "Creating account...",
+      success: () => {
         setRegistrationStatus(true);
-      }
-    } catch (error) {
-      setLoading(false);
-      const errors = error?.response?.data?.error;
+        return "Account created successfully";
+      },
+      error: (err) => {
+        const errors = err?.response?.data?.error;
 
-      if (errors.email) {
-        toast.error(errors?.email[0]);
-      } else if (errors.password) {
-        toast.error(errors?.password[0]);
-      } else if (errors.name) {
-        toast.error(errors?.name[0]);
-      } else {
-        toast.error("An error occured, please try again");
-      }
-    }
-
-    // const accessToken = response?.data?.accessToken;
-    // const roles = response?.data?.roles;
-    // setAuthToken(accessToken);
-    // setUser({ email, password, roles, accessToken });
-    // toast("Account Creation Successful", {
-    //   action: {
-    //     label: "Close",
-    //     onClick: () => console.log(""),
-    //   },
-    // });
-    // toast("A Verification link has been sent to your email", {
-    //   action: {
-    //     label: "Close",
-    //     onClick: () => console.log(""),
-    //   },
-    // });
-
-    // navigate(from, { replace: true });
+        if (errors?.email) {
+          return errors?.email[0];
+        } else if (errors?.password) {
+          return errors?.password[0];
+        } else if (errors?.name) {
+          return errors?.name[0];
+        } else {
+          return "An error occured, please try again";
+        }
+      },
+    });
   };
-  useEffect(() => {
-    if (loading) {
-      toast.loading("Creating Account");
-    }
-  }, [loading]);
+
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
       <div className="hidden mmd:flex w-full col-span-4 flex justify-center items-center">

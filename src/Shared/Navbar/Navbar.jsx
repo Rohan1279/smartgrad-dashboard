@@ -66,7 +66,7 @@ export default function Navbar() {
               />
             </Link>
             {/* Navigation Links */}
-            <div className="hidden mmd:flex justify-center items-center space-x-4 mmd:space-x-11 sm:ml-8 ">
+            {/* <div className="hidden mmd:hidden justify-center items-center space-x-4 mmd:space-x-11 sm:ml-8 ">
               <Link
                 onMouseEnter={(e) => {
                   onMouseEnter(1, e.currentTarget);
@@ -74,7 +74,6 @@ export default function Navbar() {
                 to="/"
                 className="flex items-center justify-center space-x-2 "
               >
-                {/* <img src={} alt="" className="w-4" /> */}
                 <UniversityIcon className={"w-8 fill-primary "} />
                 <span className="">Universities</span>
               </Link>
@@ -119,7 +118,7 @@ export default function Navbar() {
 
                 <span className="">Dashboard</span>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div

@@ -74,7 +74,7 @@ const DashboardHome = () => {
 
   return (
     <div className="text-[#4B4E6D] ">
-      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
+      <div className="hidden mmd:hidden flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
         <div className="text-center md:text-left">

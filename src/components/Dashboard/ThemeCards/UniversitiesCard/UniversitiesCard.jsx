@@ -3,6 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
+import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
 
 const UniversitiesCard = () => {
   const universities = [
@@ -31,7 +32,10 @@ const UniversitiesCard = () => {
     <DasboardCardTheme>
       <div className="flex flex-row rounded-lg gap-x-4 ">
         <div className=" flex-1">
-          <h1>Universities Applied</h1>
+          <div className="flex items-center gap-x-2">
+            <UniversityIcon className={"min-w-8 max-w-8 fill-primary  "} />
+            <h1>Universities Applied</h1>
+          </div>
           <ScrollArea className="h-[120px] pr-4 ">
             {universities?.map((item, idx) => {
               return (
