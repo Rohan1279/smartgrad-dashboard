@@ -7,7 +7,7 @@ import DashboardIcon from "../../components/ThemeIcons/DashboardIcon";
 import ProfileIcon from "/assets/images/dashboard/dashboard-drawer-avatar.png";
 const DashboardDrawer = () => {
   return (
-    <aside className=" flex flex-row gap-x-5 h-[50px] rounded-lg mmd:rounded-auto mmd:h-fit mmd:flex-col mmd:gap-y-1  w-[94%] mmd:w-[56px] mmd:hover:w-40 transition-all duration-300 mb-[10px] mmd:mb-0 border bg-white/70 backdrop-blur-sm px-2 py-2 rounded-r-xl overflow-hidden mt-16 mmd:mt-none justify-center mmd:justify-auto pointer-events-auto ">
+    <aside className="fixed bottom-0 mmd:relative flex flex-row gap-x-5 h-[50px] rounded-lg mmd:rounded-auto mmd:h-fit mmd:flex-col mmd:gap-y-1  w-[94%] mmd:w-[56px] mmd:hover:w-40 transition-all duration-300 mb-[10px] mmd:mb-0 border bg-white/70 backdrop-blur-sm px-2 py-2 rounded-r-xl overflow-hidden mt-16 mmd:mt-none justify-center mmd:justify-auto pointer-events-auto ">
       <NavLink
         to="home"
         className={({ isActive }) =>
@@ -16,7 +16,7 @@ const DashboardDrawer = () => {
             : "text-primary flex justify-start items-center space-x-[13px] rounded-[10px] mmd:mx-0 mmd:pl-2 mmd:pr-4 mmd:py-2 group"
         }
       >
-        <DashboardIcon className={"min-w-5 max-w-5 fill-primary mr-1"} />
+        <DashboardIcon className={"min-w-5 max-w-5 fill-primary mr-2"} />
         <span className="hidden mmd:flex">Dashboard</span>
       </NavLink>
       <NavLink
