@@ -113,9 +113,6 @@ const DashboardHome = () => {
                 }}
               >
                 Feed
-                {/* {activeKey === "part1" && (
-                  <hr className="  border mt-[10px] border-[#4B4E6D] w-1/2 -bottom-[11px] translate-x-1/2" />
-                )} */}
               </a>
 
               <a
@@ -129,9 +126,6 @@ const DashboardHome = () => {
                 }}
               >
                 Dashboard
-                {/* {activeKey === "part2" && (
-                  <hr className="  border mt-[10px] border-primary w-1/2 -bottom-[11px] translate-x-1/2" />
-                )} */}
               </a>
             </div>
             <div className={` ${activeKey === "part2" && "px-4"}`}>
