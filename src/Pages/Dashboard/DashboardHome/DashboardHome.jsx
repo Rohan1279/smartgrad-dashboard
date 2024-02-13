@@ -74,17 +74,13 @@ const DashboardHome = () => {
 
   return (
     <div className="text-[#4B4E6D] ">
-      <div className="hidden mmd:hidden flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
-        <img src={DashboardAvatar} alt="avatar" className="w-40" />
+      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
+        <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
           <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
-          <p className="pt-2">
-            Explore your personalized dashboard to track university
-            applications, course progress, and opportunities. Stay updated with
-            our feed featuring the latest in educational innovation and
-            community highlights.
-          </p>
+          <p className="">Chittagong, Bangladesh</p>
+          <p className="">Complete Your Profile</p>
         </div>
       </div>
       {/* GRID */}
@@ -97,7 +93,7 @@ const DashboardHome = () => {
       <div className="block lg:hidden">
         <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
           <div
-            className={`col-span-3 bg-[#F5F5F5] rounded-xl ${
+            className={`col-span-3 bg-white rounded-xl ${
               activeKey === "part2" ? "px-1" : "px-5"
             } py-3`}
           >

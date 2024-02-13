@@ -6,7 +6,7 @@ const FeedWrapper = ({ children, className }) => {
   return (
     <Fragment>
       <ScrollArea
-        className={`w-full h-[100vmin] h-[90vh] sm:h-auto ${className}`}
+        className={`w-full h-[100vmin] h-[90vh] sm:h-auto ${className}  `}
       >
         {children}
       </ScrollArea>

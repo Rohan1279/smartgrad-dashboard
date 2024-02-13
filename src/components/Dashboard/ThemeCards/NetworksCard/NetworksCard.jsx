@@ -60,7 +60,7 @@ const NetworksCard = () => {
     };
   }, []);
   return (
-    <div className="w-full h-auto min-h-[166px] bg-[#f5f5f5]/70 rounded-[10px] px-4 py-2 pb-[30px] text-base">
+    <div className="w-full h-auto min-h-[166px] bg-white shadow-md rounded-[10px] px-4 py-2 pb-[30px] text-base">
       <div className="flex items-center gap-x-2">
         <NetworkIcon className={"min-w-8 max-w-8 fill-none stroke-primary"} />
         <h1>Networks</h1>

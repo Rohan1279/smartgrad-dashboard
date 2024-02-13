@@ -38,7 +38,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
     const updateParentWidth = () => {
       if (imageContainerRef.current) {
         const newParentWidth = imageContainerRef.current.clientWidth;
-        setParentWidth(newParentWidth - 100);
+        setParentWidth(newParentWidth - 0);
       }
     };
 
@@ -53,8 +53,8 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   }, []);
   return (
     <>
-      <Card className={"min-w-full my-5 border-none shadow-none"}>
-        <CardHeader>
+      <Card className={"min-w-full my-5 border-none shadow-md "}>
+        <CardHeader className="">
           <div className="flex justify-between items-start">
             <div className="flex items-center justify-start space-x-2">
               <img src={author_image} alt="" className="w-11 rounded-xl" />
@@ -76,11 +76,11 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
             </DropdownMenu> */}
           </div>
         </CardHeader>
-        <CardContent className="m-w-fit contentCard" ref={imageContainerRef}>
-          <p>{content}</p>
+        <CardContent className="m-w-fit contentCard " ref={imageContainerRef}>
+          <p className="px-6">{content}</p>
           {images &&
             (images.length === 1 ? (
-              <div className="mmd:w-[720px] mmd:h-[540px] mt-2 rounded-xl overflow-hidden">
+              <div className="mmd:w-full mmd:h-[540px] mt-2  overflow-hidden">
                 <PhotoProvider
                   className=""
                   maskOpacity=".8"
@@ -110,7 +110,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                   {images.map((item, k) => (
                     <div
                       key={k}
-                      className="mmd:w-[720px] mmd:h-[540px] mt-2 rounded-xl overflow-hidden"
+                      className="mmd:w-full mmd:h-[540px] mt-2  overflow-hidden"
                     >
                       <PhotoProvider
                         className=""
@@ -132,7 +132,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
               </div>
             ))}
         </CardContent>
-        <CardFooter>
+        <CardFooter className="mt-6">
           <div className="flex items-center space-x-1">
             <button className="px-3 py-1 bg-[#F5F5F5] rounded-lg ">Like</button>
             <button className="px-3 py-1 bg-[#F5F5F5] rounded-lg ">
