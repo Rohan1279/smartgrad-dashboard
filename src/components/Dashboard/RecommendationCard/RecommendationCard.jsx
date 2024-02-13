@@ -15,39 +15,40 @@ const RecommendationCard = ({ university }) => {
 
   return (
     <Link className="w-full flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all mb-4">
-      <div className="flex items-center space-x-4">
-        <img
-          alt="University Logo"
-          className="h-16 w-16 rounded-full"
-          src={UniversityImage}
-          style={{
-            aspectRatio: "50/50",
-            objectFit: "cover",
-          }}
-        />
-        <div className="text-left">
-          <h2 className="text-lg font-semibold">{subject}</h2>
-          <p className="text-sm text-gray-600">{name}</p>
-          <div className="flex items-center mt-1">
-            <StarIcon className="text-yellow-400 h-4 w-4" />
-            <StarIcon className="text-yellow-400 h-4 w-4" />
-            <StarIcon className="text-yellow-400 h-4 w-4" />
-            <StarIcon className="text-yellow-400 h-4 w-4" />
-            <StarIcon className="text-gray-300 h-4 w-4" />
-          </div>
-          <ul className="mt-5 text-[12px] ">
-            <li>
-              <strong>Tuition Fee:</strong> USD 8888/year
-            </li>
-            <li>
-              <strong>Duration:</strong> USD 333/year
-            </li>
-            <li>
-              <strong>Format:</strong> Part-time
-            </li>
-          </ul>
+      <img
+        alt="University Logo"
+        className="h-16 w-16 rounded-full "
+        src={UniversityImage}
+        style={{
+          aspectRatio: "50/50",
+          objectFit: "cover",
+        }}
+      />
+      <div className="text-left">
+        <h2 className="text-lg font-semibold">{subject}</h2>
+        <p className="text-sm text-gray-600">{name}</p>
+        <div className="flex items-center mt-1">
+          <StarIcon className="text-yellow-400 h-4 w-4" />
+          <StarIcon className="text-yellow-400 h-4 w-4" />
+          <StarIcon className="text-yellow-400 h-4 w-4" />
+          <StarIcon className="text-yellow-400 h-4 w-4" />
+          <StarIcon className="text-gray-300 h-4 w-4" />
         </div>
+        <ul className="mt-5 text-[12px] ">
+          <li>
+            <strong>Tuition Fee:</strong> USD 8888/year
+          </li>
+          <li>
+            <strong>Duration:</strong> USD 333/year
+          </li>
+          <li>
+            <strong>Format:</strong> Part-time
+          </li>
+        </ul>
       </div>
+      <button className=" bg-primary rounded-2xl text-white px-5 py-2 ml-auto block">
+        Apply Now!
+      </button>
     </Link>
   );
 };

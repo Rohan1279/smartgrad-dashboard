@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Form from "../../../components/Form/Form";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
+import { useNavigate, useParams } from "react-router-dom";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import axios from "@/api/axios";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import RecommendationTab from "./RecommendationTab/RecommendationTab";
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -19,80 +18,7 @@ const UniversityDashboard = () => {
   const [recommendationData, setRecommendationData] = useState([]);
 
   const navigate = useNavigate();
-  const recommendationDataDummy = [
-    {
-      id: 1,
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      id: 2,
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      id: 3,
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      id: 4,
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      id: 5,
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-    {
-      id: 6,
-      name: "Southeast Minnesota State University",
-      subject: "Master of Business Administration",
-      academic_expense: "USD 333/month",
-      card_image: "https://picsum.photos/400",
-      cost: "USD 8888/year",
-      job_permit: "Part-time",
-      logo: "https://picsum.photos/200",
-      offer_rate: "20%",
-      ratings: 4.5,
-    },
-  ];
+
   const formCallbacks = {
     success: () => setIsUserEligible(false),
     error: () => setIsUserEligible(true),
@@ -209,21 +135,7 @@ const UniversityDashboard = () => {
             )}
           </TabsContent>
           <TabsContent value="recommended">
-            <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10">
-              {recommendationDataDummy.length === 0 ? (
-                <div className="col-span-full flex flex-col items-center my-[70px]">
-                  <img src={SearchLockIcon} alt="" className="w-[520px] " />
-                  <p className="mt-4  w-full md:w-1/2  text-center">
-                    Smartgrad is looking for best universities that matches your
-                    interest. Thank you for your patience and be in touch.
-                  </p>
-                </div>
-              ) : (
-                recommendationDataDummy.map((item, idx) => {
-                  return <RecommendationCard key={idx} university={item} />;
-                })
-              )}
-            </ScrollArea>
+            <RecommendationTab />
           </TabsContent>
           {/* pass added university data later */}
           <TabsContent value="applications">
