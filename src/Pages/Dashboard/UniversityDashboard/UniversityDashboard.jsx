@@ -85,7 +85,7 @@ const UniversityDashboard = () => {
           </p>
         </div>
       </div>
-      <div className=" h-fit bg-[#F5F5F5] mt-5 px-4 sm:px-9 py-5 rounded-xl">
+      <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
         <Tabs defaultValue="search-form" className="">
           <TabsList>
             <TabsTrigger

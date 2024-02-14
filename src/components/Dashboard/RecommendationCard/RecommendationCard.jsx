@@ -14,16 +14,19 @@ const RecommendationCard = ({ university }) => {
   } = university;
 
   return (
-    <Link className="w-full flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all mb-4">
+    <Link className="w-full flex items-center justify-between gap-x-[26px] border bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all mb-4">
       <img
         alt="University Logo"
-        className="h-16 w-16 rounded-full "
-        src={UniversityImage}
+        className="h-[128px] w-[128px] rounded-[10px] relative"
+        src="https://picsum.photos/200/200"
         style={{
           aspectRatio: "50/50",
           objectFit: "cover",
         }}
       />
+      {/* <div className="h-10 w-10  absolute left-5 z-20 bg-white rounded-full translate-y-full">
+        <img src={UniversityImage} alt="" className="h-10 w-10 rounded-full" />
+      </div> */}
       <div className="text-left">
         <h2 className="text-lg font-semibold">{subject}</h2>
         <p className="text-sm text-gray-600">{name}</p>
@@ -34,7 +37,7 @@ const RecommendationCard = ({ university }) => {
           <StarIcon className="text-yellow-400 h-4 w-4" />
           <StarIcon className="text-gray-300 h-4 w-4" />
         </div>
-        <ul className="mt-5 text-[12px] ">
+        <ul className="hidden mmd:block mt-5 text-[12px] ">
           <li>
             <strong>Tuition Fee:</strong> USD 8888/year
           </li>
@@ -46,7 +49,7 @@ const RecommendationCard = ({ university }) => {
           </li>
         </ul>
       </div>
-      <button className=" bg-primary rounded-2xl text-white px-5 py-2 ml-auto block">
+      <button className=" bg-primary rounded-2xl text-white px-5 py-2 ml-auto hidden mmd:block">
         Apply Now!
       </button>
     </Link>

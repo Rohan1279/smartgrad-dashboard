@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Information from "./TabContents/Information";
+import Information from "./TabContents/Overview";
 import Documents from "./TabContents/Documents";
 import Status from "./TabContents/Status";
 

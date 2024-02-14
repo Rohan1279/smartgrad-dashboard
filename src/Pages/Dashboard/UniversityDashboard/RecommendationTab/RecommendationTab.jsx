@@ -6,9 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import UniversityBackgroundImage from "/assets/images/dashboard/university-background.png";
 import { StarIcon } from "lucide-react";
-import Information from "../ApplicationTab/TabContents/Information";
+import Overview from "../ApplicationTab/TabContents/Overview";
 import Documents from "../ApplicationTab/TabContents/Documents";
 import Status from "../ApplicationTab/TabContents/Status";
+import { ImCancelCircle } from "react-icons/im";
+
 const RecommendationTab = () => {
   const [tabVisible, setTabVisible] = useState(true);
 
@@ -72,7 +74,7 @@ const RecommendationTab = () => {
                       <span>Back</span>
                     </button>
                   )} */}
-                  <div className=" bg-white p-4 rounded-xl ">
+                  <div className=" bg-white rounded-xl border">
                     <div
                       style={{
                         backgroundImage: `url(${UniversityBackgroundImage})`,
@@ -80,9 +82,14 @@ const RecommendationTab = () => {
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                       }}
-                      className="flex relative items-center space-x-4  h-[252px] rounded-[10px] overflow-hidden"
+                      className="flex relative items-center space-x-4  h-[252px] rounded-t-[10px] overflow-hidden "
                     >
                       <div className="bg-gradient-to-r from-white to-white/10 absolute w-full h-full z-0"></div>
+                      {!tabVisible && (
+                        <button onClick={() => setTabVisible(true)}>
+                          <ImCancelCircle className="w-[22px] h-[22px] absolute top-[15px] right-[30px] rounded-full text-black bg-white" />
+                        </button>
+                      )}
                       <div className="z-10">
                         <img
                           alt="University Logo"
@@ -107,25 +114,18 @@ const RecommendationTab = () => {
                             <StarIcon className="text-yellow-400 h-5 w-5" />
                             <StarIcon className="text-gray-300 h-5 w-5" />
                           </div>
-
-                          <p className="text-sm font-medium italic">
-                            Application ID : {university?.applicationId}
-                          </p>
-                          <p className="text-sm  italic">
-                            status : {university?.status}
-                          </p>
                         </div>
                       </div>
                     </div>
                     {/* ADD STATUS COMPONENT HERE */}
 
-                    <Tabs defaultValue="information" className="mt-10">
+                    <Tabs defaultValue="overview" className="mt-10 px-[40px]">
                       <TabsList>
                         <TabsTrigger
                           className="mr-[42px] relative group"
-                          value="information"
+                          value="overview"
                         >
-                          Information
+                          Overview
                           <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
                         </TabsTrigger>
                         <TabsTrigger
@@ -145,8 +145,8 @@ const RecommendationTab = () => {
                       </TabsList>
                       <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
-                      <TabsContent value="information" className={"pt-8"}>
-                        <Information />
+                      <TabsContent value="overview" className={"pt-8"}>
+                        <Overview />
                       </TabsContent>
                       <TabsContent value="documents">
                         <Documents />

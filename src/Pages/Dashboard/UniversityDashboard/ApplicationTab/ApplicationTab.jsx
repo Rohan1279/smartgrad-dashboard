@@ -1,7 +1,7 @@
 import ApplicationCard from "./ApplicationCard";
 import ApplicatonDetailPage from "./ApplicatonDetailPage";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Information from "./TabContents/Information";
+import Information from "./TabContents/Overview";
 import Documents from "./TabContents/Documents";
 import Status from "./TabContents/Status";
 import { useState } from "react";
