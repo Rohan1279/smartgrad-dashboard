@@ -1,6 +1,8 @@
 import React from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { CiClock1 } from "react-icons/ci";
+import { FaLock } from "react-icons/fa";
+
 const InfoSection = ({ Icon, title, subtitle }) => {
   return (
     <div className="flex items-start text-primary gap-x-2">
@@ -32,11 +34,14 @@ const Overview = () => {
           The Animal Science MSc program from Mississippi State University
           curriculum is based on a total of 30 credit hours.
         </p>
-        <p className="text-sm my-5">
+        <p className="text-sm my-5 flex gap-x-1">
           Visit the{" "}
-          <span className="text-blue-500  hover:underline cursor-pointer ">
-            visit programme website
-          </span>{" "}
+          <div className="flex">
+            <FaLock className="text-sm text-blue-500" />
+            <span className="text-blue-500  hover:underline cursor-pointer ">
+              visit programme website
+            </span>{" "}
+          </div>
           for more information
         </p>
       </div>

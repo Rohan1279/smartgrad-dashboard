@@ -71,7 +71,7 @@ const UniversityDashboard = () => {
   }, []);
 
   return (
-    <div className="text-[#595959] min-h-screen">
+    <div className="text-[#595959] min-h-fit">
       <div className="hidden md:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
         <img src={DashboardAvatar} alt="avatar" className="w-40" />
 
