@@ -15,6 +15,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const handleLogin = async (formData) => {
     const email = formData.email;
@@ -38,6 +39,7 @@ const Login = () => {
         setUser(response?.data?.user);
         localStorage.setItem("user", JSON.stringify(response?.data?.user));
         navigate("/dashboard/home");
+        reset();
         return "Logged in successfully";
       },
       error: (err) => {

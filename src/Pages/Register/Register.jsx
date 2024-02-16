@@ -18,6 +18,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleRegister = async (formData) => {
@@ -39,6 +40,7 @@ const Register = () => {
       loading: "Creating account...",
       success: () => {
         setRegistrationStatus(true);
+        reset();
         return "Account created successfully";
       },
       error: (err) => {

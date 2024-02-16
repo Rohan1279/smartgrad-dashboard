@@ -56,19 +56,17 @@ const Profile = () => {
     };
   }, []);
   return (
-    <div className="text-[#4B4E6D]">
-      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-2 sm:space-x-12">
-        <img src={DashboardAvatar} alt="avatar" className="w-40" />
+    <div className="text-primary ">
+      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
+        <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
           <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
-          <p className="pt-2">
-            Effortlessly manage all your applications here.
-          </p>
+          <p className="">Effortlessly manage all your applications here.</p>
         </div>
       </div>
-      <div className="">
-        <ul className="max-w-80 md:max-w-full overflow-x-scroll overflow-y-hidden md:overflow-y-hidden md:overflow-x-hidden flex items-center  mt-5 gap-y-4 pl-[10px]">
+      <div className="h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl shadow-md">
+        <ul className="max-w-80 md:max-w-full overflow-x-scroll overflow-y-hidden md:overflow-y-hidden md:overflow-x-hidden flex items-center  mt-5 gap-y-4 pl-[10px] ">
           {formManager?.form?.map((item) => {
             return (
               <button
@@ -96,13 +94,14 @@ const Profile = () => {
             );
           })}
         </ul>
+
+        <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
+        <Form
+          currentForm={currentForm}
+          setCurrentForm={setCurrentForm}
+          currentTab={currentTab}
+        />
       </div>
-      <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
-      <Form
-        currentForm={currentForm}
-        setCurrentForm={setCurrentForm}
-        currentTab={currentTab}
-      />
     </div>
   );
 };

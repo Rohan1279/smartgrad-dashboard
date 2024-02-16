@@ -1,6 +1,6 @@
 import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
@@ -10,9 +10,23 @@ import Overview from "../ApplicationTab/TabContents/Overview";
 import Documents from "../ApplicationTab/TabContents/Documents";
 import Status from "../ApplicationTab/TabContents/Status";
 import { ImCancelCircle } from "react-icons/im";
+import axios from "@/api/axios";
 
 const RecommendationTab = () => {
   const [tabVisible, setTabVisible] = useState(true);
+  const [recommendationData, setRecommendationData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/university/recommendations", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setRecommendationData(data?.data);
+      });
+  }, []);
 
   const recommendationDataDummy = [
     {
@@ -46,10 +60,11 @@ const RecommendationTab = () => {
       universityImage: "path_to_image_3.jpg",
     },
   ];
+  // add the useEffects here
   return (
     <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10 max-h-screen">
       <Tabs defaultValue="" className="">
-        {recommendationDataDummy?.map((university, idx) => {
+        {recommendationData?.map((university, idx) => {
           return (
             <div key={idx}>
               <TabsList className={`${tabVisible ? "block" : "hidden"}`}>
@@ -64,16 +79,6 @@ const RecommendationTab = () => {
               </TabsList>
               <TabsContent value={university.applicationId} className={""}>
                 <div className="">
-                  {/* {!tabVisible && (
-                    <button
-                      onClick={() => setTabVisible(true)}
-                      type="button"
-                      className=" flex items-center font-bold px-3  py-2 rounded-md bg-primary text-white active:scale-95 transition-all mb-4"
-                    >
-                      <IoIosArrowBack />
-                      <span>Back</span>
-                    </button>
-                  )} */}
                   <div className=" bg-white rounded-xl border">
                     <div
                       style={{

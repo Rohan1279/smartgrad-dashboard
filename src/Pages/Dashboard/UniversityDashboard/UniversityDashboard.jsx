@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Form from "../../../components/Form/Form";
@@ -7,6 +7,7 @@ import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import axios from "@/api/axios";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -16,6 +17,7 @@ const UniversityDashboard = () => {
   const [isUserEligible, setIsUserEligible] = useState(false);
   const [isEligibilityLoading, setIsEligibilityLoading] = useState(false);
   const [recommendationData, setRecommendationData] = useState([]);
+  const { user } = useContext(Authcontext);
 
   const navigate = useNavigate();
 
@@ -71,13 +73,13 @@ const UniversityDashboard = () => {
   }, []);
 
   return (
-    <div className="text-[#595959] min-h-fit">
-      <div className="hidden md:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-12">
-        <img src={DashboardAvatar} alt="avatar" className="w-40" />
+    <div className="text-primary min-h-fit">
+      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
+        <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
-          <h1 className="text-[40px] font-bold ">My Dashboard</h1>
-          <p className="pt-2">
+          <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
+          <p className="">
             Your Smartgrad dashboard streamlines the application process,
             offering personalized university recommendations. Simplify your
             journey to higher education with tailored options that align with
@@ -101,6 +103,13 @@ const UniversityDashboard = () => {
               disabled={isUserEligible}
             >
               Magic Recommendations
+              {/*  */}
+              {recommendationData?.length > 0 &&
+                recommendationData?.length !== undefined && (
+                  <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] text-[9px] text-center text-white">
+                    {recommendationData.length}
+                  </span>
+                )}
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
