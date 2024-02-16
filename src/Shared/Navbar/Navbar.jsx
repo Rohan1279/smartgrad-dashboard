@@ -1,4 +1,4 @@
-import NavIcon from "/assets/images/navbar/smart-grad.png";
+import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
 import { useEffect, useRef, useState } from "react";
 import UniversitiesMenu from "./Menus/UniversitiesMenu";
@@ -55,12 +55,12 @@ export default function Navbar() {
             {/* Logo and Brand Name */}
             <Link to={"/"} className="flex-shrink-0 flex items-center">
               <img
-                className="block lg:hidden w-24"
+                className="block lg:hidden w-28"
                 src={NavIcon}
                 alt="Your Logo"
               />
               <img
-                className="hidden lg:block w-24"
+                className="hidden lg:block w-28"
                 src={NavIcon}
                 alt="Your Logo"
               />
