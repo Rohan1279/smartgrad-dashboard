@@ -1,24 +1,25 @@
 import { Link } from "react-router-dom";
 import UniversityImage from "/assets/images/dashboard/university-logo.png";
 
-const RecommendationCard = ({ university }) => {
+const RecommendationCard = ({ universityData }) => {
   const {
-    id,
-    subject,
-    name,
-    rating,
-    universityImage,
+    university,
+    programme,
+    university_image,
     tuition_fees,
-    duration,
+    start_date,
+    score,
+    discipline,
     format,
-  } = university;
+    duration,
+  } = universityData;
 
   return (
     <Link className="w-full flex items-center justify-between gap-x-[26px] border bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all mb-4">
       <img
         alt="University Logo"
         className="h-[128px] w-[128px] rounded-[10px] relative"
-        src="https://picsum.photos/200/200"
+        src={university_image}
         style={{
           aspectRatio: "50/50",
           objectFit: "cover",
@@ -28,24 +29,26 @@ const RecommendationCard = ({ university }) => {
         <img src={UniversityImage} alt="" className="h-10 w-10 rounded-full" />
       </div> */}
       <div className="text-left">
-        <h2 className="text-lg font-semibold">{subject}</h2>
-        <p className="text-sm text-gray-600">{name}</p>
+        <h2 className="text-lg font-semibold">{programme}</h2>
+        <p className="text-sm text-gray-600">{university}</p>
         <div className="flex items-center mt-1">
-          <StarIcon className="text-yellow-400 h-4 w-4" />
-          <StarIcon className="text-yellow-400 h-4 w-4" />
-          <StarIcon className="text-yellow-400 h-4 w-4" />
-          <StarIcon className="text-yellow-400 h-4 w-4" />
-          <StarIcon className="text-gray-300 h-4 w-4" />
+          {[...Array(5)].map((_, i) => {
+            return i < score ? (
+              <StarIcon key={i} className="text-yellow-400 h-4 w-4" />
+            ) : (
+              <StarIcon key={i} className="text-gray-300 h-4 w-4" />
+            );
+          })}
         </div>
         <ul className="hidden mmd:block mt-5 text-[12px] ">
           <li>
-            <strong>Tuition Fee:</strong> USD 8888/year
+            <strong>Tuition Fee:</strong> {tuition_fees}
           </li>
           <li>
-            <strong>Duration:</strong> USD 333/year
+            <strong>Duration:</strong> {duration}
           </li>
           <li>
-            <strong>Format:</strong> Part-time
+            <strong>Format:</strong> {format}
           </li>
         </ul>
       </div>
