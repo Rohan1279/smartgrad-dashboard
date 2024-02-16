@@ -5,7 +5,7 @@ const RecommendationCard = ({ universityData }) => {
   const {
     university,
     programme,
-    university_image,
+    university_logo,
     tuition_fees,
     start_date,
     score,
@@ -18,8 +18,8 @@ const RecommendationCard = ({ universityData }) => {
     <Link className="w-full flex items-center justify-between gap-x-[26px] border bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all mb-4">
       <img
         alt="University Logo"
-        className="h-[128px] w-[128px] rounded-[10px] relative"
-        src={university_image}
+        className="h-[128px] w-[128px] rounded-[10px] relative "
+        src={university_logo}
         style={{
           aspectRatio: "50/50",
           objectFit: "cover",
@@ -34,9 +34,15 @@ const RecommendationCard = ({ universityData }) => {
         <div className="flex items-center mt-1">
           {[...Array(5)].map((_, i) => {
             return i < score ? (
-              <StarIcon key={i} className="text-yellow-400 h-4 w-4" />
+              <StarIcon
+                key={i}
+                className="text-yellow-400 fill-yellow-400 h-4 w-4"
+              />
             ) : (
-              <StarIcon key={i} className="text-gray-300 h-4 w-4" />
+              <StarIcon
+                key={i}
+                className="text-gray-300 fill-gray-300h-4 w-4"
+              />
             );
           })}
         </div>

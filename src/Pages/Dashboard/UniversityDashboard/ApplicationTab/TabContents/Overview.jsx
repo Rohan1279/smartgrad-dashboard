@@ -2,6 +2,10 @@ import React from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { CiClock1 } from "react-icons/ci";
 import { FaLock } from "react-icons/fa";
+import { TbMoneybag } from "react-icons/tb";
+import { Link } from "react-router-dom";
+import { CiLocationArrow1 } from "react-icons/ci";
+import { SlCalender } from "react-icons/sl";
 
 const InfoSection = ({ Icon, title, subtitle }) => {
   return (
@@ -15,17 +19,61 @@ const InfoSection = ({ Icon, title, subtitle }) => {
   );
 };
 
-const Overview = () => {
+const Overview = ({ universityData }) => {
+  const {
+    university,
+    programme,
+    university_image,
+    tuition_fees,
+    start_date,
+    score,
+    discipline,
+    format,
+    duration,
+    scholarship,
+    deadline_date,
+  } = universityData;
   return (
     <div className="text-primary">
       <div className="grid grid-cols-2  mmd:grid-cols-4 sm:pl-5 py-8 justify-items-stretch">
-        <InfoSection title={"1 year"} subtitle={"Duration"} />
-        <InfoSection
-          title={"2,213,213,324 BDT/year"}
-          subtitle={"Scholarships available"}
-        />
-        <InfoSection title={"Mar 2024"} subtitle={"Apply date"} />
-        <InfoSection title={"Jun 2024"} subtitle={"Start date"} />
+        <div className="flex items-start text-primary gap-x-2">
+          <CiClock1 className="text-2xl" />
+          <div>
+            <p className="font-extrabold">{duration}</p>
+            <p>Duration</p>
+          </div>
+        </div>
+
+        <div className="flex items-start text-primary gap-x-2">
+          <TbMoneybag className="text-2xl" />
+          <div>
+            <p className="font-extrabold">{tuition_fees}</p>
+            {scholarship && (
+              <Link to={scholarship} target="_blank">
+                Scholarships available
+              </Link>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-start text-primary gap-x-2">
+          <CiLocationArrow1 className="text-2xl" />
+          <div>
+            <p className="font-extrabold">{start_date}</p>
+            <p>Start Date</p>
+          </div>
+        </div>
+        <div className="flex items-start text-primary gap-x-2">
+          <SlCalender className="text-2xl" />
+          <div>
+            <p className="font-extrabold">{deadline_date}</p>
+            <p>Deadline</p>
+          </div>
+        </div>
+
+        {/* <InfoSection title={tuition_fees} subtitle={"Scholarships available"} /> */}
+        {/* <InfoSection title={"Mar 2024"} subtitle={"Apply date"} /> */}
+        {/* <InfoSection title={start_date} subtitle={"Start date"} /> */}
       </div>
       <hr className="border border-t-[#f5f5f5]  w-11/12 mx-auto my-12"></hr>
       <div>

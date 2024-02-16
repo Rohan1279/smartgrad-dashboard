@@ -34,14 +34,13 @@ const Profile = () => {
       })
       .then(({ data }) => {
         setFormManager(data?.data);
-
         // default sets the first tab or the first tab
         setCurrentTab(
           () =>
             data?.data?.form.find((item) => item?.form_id === parseInt(id))
               ?.form_id || data.data.form[0].form_id
         );
-        // default sets the first form or the first form
+        // default sets the first form
         setCurrentForm(
           () =>
             data?.data?.form.find((item) => item?.form_id === parseInt(id)) ||
@@ -59,7 +58,6 @@ const Profile = () => {
     <div className="text-primary ">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
-
         <div className="text-center md:text-left">
           <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
           <p className="">Effortlessly manage all your applications here.</p>

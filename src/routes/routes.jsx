@@ -62,6 +62,22 @@ const router = createBrowserRouter([
         element: <UniversityDashboard />,
       },
       {
+        path: "university/recommendation",
+        element: <UniversityDashboard />,
+      },
+      {
+        path: "university/recommendation/:id",
+        element: <UniversityDashboard />,
+      },
+      {
+        path: "university/applications",
+        element: <UniversityDashboard />,
+      },
+      {
+        path: "university/applications/:id",
+        element: <UniversityDashboard />,
+      },
+      {
         path: "career",
         element: <CareerDashboard />,
       },

@@ -8,6 +8,8 @@ import axios from "@/api/axios";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import { useLocation } from "react-router-dom";
+
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -19,6 +21,14 @@ const UniversityDashboard = () => {
   const [recommendationData, setRecommendationData] = useState([]);
   const { user } = useContext(Authcontext);
 
+  const location = useLocation();
+  const [defaultTab, setDefaultTab] = useState(
+    location?.pathname?.includes("search-form")
+      ? "applications"
+      : location?.pathname?.includes("recommendation")
+      ? "recommendation"
+      : "search-form"
+  );
   const navigate = useNavigate();
 
   const formCallbacks = {
@@ -88,7 +98,7 @@ const UniversityDashboard = () => {
         </div>
       </div>
       <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
-        <Tabs defaultValue="search-form" className="">
+        <Tabs defaultValue={defaultTab} className="">
           <TabsList>
             <TabsTrigger
               className="mr-[42px] relative group"
@@ -101,8 +111,9 @@ const UniversityDashboard = () => {
               className={`mr-[42px] relative group ${
                 isUserEligible && "text-primary"
               }`}
-              value="recommended"
+              value="recommendation"
               disabled={isUserEligible || recommendationData?.length === 0}
+              onClick={() => navigate("/dashboard/university/recommendation")}
             >
               Magic Recommendations
               {/*  */}
@@ -117,6 +128,7 @@ const UniversityDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="applications"
+              onClick={() => navigate("/dashboard/university/applications")}
             >
               Applications
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
@@ -148,7 +160,8 @@ const UniversityDashboard = () => {
               </div>
             )}
           </TabsContent>
-          <TabsContent value="recommended">
+
+          <TabsContent value="recommendation">
             <RecommendationTab />
           </TabsContent>
           {/* pass added university data later */}

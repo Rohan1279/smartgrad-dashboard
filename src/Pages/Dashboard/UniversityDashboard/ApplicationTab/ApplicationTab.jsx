@@ -60,18 +60,8 @@ const ApplicationTab = () => {
                   <ApplicationCard university={university} />
                 </TabsTrigger>
               </TabsList>
-              <TabsContent value={university.applicationId} className={""}>
+              <TabsContent value={university?.applicationId} className={""}>
                 <div className="">
-                  {/* {!tabVisible && (
-                    <button
-                      onClick={() => setTabVisible(true)}
-                      type="button"
-                      className=" flex items-center font-bold px-3  py-2 rounded-md bg-primary text-white active:scale-95 transition-all mb-4"
-                    >
-                      <IoIosArrowBack />
-                      <span>Back</span>
-                    </button>
-                  )} */}
                   <div className=" bg-white p-4 rounded-xl ">
                     <div
                       style={{
