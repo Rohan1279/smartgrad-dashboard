@@ -73,7 +73,7 @@ const DashboardHome = () => {
   }, [width]);
 
   return (
-    <div className="text-[#4B4E6D] ">
+    <div className="text-primary ">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
@@ -84,12 +84,14 @@ const DashboardHome = () => {
         </div>
       </div>
       {/* GRID */}
+      {/* DESKTOP */}
       <div className="hidden lg:block">
         <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
           <FeedContent posts={posts} />
           <DashCardContent />
         </div>
       </div>
+      {/* MOBILE */}
       <div className="block lg:hidden">
         <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
           <div

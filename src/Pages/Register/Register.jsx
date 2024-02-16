@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import NavIcon from "/assets/images/navbar/smart-grad.png";
+import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 import axios from "@/api/axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";

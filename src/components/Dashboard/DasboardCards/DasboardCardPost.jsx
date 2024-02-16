@@ -53,7 +53,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   }, []);
   return (
     <>
-      <Card className={"min-w-full my-5 border-none shadow-md "}>
+      <Card className={"min-w-full my-5 border mmd:border-none mmd:shadow-md "}>
         <CardHeader className="">
           <div className="flex justify-between items-start">
             <div className="flex items-center justify-start space-x-2">
@@ -63,17 +63,6 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
                 <CardDescription className={"text-xs"}>{time}</CardDescription>
               </div>
             </div>
-            {/* <DropdownMenu>
-              <DropdownMenuTrigger>
-                <AiOutlineEllipsis className="text-2xl cursor-pointer transition-all outline-none" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu> */}
           </div>
         </CardHeader>
         <CardContent className="m-w-fit contentCard " ref={imageContainerRef}>
