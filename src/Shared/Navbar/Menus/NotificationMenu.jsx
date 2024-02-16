@@ -1,18 +1,34 @@
-import { useEffect, useState } from "react";
-import NotificationIcon from "/assets/images/navbar/notification/notification.svg";
-
 import axios from "@/api/axios";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 import notificationIcons from "@/utils/Icon";
+import { pusher } from "@/utils/pusher";
+import { useContext, useEffect, useState } from "react";
+import NotificationIcon from "/assets/images/navbar/notification/notification.svg";
 
 const NotificationMenu = () => {
+  const { user } = useContext(Authcontext);
   const [notifications, setNotifications] = useState([]);
-  
+
+  useEffect(() => {
+    console.log("outer");
+    if (user?.id !== undefined) {
+      console.log("inner");
+      const channel = pusher.subscribe(import.meta.env.VITE_PUSHER_CHANNEL+user?.id);
+      
+      channel.bind(import.meta.env.VITE_PUSHER_EVENT, function(data) {
+        setNotifications((prev) => {
+          return [data,...prev ];
+        });
+      })
+    }
+  }, [user]);
 
 
   useEffect(() => {
@@ -27,8 +43,6 @@ const NotificationMenu = () => {
       });
   }, []);
 
-  const name = "John Doe";
-  name.substring(0, 1);
 
   return (
     <div>
@@ -50,6 +64,7 @@ const NotificationMenu = () => {
               </DropdownMenuItem>
             ))
           }
+          <Button className="w-full bg-transparent text-primary">View All</Button>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
