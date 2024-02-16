@@ -137,7 +137,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
       <form
         // action={currentForm?.action}
         onSubmit={handleFormSubmit}
-        className="grid grid-cols-1 md:grid-cols-2 gap-x-4 w-full  items-center justify-start"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 w-full  items-center justify-start"
       >
         {/* IMPLEMENT THE PRIORITY PROPERTY */}
         {sortedInputs?.map((input, index) => {
