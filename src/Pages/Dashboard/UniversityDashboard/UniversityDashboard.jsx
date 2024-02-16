@@ -98,7 +98,9 @@ const UniversityDashboard = () => {
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
-              className="mr-[42px] relative group"
+              className={`mr-[42px] relative group ${
+                isUserEligible && "text-primary"
+              }`}
               value="recommended"
               disabled={isUserEligible}
             >

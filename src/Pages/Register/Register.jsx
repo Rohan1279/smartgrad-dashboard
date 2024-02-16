@@ -98,7 +98,7 @@ const Register = () => {
             {errors.name?.type === "required" && "Name is required"}
           </p>
         </div>
-        <div className="w-full  ">
+        <div className="w-full mb-3 ">
           <label htmlFor="email" className="text-left block">
             Email Address
           </label>

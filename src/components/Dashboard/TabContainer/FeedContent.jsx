@@ -11,7 +11,7 @@ const FeedContent = ({ posts }) => {
             <h1 className="hidden lg:block cursor-default pl-[10px]  font-semibold">
               Feed
             </h1>
-            <hr className="hidden lg:block mt-[10px] h-1 border-x-none border-t-[#4B4E6D] " />
+            <hr className="hidden lg:block mt-[10px] h-1 border-x-none   border-t-[#4B4E6D] " />
           </div>
           <div className="mt-4 mmd:mt-12 ">
             {posts?.map((item, idx) => {

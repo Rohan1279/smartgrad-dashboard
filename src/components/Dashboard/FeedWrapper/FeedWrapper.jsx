@@ -5,7 +5,7 @@ import { Fragment } from "react";
 const FeedWrapper = ({ children, className }) => {
   return (
     <Fragment>
-      <ScrollArea className={`w-full max-h-screen  sm:h-auto ${className}  `}>
+      <ScrollArea className={`w-full  h-[90vh] sm:h-auto ${className}  `}>
         {children}
       </ScrollArea>
     </Fragment>
