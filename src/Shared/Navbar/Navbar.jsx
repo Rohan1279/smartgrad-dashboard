@@ -1,22 +1,16 @@
-import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
-import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
-import { useEffect, useRef, useState } from "react";
-import UniversitiesMenu from "./Menus/UniversitiesMenu";
-import CareersMenu from "./Menus/CareersMenu";
-import AptitudesMenu from "./Menus/AptitudesMenu";
-import NetworksMenu from "./Menus/NetworksMenu";
 import clsx from "clsx";
+import { useRef, useState } from "react";
+import AptitudesMenu from "./Menus/AptitudesMenu";
+import CareersMenu from "./Menus/CareersMenu";
+import NetworksMenu from "./Menus/NetworksMenu";
+import UniversitiesMenu from "./Menus/UniversitiesMenu";
 import SlideWrapper from "./SlideWrapper";
-import BellIcon from "/assets/images/navbar/bell.svg";
-import UniversityIcon from "../../components/ThemeIcons/UniversityIcon";
-import CareerIcon from "../../components/ThemeIcons/CareerIcon";
-import AptitudeIcon from "../../components/ThemeIcons/AptitudeIcon";
-import NetworkIcon from "../../components/ThemeIcons/NetworkIcon";
-import DashboardIcon from "../../components/ThemeIcons/DashboardIcon";
+import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
+import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 
 import { Link, useLocation } from "react-router-dom";
-import ProfileMenu from "./Menus/ProfileMenu";
 import NotificationMenu from "./Menus/NotificationMenu";
+import ProfileMenu from "./Menus/ProfileMenu";
 // import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
 
 export default function Navbar() {
@@ -27,15 +21,15 @@ export default function Navbar() {
   const refs = useRef([]);
   const location = useLocation();
 
-  const onMouseEnter = (index, element) => {
-    sethovering(index);
-    setPopOverLeft(element.offsetLeft);
-    const menuElement = refs.current[index];
-    if (menuElement) {
-      setPopOverHeight(menuElement.offsetHeight);
-      setPopOverWidth(menuElement.offsetWidth);
-    }
-  };
+  // const onMouseEnter = (index, element) => {
+  //   sethovering(index);
+  //   setPopOverLeft(element.offsetLeft);
+  //   const menuElement = refs.current[index];
+  //   if (menuElement) {
+  //     setPopOverHeight(menuElement.offsetHeight);
+  //     setPopOverWidth(menuElement.offsetWidth);
+  //   }
+  // };
   return (
     <nav
       onMouseLeave={() => {
