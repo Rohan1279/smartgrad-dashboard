@@ -102,7 +102,7 @@ const UniversityDashboard = () => {
                 isUserEligible && "text-primary"
               }`}
               value="recommended"
-              disabled={isUserEligible}
+              disabled={isUserEligible || recommendationData?.length === 0}
             >
               Magic Recommendations
               {/*  */}
