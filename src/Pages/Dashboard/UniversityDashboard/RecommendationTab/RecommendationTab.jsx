@@ -74,7 +74,7 @@ const RecommendationTab = () => {
                   value={university.applicationId}
                   onMouseDown={() => setTabVisible((prev) => !prev)}
                 >
-                  <RecommendationCard university={university} />
+                  <RecommendationCard universityData={university} />
                 </TabsTrigger>
               </TabsList>
               <TabsContent value={university.applicationId} className={""}>

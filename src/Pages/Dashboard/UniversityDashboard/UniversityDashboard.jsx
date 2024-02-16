@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Form from "../../../components/Form/Form";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import axios from "@/api/axios";
-import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
-import RecommendationTab from "./RecommendationTab/RecommendationTab";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Form from "../../../components/Form/Form";
+import ApplicationTab from "./ApplicationTab/ApplicationTab";
+import RecommendationTab from "./RecommendationTab/RecommendationTab";
+import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
+import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -105,7 +105,6 @@ const UniversityDashboard = () => {
               disabled={isUserEligible || recommendationData?.length === 0}
             >
               Magic Recommendations
-              {/*  */}
               {recommendationData?.length > 0 &&
                 recommendationData?.length !== undefined && (
                   <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] text-[9px] text-center text-white">
