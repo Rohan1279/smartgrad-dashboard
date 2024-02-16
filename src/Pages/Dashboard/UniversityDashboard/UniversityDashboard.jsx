@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Form from "../../../components/Form/Form";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import axios from "@/api/axios";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
@@ -140,6 +140,9 @@ const UniversityDashboard = () => {
                   Smartgrad is looking for best universities that matches your
                   interest. Thank you for your patience and be in touch.
                 </p>
+                <button className="bg-primary text-white px-5 py-3 rounded-[10px] mt-4">
+                  <Link to="/dashboard/home">Back To Dashboard</Link>
+                </button>
               </div>
             )}
           </TabsContent>
