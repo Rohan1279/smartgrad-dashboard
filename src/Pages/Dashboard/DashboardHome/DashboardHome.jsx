@@ -1,15 +1,8 @@
-import FeedWrapper from "@/components/Dashboard/FeedWrapper/FeedWrapper";
-import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
-import UniversitiesCard from "@/components/Dashboard/ThemeCards/UniversitiesCard/UniversitiesCard";
-import CoursesCard from "@/components/Dashboard/ThemeCards/CoursesCard/CoursesCard";
-import OpputunitiesCard from "@/components/Dashboard/ThemeCards/OpputunitiesCard/OpputunitiesCard";
-import NetworksCard from "@/components/Dashboard/ThemeCards/NetworksCard/NetworksCard";
-import DasboardCardPost from "@/components/Dashboard/DasboardCards/DasboardCardPost";
-import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
-import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
-import { useContext, useEffect, useState } from "react";
-import useWindowDimensions from "@/core/windowsDimention";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import useWindowDimensions from "@/core/windowsDimention";
+import { useContext, useEffect, useState } from "react";
+import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
+import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
 
 const DashboardHome = () => {
   const { width } = useWindowDimensions();
@@ -74,7 +67,7 @@ const DashboardHome = () => {
 
   return (
     <div className="text-primary  ">
-      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
+      {/* <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
@@ -82,7 +75,7 @@ const DashboardHome = () => {
           <p className="">Chittagong, Bangladesh</p>
           <p className="">Complete Your Profile</p>
         </div>
-      </div>
+      </div> */}
       {/* GRID */}
       {/* DESKTOP */}
       <div className="hidden lg:block">
