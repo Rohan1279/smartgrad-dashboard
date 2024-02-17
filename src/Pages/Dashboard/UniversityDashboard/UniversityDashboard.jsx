@@ -6,7 +6,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Form from "../../../components/Form/Form";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
-import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
 const UniversityDashboard = () => {
   const { id } = useParams();
@@ -74,7 +73,7 @@ const UniversityDashboard = () => {
 
   return (
     <div className="text-primary min-h-fit">
-      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
+      {/* <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
@@ -86,7 +85,7 @@ const UniversityDashboard = () => {
             your ambitions and preferences.
           </p>
         </div>
-      </div>
+      </div> */}
       <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
         <Tabs defaultValue="search-form" className="">
           <TabsList>
