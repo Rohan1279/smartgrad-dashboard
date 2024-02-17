@@ -79,7 +79,7 @@ const DashboardHome = () => {
       {/* GRID */}
       {/* DESKTOP */}
       <div className="hidden lg:block">
-        <div className="grid grid-cols-3 gap-y-4 h-full mt-5 ">
+        <div className="grid grid-cols-3 gap-2 h-full">
           <FeedContent posts={posts} />
           <DashCardContent />
         </div>

@@ -1,9 +1,9 @@
-import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 import { Progress } from "@/components/ui/progress";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
+import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
+import UniversityImage from "/assets/images/dashboard/university-logo.png";
 
 const UniversitiesCard = () => {
   const universities = [
@@ -30,7 +30,7 @@ const UniversitiesCard = () => {
   ];
   return (
     <DasboardCardTheme>
-      <div className="flex flex-row rounded-lg gap-x-4 ">
+      <div className="flex flex-row rounded-lg gap-x-4">
         <div className=" flex-1">
           <div className="flex items-center gap-x-2">
             <UniversityIcon className={"min-w-8 max-w-8 fill-primary  "} />
