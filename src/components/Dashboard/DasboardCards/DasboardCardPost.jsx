@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -7,19 +6,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { AiOutlineEllipsis } from "react-icons/ai";
+import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 // Import Swiper styles
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   const slider = useRef();
@@ -53,7 +46,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   }, []);
   return (
     <>
-      <Card className={"min-w-full my-5 border mmd:border-none mmd:shadow-md "}>
+      <Card className={"min-w-full my-5 border mmd:border-none mmd:shadow-md"}>
         <CardHeader className="">
           <div className="flex justify-between items-start">
             <div className="flex items-center justify-start space-x-2">

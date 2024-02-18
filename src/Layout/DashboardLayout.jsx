@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import DashboardDrawer from "../Shared/DashboardDrawer/DashboardDrawer";
 import Navbar from "../Shared/Navbar/Navbar";
-import DashboardBackground from "/assets/images/dashboard/dashboard-background.png";
 const DashboardLayout = () => {
   return (
     <div
@@ -17,9 +16,9 @@ const DashboardLayout = () => {
       <div className="absolute bottom-0 mmd:bottom-auto z-50 pointer-events-none mmd:pointer-events-auto mmd:fixed flex items-end mmd:items-center justify-center w-full mmd:w-auto  h-screen">
         <DashboardDrawer />
       </div>
-      <div className=" pt-0  mmd:pt-8 h-fit sm:px-12 grid grid-col-5 mmd:grid-cols-7 justify-items-center  mmd:pb-10 ">
-        <div className="col-span-1 w-full "></div>
-        <div className="col-span-6 xl:col-span-5 w-full">
+      <div className="pt-0 mmd:py-10 h-fit sm:px-12 grid grid-col-5 mmd:grid-cols-9 justify-items-center mmd:pb-10">
+        <div className="col-span-1 w-full"></div>
+        <div className="col-span-6 mmd:col-span-7 w-full">
           <Outlet />
         </div>
         <div className="col-span-1 w-full"></div>

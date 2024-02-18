@@ -1,9 +1,9 @@
-import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 import { Progress } from "@/components/ui/progress";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
+import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
+import UniversityImage from "/assets/images/dashboard/university-logo.png";
 
 const UniversitiesCard = () => {
   const universities = [
@@ -30,27 +30,27 @@ const UniversitiesCard = () => {
   ];
   return (
     <DasboardCardTheme>
-      <div className="flex flex-row rounded-lg gap-x-4 ">
+      <div className="flex flex-row rounded-lg gap-x-4">
         <div className=" flex-1">
           <div className="flex items-center gap-x-2">
-            <UniversityIcon className={"min-w-8 max-w-8 fill-primary  "} />
-            <h1>Universities Applied</h1>
+            <UniversityIcon className={"min-w-8 max-w-8 fill-primary "} />
+            <h1 className="text-lg font-semibold">Universities Applied</h1>
           </div>
-          <ScrollArea className="h-[120px] pr-4 ">
+          <ScrollArea className="h-[120px] p-2 py-4 ">
             {universities?.map((item, idx) => {
               return (
                 <div
                   key={idx}
                   className="flex items-center space-x-2 mb-2 p-1 cursor-pointer bg-white rounded-md hover:shadow-sm transition-all"
                 >
-                  <div className="w-12">
+                  <div className="w-16">
                     <img
                       src={UniversityImage}
                       alt="university-logo"
                       className="mt-auto"
                     />
                   </div>
-                  <div className="text-xs">
+                  <div className="">
                     <p>{item.name}</p>
                     <p>{item.status}</p>
                     <Progress value={item.progress} className={"w-full mt-1"} />
@@ -65,7 +65,7 @@ const UniversitiesCard = () => {
             onClick={() => {
               toast("Coming Soon");
             }}
-            className=" py-1 underline text-[12px] rounded-lg whitespace-nowrap"
+            className="text-sm py-1 underline rounded-lg whitespace-nowrap"
           >
             View All
           </button>

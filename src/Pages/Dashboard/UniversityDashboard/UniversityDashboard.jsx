@@ -6,9 +6,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Form from "../../../components/Form/Form";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
+import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
-import { useLocation } from "react-router-dom";
-
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -81,7 +80,7 @@ const UniversityDashboard = () => {
 
   return (
     <div className="text-primary min-h-fit">
-      {/* <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
+      <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
@@ -93,9 +92,9 @@ const UniversityDashboard = () => {
             your ambitions and preferences.
           </p>
         </div>
-      </div> */}
+      </div>
       <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
-        <Tabs defaultValue={defaultTab} className="">
+        <Tabs defaultValue="search-form" className="">
           <TabsList>
             <TabsTrigger
               className="mr-[42px] relative group"
@@ -108,9 +107,8 @@ const UniversityDashboard = () => {
               className={`mr-[42px] relative group ${
                 isUserEligible && "text-primary"
               }`}
-              value="recommendation"
+              value="recommended"
               disabled={isUserEligible || recommendationData?.length === 0}
-              onClick={() => navigate("/dashboard/university/recommendation")}
             >
               Magic Recommendations
               {recommendationData?.length > 0 &&
@@ -124,7 +122,6 @@ const UniversityDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="applications"
-              onClick={() => navigate("/dashboard/university/applications")}
             >
               Applications
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
@@ -156,8 +153,7 @@ const UniversityDashboard = () => {
               </div>
             )}
           </TabsContent>
-
-          <TabsContent value="recommendation">
+          <TabsContent value="recommended">
             <RecommendationTab />
           </TabsContent>
           {/* pass added university data later */}
