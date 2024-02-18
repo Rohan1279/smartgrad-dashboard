@@ -19,6 +19,12 @@ const UniversityDashboard = () => {
   const [recommendationData, setRecommendationData] = useState([]);
   const { user } = useContext(Authcontext);
 
+  const location = useLocation();
+  const [defaultTab, setDefaultTab] = useState(
+    location?.pathname?.includes("recommendation")
+      ? "recommendation"
+      : "applications"
+  );
   const navigate = useNavigate();
 
   const formCallbacks = {

@@ -24,6 +24,7 @@ const RecommendationTab = () => {
   const navigate = useNavigate();
   // console.log(allRecommendationData?.find((item) => item?.id === parseInt(id)));
   // console.log(id);
+
   useEffect(() => {
     axios
       .get("/university/recommendations", {
@@ -35,6 +36,9 @@ const RecommendationTab = () => {
         setAllRecommendationData(data?.data);
       });
   }, []);
+  // useEffect(() => {
+  //   setTabVisible()
+  // }, [])
 
   // const recommendationDataDummy = [
   //   {
@@ -69,6 +73,7 @@ const RecommendationTab = () => {
   //   },
   // ];
   // add the useEffects here
+  
   return (
     <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10 max-h-screen">
       {tabVisible ? (
