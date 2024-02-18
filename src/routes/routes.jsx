@@ -29,7 +29,6 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     errorElement: <ErrorPage />,
-
     element: (
       <ProtectedRoute>
         <DashboardLayout />

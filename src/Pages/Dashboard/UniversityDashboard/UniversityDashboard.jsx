@@ -2,7 +2,7 @@ import axios from "@/api/axios";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Form from "../../../components/Form/Form";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
