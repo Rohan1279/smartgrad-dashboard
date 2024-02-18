@@ -23,11 +23,9 @@ const UniversityDashboard = () => {
 
   const location = useLocation();
   const [defaultTab, setDefaultTab] = useState(
-    location?.pathname?.includes("search-form")
-      ? "applications"
-      : location?.pathname?.includes("recommendation")
+    location?.pathname?.includes("recommendation")
       ? "recommendation"
-      : "search-form"
+      : "applications"
   );
   const navigate = useNavigate();
 
