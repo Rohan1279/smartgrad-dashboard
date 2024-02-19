@@ -1,12 +1,11 @@
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import useGlobalContext from "@/hooks/useGlobalContext";
-import PropTypes from "prop-types";
 
 
 const Modal = () => {
@@ -24,12 +23,6 @@ const Modal = () => {
       </DialogContent>
     </Dialog>
   );
-};
-
-Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

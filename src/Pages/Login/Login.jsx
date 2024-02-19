@@ -1,22 +1,26 @@
-import { useForm } from "react-hook-form";
-import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Separator } from "@/components/ui/separator";
-import useAuth from "../../hooks/useAuth";
 import axios from "@/api/axios";
-import { toast } from "sonner";
+import { Separator } from "@/components/ui/separator";
 import { setAuthToken } from "@/utils/setAuthToken";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import useAuth from "../../hooks/useAuth";
+import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 const Login = () => {
-  const { setUser, setAuth } = useAuth();
+  const { setUser, setAuth, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
+
   const handleLogin = async (formData) => {
     const email = formData.email;
     const password = formData.password;
@@ -29,6 +33,7 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+
 
     toast.promise(loginPromise, {
       loading: "Logging in...",
@@ -57,6 +62,13 @@ const Login = () => {
       },
     });
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard/home");
+    }
+  }, [user, navigate]);
+
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
       <div className="hidden mmd:flex w-full col-span-4 flex justify-center items-center">

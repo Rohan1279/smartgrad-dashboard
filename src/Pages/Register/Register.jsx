@@ -1,13 +1,12 @@
-import { useForm } from "react-hook-form";
-import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 import axios from "@/api/axios";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
-import useAuth from "../../hooks/useAuth";
-import { setAuthToken } from "@/utils/setAuthToken";
-import { toast } from "sonner";
-import { useContext, useEffect, useState } from "react";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import useAuth from "../../hooks/useAuth";
+import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 
 const Register = () => {
   const [registrationStatus, setRegistrationStatus] = useState(false);
@@ -60,8 +59,9 @@ const Register = () => {
       },
     });
   };
-  if (user && auth) {
-    return <Navigate to={"/dashboard"} />;
+  
+  if (user) {
+    return <Navigate to={"/dashboard/home"} />;
   } else {
     return (
       <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
