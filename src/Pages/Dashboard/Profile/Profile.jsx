@@ -12,9 +12,7 @@ const Profile = () => {
   const { id } = useParams();
   const {openModal} = useGlobalContext();
 
-  const infoClicked = () => {
-    openModal({title: 'This is the feed page', content: <h1>This is feed</h1>});
-  }
+
 
   const { user } = useContext(Authcontext);
   const [formManager, setFormManager] = useState({});
@@ -63,13 +61,15 @@ const Profile = () => {
       setCurrentTab(null);
     };
   }, []);
+
+
   return (
     <div className="text-primary ">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
         <div className="text-center md:text-left">
           <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
-          <p className="">Effortlessly manage all your applications here.</p>
+          <p className="">Effortlessly manage all your applications here.</p>
         </div>
       </div>
 

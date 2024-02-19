@@ -1,7 +1,6 @@
 import axios from "@/api/axios";
 import { Separator } from "@/components/ui/separator";
 import { setAuthToken } from "@/utils/setAuthToken";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -65,11 +64,6 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard/home");
-    }
-  }, [user, navigate]);
 
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">

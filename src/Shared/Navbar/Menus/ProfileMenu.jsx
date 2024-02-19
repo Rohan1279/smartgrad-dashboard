@@ -1,29 +1,24 @@
-import React from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import AvatarIcon from "/assets/images/navbar/avatar-icon.svg";
-import LogOutIcon from "/assets/images/navbar/profile/logout.svg";
-import LogOutIconActive from "/assets/images/navbar/profile/logout-active.svg";
-import ProfileIcon from "/assets/images/navbar/profile/profile.svg";
-import ProfileIconActive from "/assets/images/navbar/profile/profile-active.svg";
-import SettingIcon from "/assets/images/navbar/profile/setting.svg";
-import SettingIconActive from "/assets/images/navbar/profile/setting-active.svg";
+import axios from "@/api/axios";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import useAuth from "@/hooks/useAuth";
-import axios from "@/api/axios";
-import getAuthToken from "@/utils/useAuthToken";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import AvatarIcon from "/assets/images/navbar/avatar-icon.svg";
+import LogOutIcon from "/assets/images/navbar/profile/logout.svg";
+import ProfileIconActive from "/assets/images/navbar/profile/profile-active.svg";
+import ProfileIcon from "/assets/images/navbar/profile/profile.svg";
+import SettingIcon from "/assets/images/navbar/profile/setting.svg";
 // const authToken = getAuthToken();
 const ProfileMenu = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const navigate = useNavigate();
-  const { auth, setAuth } = useAuth();
+  
+  
   const logout = async () => {
     const authToken = localStorage.getItem("token");
     // try {
@@ -43,24 +38,10 @@ const ProfileMenu = () => {
     toast.promise(logoutPromise, {
       loading: "Logging out...",
       success: () => {
-        localStorage.removeItem("token");
-        setAuth(false);
-
-        navigate("/login");
         return "Logged out successfully";
       },
       error: (err) => {
-        switch (err?.response?.status) {
-          case 400: {
-            return "Invalid Credentials";
-          }
-          case 401: {
-            return "Unauthorized";
-          }
-          default: {
-            return "Something went wrong";
-          }
-        }
+        return "Something went wrong";
       },
     });
 
@@ -75,6 +56,9 @@ const ProfileMenu = () => {
     //   });
     //   navigate("/login");
     // }
+
+    logOut();
+    navigate("/login")
   };
   const location = useLocation();
   const isActive = location.pathname === "/dashboard/profile";
