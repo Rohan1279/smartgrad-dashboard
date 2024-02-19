@@ -7,8 +7,8 @@ export const GlobalContext = createContext(null)
 const ContextProvider = ({children}) => {
     const [modal,setModal] = useState({isOpen:false, content: null, title: ''});
 
-    const openModal = (content, title) => {
-        setModal({isOpen:true, content, title});
+    const openModal = (data) => {
+        setModal({isOpen:true, content: data.content, title: data.title});
     }
 
     const closeModal = () => {
