@@ -1,12 +1,12 @@
-import useAuthToken from "@/utils/useAuthToken";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 
 export const Authcontext = createContext();
+
+
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [auth, setAuth] = useState(false);
-
   const [loading, setLoading] = useState(false);
   // const authToken = useAuthToken();
 
@@ -53,7 +53,9 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <Authcontext.Provider value={authInfo}>{children}</Authcontext.Provider>
+    <Authcontext.Provider value={authInfo}>
+        {children}
+    </Authcontext.Provider>
   );
 };
 

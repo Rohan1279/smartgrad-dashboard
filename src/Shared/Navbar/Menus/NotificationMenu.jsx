@@ -70,7 +70,7 @@ const NotificationMenu = () => {
             alt="avatar-icon"
             className="w-5 cursor-pointer transition-all outline-none"
           />
-          {(notifications?.filter(data=> data?.unread)).length > 0 && (
+          {(notifications.filter(data=> data?.unread)).length > 0 && (
             <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] -top-1 -right-2 text-[9px] text-center text-white">
               {(notifications.filter(data=> data?.unread)).length}
             </span>
