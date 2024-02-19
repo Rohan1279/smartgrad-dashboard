@@ -1,14 +1,20 @@
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 
-import { useContext, useEffect, useState } from "react";
-import Form from "../../../components/Form/Form";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "@/api/axios";
-import { Authcontext } from "@/contexts/AuthContextProvider";
 import Loader from "@/components/Loader/Loader";
+import { Authcontext } from "@/contexts/AuthContextProvider";
+import useGlobalContext from "@/hooks/useGlobalContext";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Form from "../../../components/Form/Form";
 
 const Profile = () => {
   const { id } = useParams();
+  const {openModal} = useGlobalContext();
+
+  const infoClicked = () => {
+    openModal({title: 'This is the feed page', content: <h1>This is feed</h1>});
+  }
 
   const { user } = useContext(Authcontext);
   const [formManager, setFormManager] = useState({});

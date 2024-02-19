@@ -1,9 +1,8 @@
-import React from "react";
-import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Progress } from "@/components/ui/progress";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import AptitudeIcon from "../../../ThemeIcons/AptitudeIcon";
+import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
 
 const CoursesCard = () => {
   const courses = [
@@ -37,14 +36,14 @@ const CoursesCard = () => {
             <AptitudeIcon
               className={"min-w-8 max-w-8 fill-none stroke-primary"}
             />
-            <h1>Courses Completed</h1>
+            <h1 className="text-lg font-semibold">Courses Completed</h1>
           </div>
           <ScrollArea className="h-[120px] pr-4 ">
             {courses?.map((item, idx) => {
               return (
                 <div
                   key={idx}
-                  className="flex items-center space-x-2 mb-2 p-1 cursor-pointer bg-white rounded-md hover:shadow-sm transition-all"
+                  className="flex items-center space-x-2 mb-2 p-4 cursor-pointer bg-white rounded-md hover:shadow-sm transition-all"
                 >
                   <div className="w-12 h-12 rounded-md overflow-hidden mt-auto">
                     <img
@@ -68,7 +67,7 @@ const CoursesCard = () => {
             onClick={() => {
               toast("Coming Soon");
             }}
-            className=" py-1 underline text-[12px] rounded-lg whitespace-nowrap"
+            className="text-sm py-1 underline rounded-lg whitespace-nowrap"
           >
             View All
           </button>
