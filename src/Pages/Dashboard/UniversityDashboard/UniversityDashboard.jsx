@@ -1,4 +1,5 @@
 import axios from "@/api/axios";
+import Loader from "@/components/Loader/Loader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import { useContext, useEffect, useState } from "react";
@@ -8,7 +9,6 @@ import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
-import Loader from "@/components/Loader/Loader";
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -22,11 +22,7 @@ const UniversityDashboard = () => {
   const { user } = useContext(Authcontext);
 
   const location = useLocation();
-  const [defaultTab, setDefaultTab] = useState(
-    location?.pathname?.includes("recommendation")
-      ? "recommendation"
-      : "applications"
-  );
+  const [defaultTab, setDefaultTab] = useState("");
   const navigate = useNavigate();
 
   const formCallbacks = {
@@ -47,7 +43,23 @@ const UniversityDashboard = () => {
   }, []);
 
   useEffect(() => {
-    setIsSearchFormLoading(true);
+    if(location && location.pathname){
+      const path = location.pathname;
+      if(path.includes("applications")){
+        setDefaultTab("applications");
+        return;
+      }
+      if(path.includes("recommendation")){
+        setDefaultTab("recommendation");
+        return;
+      }else{
+        setDefaultTab("search-form");
+      }
+    }
+  }, [location]);
+  
+
+  useEffect(() => {
     axios
       .get("/university/eligible", {
         params: {
@@ -98,7 +110,7 @@ const UniversityDashboard = () => {
         </div>
       </div>
       <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
-        <Tabs defaultValue="search-form" className="">
+        <Tabs  defaultValue="search-form" value={defaultTab} className="">
           <TabsList>
             <TabsTrigger
               className="mr-[42px] relative group"

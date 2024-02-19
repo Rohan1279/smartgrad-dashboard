@@ -1,6 +1,5 @@
 import AboutUs from "@/Pages/AboutUs/AboutUs";
 import Home from "@/Pages/Home/Home";
-import ErrorPage from "@/Shared/ErrorPage/ErrorPage";
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
@@ -17,7 +16,7 @@ import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     element: <Main />,
     children: [
       {
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     element: (
       <ProtectedRoute>
         <DashboardLayout />

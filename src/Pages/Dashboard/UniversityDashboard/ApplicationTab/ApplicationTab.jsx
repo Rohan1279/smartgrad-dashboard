@@ -1,12 +1,9 @@
-import ApplicationCard from "./ApplicationCard";
-import ApplicatonDetailPage from "./ApplicatonDetailPage";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Information from "./TabContents/Overview";
-import Documents from "./TabContents/Documents";
-import Status from "./TabContents/Status";
 import { useState } from "react";
-import { IoIosArrowBack } from "react-icons/io";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
+import ApplicationCard from "./ApplicationCard";
+import Documents from "./TabContents/Documents";
+import Information from "./TabContents/Overview";
+import Status from "./TabContents/Status";
 import UniversityBackgroundImage from "/assets/images/dashboard/university-background.png";
 
 const ApplicationTab = () => {
@@ -20,7 +17,11 @@ const ApplicationTab = () => {
       applicationDate: "June 23, 2023",
       applicationId: "30459",
       status: "Application In-review",
-      universityImage: "path_to_image_1.jpg",
+      universityImage: "/assets/images/dashboard/university-logo.png",
+      duration: "2 years",
+      tuition_fees: "USD 20000",
+      start_date: "August 2023",
+      deadline_date: "December 2023",
     },
     {
       id: "2",
@@ -28,9 +29,13 @@ const ApplicationTab = () => {
       name: "Southeast Minnesota State University",
       rating: 4,
       applicationDate: "June 23, 2023",
-      applicationId: "30460",
+      applicationId: "30459",
       status: "Application In-review",
-      universityImage: "path_to_image_2.jpg",
+      universityImage: "/assets/images/dashboard/university-logo.png",
+      duration: "2 years",
+      tuition_fees: "USD 20000",
+      start_date: "August 2023",
+      deadline_date: "December 2023",
     },
     {
       id: "3",
@@ -38,11 +43,16 @@ const ApplicationTab = () => {
       name: "Southeast Minnesota State University",
       rating: 4,
       applicationDate: "June 23, 2023",
-      applicationId: "30461",
+      applicationId: "30459",
       status: "Application In-review",
-      universityImage: "path_to_image_3.jpg",
+      universityImage: "/assets/images/dashboard/university-logo.png",
+      duration: "2 years",
+      tuition_fees: "USD 20000",
+      start_date: "August 2023",
+      deadline_date: "December 2023",
     },
   ];
+
 
   return (
     <div className="py-4 rounded-xl  flex flex-col space-y-3 text-primary ">
@@ -77,7 +87,7 @@ const ApplicationTab = () => {
                         <img
                           alt="University Logo"
                           className="h-16 w-16 rounded-full"
-                          src={UniversityImage}
+                          src={university.universityImage}
                           style={{
                             aspectRatio: "50/50",
                             objectFit: "cover",
@@ -107,7 +117,6 @@ const ApplicationTab = () => {
                         </div>
                       </div>
                     </div>
-                    {/* ADD STATUS COMPONENT HERE */}
 
                     <Tabs defaultValue="information" className="mt-10">
                       <TabsList>
@@ -136,10 +145,10 @@ const ApplicationTab = () => {
                       <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
                       <TabsContent value="information" className={"pt-8"}>
-                        <Information />
+                        <Information universityData={university} />
                       </TabsContent>
                       <TabsContent value="documents">
-                        <Documents />
+                        <Documents  />
                       </TabsContent>
                       <TabsContent value="status">
                         <Status />

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
 
 const ApplicationCard = ({ university }) => {
   const {
@@ -13,13 +12,16 @@ const ApplicationCard = ({ university }) => {
     universityImage,
   } = university;
 
+
+
+
   return (
     <Link className="flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all">
       <div className="flex items-center space-x-4">
         <img
           alt="University Logo"
           className="h-16 w-16 rounded-full"
-          src={UniversityImage}
+          src={universityImage}
           style={{
             aspectRatio: "50/50",
             objectFit: "cover",

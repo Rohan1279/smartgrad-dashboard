@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Information from "./TabContents/Overview";
+import { useParams } from "react-router-dom";
 import Documents from "./TabContents/Documents";
+import Information from "./TabContents/Overview";
 import Status from "./TabContents/Status";
+import UniversityImage from "/assets/images/dashboard/university-logo.png";
 
 const ApplicatonDetailPage = () => {
   const universityData = {
@@ -17,7 +17,7 @@ const ApplicatonDetailPage = () => {
     universityImage: "path_to_image_1.jpg",
   };
   const { id } = useParams();
-  console.log("id", id);
+  
   return (
     <div className="">
       {/* MAKE 2 DIVS HERE */}

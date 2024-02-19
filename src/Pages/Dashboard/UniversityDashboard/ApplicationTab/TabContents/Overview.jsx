@@ -1,11 +1,8 @@
-import React from "react";
-import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
-import { CiClock1 } from "react-icons/ci";
+import { CiClock1, CiLocationArrow1 } from "react-icons/ci";
 import { FaLock } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 import { TbMoneybag } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import { CiLocationArrow1 } from "react-icons/ci";
-import { SlCalender } from "react-icons/sl";
 
 const InfoSection = ({ Icon, title, subtitle }) => {
   return (
@@ -23,7 +20,7 @@ const Overview = ({ universityData }) => {
   const {
     university,
     programme,
-    university_image,
+    universityImage,
     tuition_fees,
     start_date,
     score,
