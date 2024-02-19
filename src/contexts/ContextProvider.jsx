@@ -5,11 +5,20 @@ import AuthContextProvider from "./AuthContextProvider";
 export const GlobalContext = createContext(null)
 
 const ContextProvider = ({children}) => {
-    const [modal,setModal] = useState();
+    const [modal,setModal] = useState({isOpen:false, content: null, title: ''});
+
+    const openModal = (content, title) => {
+        setModal({isOpen:true, content, title});
+    }
+
+    const closeModal = () => {
+        setModal({isOpen:false, content: null, title: ''});
+    }
 
     const contextData = {
         modal,
-        setModal
+        openModal,
+        closeModal
     }
 
     return (
