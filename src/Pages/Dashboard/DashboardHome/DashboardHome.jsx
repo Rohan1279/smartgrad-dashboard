@@ -22,9 +22,9 @@ const DashboardHome = () => {
       author_image: "https://smartgrad.org/assets/favicon-32x32.png",
       content: "Innovation 2024 is here. Register now, Guys",
       images: [
-        "https://smartgrad.org/assets/image/slider/slider-4.jpg",
-        "https://smartgrad.org/assets/image/news-event/u.jpeg",
-        "https://smartgrad.org/assets/image/news-event/y.jpeg",
+        "/assets/images/dashboard/posts/new-post-1.png",
+        "/assets/images/dashboard/posts/new-post-2.png",
+        "/assets/images/dashboard/posts/new-post-3.png",
       ],
       time: "2 days ago",
     },
