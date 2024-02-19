@@ -5,6 +5,7 @@ import Form from "../../../components/Form/Form";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "@/api/axios";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import Loader from "@/components/Loader/Loader";
 
 const Profile = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const Profile = () => {
   const [formManager, setFormManager] = useState({});
   const [currentForm, setCurrentForm] = useState({});
   const [currentTab, setCurrentTab] = useState(null);
+  const [isFormLoading, setIsFormLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,8 +26,8 @@ const Profile = () => {
   };
 
   useEffect(() => {
+    setIsFormLoading(true);
     // MAKE THIS A CUSTOM HOOK FOR FORM MANGER
-
     axios
       .get("/form/profile", {
         params: {
@@ -33,6 +35,7 @@ const Profile = () => {
         },
       })
       .then(({ data }) => {
+        setIsFormLoading(false);
         setFormManager(data?.data);
         // default sets the first tab or the first tab
         setCurrentTab(
@@ -63,13 +66,20 @@ const Profile = () => {
           <p className="">Effortlessly manage all your applications here.</p>
         </div>
       </div>
+
       <div className="h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl shadow-md">
-        <ul className="max-w-80 md:max-w-full overflow-x-scroll overflow-y-hidden md:overflow-y-hidden md:overflow-x-hidden flex items-center  mt-5 gap-y-4 pl-[10px] ">
-          {formManager?.form?.map((item) => {
-            return (
-              <button
-                key={item?.form_id}
-                className={`  
+        {isFormLoading ? (
+          <div className="w-full">
+            <Loader className={"mx-auto w-28"} />
+          </div>
+        ) : (
+          <>
+            <ul className="max-w-80 md:max-w-full overflow-x-scroll overflow-y-hidden md:overflow-y-hidden md:overflow-x-hidden flex items-center  mt-5 gap-y-4 pl-[10px] ">
+              {formManager?.form?.map((item) => {
+                return (
+                  <button
+                    key={item?.form_id}
+                    className={`  
                 mr-[42px] relative flex-1 
                 ${
                   parseInt(currentTab) === item?.form_id
@@ -77,28 +87,31 @@ const Profile = () => {
                     : ""
                 }
               `}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setCurrentTab(item?.form_id);
-                  handleTabChange(item?.form_id);
-                  navigate("/dashboard/profile/" + item?.form_id);
-                }}
-              >
-                {item.name}
-                {parseInt(currentTab) === item?.form_id && (
-                  <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2" />
-                )}
-              </button>
-            );
-          })}
-        </ul>
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentTab(item?.form_id);
+                      handleTabChange(item?.form_id);
+                      navigate("/dashboard/profile/" + item?.form_id);
+                    }}
+                  >
+                    {item.name}
+                    {parseInt(currentTab) === item?.form_id && (
+                      <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2" />
+                    )}
+                  </button>
+                );
+              })}
+            </ul>
 
-        <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
-        <Form
-          currentForm={currentForm}
-          setCurrentForm={setCurrentForm}
-          currentTab={currentTab}
-        />
+            <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
+
+            <Form
+              currentForm={currentForm}
+              setCurrentForm={setCurrentForm}
+              currentTab={currentTab}
+            />
+          </>
+        )}
       </div>
     </div>
   );

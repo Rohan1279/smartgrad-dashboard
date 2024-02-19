@@ -48,17 +48,19 @@ const Login = () => {
         return "Logged in successfully";
       },
       error: (err) => {
-        switch (err?.response?.status) {
-          case 400: {
-            return "Invalid Credentials";
-          }
-          case 401: {
-            return "Unauthorized";
-          }
-          default: {
-            return "Something went wrong";
-          }
-        }
+        console.log(err);
+        return err?.response?.data?.error;
+        // switch (err?.response?.status) {
+        //   case 400: {
+        //     return "Invalid Credentials";
+        //   }
+        //   case 401: {
+        //     return "Unauthorized";
+        //   }
+        //   default: {
+        //     return "Something went wrong";
+        //   }
+        // }
       },
     });
   };

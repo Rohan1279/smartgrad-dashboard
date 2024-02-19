@@ -2,12 +2,13 @@ import axios from "@/api/axios";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Form from "../../../components/Form/Form";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
+import Loader from "@/components/Loader/Loader";
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -17,6 +18,7 @@ const UniversityDashboard = () => {
   const [isUserEligible, setIsUserEligible] = useState(false);
   const [isEligibilityLoading, setIsEligibilityLoading] = useState(false);
   const [recommendationData, setRecommendationData] = useState([]);
+  const [isSearchFormLoading, setIsSearchFormLoading] = useState(false);
   const { user } = useContext(Authcontext);
 
   const location = useLocation();
@@ -45,6 +47,7 @@ const UniversityDashboard = () => {
   }, []);
 
   useEffect(() => {
+    setIsSearchFormLoading(true);
     axios
       .get("/university/eligible", {
         params: {
@@ -63,6 +66,7 @@ const UniversityDashboard = () => {
         },
       })
       .then(({ data }) => {
+        setIsSearchFormLoading(false);
         setFormManager(data?.data);
         setCurrentTab(
           () =>
@@ -129,30 +133,36 @@ const UniversityDashboard = () => {
           </TabsList>
           <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
-          <TabsContent value="search-form">
-            {isUserEligible ? (
-              <Form
-                currentForm={currentForm}
-                setCurrentForm={setCurrentForm}
-                formManager={formManager}
-                currentTab={currentTab}
-                id={currentTab}
-                setFormManager={setFormManager}
-                cb={formCallbacks}
-              />
-            ) : (
-              <div className=" flex flex-col items-center my-[70px]">
-                <img src={SearchLockIcon} alt="" className="w-[520px] " />
-                <p className="mt-4  w-full md:w-1/2  text-center">
-                  Smartgrad is looking for best universities that matches your
-                  interest. Thank you for your patience and be in touch.
-                </p>
-                <button className="bg-primary text-white px-5 py-3 rounded-[10px] mt-4">
-                  <Link to="/dashboard/home">Back To Dashboard</Link>
-                </button>
-              </div>
-            )}
-          </TabsContent>
+          {isSearchFormLoading ? (
+            <div className="w-full">
+              <Loader className={"mx-auto w-28"} />
+            </div>
+          ) : (
+            <TabsContent value="search-form">
+              {isUserEligible ? (
+                <Form
+                  currentForm={currentForm}
+                  setCurrentForm={setCurrentForm}
+                  formManager={formManager}
+                  currentTab={currentTab}
+                  id={currentTab}
+                  setFormManager={setFormManager}
+                  cb={formCallbacks}
+                />
+              ) : (
+                <div className=" flex flex-col items-center my-[70px]">
+                  <img src={SearchLockIcon} alt="" className="w-[520px] " />
+                  <p className="mt-4  w-full md:w-1/2  text-center">
+                    Smartgrad is looking for best universities that matches your
+                    interest. Thank you for your patience and be in touch.
+                  </p>
+                  <button className="bg-primary text-white px-5 py-3 rounded-[10px] mt-4">
+                    <Link to="/dashboard/home">Back To Dashboard</Link>
+                  </button>
+                </div>
+              )}
+            </TabsContent>
+          )}
           <TabsContent value="recommended">
             <RecommendationTab />
           </TabsContent>
