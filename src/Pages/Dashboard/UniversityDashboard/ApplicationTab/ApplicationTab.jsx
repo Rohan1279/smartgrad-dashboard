@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
+import { IoIosCloseCircle } from "react-icons/io";
 import ApplicationCard from "./ApplicationCard";
 import Documents from "./TabContents/Documents";
 import Information from "./TabContents/Overview";
@@ -7,7 +8,7 @@ import Status from "./TabContents/Status";
 import UniversityBackgroundImage from "/assets/images/dashboard/university-background.png";
 
 const ApplicationTab = () => {
-  const [tabVisible, setTabVisible] = useState(true);
+  const [selectedTab, setSelectedTab] = useState(null);
   const universitiesData = [
     {
       id: "1",
@@ -15,7 +16,7 @@ const ApplicationTab = () => {
       name: "Southeast Minnesota State University",
       rating: 4,
       applicationDate: "June 23, 2023",
-      applicationId: "30459",
+      applicationId: "1",
       status: "Application In-review",
       universityImage: "/assets/images/dashboard/university-logo.png",
       duration: "2 years",
@@ -29,7 +30,7 @@ const ApplicationTab = () => {
       name: "Southeast Minnesota State University",
       rating: 4,
       applicationDate: "June 23, 2023",
-      applicationId: "30459",
+      applicationId: "2",
       status: "Application In-review",
       universityImage: "/assets/images/dashboard/university-logo.png",
       duration: "2 years",
@@ -43,7 +44,7 @@ const ApplicationTab = () => {
       name: "Southeast Minnesota State University",
       rating: 4,
       applicationDate: "June 23, 2023",
-      applicationId: "30459",
+      applicationId: "3",
       status: "Application In-review",
       universityImage: "/assets/images/dashboard/university-logo.png",
       duration: "2 years",
@@ -53,6 +54,13 @@ const ApplicationTab = () => {
     },
   ];
 
+  const handleTabClick = (applicationId) => {
+    setSelectedTab(applicationId);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedTab(null);
+  };
 
   return (
     <div className="py-4 rounded-xl  flex flex-col space-y-3 text-primary ">
@@ -60,17 +68,22 @@ const ApplicationTab = () => {
         {universitiesData?.map((university, idx) => {
           return (
             <div key={idx}>
-              <TabsList className={`${tabVisible ? "block" : "hidden"}`}>
+              <TabsList className={`${selectedTab ? "hidden" : "block"}`}>
                 <TabsTrigger
                   key={idx}
                   className="w-full mb-5"
                   value={university.applicationId}
-                  onMouseDown={() => setTabVisible((prev) => !prev)}
+                  onMouseDown={() => handleTabClick(university.applicationId)}
                 >
                   <ApplicationCard university={university} />
                 </TabsTrigger>
               </TabsList>
-              <TabsContent value={university?.applicationId} className={""}>
+              <TabsContent
+                value={university?.applicationId}
+                className={
+                  selectedTab === university.applicationId ? "" : "hidden"
+                }
+              >
                 <div className="">
                   <div className=" bg-white p-4 rounded-xl ">
                     <div
@@ -86,7 +99,7 @@ const ApplicationTab = () => {
                       <div className="z-10">
                         <img
                           alt="University Logo"
-                          className="h-16 w-16 rounded-full"
+                          className="h-16 w-16 rounded-full relative"
                           src={university.universityImage}
                           style={{
                             aspectRatio: "50/50",
@@ -115,6 +128,7 @@ const ApplicationTab = () => {
                             status : {university?.status}
                           </p>
                         </div>
+                        <IoIosCloseCircle className="text-white absolute top-2 right-2 border-2 rounded-full border-primary" size={30} onClick={handleCloseDetails} />
                       </div>
                     </div>
 
@@ -148,7 +162,7 @@ const ApplicationTab = () => {
                         <Information universityData={university} />
                       </TabsContent>
                       <TabsContent value="documents">
-                        <Documents  />
+                        <Documents />
                       </TabsContent>
                       <TabsContent value="status">
                         <Status />
