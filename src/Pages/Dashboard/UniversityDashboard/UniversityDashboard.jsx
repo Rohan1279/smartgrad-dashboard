@@ -115,6 +115,7 @@ const UniversityDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="search-form"
+              onClick={()=>navigate(`/dashboard/university`)}
             >
               Search
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
@@ -124,6 +125,7 @@ const UniversityDashboard = () => {
                 isUserEligible && "text-primary"
               }`}
               value="recommended"
+              onClick={()=>navigate(`/dashboard/university/recommended`)}
               disabled={isUserEligible || recommendationData?.length === 0}
             >
               Magic Recommendations
@@ -138,6 +140,7 @@ const UniversityDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="applications"
+              onClick={()=>navigate(`/dashboard/university/applications`)}
             >
               Applications
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
