@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const ComingSoon = () => {
   return (
     <div className="flex flex-col items-center shadow-md bg-white rounded-[20px] pl-[34px] py-[24px] h-[640px] mt-5 w-full">
-      <img src={ComingSoonImage} alt="coming-soon" className="w-1/3" />
-      <p className="w-1/3 text-center">
+      <img src={ComingSoonImage} alt="coming-soon" className=" mmd:w-1/3" />
+      <p className="mmd:w-1/3 text-center">
         This feature is under construction. Thank you for your patience. Will be
         available in a few weeks.
       </p>

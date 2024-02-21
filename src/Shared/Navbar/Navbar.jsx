@@ -47,7 +47,10 @@ export default function Navbar() {
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
           <div className="flex-1 flex items-center sm:items-stretch justify-start">
             {/* Logo and Brand Name */}
-            <Link to={"/"} className="flex-shrink-0 flex items-center">
+            <Link
+              to={"/dashboard/home"}
+              className="flex-shrink-0 flex items-center"
+            >
               <img
                 className="block lg:hidden w-28"
                 src={NavIcon}
