@@ -29,6 +29,7 @@ const AuthContextProvider = ({ children }) => {
   const logOut = () => {
     localStorage.removeItem("token");
     setAuth(false);
+    setUser(null);
     return null;
   };
   useEffect(() => {

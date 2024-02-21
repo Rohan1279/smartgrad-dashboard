@@ -59,8 +59,8 @@ const Register = () => {
       },
     });
   };
-  
-  if (user) {
+
+  if (user && Object.values(user).length > 0) {
     return <Navigate to={"/dashboard/home"} />;
   } else {
     return (
