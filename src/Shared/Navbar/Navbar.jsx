@@ -43,83 +43,28 @@ export default function Navbar() {
           : "block"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="relative flex items-center justify-between h-16">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
-          <div className="flex-1 flex items-center sm:items-stretch justify-start">
+          <div className="flex-1 flex items-center sm:items-stretch justify-start  ">
             {/* Logo and Brand Name */}
             <Link
               to={"/dashboard/home"}
-              className="flex-shrink-0 flex items-center"
+              className=" flex items-center bg-blue-400 "
             >
               <img
-                className="block lg:hidden w-28"
+                className="block lg:hidden w-28 "
                 src={NavIcon}
                 alt="Your Logo"
               />
               <img
-                className="hidden lg:block w-28"
+                className="hidden lg:block w-28 "
                 src={NavIcon}
                 alt="Your Logo"
               />
             </Link>
-            {/* Navigation Links */}
-            {/* <div className="hidden mmd:hidden justify-center items-center space-x-4 mmd:space-x-11 sm:ml-8 ">
-              <Link
-                onMouseEnter={(e) => {
-                  onMouseEnter(1, e.currentTarget);
-                }}
-                to="/"
-                className="flex items-center justify-center space-x-2 "
-              >
-                <UniversityIcon className={"w-8 fill-primary "} />
-                <span className="">Universities</span>
-              </Link>
-              <Link
-                onMouseEnter={(e) => {
-                  onMouseEnter(2, e.currentTarget);
-                }}
-                to="/"
-                className="flex items-center justify-center space-x-2 "
-              >
-                <CareerIcon className={"w-8 stroke-primary  fill-none"} />
-
-                <span className="">Careers</span>
-              </Link>
-              <Link
-                onMouseEnter={(e) => {
-                  onMouseEnter(3, e.currentTarget);
-                }}
-                to="/"
-                className="flex items-center justify-center space-x-2 "
-              >
-                <AptitudeIcon className={"w-8 stroke-primary  fill-none"} />
-
-                <span className="">Aptitudes</span>
-              </Link>
-              <Link
-                onMouseEnter={(e) => {
-                  onMouseEnter(4, e.currentTarget);
-                }}
-                to="/"
-                className="flex items-center justify-center space-x-2 "
-              >
-                <NetworkIcon className={"w-8 stroke-primary  fill-none"} />
-
-                <span className="">Networks</span>
-              </Link>
-              <Link
-                to={"/dashboard"}
-                className="flex items-center justify-center space-x-2 "
-              >
-                <DashboardIcon className={"w-5 fill-primary"} />
-
-                <span className="">Dashboard</span>
-              </Link>
-            </div> */}
           </div>
 
-          <div
+          {/* <div
             className={clsx(
               "absolute top-12  -ml-2  duration-500",
               hovering
@@ -160,7 +105,7 @@ export default function Navbar() {
                 />
               </SlideWrapper>
             </div>
-          </div>
+          </div> */}
 
           {/* Profile and Settings */}
           <div className="absolute  inset-y-0 right-0 flex space-x-7 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

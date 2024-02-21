@@ -43,21 +43,20 @@ const UniversityDashboard = () => {
   }, []);
 
   useEffect(() => {
-    if(location && location.pathname){
+    if (location && location.pathname) {
       const path = location.pathname;
-      if(path.includes("applications")){
+      if (path.includes("applications")) {
         setDefaultTab("applications");
         return;
       }
-      if(path.includes("recommendation")){
+      if (path.includes("recommendation")) {
         setDefaultTab("recommendation");
         return;
-      }else{
+      } else {
         setDefaultTab("search-form");
       }
     }
   }, [location]);
-  
 
   useEffect(() => {
     axios
@@ -110,22 +109,22 @@ const UniversityDashboard = () => {
         </div>
       </div>
       <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
-        <Tabs  defaultValue="search-form" value={defaultTab} className="">
+        <Tabs defaultValue="search-form" value={defaultTab} className="">
           <TabsList>
             <TabsTrigger
               className="mr-[42px] relative group"
               value="search-form"
-              onClick={()=>navigate(`/dashboard/university`)}
+              onClick={() => navigate(`/dashboard/university`)}
             >
               Search
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
               className={`mr-[42px] relative group ${
-                isUserEligible && "text-primary"
+                isUserEligible ? "text-primary" : "text-[#595959]"
               }`}
               value="recommended"
-              onClick={()=>navigate(`/dashboard/university/recommended`)}
+              onClick={() => navigate(`/dashboard/university/recommended`)}
               disabled={isUserEligible || recommendationData?.length === 0}
             >
               Magic Recommendations
@@ -140,7 +139,7 @@ const UniversityDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="applications"
-              onClick={()=>navigate(`/dashboard/university/applications`)}
+              onClick={() => navigate(`/dashboard/university/applications`)}
             >
               Applications
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
