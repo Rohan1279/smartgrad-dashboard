@@ -43,8 +43,8 @@ export default function Navbar() {
           : "block"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-2">
-        <div className="relative flex items-center justify-between h-16">
+      <div className="">
+        <div className="max-w-7xl  mx-auto px-2 relative flex items-center justify-between h-16">
           <div className="flex-1 flex items-center sm:items-stretch justify-start  ">
             {/* Logo and Brand Name */}
             <Link
