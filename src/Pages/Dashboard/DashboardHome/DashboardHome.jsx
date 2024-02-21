@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
 import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
 import useGlobalContext from "@/hooks/useGlobalContext";
+import { LiaCoinsSolid } from "react-icons/lia";
+import { Badge } from "@/components/ui/badge";
 
 const DashboardHome = () => {
   const { width } = useWindowDimensions();
@@ -68,13 +70,31 @@ const DashboardHome = () => {
   const { openModal } = useGlobalContext();
   let isFirstTime = 0;
   useEffect(() => {
-    // if (user?.has_booking) {
-    //   openModal({
-    //     title: <h1>Hi</h1>,
-    //     content: `You have recieved ${user?.credit} coins`,
-    //   });
-    // }
-  }, [openModal, user?.has_booking]);
+    if (user?.has_booking) {
+      openModal({
+        content: (
+          <div className="flex flex-col items-center gap-y-3">
+            <h1 className="text-primary text-xl mt-5 font-extrabold">
+              Congratulations
+            </h1>
+            <LiaCoinsSolid className="text-yellow-500 text-9xl" />
+            <p className="text-base text-green-600 font-bold">
+              Daily login bonus!
+            </p>
+            <Badge
+              variant="outline"
+              className={"text-primary py-2 px-3 bg-yellow-100 border-none "}
+            >
+              <LiaCoinsSolid className="text-yellow-500 text-lg mr-1 " />
+              <span className="text-primary">
+                You have earned {user?.credit} coins
+              </span>
+            </Badge>
+          </div>
+        ),
+      });
+    }
+  }, [openModal, user?.has_booking, user?.credit]);
 
   return (
     <div className="text-primary  ">

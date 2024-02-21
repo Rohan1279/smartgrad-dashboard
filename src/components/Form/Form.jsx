@@ -108,6 +108,7 @@ const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
       .then((response) => {
         console.log("Success:", response);
         cb?.success();
+        // cb?.
         toast("Saved successfully", {
           action: {
             label: "Close",
