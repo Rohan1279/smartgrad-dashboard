@@ -68,7 +68,7 @@ const DashboardHome = () => {
     return () => {};
   }, [width]);
   const { openModal } = useGlobalContext();
-  let isFirstTime = 0;
+
   useEffect(() => {
     const showDailyReward = localStorage.getItem("show_daily_reward");
     if (user?.daily_rewards && !showDailyReward) {
@@ -96,7 +96,7 @@ const DashboardHome = () => {
       });
       localStorage.setItem("show_daily_reward", true);
     }
-  }, [openModal, user?.has_booking, user?.credit]);
+  }, [user?.daily_rewards, openModal, user?.credit]);
 
   return (
     <div className="text-primary  ">

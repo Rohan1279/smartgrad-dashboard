@@ -1,16 +1,19 @@
 import { Outlet, useLocation } from "react-router-dom";
 import DashboardDrawer from "../Shared/DashboardDrawer/DashboardDrawer";
 import Navbar from "../Shared/Navbar/Navbar";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 const DashboardLayout = () => {
   const location = useLocation();
-  console.log(location?.pathname);
+  const { user } = useContext(Authcontext);
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
       "https://mediafiles.botpress.cloud/f7ddd465-a5d3-4bea-85b4-dd1d1d48882e/webchat/config.js";
-    document.body.appendChild(script);
-  }, []);
+    if (user) {
+      document.body.appendChild(script);
+    }
+  }, [user]);
 
   return (
     <div

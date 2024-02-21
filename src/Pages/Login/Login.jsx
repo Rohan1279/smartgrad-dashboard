@@ -6,19 +6,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import useAuth from "../../hooks/useAuth";
 import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
+import { useEffect } from "react";
 const Login = () => {
   const { setUser, setAuth, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-
 
   const handleLogin = async (formData) => {
     const email = formData.email;
@@ -32,7 +32,6 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
 
     toast.promise(loginPromise, {
       loading: "Logging in...",
@@ -63,7 +62,6 @@ const Login = () => {
       },
     });
   };
-
 
   return (
     <div className="grid grid-cols-7 w-full min-h-screen text-[#595959]">
