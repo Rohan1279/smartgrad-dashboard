@@ -1,17 +1,14 @@
-import clsx from "clsx";
-import { useRef, useState } from "react";
-import AptitudesMenu from "./Menus/AptitudesMenu";
-import CareersMenu from "./Menus/CareersMenu";
-import NetworksMenu from "./Menus/NetworksMenu";
-import UniversitiesMenu from "./Menus/UniversitiesMenu";
-import SlideWrapper from "./SlideWrapper";
-import GlobeEnIcon from "/assets/images/navbar/globe-en.png";
+import { useContext, useRef, useState } from "react";
 import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
+import { LiaCoinsSolid } from "react-icons/lia";
 
 import { Link, useLocation } from "react-router-dom";
 import NotificationMenu from "./Menus/NotificationMenu";
 import ProfileMenu from "./Menus/ProfileMenu";
 // import DashboardIcon from "/assets/images/dashboard/dashboard.svg";
+
+import { Badge } from "@/components/ui/badge";
+import { Authcontext } from "@/contexts/AuthContextProvider";
 
 export default function Navbar() {
   const [hovering, sethovering] = useState(null);
@@ -20,6 +17,7 @@ export default function Navbar() {
   const [popOverWidth, setPopOverWidth] = useState(0);
   const refs = useRef([]);
   const location = useLocation();
+  const { user } = useContext(Authcontext);
 
   // const onMouseEnter = (index, element) => {
   //   sethovering(index);
@@ -113,6 +111,13 @@ export default function Navbar() {
               EN
             </div>
             <NotificationMenu />
+            <Badge
+              variant="outline"
+              className={"text-primary py-2 px-3 border-primary"}
+            >
+              <LiaCoinsSolid className="text-yellow-500 text-lg mr-1 animate-bounce" />
+              <span className="text-primary">{user?.credit}</span>
+            </Badge>
             <ProfileMenu />
           </div>
         </div>
