@@ -16,7 +16,6 @@ const UniversityDashboard = () => {
   const [currentTab, setCurrentTab] = useState(id);
   const [currentForm, setCurrentForm] = useState({});
   const [isUserEligible, setIsUserEligible] = useState(false);
-  const [isEligibilityLoading, setIsEligibilityLoading] = useState(false);
   const [recommendationData, setRecommendationData] = useState([]);
   const [isSearchFormLoading, setIsSearchFormLoading] = useState(false);
   const { user } = useContext(Authcontext);
@@ -124,9 +123,9 @@ const UniversityDashboard = () => {
               className={`mr-[42px] relative group ${
                 isUserEligible && "text-primary"
               }`}
-              value="recommended"
-              onClick={()=>navigate(`/dashboard/university/recommended`)}
-              disabled={isUserEligible || recommendationData?.length === 0}
+              value="recommendation"
+              onClick={()=>navigate(`/dashboard/university/recommendation`)}
+              disabled={recommendationData?.length === 0}
             >
               Magic Recommendations
               {recommendationData?.length > 0 &&
@@ -178,7 +177,7 @@ const UniversityDashboard = () => {
               )}
             </TabsContent>
           )}
-          <TabsContent value="recommended">
+          <TabsContent value="recommendation">
             <RecommendationTab />
           </TabsContent>
           {/* pass added university data later */}

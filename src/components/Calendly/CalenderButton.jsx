@@ -1,9 +1,12 @@
 import { Authcontext } from "@/contexts/AuthContextProvider";
-import React, { useContext } from "react";
+import { useContext } from "react";
 
-const CalenderButton = ({ text }) => {
+const CalenderButton = ({ text, cb }) => {
   const { user } = useContext(Authcontext);
+  
   const handleClick = () => {
+    cb && cb();
+    
     window.Calendly.initPopupWidget({
       url: "https://calendly.com/arnab_barua/30min",
       prefill: {

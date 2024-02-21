@@ -1,22 +1,28 @@
-import React from "react";
+import axios from "@/api/axios";
+import CalenderButton from "@/components/Calendly/CalenderButton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import UniversityBackgroundImage from "/assets/images/dashboard/university-background.png";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
 import { StarIcon } from "lucide-react";
-import Overview from "../../ApplicationTab/TabContents/Overview";
-import Documents from "../../ApplicationTab/TabContents/Documents";
-import Status from "../../ApplicationTab/TabContents/Status";
 import { ImCancelCircle } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
+import Overview from "../../ApplicationTab/TabContents/Overview";
+import Status from "../../ApplicationTab/TabContents/Status";
 import AdmissionRequirementsTab from "./AdmissionRequirementsTab";
-import CalenderButton from "@/components/Calendly/CalenderButton";
 
 const RecommendationDetailPage = ({
   currentRecommendationData,
   tabVisible,
   setTabVisible,
 }) => {
-  console.log(currentRecommendationData);
+  
+  const bookASession = () => {
+    axios.post("/university/bookings", {
+        application_id: currentRecommendationData?.id,
+      }, {
+      params: {
+        token: localStorage.getItem("token"),
+      }}
+    )
+  }
 
   const navigate = useNavigate();
   return (
@@ -62,12 +68,11 @@ const RecommendationDetailPage = ({
                 <StarIcon className="text-gray-300 h-[9xpx] fill-[#D9D9D9] w-[12px]" />
               </div>
               <div className="flex gap-x-2">
-                <CalenderButton text="Apply Now!" />
+                <CalenderButton text="Apply Now!" cb={bookASession} />
               </div>
             </div>
           </div>
         </div>
-        {/* ADD STATUS COMPONENT HERE */}
 
         <Tabs defaultValue="overview" className="mt-10 px-[40px]">
           <TabsList>

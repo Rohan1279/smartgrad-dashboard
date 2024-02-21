@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
 
 const RecommendationCard = ({ universityData }) => {
   const {
@@ -59,7 +58,7 @@ const RecommendationCard = ({ universityData }) => {
         </ul>
       </div>
       <button className=" bg-primary rounded-2xl text-white px-5 py-2 ml-auto hidden mmd:block">
-        Apply Now!
+        View Details
       </button>
     </Link>
   );
