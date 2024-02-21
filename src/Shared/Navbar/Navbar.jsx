@@ -30,6 +30,7 @@ export default function Navbar() {
   //     setPopOverWidth(menuElement.offsetWidth);
   //   }
   // };
+
   return (
     <nav
       onMouseLeave={() => {
@@ -162,12 +163,10 @@ export default function Navbar() {
           </div>
 
           {/* Profile and Settings */}
-          <div className="absolute inset-y-0 right-0 flex space-x-7 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <img
-              src={GlobeEnIcon}
-              alt="globe-icon"
-              className="w-7 cursor-pointer transition-all"
-            />
+          <div className="absolute  inset-y-0 right-0 flex space-x-7 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className=" border border-primary rounded-[5px] text-xs text-primary  px-3 py-2  ">
+              EN
+            </div>
             <NotificationMenu />
             <ProfileMenu />
           </div>

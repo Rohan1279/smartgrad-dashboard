@@ -9,7 +9,7 @@ import {
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import notificationIcons from "@/utils/Icon";
 import { pusher } from "@/utils/pusher";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NotificationIcon from "/assets/images/navbar/notification/notification.svg";
 
@@ -44,7 +44,6 @@ const NotificationMenu = () => {
       });
   }, []);
 
-
   useEffect(() => {
     if (open) {
       axios
@@ -62,7 +61,7 @@ const NotificationMenu = () => {
   }, [open]);
 
   return (
-    <div>
+    <Fragment>
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className="relative">
           <img
@@ -70,9 +69,9 @@ const NotificationMenu = () => {
             alt="avatar-icon"
             className="w-5 cursor-pointer transition-all outline-none"
           />
-          {(notifications.filter(data=> data?.unread)).length > 0 && (
+          {notifications.filter((data) => data?.unread).length > 0 && (
             <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] -top-1 -right-2 text-[9px] text-center text-white">
-              {(notifications.filter(data=> data?.unread)).length}
+              {notifications.filter((data) => data?.unread).length}
             </span>
           )}
         </DropdownMenuTrigger>
@@ -82,15 +81,20 @@ const NotificationMenu = () => {
               key={key}
               className="flex space-x-3 cursor-pointer"
             >
-              <Link to={notification.url} className="flex justify-center items-center space-x-1">
-              {
-                <img
-                  className="w-8"
-                  src={notificationIcons[notification.type][notification.level]}
-                  alt=""
-                />
-              }
-              <span>{notification?.text}</span>
+              <Link
+                to={notification.url}
+                className="flex justify-center items-center space-x-1"
+              >
+                {
+                  <img
+                    className="w-8"
+                    src={
+                      notificationIcons[notification.type][notification.level]
+                    }
+                    alt=""
+                  />
+                }
+                <span>{notification?.text}</span>
               </Link>
             </DropdownMenuItem>
           ))}
@@ -99,7 +103,7 @@ const NotificationMenu = () => {
           </Button>
         </DropdownMenuContent>
       </DropdownMenu>
-    </div>
+    </Fragment>
   );
 };
 

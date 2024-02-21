@@ -3,7 +3,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import useAuth from "@/hooks/useAuth";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
@@ -13,12 +13,12 @@ import LogOutIcon from "/assets/images/navbar/profile/logout.svg";
 import ProfileIconActive from "/assets/images/navbar/profile/profile-active.svg";
 import ProfileIcon from "/assets/images/navbar/profile/profile.svg";
 import SettingIcon from "/assets/images/navbar/profile/setting.svg";
+import { Fragment } from "react";
 // const authToken = getAuthToken();
 const ProfileMenu = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
-  
-  
+
   const logout = async () => {
     const authToken = localStorage.getItem("token");
     // try {
@@ -41,6 +41,8 @@ const ProfileMenu = () => {
         return "Logged out successfully";
       },
       error: (err) => {
+        console.log(err);
+        // return err?.response?.data?.error;
         return "Something went wrong";
       },
     });
@@ -58,12 +60,12 @@ const ProfileMenu = () => {
     // }
 
     logOut();
-    navigate("/login")
+    navigate("/login");
   };
   const location = useLocation();
   const isActive = location.pathname === "/dashboard/profile";
   return (
-    <div>
+    <Fragment>
       {user ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -111,7 +113,7 @@ const ProfileMenu = () => {
           Login
         </Link>
       )}
-    </div>
+    </Fragment>
   );
 };
 
