@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import RecommendationDetailPage from "./RecommendationDetailPage/RecommendationDetailPage";
 
-const RecommendationTab = () => {
+const RecommendationTab = ({hasBooking, setHasBooking}) => {
   const { id } = useParams();
   const [tabVisible, setTabVisible] = useState(true);
   const [allRecommendationData, setAllRecommendationData] = useState([]);
+  
   const [currentRecommendationData, setCurrentRecommendationData] = useState(
     allRecommendationData?.find((item) => item?.id === id)
   );
@@ -23,6 +24,7 @@ const RecommendationTab = () => {
       })
       .then(({ data }) => {
         setAllRecommendationData(data?.data);
+        setHasBooking(data?.has_booking);
       });
   }, []);
   
@@ -50,6 +52,8 @@ const RecommendationTab = () => {
         <RecommendationDetailPage
           tabVisible={tabVisible}
           setTabVisible={setTabVisible}
+          hasBooking={hasBooking}
+          setHasBooking={setHasBooking}
           currentRecommendationData={currentRecommendationData}
         />
       )}
