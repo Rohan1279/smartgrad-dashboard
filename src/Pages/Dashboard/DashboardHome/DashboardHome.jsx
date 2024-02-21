@@ -3,6 +3,7 @@ import useWindowDimensions from "@/core/windowsDimention";
 import { useContext, useEffect, useState } from "react";
 import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
 import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
+import useGlobalContext from "@/hooks/useGlobalContext";
 
 const DashboardHome = () => {
   const { width } = useWindowDimensions();
@@ -64,6 +65,16 @@ const DashboardHome = () => {
     }
     return () => {};
   }, [width]);
+  const { openModal } = useGlobalContext();
+  let isFirstTime = 0;
+  useEffect(() => {
+    // if (user?.has_booking) {
+    //   openModal({
+    //     title: <h1>Hi</h1>,
+    //     content: `You have recieved ${user?.credit} coins`,
+    //   });
+    // }
+  }, [openModal, user?.has_booking]);
 
   return (
     <div className="text-primary  ">

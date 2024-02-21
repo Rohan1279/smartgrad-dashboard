@@ -6,6 +6,7 @@ import router from "./routes/routes";
 import "react-photo-view/dist/react-photo-view.css";
 import Modal from "./components/Modal/Modal";
 import ContextProvider from "./contexts/ContextProvider";
+import { useEffect } from "react";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <ContextProvider>
         <RouterProvider router={router} />
         <Toaster richColors />
-        <Modal/>
+        <Modal />
       </ContextProvider>
     </>
   );

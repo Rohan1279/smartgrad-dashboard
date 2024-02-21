@@ -111,13 +111,12 @@ export default function Navbar() {
               EN
             </div>
             <NotificationMenu />
-            <Badge
-              variant="outline"
-              className={"text-primary py-2 px-3 border-primary"}
-            >
-              <LiaCoinsSolid className="text-yellow-500 text-lg mr-1 animate-bounce" />
-              <span className="text-primary">{user?.credit}</span>
-            </Badge>
+            {user?.credit && (
+              <Badge variant="outline" className={"text-primary py-2 px-3 "}>
+                <LiaCoinsSolid className="text-yellow-500 text-lg mr-1 animate-bounce" />
+                <span className="text-primary">{user?.credit}</span>
+              </Badge>
+            )}
             <ProfileMenu />
           </div>
         </div>
