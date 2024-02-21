@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import ComingSoon from "@/components/ComingSoon/ComingSoon";
 
 const AptitudeDashboard = () => {
   const { user } = useContext(Authcontext);
@@ -18,6 +19,7 @@ const AptitudeDashboard = () => {
           </p>
         </div>
       </div>
+      <ComingSoon />
     </div>
   );
 };

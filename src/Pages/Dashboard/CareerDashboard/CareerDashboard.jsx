@@ -1,7 +1,8 @@
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import React, { useContext } from "react";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
-
+import { Link } from "react-router-dom";
+import ComingSoon from "@/components/ComingSoon/ComingSoon";
 const CareerDashboard = () => {
   const { user } = useContext(Authcontext);
 
@@ -17,6 +18,7 @@ const CareerDashboard = () => {
           </p>
         </div>
       </div>
+      <ComingSoon />
     </div>
   );
 };
