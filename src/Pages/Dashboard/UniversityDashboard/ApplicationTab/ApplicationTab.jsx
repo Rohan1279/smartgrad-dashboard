@@ -1,58 +1,28 @@
+import axios from "@/api/axios";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import ApplicationCard from "./ApplicationCard";
 import Documents from "./TabContents/Documents";
 import Information from "./TabContents/Overview";
 import Status from "./TabContents/Status";
-import UniversityBackgroundImage from "/assets/images/dashboard/university-background.png";
 
 const ApplicationTab = () => {
   const [selectedTab, setSelectedTab] = useState(null);
-  const universitiesData = [
-    {
-      id: "1",
-      subject: "Master of Business Administration",
-      name: "Southeast Minnesota State University",
-      rating: 4,
-      applicationDate: "June 23, 2023",
-      applicationId: "1",
-      status: "Application In-review",
-      universityImage: "/assets/images/dashboard/university-logo.png",
-      duration: "2 years",
-      tuition_fees: "USD 20000",
-      start_date: "August 2023",
-      deadline_date: "December 2023",
-    },
-    {
-      id: "2",
-      subject: "Master of Business Administration",
-      name: "Southeast Minnesota State University",
-      rating: 4,
-      applicationDate: "June 23, 2023",
-      applicationId: "2",
-      status: "Application In-review",
-      universityImage: "/assets/images/dashboard/university-logo.png",
-      duration: "2 years",
-      tuition_fees: "USD 20000",
-      start_date: "August 2023",
-      deadline_date: "December 2023",
-    },
-    {
-      id: "3",
-      subject: "Master of Business Administration",
-      name: "Southeast Minnesota State University",
-      rating: 4,
-      applicationDate: "June 23, 2023",
-      applicationId: "3",
-      status: "Application In-review",
-      universityImage: "/assets/images/dashboard/university-logo.png",
-      duration: "2 years",
-      tuition_fees: "USD 20000",
-      start_date: "August 2023",
-      deadline_date: "December 2023",
-    },
-  ];
+  const [universitiesData, setUniversitiesData] = useState(null);
+  
+  useEffect(() => {
+    axios
+      .get("/university/applications", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setUniversitiesData(data.data);
+      });
+  }, []);
+
 
   const handleTabClick = (applicationId) => {
     setSelectedTab(applicationId);
@@ -65,30 +35,30 @@ const ApplicationTab = () => {
   return (
     <div className="py-4 rounded-xl  flex flex-col space-y-3 text-primary ">
       <Tabs defaultValue="" className="">
-        {universitiesData?.map((university, idx) => {
+        {universitiesData?.map((application, idx) => {
           return (
             <div key={idx}>
               <TabsList className={`${selectedTab ? "hidden" : "block"}`}>
                 <TabsTrigger
                   key={idx}
                   className="w-full mb-5"
-                  value={university.applicationId}
-                  onMouseDown={() => handleTabClick(university.applicationId)}
+                  value={application.id}
+                  onMouseDown={() => handleTabClick(application.id)}
                 >
-                  <ApplicationCard university={university} />
+                  <ApplicationCard application={application} />
                 </TabsTrigger>
               </TabsList>
               <TabsContent
-                value={university?.applicationId}
+                value={application?.id}
                 className={
-                  selectedTab === university.applicationId ? "" : "hidden"
+                  selectedTab === application?.id ? "" : "hidden"
                 }
               >
                 <div className="">
                   <div className=" bg-white p-4 rounded-xl ">
                     <div
                       style={{
-                        backgroundImage: `url(${UniversityBackgroundImage})`,
+                        backgroundImage: `url(${application?.university_image})`,
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
@@ -100,7 +70,7 @@ const ApplicationTab = () => {
                         <img
                           alt="University Logo"
                           className="h-16 w-16 rounded-full relative"
-                          src={university.universityImage}
+                          src={application?.university_logo}
                           style={{
                             aspectRatio: "50/50",
                             objectFit: "cover",
@@ -108,10 +78,10 @@ const ApplicationTab = () => {
                         />
                         <div>
                           <h2 className="text-lg font-semibold">
-                            {university?.subject}
+                            {application?.programme}
                           </h2>
                           <p className="text-sm text-gray-600">
-                            {university?.name}
+                            {application?.university}
                           </p>
                           <div className="flex items-center mt-1">
                             <StarIcon className="text-yellow-400 h-5 w-5" />
@@ -122,10 +92,10 @@ const ApplicationTab = () => {
                           </div>
 
                           <p className="text-sm font-medium italic">
-                            Application ID : {university?.applicationId}
+                            Application ID : {application?.id}
                           </p>
                           <p className="text-sm  italic">
-                            status : {university?.status}
+                            status : {application?.status}
                           </p>
                         </div>
                         <IoIosCloseCircle className="text-white absolute top-2 right-2 border-2 rounded-full border-primary" size={30} onClick={handleCloseDetails} />
@@ -145,24 +115,24 @@ const ApplicationTab = () => {
                           className="mr-[42px] relative group"
                           value="documents"
                         >
-                          Documents
+                          Requirements
                           <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
                         </TabsTrigger>
                         <TabsTrigger
                           className="mr-[42px] relative group"
                           value="status"
                         >
-                          Status
+                          Checklist
                           <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
                         </TabsTrigger>
                       </TabsList>
                       <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
                       <TabsContent value="information" className={"pt-8"}>
-                        <Information universityData={university} />
+                        <Information universityData={application} />
                       </TabsContent>
                       <TabsContent value="documents">
-                        <Documents />
+                        <Documents documents={application?.requirements} />
                       </TabsContent>
                       <TabsContent value="status">
                         <Status />
@@ -175,8 +145,6 @@ const ApplicationTab = () => {
           );
         })}
       </Tabs>
-
-      {/* <ApplicatonDetailPage /> */}
     </div>
   );
 };

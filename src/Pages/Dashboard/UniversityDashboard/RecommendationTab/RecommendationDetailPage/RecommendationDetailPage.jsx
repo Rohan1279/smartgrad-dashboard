@@ -9,6 +9,8 @@ import Status from "../../ApplicationTab/TabContents/Status";
 import AdmissionRequirementsTab from "./AdmissionRequirementsTab";
 
 const RecommendationDetailPage = ({
+  hasBooking,
+  setHasBooking,
   currentRecommendationData,
   tabVisible,
   setTabVisible,
@@ -16,15 +18,17 @@ const RecommendationDetailPage = ({
   
   const bookASession = () => {
     axios.post("/university/bookings", {
-        application_id: currentRecommendationData?.id,
+        recommendation_id: currentRecommendationData?.id,
       }, {
       params: {
         token: localStorage.getItem("token"),
       }}
     )
+      setHasBooking(1);
   }
-
+  
   const navigate = useNavigate();
+
   return (
     <div className="text-primary">
       <div className=" bg-white rounded-xl border">
@@ -67,9 +71,11 @@ const RecommendationDetailPage = ({
                 <StarIcon className="text-yellow-400 h-[9xpx] fill-yellow-400 w-[12px]" />
                 <StarIcon className="text-gray-300 h-[9xpx] fill-[#D9D9D9] w-[12px]" />
               </div>
-              <div className="flex gap-x-2">
+
+
+              {hasBooking === 0 &&  <div className="flex gap-x-2">
                 <CalenderButton text="Apply Now!" cb={bookASession} />
-              </div>
+              </div>}
             </div>
           </div>
         </div>
@@ -87,13 +93,6 @@ const RecommendationDetailPage = ({
               Admission Requirements
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
-            {/* <TabsTrigger
-              className="mr-[42px] relative group"
-              value="program-experts"
-            >
-              Fees and Funding
-              <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
-            </TabsTrigger> */}
           </TabsList>
           <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 

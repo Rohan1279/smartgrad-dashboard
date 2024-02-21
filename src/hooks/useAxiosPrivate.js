@@ -1,9 +1,9 @@
 // use to attach the interceptor to the axiosPrivate instance
 // will have interceptors attached to handle the JWT token to get a new accessToken
 import { axiosPrivate } from "@/api/axios";
-import useRefreshToken from "./useRefreshToken";
-import useAuth from "./useAuth";
 import { useEffect } from "react";
+import useAuth from "./useAuth";
+import useRefreshToken from "./useRefreshToken";
 
 const useAxiosPrivate = () => {
   const refresh = useRefreshToken();
@@ -27,7 +27,7 @@ const useAxiosPrivate = () => {
       // if accesstoken expires
       async (error) => {
         const prevRequest = error?.config;
-        if (error?.response?.status === 403 && !prevRequest?.sent) {
+        if (error?.response?.status === 401 && !prevRequest?.sent) {
           prevRequest.sent = true;
           const newAccessToken = await refresh();
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;

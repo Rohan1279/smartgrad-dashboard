@@ -18,14 +18,8 @@ const InfoSection = ({ Icon, title, subtitle }) => {
 
 const Overview = ({ universityData }) => {
   const {
-    university,
-    programme,
-    universityImage,
     tuition_fees,
     start_date,
-    score,
-    discipline,
-    format,
     duration,
     scholarship,
     deadline_date,

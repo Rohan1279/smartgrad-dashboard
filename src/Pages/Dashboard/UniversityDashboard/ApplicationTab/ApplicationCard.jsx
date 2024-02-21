@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 
-const ApplicationCard = ({ university }) => {
+const ApplicationCard = ({ application }) => {
   const {
     id,
-    subject,
-    name,
-    rating,
-    applicationDate,
-    applicationId,
+    programme,
+    university,
+    score,
+    start_date,
     status,
-    universityImage,
-  } = university;
+    university_logo,
+  } = application;
 
 
 
@@ -21,28 +20,36 @@ const ApplicationCard = ({ university }) => {
         <img
           alt="University Logo"
           className="h-16 w-16 rounded-full"
-          src={universityImage}
+          src={university_logo}
           style={{
             aspectRatio: "50/50",
             objectFit: "cover",
           }}
         />
         <div className="text-left">
-          <h2 className="text-lg font-semibold">{subject}</h2>
-          <p className="text-sm text-gray-600">{name}</p>
+          <h2 className="text-lg font-semibold">{programme}</h2>
+          <p className="text-sm text-gray-600">{university}</p>
           <div className="flex items-center mt-1">
-            <StarIcon className="text-yellow-400 h-5 w-5" />
-            <StarIcon className="text-yellow-400 h-5 w-5" />
-            <StarIcon className="text-yellow-400 h-5 w-5" />
-            <StarIcon className="text-yellow-400 h-5 w-5" />
-            <StarIcon className="text-gray-300 h-5 w-5" />
-          </div>
-          <p className="text-sm text-gray-600 mt-1 italic">{applicationDate}</p>
+          {[...Array(5)].map((_, i) => {
+            return i < score ? (
+              <StarIcon
+                key={i}
+                className="text-yellow-400 fill-yellow-400 h-4 w-4"
+              />
+            ) : (
+              <StarIcon
+                key={i}
+                className="text-gray-300 fill-gray-300h-4 w-4"
+              />
+            );
+          })}
+        </div>
+          <p className="text-sm text-gray-600 mt-1 italic">{start_date}</p>
         </div>
       </div>
       <div className="text-right ">
         <p className="text-sm font-medium italic">
-          Application ID : {applicationId}
+          Application ID : {id}
         </p>
         <p className="text-sm  italic">status : {status}</p>
       </div>

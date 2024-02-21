@@ -3,12 +3,14 @@ import Loader from "@/components/Loader/Loader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import { useContext, useEffect, useState } from "react";
+import { HiOutlineBellAlert } from "react-icons/hi2";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Form from "../../../components/Form/Form";
 import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
+
 const UniversityDashboard = () => {
   const { id } = useParams();
 
@@ -17,6 +19,7 @@ const UniversityDashboard = () => {
   const [currentForm, setCurrentForm] = useState({});
   const [isUserEligible, setIsUserEligible] = useState(false);
   const [recommendationData, setRecommendationData] = useState([]);
+  const [hasBooking, setHasBooking] = useState(null);
   const [isSearchFormLoading, setIsSearchFormLoading] = useState(false);
   const { user } = useContext(Authcontext);
 
@@ -38,6 +41,7 @@ const UniversityDashboard = () => {
       })
       .then(({ data }) => {
         setRecommendationData(data?.data);
+        setHasBooking(data?.has_booking);
       });
   }, []);
 
@@ -92,13 +96,20 @@ const UniversityDashboard = () => {
       });
   }, []);
 
+
   return (
     <div className="text-primary min-h-fit">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 
         <div className="text-center md:text-left">
-          <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
+          <div className="flex justify-between items-center">
+            <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
+            {hasBooking === 1 && <div className="flex justify-center items-center p-2 bg-[#F1662A] text-white rounded-l-lg">
+              <HiOutlineBellAlert size={22} />
+              <p className="ml-2">You have a Booking with our experts</p>
+            </div>}
+          </div>
           <p className="">
             Your Smartgrad dashboard streamlines the application process,
             offering personalized university recommendations. Simplify your
@@ -177,7 +188,7 @@ const UniversityDashboard = () => {
             </TabsContent>
           )}
           <TabsContent value="recommendation">
-            <RecommendationTab />
+            <RecommendationTab setHasBooking={setHasBooking} hasBooking={hasBooking} />
           </TabsContent>
           {/* pass added university data later */}
           <TabsContent value="applications">
