@@ -1,8 +1,8 @@
+import { clearLocalStorage } from "@/utils/clearLocalStorage";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 
 export const Authcontext = createContext();
-
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -27,7 +27,7 @@ const AuthContextProvider = ({ children }) => {
     setLoading(true);
   };
   const logOut = () => {
-    localStorage.removeItem("token");
+    clearLocalStorage();
     setAuth(false);
     setUser(null);
     return null;
@@ -55,9 +55,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <Authcontext.Provider value={authInfo}>
-        {children}
-    </Authcontext.Provider>
+    <Authcontext.Provider value={authInfo}>{children}</Authcontext.Provider>
   );
 };
 
