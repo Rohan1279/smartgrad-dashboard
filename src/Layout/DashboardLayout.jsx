@@ -29,7 +29,7 @@ const DashboardLayout = () => {
       <div className="absolute bottom-0 mmd:bottom-auto z-50 pointer-events-none mmd:pointer-events-auto mmd:fixed flex items-end mmd:items-center justify-center w-full mmd:w-auto  h-screen">
         <DashboardDrawer />
       </div>
-      <div className="pt-0 mmd:py-10 h-fit sm:px-12 grid grid-col-5 mmd:grid-cols-9 justify-items-center mmd:pb-10">
+      <div className="mmd:my-8 sm:px-12 grid grid-col-5 mmd:grid-cols-9 justify-items-center">
         <div className="col-span-1 w-full"></div>
         <div className="col-span-6 mmd:col-span-7 w-full max-w-7xl">
           <Outlet />
