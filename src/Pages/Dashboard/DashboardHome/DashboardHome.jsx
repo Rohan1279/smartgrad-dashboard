@@ -66,7 +66,7 @@ const DashboardHome = () => {
   }, [width]);
 
   return (
-    <div className="text-primary  ">
+    <div className="text-primary ">
       {/* <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
         <img src={DashboardAvatar} alt="avatar" className="w-[88px]" />
 

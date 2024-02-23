@@ -13,7 +13,7 @@ const FeedContent = ({ posts }) => {
 
   return (
     <Fragment>
-      <FeedWrapper className="col-span-3  lg:col-span-2 bg-white rounded-xl lg:px-5 lg:py-3 max-h-[85vh] relative">
+      <FeedWrapper className="col-span-3 lg:col-span-2 bg-white rounded-xl lg:px-5 lg:py-3 max-h-[85vh] relative">
         <div>
           <div className="absolute top-3  bg-white z-40 w-[96%]">
             <div className="flex justify-between">
