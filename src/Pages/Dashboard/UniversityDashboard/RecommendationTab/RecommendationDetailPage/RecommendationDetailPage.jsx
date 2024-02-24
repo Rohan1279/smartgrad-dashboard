@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Overview from "../../ApplicationTab/TabContents/Overview";
 import Status from "../../ApplicationTab/TabContents/Status";
 import AdmissionRequirementsTab from "./AdmissionRequirementsTab";
+import { useState } from "react";
 
 const RecommendationDetailPage = ({
   hasBooking,
@@ -15,20 +16,38 @@ const RecommendationDetailPage = ({
   tabVisible,
   setTabVisible,
 }) => {
-  
+  const [summary, setSummary] = useState(undefined);
   const bookASession = () => {
-    axios.post("/university/bookings", {
+    axios.post(
+      "/university/bookings",
+      {
         recommendation_id: currentRecommendationData?.id,
-      }, {
-      params: {
-        token: localStorage.getItem("token"),
-      }}
-    )
-      setHasBooking(1);
-  }
-  
-  const navigate = useNavigate();
+      },
+      {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    setHasBooking(1);
+  };
 
+  const navigate = useNavigate();
+  console.log(currentRecommendationData);
+  const getSummary = async () => {
+    const response = await axios.post("https://www.llama2.ai/api", {
+      prompt: `<s>[INST] <<SYS>>\n ${currentRecommendationData} Craft a concise yet comprehensive response for prospective students exploring a specific university programme. Start with a captivating introduction to the programme, followed by a compelling statement on its importance. Provide a brief overview of the programme's details and opportunities. Clarify academic and language requirements succinctly. Highlight potential career paths and living costs briefly. Showcase notable alumni briefly. Include an intriguing programme-related fact to engage applicants. Conclude with a call to action or final remark encouraging further exploration or application.\n<</SYS>>\n\ngg [/INST]\n`,
+      model: "meta/llama-2-70b-chat",
+      systemPrompt: "You are a helpful assistant.",
+      temperature: 0.75,
+      topP: 0.9,
+      maxTokens: 2000,
+      image: null,
+      audio: null,
+    });
+    console.log(response);
+    setSummary(response?.data);
+  };
   return (
     <div className="text-primary">
       <div className=" bg-white rounded-xl border">
@@ -39,14 +58,9 @@ const RecommendationDetailPage = ({
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-          className="flex relative items-center space-x-4  h-[252px] rounded-t-[10px] overflow-hidden "
+          className="flex relative justify-between items-center space-x-4  h-[252px] rounded-t-[10px] overflow-hidden "
         >
           <div className="bg-gradient-to-r from-white from-20% to-white/10 absolute w-full h-full z-0"></div>
-          {!tabVisible && (
-            <button onClick={() => setTabVisible(true)}>
-              <ImCancelCircle className="w-[22px] h-[22px] absolute top-[15px] right-[30px] rounded-full text-black bg-white" />
-            </button>
-          )}
           <div className="z-10 pl-[58px] flex items-center  gap-x-[13px]">
             <img
               alt="University Logo"
@@ -72,11 +86,25 @@ const RecommendationDetailPage = ({
                 <StarIcon className="text-gray-300 h-[9xpx] fill-[#D9D9D9] w-[12px]" />
               </div>
 
-
-              {hasBooking === 0 &&  <div className="flex gap-x-2">
-                <CalenderButton text="Apply Now!" cb={bookASession} />
-              </div>}
+              {hasBooking === 0 && (
+                <div className="flex gap-x-2">
+                  <CalenderButton text="Apply Now!" cb={bookASession} />
+                </div>
+              )}
             </div>
+          </div>
+          <div className="z-40">
+            {!tabVisible && (
+              <button onClick={() => setTabVisible(true)}>
+                <ImCancelCircle className="w-[22px] h-[22px] absolute top-[15px] right-[30px] rounded-full text-black bg-white" />
+              </button>
+            )}
+            {/* <button
+              onClick={getSummary}
+              className=" bg-primary rounded-2xl text-white px-5 py-2  hidden mmd:block mr-[58px]"
+            >
+              Summary
+            </button> */}
           </div>
         </div>
 

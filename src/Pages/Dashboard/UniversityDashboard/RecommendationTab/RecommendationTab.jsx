@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import RecommendationDetailPage from "./RecommendationDetailPage/RecommendationDetailPage";
 
-const RecommendationTab = ({hasBooking, setHasBooking}) => {
+const RecommendationTab = ({ hasBooking, setHasBooking }) => {
   const { id } = useParams();
   const [tabVisible, setTabVisible] = useState(true);
   const [allRecommendationData, setAllRecommendationData] = useState([]);
-  
+
   const [currentRecommendationData, setCurrentRecommendationData] = useState(
     allRecommendationData?.find((item) => item?.id === id)
   );
@@ -27,7 +27,7 @@ const RecommendationTab = ({hasBooking, setHasBooking}) => {
         setHasBooking(data?.has_booking);
       });
   }, []);
-  
+
   return (
     <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10 max-h-screen">
       {tabVisible ? (
