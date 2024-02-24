@@ -4,7 +4,7 @@ const NetworkCardDetais = ({ item }) => {
   return (
     <Fragment>
       <div className="p-2 bg-[#F5F5F5] lg:bg-white rounded-lg">
-        <div className="grid grid-rows-1 grid-cols-1">
+        <div className="flex gap-x-3">
           <div className="gap-4">
             <div className="justify-center items-center">
               <div className="w-[60px] h-[60px]">
@@ -18,9 +18,9 @@ const NetworkCardDetais = ({ item }) => {
               <p className="text-xs">{(item?.designation).substring(0,15)}</p>
             </div>
           </div>
-          <div className="flex flex-col mt-4 h-full">
-            <p className="text-xs text-justify line-clamp-3">{item?.content}</p>
-            <button className="px-3 py-1 w-full bg-[#4B4E6D] text-sm text-[#ffffff] rounded-lg mt-2">
+          <div className="flex flex-col">
+            <p className="text-xs text-justify grow">{item.content.length > 200 ? `${item?.content.substring(0,200)}...`: item.content}</p>
+            <button className="px-3 py-1 w-full bg-[#4B4E6D] text-sm text-[#ffffff] rounded-lg">
               Connect Now
             </button>
           </div>
