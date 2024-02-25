@@ -19,7 +19,7 @@ const NetworkCardDetais = ({ item }) => {
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="text-xs text-justify grow">{item.content.length > 200 ? `${item?.content.substring(0,200)}...`: item.content}</p>
+            <p className="text-sm text-justify grow">{item.content.length > 80 ? `${item?.content.substring(0,80)}...`: item.content}</p>
             <button className="px-3 py-1 w-full bg-[#4B4E6D] text-sm text-[#ffffff] rounded-lg">
               Connect Now
             </button>

@@ -60,7 +60,7 @@ const UniversitiesCard = () => {
 
   return (
     <DasboardCardTheme>
-      <div className="flex flex-row rounded-lg gap-x-4">
+      <div className="flex flex-row rounded-lg gap-x-1">
         <div className="flex-1" ref={parentContainerRef}>
           <div className="flex items-center gap-x-2">
             <UniversityIcon className={"min-w-8 max-w-8 fill-primary "} />
@@ -81,8 +81,8 @@ const UniversitiesCard = () => {
               {universities?.map((item, idx) => {
                 return (
                   <div key={idx} className="hover:shadow-sm transition-all">
-                    <div className="flex items-center space-x-2 mb-2 p-1 cursor-pointer rounded-md">
-                      <div className="w-16">
+                    <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
+                      <div className="w-14">
                         <img
                           src={UniversityImage}
                           alt="university-logo"
@@ -90,8 +90,8 @@ const UniversitiesCard = () => {
                         />
                       </div>
                       <div className="">
-                        <p>{item.name}</p>
-                        <p>{item.status}</p>
+                        <p className="text-md">{item.name}</p>
+                        <p className="text-sm">{item.status}</p>
                         <Progress
                           value={item.progress}
                           className={"w-full mt-1"}
