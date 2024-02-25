@@ -132,7 +132,7 @@ const ApplicationTab = () => {
                         <Information universityData={application} />
                       </TabsContent>
                       <TabsContent value="documents">
-                        <Documents documents={application?.requirements} />
+                        <Documents documents={application?.requirements} applicationId={application.id} />
                       </TabsContent>
                       <TabsContent value="status">
                         <Status />
