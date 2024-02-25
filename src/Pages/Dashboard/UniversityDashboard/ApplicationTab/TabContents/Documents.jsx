@@ -4,7 +4,9 @@ import { useState } from "react";
 
 const Documents = ({ documents, applicationId }) => {
   const [data, setData] = useState({});
-  const isAllCompleted = documents.every((document) => document.completed);
+  const isAllCompleted = documents.every((document) => (document.type === "link") || (document.type === "file" && document.completed));
+
+  // console.log(documents.every((document) => (document.type === "link") || (document.type === "file" && document.completed)));
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ const Documents = ({ documents, applicationId }) => {
 
     try {
       const response = await axios.post(
-        `/application/${applicationId}`,
+        `/university/applications/${applicationId}/requirement`,
         formData,
         {
           params: {
