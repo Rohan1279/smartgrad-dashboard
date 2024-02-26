@@ -4,7 +4,11 @@ import { useState } from "react";
 
 const Documents = ({ documents, applicationId }) => {
   const [data, setData] = useState({});
-  const isAllCompleted = documents.every((document) => (document.type === "link") || (document.type === "file" && document.completed));
+  const isAllCompleted = documents.every(
+    (document) =>
+      document.type === "link" ||
+      (document.type === "file" && document.completed)
+  );
 
   // console.log(documents.every((document) => (document.type === "link") || (document.type === "file" && document.completed)));
 
@@ -14,6 +18,7 @@ const Documents = ({ documents, applicationId }) => {
     const formData = new FormData();
 
     documents.forEach((document) => {
+      console.log("document?.name", document?.name);
       const fileInput = data[document.name];
 
       if (fileInput instanceof File) {
@@ -31,33 +36,39 @@ const Documents = ({ documents, applicationId }) => {
           },
         }
       );
-  
+
       console.log(response.data);
     } catch (error) {
       console.error("Error", error);
     }
-
-  }
+  };
 
   return (
     <div className="pt-10">
       <div className="mb-14">
         <h2 className="text-3xl font-bold">Required Documents</h2>
-        <form className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4" onSubmit={handleOnSubmit}>
-          {documents.map(({...document}, idx) => {
-            
+        <form
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4"
+          onSubmit={handleOnSubmit}
+        >
+          {documents.map(({ ...document }, idx) => {
             return (
               <DocumentsUploadField
-              document={document}  
-              key={idx}
-               setData={setData}
+                document={document}
+                key={idx}
+                setData={setData}
               />
             );
           })}
 
-      { !isAllCompleted && <button type="submit" className="w-fit h-10 bg-primary rounded-[5px] px-4 text-white">
-        Upload Button
-      </button>}
+          {!isAllCompleted && (
+            <button
+              type="submit"
+              className="w-fit h-10 bg-primary rounded-[5px] px-4 text-white"
+            >
+              Upload Button
+            </button>
+          )}
         </form>
       </div>
     </div>

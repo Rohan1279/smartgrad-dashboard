@@ -79,11 +79,19 @@ const RecommendationDetailPage = ({
                 {currentRecommendationData?.university}
               </p>
               <div className="flex items-center ">
-                <StarIcon className="text-yellow-400 h-[9xpx] fill-yellow-400 w-[12px]" />
-                <StarIcon className="text-yellow-400 h-[9xpx] fill-yellow-400 w-[12px]" />
-                <StarIcon className="text-yellow-400 h-[9xpx] fill-yellow-400 w-[12px]" />
-                <StarIcon className="text-yellow-400 h-[9xpx] fill-yellow-400 w-[12px]" />
-                <StarIcon className="text-gray-300 h-[9xpx] fill-[#D9D9D9] w-[12px]" />
+                {[...Array(5)].map((_, i) => {
+                  return i < currentRecommendationData?.score ? (
+                    <StarIcon
+                      key={i}
+                      className="text-yellow-400 fill-yellow-400 h-4 w-4"
+                    />
+                  ) : (
+                    <StarIcon
+                      key={i}
+                      className="text-gray-300 fill-gray-300h-4 w-4"
+                    />
+                  );
+                })}
               </div>
 
               {hasBooking === 0 && (
