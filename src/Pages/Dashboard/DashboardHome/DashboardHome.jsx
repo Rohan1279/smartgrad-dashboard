@@ -1,11 +1,11 @@
+import { Badge } from "@/components/ui/badge";
 import { Authcontext } from "@/contexts/AuthContextProvider";
 import useWindowDimensions from "@/core/windowsDimention";
+import useGlobalContext from "@/hooks/useGlobalContext";
 import { useContext, useEffect, useState } from "react";
+import { LiaCoinsSolid } from "react-icons/lia";
 import DashCardContent from "../../../components/Dashboard/TabContainer/DashCardContent";
 import FeedContent from "../../../components/Dashboard/TabContainer/FeedContent";
-import useGlobalContext from "@/hooks/useGlobalContext";
-import { LiaCoinsSolid } from "react-icons/lia";
-import { Badge } from "@/components/ui/badge";
 
 const DashboardHome = () => {
   const { width } = useWindowDimensions();
@@ -112,7 +112,7 @@ const DashboardHome = () => {
       {/* GRID */}
       {/* DESKTOP */}
       <div className="hidden lg:block">
-        <div className="grid grid-cols-3 gap-2 h-full">
+        <div className="grid grid-cols-5 xl:grid-cols-3 gap-1 h-full">
           <FeedContent posts={posts} />
           <DashCardContent />
         </div>

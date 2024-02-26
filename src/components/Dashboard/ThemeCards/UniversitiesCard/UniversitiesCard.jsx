@@ -64,7 +64,7 @@ const UniversitiesCard = () => {
         <div className="flex-1" ref={parentContainerRef}>
           <div className="flex items-center gap-x-2">
             <UniversityIcon className={"min-w-8 max-w-8 fill-primary "} />
-            <h1 className="text-md xl:text-lg font-semibold">Universities Applied</h1>
+            <h1 className="text-sm xl:text-lg font-semibold">Universities</h1>
           </div>
           {/* <ScrollArea className="h-[120px] p-2 py-4"> */}
           <div
