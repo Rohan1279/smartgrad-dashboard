@@ -10,36 +10,40 @@ const Documents = ({ documents, applicationId }) => {
       (document.type === "file" && document.completed)
   );
 
-  // console.log(documents.every((document) => (document.type === "link") || (document.type === "file" && document.completed)));
-
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    let allFilesWithinLimit = true;
 
     const formData = new FormData();
+    const maxFileSize = 2 * 1024 * 1024;
 
     documents.forEach((document) => {
-      console.log("document?.name", document?.name);
       const fileInput = data[document.name];
 
       if (fileInput instanceof File) {
-        formData.append(`file-${document.id}`, fileInput);
+        if (fileInput.size > maxFileSize) {
+          alert(`${fileInput.name} size is too large. Max size is 2MB`);
+          allFilesWithinLimit = false;
+        } else {
+          formData.append(document.name, fileInput);
+        }
       }
     });
 
-    try {
-      const response = await axios.post(
-        `/university/applications/${applicationId}/requirement`,
-        formData,
-        {
-          params: {
-            token: localStorage.getItem("token"),
-          },
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error", error);
+    if (allFilesWithinLimit) {
+      try {
+        const response = await axios.post(
+          `/university/applications/${applicationId}/requirement`,
+          formData,
+          {
+            params: {
+              token: localStorage.getItem("token"),
+            },
+          }
+        );
+      } catch (error) {
+        console.error("Error", error);
+      }
     }
   };
 
@@ -47,26 +51,24 @@ const Documents = ({ documents, applicationId }) => {
     <div className="pt-10">
       <div className="mb-14">
         <h2 className="text-3xl font-bold">Required Documents</h2>
-        <form
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4"
-          onSubmit={handleOnSubmit}
-        >
-          {documents.map(({ ...document }, idx) => {
-            return (
-              <DocumentsUploadField
-                document={document}
-                key={idx}
-                setData={setData}
-              />
-            );
-          })}
-
+        <form className="flex flex-col items-center" onSubmit={handleOnSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4 w-full">
+            {documents.map(({ ...document }, idx) => {
+              return (
+                <DocumentsUploadField
+                  document={document}
+                  key={idx}
+                  setData={setData}
+                />
+              );
+            })}
+          </div>
           {!isAllCompleted && (
             <button
               type="submit"
-              className="w-fit h-10 bg-primary rounded-[5px] px-4 text-white"
+              className="w-fit h-10 bg-primary rounded-lg px-12 text-white"
             >
-              Upload Button
+              Update
             </button>
           )}
         </form>
