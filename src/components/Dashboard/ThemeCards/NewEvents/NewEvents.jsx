@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineEventAvailable } from "react-icons/md";
-import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-
+import NewEventDetails from "./NewEventDetails";
 
 const NewEventsCard = () => {
   const slider = useRef();
@@ -13,16 +12,16 @@ const NewEventsCard = () => {
 
   const newEventJSON = [
     {
-      image: "https://www.cuchd.in/includes/assets/images/qs-ranking-banner-engg-mech.webp",
-      url: "https://smartgrad.org"
+      image: "/assets/images/dashboard/posts/post-2.png",
+      url: "https://smartgrad.org",
     },
     {
-      image: "https://bdbusinessfinder.com/wp-content/uploads/2019/07/xse556t.jpg",
-      url: "https://smartgrad.org"
+      image: "/assets/images/dashboard/posts/post-3.jpg",
+      url: "https://smartgrad.org",
     },
     {
-      image: "https://blog.mmumullana.org/wp-content/uploads/2018/03/Course-wise-FB-Banners-Feb-2018-1-1.jpg",
-      url: "https://smartgrad.org"
+      image: "/assets/images/dashboard/posts/post-1.png",
+      url: "https://smartgrad.org",
     },
   ];
   const settings = {
@@ -48,25 +47,25 @@ const NewEventsCard = () => {
       window.removeEventListener("resize", updateParentWidth);
     };
   }, []);
+
+
   return (
-    <div className="w-full h-auto min-h-[166px] bg-white shadow-md rounded-[10px] px-4 py-2 pb-[30px] text-base grow overflow-y-auto flex flex-col justify-center">
+    <div className="w-full h-auto bg-white shadow-md rounded-[10px] px-4 py-2 pb-[30px] text-base grow overflow-y-hidden flex flex-col justify-center">
       <div className="flex items-center gap-x-2">
         <MdOutlineEventAvailable size={20} />
         <h1 className="text-lg font-semibold">New Events</h1>
       </div>
-      <div className="flex flex-row rounded-lg mt-4" ref={imageContainerRef}>
+      <div className="rounded-lg mt-4" ref={imageContainerRef}>
         <div
           className="slide-container"
           style={{
             maxWidth: parentWidth + "px",
           }}
         >
-          <Slider ref={slider} className="w-full h-full" {...settings}>
-            {
-              newEventJSON?.map((item, index) => <Link to={item.url} key={index}>
-              <img src={item.image} alt="event" className="w-full h-44" />
-            </Link>
-            )}
+          <Slider ref={slider} className="h-full w-full" {...settings}>
+            {newEventJSON.map((item, index) => (
+              <NewEventDetails key={index} item={item} />
+            ))}
           </Slider>
         </div>
       </div>
