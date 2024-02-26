@@ -1,8 +1,8 @@
+import { Authcontext } from "@/contexts/AuthContextProvider";
+import { useContext, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import DashboardDrawer from "../Shared/DashboardDrawer/DashboardDrawer";
 import Navbar from "../Shared/Navbar/Navbar";
-import { useContext, useEffect } from "react";
-import { Authcontext } from "@/contexts/AuthContextProvider";
 const DashboardLayout = () => {
   const location = useLocation();
   const { user } = useContext(Authcontext);
@@ -29,7 +29,7 @@ const DashboardLayout = () => {
       <div className="absolute bottom-0 mmd:bottom-auto z-50 pointer-events-none mmd:pointer-events-auto mmd:fixed flex items-end mmd:items-center justify-center w-full mmd:w-auto  h-screen">
         <DashboardDrawer />
       </div>
-      <div className="mmd:py-8 sm:px-12 grid grid-col-5 mmd:grid-cols-9 justify-items-center">
+      <div className="mmd:py-6 sm:px-12 grid grid-col-5 mmd:grid-cols-9 justify-items-center">
         <div className="col-span-1 w-full"></div>
         <div className="col-span-6 mmd:col-span-7 w-full max-w-7xl">
           <Outlet />
