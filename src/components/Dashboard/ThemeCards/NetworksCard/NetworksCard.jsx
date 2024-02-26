@@ -60,7 +60,7 @@ const NetworksCard = () => {
     <div className="w-full h-auto min-h-[166px] bg-white shadow-md rounded-[10px] px-4 py-2 pb-[30px] text-base" style={{overflow: 'hidden'}}>
       <div className="flex items-center gap-x-2">
         <NetworkIcon className={"min-w-8 max-w-8 fill-none stroke-primary"} />
-        <h1 className="text-lg font-semibold">Networks</h1>
+        <h1 className="text-md xl:text-lg font-semibold">Networks</h1>
       </div>
       <div className="flex flex-row rounded-lg mt-4" ref={imageContainerRef}>
         <div

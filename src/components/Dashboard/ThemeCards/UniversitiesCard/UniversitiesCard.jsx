@@ -60,11 +60,11 @@ const UniversitiesCard = () => {
 
   return (
     <DasboardCardTheme>
-      <div className="flex flex-row rounded-lg gap-x-1">
+      <div className="flex flex-row rounded-lg xl:gap-x-1">
         <div className="flex-1" ref={parentContainerRef}>
           <div className="flex items-center gap-x-2">
             <UniversityIcon className={"min-w-8 max-w-8 fill-primary "} />
-            <h1 className="text-lg font-semibold">Universities Applied</h1>
+            <h1 className="text-md xl:text-lg font-semibold">Universities Applied</h1>
           </div>
           {/* <ScrollArea className="h-[120px] p-2 py-4"> */}
           <div
@@ -90,8 +90,8 @@ const UniversitiesCard = () => {
                         />
                       </div>
                       <div className="">
-                        <p className="text-md">{item.name}</p>
-                        <p className="text-sm">{item.status}</p>
+                        <p className="text-sm lg:text-md">{item.name}</p>
+                        <p className="text-xs lg:text-sm">{item.status}</p>
                         <Progress
                           value={item.progress}
                           className={"w-full mt-1"}
