@@ -8,6 +8,7 @@ import Overview from "../../ApplicationTab/TabContents/Overview";
 import Status from "../../ApplicationTab/TabContents/Status";
 import AdmissionRequirementsTab from "./AdmissionRequirementsTab";
 import { useState } from "react";
+import ScoreComponent from "@/components/ScoreComponent/ScoreComponent";
 
 const RecommendationDetailPage = ({
   hasBooking,
@@ -78,7 +79,7 @@ const RecommendationDetailPage = ({
               <p className="text-[12px] ">
                 {currentRecommendationData?.university}
               </p>
-              <div className="flex items-center ">
+              {/* <div className="flex items-center ">
                 {[...Array(5)].map((_, i) => {
                   return i < currentRecommendationData?.score ? (
                     <StarIcon
@@ -92,7 +93,8 @@ const RecommendationDetailPage = ({
                     />
                   );
                 })}
-              </div>
+              </div> */}
+              <ScoreComponent score={currentRecommendationData?.score} />
 
               {hasBooking === 0 && (
                 <div className="flex gap-x-2">

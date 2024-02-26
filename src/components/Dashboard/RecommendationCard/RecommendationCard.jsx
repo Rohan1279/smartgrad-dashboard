@@ -1,3 +1,4 @@
+import ScoreComponent from "@/components/ScoreComponent/ScoreComponent";
 import { Link } from "react-router-dom";
 
 const RecommendationCard = ({ universityData }) => {
@@ -31,7 +32,7 @@ const RecommendationCard = ({ universityData }) => {
         <h2 className="text-lg font-semibold">{programme}</h2>
         <p className="text-sm text-gray-600">{university}</p>
         <div className="flex items-center mt-1">
-          {[...Array(5)].map((_, i) => {
+          {/* {[...Array(5)].map((_, i) => {
             return i < score ? (
               <StarIcon
                 key={i}
@@ -43,7 +44,8 @@ const RecommendationCard = ({ universityData }) => {
                 className="text-gray-300 fill-gray-300h-4 w-4"
               />
             );
-          })}
+          })} */}
+          <ScoreComponent score={score} />
         </div>
         <ul className="hidden mmd:block mt-5 text-[12px] ">
           <li>
