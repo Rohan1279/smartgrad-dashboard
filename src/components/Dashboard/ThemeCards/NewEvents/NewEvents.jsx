@@ -50,12 +50,12 @@ const NewEventsCard = () => {
 
 
   return (
-    <div className="w-full h-auto bg-white shadow-md rounded-[10px] px-4 py-2 pb-[30px] text-base grow overflow-y-hidden flex flex-col justify-center">
+    <div className="w-full h-auto bg-white shadow-md rounded-[10px] px-4 py-4 pb-[30px] text-base grow overflow-y-hidden flex flex-col">
       <div className="flex items-center gap-x-2">
         <MdOutlineEventAvailable size={20} />
         <h1 className="text-md xl:text-lg font-semibold">New Events</h1>
       </div>
-      <div className="rounded-lg mt-4" ref={imageContainerRef}>
+      <div className="rounded-lg mt-4 my-auto flex justify-center items-center h-full" ref={imageContainerRef}>
         <div
           className="slide-container"
           style={{
