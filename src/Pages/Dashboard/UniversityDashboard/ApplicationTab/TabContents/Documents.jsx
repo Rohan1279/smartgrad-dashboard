@@ -41,6 +41,10 @@ const Documents = ({ documents, applicationId }) => {
             },
           }
         );
+        if (response.status === 200) {
+          alert("Documents uploaded successfully");
+          window.location.reload();
+        }
       } catch (error) {
         console.error("Error", error);
       }
