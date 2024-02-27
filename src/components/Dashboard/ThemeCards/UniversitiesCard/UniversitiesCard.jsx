@@ -4,34 +4,37 @@ import Slider from "react-slick";
 import { toast } from "sonner";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
 import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
+import axios from "@/api/axios";
+import router from "@/routes/routes";
 
 const UniversitiesCard = () => {
   const slider = useRef(null);
   const parentContainerRef = useRef(null);
   const [parentWidth, setParentWidth] = useState(400);
-  const universities = [
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 33,
-    },
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 93,
-    },
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 43,
-    },
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 73,
-    },
-  ];
+  // const universities = [
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 33,
+  //   },
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 93,
+  //   },
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 43,
+  //   },
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 73,
+  //   },
+  // ];
+
+  const [universities, setUniversities] = useState([]);
 
   const settings = {
     dots: true,
@@ -41,6 +44,26 @@ const UniversitiesCard = () => {
     slidesToScroll: 1,
     arrows: false,
   };
+
+  useEffect(() => {
+    axios
+      .get("/university/applications", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setUniversities(data.data.map((item) => {
+          return {
+            name: item.university,
+            status: item.programme,
+            progress: 50,
+            logo: item.university_logo
+          };
+        }))
+      });
+    console.log(universities);
+  }, []);
 
   useEffect(() => {
     const updateParentWidth = () => {
@@ -74,7 +97,7 @@ const UniversitiesCard = () => {
             }}
           >
             <Slider
-            ref={slider}
+              ref={slider}
               {...settings}
               className="w-full h-full mt-1"
             >
@@ -84,7 +107,7 @@ const UniversitiesCard = () => {
                     <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
                       <div className="w-14">
                         <img
-                          src={UniversityImage}
+                          src={item.logo}
                           alt="university-logo"
                           className="mt-auto"
                         />
@@ -108,7 +131,7 @@ const UniversitiesCard = () => {
         <div className="ml-auto flex flex-col justify-between items-center">
           <button
             onClick={() => {
-              toast("Coming Soon");
+              router.navigate('/dashboard/university/applications')
             }}
             className="text-sm py-1 underline rounded-lg whitespace-nowrap"
           >
