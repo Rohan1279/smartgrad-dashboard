@@ -55,7 +55,7 @@ const NewEventsCard = () => {
         <MdOutlineEventAvailable size={20} />
         <h1 className="text-md xl:text-lg font-semibold">New Events</h1>
       </div>
-      <div className="rounded-lg mt-4 my-auto flex justify-center items-center h-full" ref={imageContainerRef}>
+      <div className="rounded-lg mt-4 my-auto" ref={imageContainerRef}>
         <div
           className="slide-container"
           style={{

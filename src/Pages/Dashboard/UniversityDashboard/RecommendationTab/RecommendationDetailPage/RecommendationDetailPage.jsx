@@ -32,6 +32,7 @@ const RecommendationDetailPage = ({
     setHasBooking(1);
   };
 
+  
   const navigate = useNavigate();
   console.log(currentRecommendationData);
   const getSummary = async () => {
@@ -95,11 +96,11 @@ const RecommendationDetailPage = ({
               </div> */}
               <ScoreComponent score={currentRecommendationData?.score} />
 
-                <div className="flex gap-x-2">
+                {/* <div className="flex gap-x-2">
                   <CalenderButton text="Apply Now!" cb={bookASession} />
-                </div>
+                </div> */}
               
-              {hasBooking === 0 && (
+              {!hasBooking && (
                 <div className="flex gap-x-2">
                   <CalenderButton text="Apply Now!" cb={bookASession} />
                 </div>
