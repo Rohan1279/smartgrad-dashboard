@@ -32,36 +32,9 @@ const RecommendationDetailPage = ({
     setHasBooking(1);
   };
 
-  
   const navigate = useNavigate();
   console.log(currentRecommendationData);
-  const getSummary = async () => {
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content: "You are a helpful assistant.",
-          },
-          {
-            role: "user",
-            content: `\n ${JSON.stringify(
-              currentRecommendationData
-            )} Craft a concise yet comprehensive response for prospective students exploring a specific university programme. Start with a captivating introduction to the programme, followed by a compelling statement on its importance. Provide a brief overview of the programme's details and opportunities. Clarify academic and language requirements succinctly. Highlight potential career paths and living costs briefly. Showcase notable alumni briefly. Include an intriguing programme-related fact to engage applicants. Conclude with a call to action or final remark encouraging further exploration or application.`,
-          },
-        ],
-      },
-      {
-        headers: {
-          Authorization: `Bearer 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`,
-        },
-      }
-    );
-    console.log(response);
-    setSummary(response?.data?.choices[0]?.message?.content);
-  };
+
   return (
     <div className="text-primary">
       <div className=" bg-white rounded-xl border">
@@ -109,10 +82,10 @@ const RecommendationDetailPage = ({
               </div> */}
               <ScoreComponent score={currentRecommendationData?.score} />
 
-                {/* <div className="flex gap-x-2">
+              {/* <div className="flex gap-x-2">
                   <CalenderButton text="Apply Now!" cb={bookASession} />
                 </div> */}
-              
+
               {!hasBooking && (
                 <div className="flex gap-x-2">
                   <CalenderButton text="Apply Now!" cb={bookASession} />
@@ -126,12 +99,6 @@ const RecommendationDetailPage = ({
                 <ImCancelCircle className="w-[22px] h-[22px] absolute top-[15px] right-[30px] rounded-full text-black bg-white" />
               </button>
             )}
-            <button
-              onClick={getSummary}
-              className=" bg-primary rounded-2xl text-white px-5 py-2  hidden mmd:block mr-[58px]"
-            >
-              Summary
-            </button>
           </div>
         </div>
 
