@@ -29,69 +29,43 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
         setIsRecommendationsLoading(false);
         setAllRecommendationData(data?.data);
         setHasBooking(data?.has_booking);
+        setCurrentRecommendationData(
+          data?.data?.find((item) => item?.id === id)
+        );
       });
-  }, []);
+  }, [id, setHasBooking]);
 
   return (
-    <ScrollArea className="flex flex-col gap-4 justify-center items-center max-h-screen">
+    <ScrollArea className="flex flex-col gap-4 justify-center items-center">
       <div className="flex justify-center md:justify-end my-4">
         <Button className="mr-3">Ai Summary</Button>
         <Button>Book A session</Button>
-        <span className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-        </span>
       </div>
       {tabVisible ? (
-        allRecommendationData?.map((university, idx) => {
-          return (
-            <div
-              to={`/dashboard/university/recommendation/${university?.id}`}
-              key={idx}
-              onClick={() => {
-                navigate(
-                  `/dashboard/university/recommendation/${university?.id}`
-                );
-                setTabVisible(false);
-                setCurrentRecommendationData(university);
-              }}
-            >
-              <RecommendationCard universityData={university} />
-            </div>
-          );
-        })
+        allRecommendationData?.map((university, idx) => (
+          <div
+            key={idx}
+            onClick={() => {
+              navigate(`/dashboard/university/recommendation/${university?.id}`);
+              setTabVisible(false);
+              setCurrentRecommendationData(university);
+            }}
+          >
+            <RecommendationCard universityData={university} />
+          </div>
+        ))
       ) : (
-        <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10 ">
-          {tabVisible ? (
-            allRecommendationData?.map((university, idx) => {
-              return (
-                <div
-                  to={`/dashboard/university/recommendation/${university?.id}`}
-                  key={idx}
-                  onClick={() => {
-                    navigate(
-                      `/dashboard/university/recommendation/${university?.id}`
-                    );
-                    setTabVisible(false);
-                    setCurrentRecommendationData(university);
-                  }}
-                >
-                  <RecommendationCard universityData={university} />
-                </div>
-              );
-            })
-          ) : (
-            <RecommendationDetailPage
-              tabVisible={tabVisible}
-              setTabVisible={setTabVisible}
-              hasBooking={hasBooking}
-              setHasBooking={setHasBooking}
-              currentRecommendationData={currentRecommendationData}
-            />
-          )}
+        <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10">
+          <RecommendationDetailPage
+            tabVisible={tabVisible}
+            setTabVisible={setTabVisible}
+            hasBooking={hasBooking}
+            setHasBooking={setHasBooking}
+            currentRecommendationData={currentRecommendationData}
+          />
         </ScrollArea>
       )}
-    </div>
+    </ScrollArea>
   );
 };
 
