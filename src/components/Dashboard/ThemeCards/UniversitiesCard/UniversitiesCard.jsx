@@ -1,11 +1,10 @@
+import axios from "@/api/axios";
 import { Progress } from "@/components/ui/progress";
+import router from "@/routes/routes";
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
-import { toast } from "sonner";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
 import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
-import axios from "@/api/axios";
-import router from "@/routes/routes";
 
 const UniversitiesCard = () => {
   const slider = useRef(null);
@@ -113,8 +112,8 @@ const UniversitiesCard = () => {
                         />
                       </div>
                       <div className="">
-                        <p className="text-sm lg:text-md">{item.name}</p>
-                        <p className="text-xs lg:text-sm">{item.status}</p>
+                        <p className="text-sm lg:text-md font-semibold">{item.name}</p>
+                        <p className="text-xs lg:text-sm line-clamp-1 italic">{item.status}</p>
                         <Progress
                           value={item.progress}
                           className={"w-full mt-1"}

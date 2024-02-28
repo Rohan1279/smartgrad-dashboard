@@ -1,5 +1,6 @@
 import axios from "@/api/axios";
 import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -29,7 +30,11 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
   }, []);
 
   return (
-    <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10 max-h-screen">
+    <ScrollArea className="flex flex-col gap-4 justify-center items-center max-h-screen">
+      <div className="flex justify-center md:justify-end my-4">
+        <Button className="mr-3">Book A session</Button>
+        <Button>Ai Summary</Button>
+      </div>
       {tabVisible ? (
         allRecommendationData?.map((university, idx) => {
           return (

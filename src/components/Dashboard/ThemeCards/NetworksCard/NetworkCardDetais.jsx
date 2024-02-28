@@ -15,7 +15,7 @@ const NetworkCardDetais = ({ item }) => {
               <p className="font-bold whitespace-nowrap text-xs mt-1">
                 {item?.name.length > 12 ? `${(item?.name).substring(0,12)}...` : item?.name }
               </p>
-              <p className="text-xs">{(item?.designation).substring(0,15)}</p>
+              <p className="text-xs line-clamp-1">{(item?.designation)}</p>
             </div>
           </div>
           <div className="flex flex-col">
