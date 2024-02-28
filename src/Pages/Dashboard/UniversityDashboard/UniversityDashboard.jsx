@@ -10,6 +10,7 @@ import ApplicationTab from "./ApplicationTab/ApplicationTab";
 import RecommendationTab from "./RecommendationTab/RecommendationTab";
 import DashboardAvatar from "/assets/images/dashboard/dashboard-avatar.png";
 import SearchLockIcon from "/assets/images/dashboard/search-lock.png";
+import { CiLock } from "react-icons/ci";
 
 const UniversityDashboard = () => {
   const { id } = useParams();
@@ -96,7 +97,6 @@ const UniversityDashboard = () => {
       });
   }, []);
 
-
   return (
     <div className="text-primary min-h-fit">
       <div className="hidden mmd:flex flex-col justify-center md:flex-row md:justify-start items-center space-x-[34px] shadow-md bg-white rounded-[20px] pl-[34px] py-[24px]">
@@ -105,10 +105,12 @@ const UniversityDashboard = () => {
         <div className="text-center md:text-left">
           <div className="flex justify-between items-center">
             <h1 className="text-[40px] font-bold ">Hello {user?.name},</h1>
-            {hasBooking === 1 && <div className="flex justify-center items-center p-2 bg-[#F1662A] text-white rounded-l-lg">
-              <HiOutlineBellAlert size={22} />
-              <p className="ml-2">You have a Booking with our experts</p>
-            </div>}
+            {hasBooking === 1 && (
+              <div className="flex justify-center items-center p-2 bg-[#F1662A] text-white rounded-l-lg">
+                <HiOutlineBellAlert size={22} />
+                <p className="ml-2">You have a Booking with our experts</p>
+              </div>
+            )}
           </div>
           <p className="">
             Your Smartgrad dashboard streamlines the application process,
@@ -130,21 +132,31 @@ const UniversityDashboard = () => {
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
             </TabsTrigger>
             <TabsTrigger
-              className={`mr-[42px] relative group ${
-                isUserEligible ? "text-primary" : "text-[#595959]"
+              className={`mr-[42px]  group ${
+                recommendationData?.length === 0
+                  ? "text-[#595959]"
+                  : "text-primary"
               }`}
               value="recommendation"
               onClick={() => navigate(`/dashboard/university/recommendation`)}
               disabled={recommendationData?.length === 0}
             >
-              Magic Recommendations
-              {recommendationData?.length > 0 &&
-                recommendationData?.length !== undefined && (
-                  <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] text-[9px] text-center text-white">
-                    {recommendationData.length}
-                  </span>
-                )}
-              <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
+              <div className="flex gap-x-1">
+                <span className="relative">
+                  Magic Recommendations
+                  {recommendationData?.length > 0 &&
+                  recommendationData?.length !== undefined ? (
+                    <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] text-[9px] text-center text-white">
+                      {recommendationData.length}
+                    </span>
+                  ) : (
+                    <CiLock
+                      className={`text-base mt-[2px] absolute -top-2 -right-4 `}
+                    />
+                  )}
+                  <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
+                </span>
+              </div>
             </TabsTrigger>
             <TabsTrigger
               className="mr-[42px] relative group"
@@ -188,7 +200,10 @@ const UniversityDashboard = () => {
             </TabsContent>
           )}
           <TabsContent value="recommendation">
-            <RecommendationTab setHasBooking={setHasBooking} hasBooking={hasBooking} />
+            <RecommendationTab
+              setHasBooking={setHasBooking}
+              hasBooking={hasBooking}
+            />
           </TabsContent>
           {/* pass added university data later */}
           <TabsContent value="applications">
