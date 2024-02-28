@@ -7,19 +7,19 @@ const ApplicationCard = ({ application }) => {
     university,
     score,
     start_date,
-    status,
     university_logo,
+    university_image,
+    status,
+    tuition_fees,
   } = application;
-
-
-
+  console.log("application", application);
 
   return (
-    <Link className="flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-lg active:scale-[.99] active:shadow-none transition-all">
+    <Link className="flex  justify-between bg-white px-4 py-8 rounded-xl shadow-lg active:scale-[.99] active:shadow-none transition-all">
       <div className="flex items-center space-x-4">
         <img
           alt="University Logo"
-          className="h-16 w-16 rounded-full"
+          className="size-[128px] rounded-full "
           src={university_logo}
           style={{
             aspectRatio: "50/50",
@@ -30,28 +30,33 @@ const ApplicationCard = ({ application }) => {
           <h2 className="text-lg font-semibold">{programme}</h2>
           <p className="text-sm text-gray-600">{university}</p>
           <div className="flex items-center mt-1">
-          {[...Array(5)].map((_, i) => {
-            return i < score ? (
-              <StarIcon
-                key={i}
-                className="text-yellow-400 fill-yellow-400 h-4 w-4"
-              />
-            ) : (
-              <StarIcon
-                key={i}
-                className="text-gray-300 fill-gray-300h-4 w-4"
-              />
-            );
-          })}
-        </div>
-          <p className="text-sm text-gray-600 mt-1 italic">{start_date}</p>
+            {[...Array(5)].map((_, i) => {
+              return i < score ? (
+                <StarIcon
+                  key={i}
+                  className="text-yellow-400 fill-yellow-400 h-4 w-4"
+                />
+              ) : (
+                <StarIcon
+                  key={i}
+                  className="text-gray-300 fill-gray-300h-4 w-4"
+                />
+              );
+            })}
+          </div>
+
+          <p className="text-base text-primary mt-8">Status: {status}</p>
         </div>
       </div>
-      <div className="text-right ">
-        <p className="text-sm font-medium italic">
-          Application ID : {id}
-        </p>
-        <p className="text-sm  italic">status : {status}</p>
+      <div className="text-right  flex flex-col justify-between ">
+        <div>
+          <p className="text-sm font-medium italic">Application ID : {id}</p>
+          {/* CHANGE MAY COME IN THE FUTURE  */}
+          <p className="text-sm  italic">Applied on : {start_date}</p>
+        </div>
+        <button className="w-[94px] px-5 py-2 rounded-[10px] bg-primary text-white ml-auto">
+          View
+        </button>
       </div>
     </Link>
   );
