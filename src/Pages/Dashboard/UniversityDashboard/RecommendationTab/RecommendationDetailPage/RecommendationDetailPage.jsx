@@ -1,14 +1,13 @@
 import axios from "@/api/axios";
 import CalenderButton from "@/components/Calendly/CalenderButton";
+import ScoreComponent from "@/components/ScoreComponent/ScoreComponent";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { StarIcon } from "lucide-react";
+import { useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import Overview from "../../ApplicationTab/TabContents/Overview";
 import Status from "../../ApplicationTab/TabContents/Status";
 import AdmissionRequirementsTab from "./AdmissionRequirementsTab";
-import { useState } from "react";
-import ScoreComponent from "@/components/ScoreComponent/ScoreComponent";
 
 const RecommendationDetailPage = ({
   hasBooking,
@@ -33,6 +32,7 @@ const RecommendationDetailPage = ({
     setHasBooking(1);
   };
 
+  
   const navigate = useNavigate();
   console.log(currentRecommendationData);
   const getSummary = async () => {
@@ -109,7 +109,11 @@ const RecommendationDetailPage = ({
               </div> */}
               <ScoreComponent score={currentRecommendationData?.score} />
 
-              {hasBooking === 0 && (
+                {/* <div className="flex gap-x-2">
+                  <CalenderButton text="Apply Now!" cb={bookASession} />
+                </div> */}
+              
+              {!hasBooking && (
                 <div className="flex gap-x-2">
                   <CalenderButton text="Apply Now!" cb={bookASession} />
                 </div>

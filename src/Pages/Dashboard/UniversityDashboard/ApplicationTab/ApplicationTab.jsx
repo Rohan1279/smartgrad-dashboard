@@ -10,7 +10,7 @@ import Status from "./TabContents/Status";
 const ApplicationTab = () => {
   const [selectedTab, setSelectedTab] = useState(null);
   const [universitiesData, setUniversitiesData] = useState(null);
-  
+
   useEffect(() => {
     axios
       .get("/university/applications", {
@@ -118,13 +118,13 @@ const ApplicationTab = () => {
                           Requirements
                           <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
                         </TabsTrigger>
-                        <TabsTrigger
+                        {/* <TabsTrigger
                           className="mr-[42px] relative group"
                           value="status"
                         >
                           Checklist
                           <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
-                        </TabsTrigger>
+                        </TabsTrigger> */}
                       </TabsList>
                       <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 

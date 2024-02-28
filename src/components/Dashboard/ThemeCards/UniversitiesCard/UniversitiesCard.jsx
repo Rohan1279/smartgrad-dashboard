@@ -4,34 +4,37 @@ import Slider from "react-slick";
 import { toast } from "sonner";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
 import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
-import UniversityImage from "/assets/images/dashboard/university-logo.png";
+import axios from "@/api/axios";
+import router from "@/routes/routes";
 
 const UniversitiesCard = () => {
   const slider = useRef(null);
   const parentContainerRef = useRef(null);
   const [parentWidth, setParentWidth] = useState(400);
-  const universities = [
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 33,
-    },
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 93,
-    },
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 43,
-    },
-    {
-      name: "Southwest Minnesota University",
-      status: "Awating Approval",
-      progress: 73,
-    },
-  ];
+  // const universities = [
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 33,
+  //   },
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 93,
+  //   },
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 43,
+  //   },
+  //   {
+  //     name: "Southwest Minnesota University",
+  //     status: "Awating Approval",
+  //     progress: 73,
+  //   },
+  // ];
+
+  const [universities, setUniversities] = useState([]);
 
   const settings = {
     dots: true,
@@ -41,6 +44,26 @@ const UniversitiesCard = () => {
     slidesToScroll: 1,
     arrows: false,
   };
+
+  useEffect(() => {
+    axios
+      .get("/university/applications", {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then(({ data }) => {
+        setUniversities(data.data.map((item) => {
+          return {
+            name: item.university,
+            status: item.programme,
+            progress: 50,
+            logo: item.university_logo
+          };
+        }))
+      });
+    console.log(universities);
+  }, []);
 
   useEffect(() => {
     const updateParentWidth = () => {
@@ -60,11 +83,11 @@ const UniversitiesCard = () => {
 
   return (
     <DasboardCardTheme>
-      <div className="flex flex-row rounded-lg gap-x-1">
+      <div className="flex flex-row rounded-lg xl:gap-x-1">
         <div className="flex-1" ref={parentContainerRef}>
           <div className="flex items-center gap-x-2">
             <UniversityIcon className={"min-w-8 max-w-8 fill-primary "} />
-            <h1 className="text-lg font-semibold">Universities Applied</h1>
+            <h1 className="text-sm xl:text-lg font-semibold">Universities</h1>
           </div>
           {/* <ScrollArea className="h-[120px] p-2 py-4"> */}
           <div
@@ -74,7 +97,7 @@ const UniversitiesCard = () => {
             }}
           >
             <Slider
-            ref={slider}
+              ref={slider}
               {...settings}
               className="w-full h-full mt-1"
             >
@@ -84,14 +107,14 @@ const UniversitiesCard = () => {
                     <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
                       <div className="w-14">
                         <img
-                          src={UniversityImage}
+                          src={item.logo}
                           alt="university-logo"
                           className="mt-auto"
                         />
                       </div>
                       <div className="">
-                        <p className="text-md">{item.name}</p>
-                        <p className="text-sm">{item.status}</p>
+                        <p className="text-sm lg:text-md">{item.name}</p>
+                        <p className="text-xs lg:text-sm">{item.status}</p>
                         <Progress
                           value={item.progress}
                           className={"w-full mt-1"}
@@ -108,7 +131,7 @@ const UniversitiesCard = () => {
         <div className="ml-auto flex flex-col justify-between items-center">
           <button
             onClick={() => {
-              toast("Coming Soon");
+              router.navigate('/dashboard/university/applications')
             }}
             className="text-sm py-1 underline rounded-lg whitespace-nowrap"
           >
