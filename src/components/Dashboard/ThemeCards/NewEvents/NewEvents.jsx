@@ -59,7 +59,7 @@ const NewEventsCard = () => {
       </div>
       <div className="rounded-lg mt-4 my-auto" ref={imageContainerRef}>
         <div
-          className="slide-container"
+          className="slide-container shadow-lg rounded-lg"
           style={{
             maxWidth: parentWidth + "px",
           }}

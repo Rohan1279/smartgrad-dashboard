@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const NewEventDetails = ({ item }) => {
   return (
     <Fragment>
-      <Link to={item.url}>
-        <img src={item.image} alt="event" className="w-full h-44" />
+      <Link to={item.url} className="">
+        <img src={item.image} alt="event" className="w-full h-44 rounded-t-lg" />
 
         <p className="mt-3 text-md font-semibold line-clamp-1">Resources and Strategies for Higher Score.
         </p>
