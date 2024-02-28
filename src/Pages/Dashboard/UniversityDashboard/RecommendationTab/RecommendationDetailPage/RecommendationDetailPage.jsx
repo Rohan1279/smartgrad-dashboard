@@ -115,13 +115,6 @@ const RecommendationDetailPage = ({
               Admission Requirements
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
             </TabsTrigger>
-            <TabsTrigger
-              className="mr-[42px] relative group"
-              value="ai-summary"
-            >
-              AI Summary
-              <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />
-            </TabsTrigger>
           </TabsList>
           <hr className="w-full  border mt-[10px] border-[#D9D9D9]" />
 
@@ -135,10 +128,6 @@ const RecommendationDetailPage = ({
           </TabsContent>
           <TabsContent value="program-experts">
             <Status />
-          </TabsContent>
-          <TabsContent value="ai-summary">
-            {" "}
-            <p>{summary}</p>{" "}
           </TabsContent>
         </Tabs>
       </div>
