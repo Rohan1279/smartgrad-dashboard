@@ -90,7 +90,7 @@ const UniversitiesCard = () => {
           </div>
           {/* <ScrollArea className="h-[120px] p-2 py-4"> */}
           <div
-            className="slide-container"
+            className="slide-container shadow-lg rounded-sm"
             style={{
               maxWidth: parentWidth + "px",
             }}

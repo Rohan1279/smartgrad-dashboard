@@ -46,7 +46,7 @@ const DasboardCardPost = ({ author, author_image, time, images, content }) => {
   }, []);
   return (
     <>
-      <Card className={"min-w-full my-5 border mmd:border-none mmd:shadow-md"}>
+      <Card className={"min-w-full my-5 border shadow-md"}>
         <CardHeader className="">
           <div className="flex justify-between items-start">
             <div className="flex items-center justify-start space-x-2">
