@@ -1,10 +1,10 @@
 import axios from "@/api/axios";
 import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import RecommendationDetailPage from "./RecommendationDetailPage/RecommendationDetailPage";
-import Loader from "@/components/Loader/Loader";
 
 const RecommendationTab = ({ hasBooking, setHasBooking }) => {
   const { id } = useParams();
@@ -33,11 +33,33 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
   }, []);
 
   return (
-    <div className="">
-      {isRecommendationsLoading ? (
-        <div className="w-full h-[400px] flex justify-center items-center">
-          <Loader className={"mx-auto w-28 my-auto"} />
-        </div>
+    <ScrollArea className="flex flex-col gap-4 justify-center items-center max-h-screen">
+      <div className="flex justify-center md:justify-end my-4">
+        <Button className="mr-3">Ai Summary</Button>
+        <Button>Book A session</Button>
+        <span className="relative flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+        </span>
+      </div>
+      {tabVisible ? (
+        allRecommendationData?.map((university, idx) => {
+          return (
+            <div
+              to={`/dashboard/university/recommendation/${university?.id}`}
+              key={idx}
+              onClick={() => {
+                navigate(
+                  `/dashboard/university/recommendation/${university?.id}`
+                );
+                setTabVisible(false);
+                setCurrentRecommendationData(university);
+              }}
+            >
+              <RecommendationCard universityData={university} />
+            </div>
+          );
+        })
       ) : (
         <ScrollArea className="flex flex-col gap-4 justify-center items-center mt-10 ">
           {tabVisible ? (

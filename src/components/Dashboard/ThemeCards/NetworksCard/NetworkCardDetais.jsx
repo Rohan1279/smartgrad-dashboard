@@ -15,11 +15,11 @@ const NetworkCardDetais = ({ item }) => {
               <p className="font-bold whitespace-nowrap text-xs mt-1">
                 {item?.name.length > 12 ? `${(item?.name).substring(0,12)}...` : item?.name }
               </p>
-              <p className="text-xs">{(item?.designation).substring(0,15)}</p>
+              <p className="text-xs line-clamp-1">{(item?.designation)}</p>
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="text-sm text-justify grow">{item.content.length > 70 ? `${item?.content.substring(0,70)}...`: item.content}</p>
+            <p className="text-sm grow">{item.content.length > 100 ? `${item?.content.substring(0,100)}...`: item.content}</p>
             <button className="px-3 py-1 w-full bg-[#4B4E6D] text-sm text-[#ffffff] rounded-lg">
               Connect Now
             </button>

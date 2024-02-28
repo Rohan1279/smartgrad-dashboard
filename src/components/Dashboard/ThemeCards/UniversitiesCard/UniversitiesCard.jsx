@@ -1,11 +1,10 @@
+import axios from "@/api/axios";
 import { Progress } from "@/components/ui/progress";
+import router from "@/routes/routes";
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
-import { toast } from "sonner";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
 import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
-import axios from "@/api/axios";
-import router from "@/routes/routes";
 
 const UniversitiesCard = () => {
   const slider = useRef(null);
@@ -86,12 +85,12 @@ const UniversitiesCard = () => {
       <div className="flex flex-row rounded-lg xl:gap-x-1">
         <div className="flex-1" ref={parentContainerRef}>
           <div className="flex items-center gap-x-2">
-            <UniversityIcon className={"min-w-8 max-w-8 fill-primary "} />
+            <UniversityIcon className={"min-w-8 max-w-8 fill-primary"} />
             <h1 className="text-sm xl:text-lg font-semibold">Universities</h1>
           </div>
           {/* <ScrollArea className="h-[120px] p-2 py-4"> */}
           <div
-            className="slide-container"
+            className="slide-container shadow-lg rounded-sm"
             style={{
               maxWidth: parentWidth + "px",
             }}
@@ -113,8 +112,8 @@ const UniversitiesCard = () => {
                         />
                       </div>
                       <div className="">
-                        <p className="text-sm lg:text-md">{item.name}</p>
-                        <p className="text-xs lg:text-sm">{item.status}</p>
+                        <p className="text-sm lg:text-md font-semibold">{item.name}</p>
+                        <p className="text-xs lg:text-sm line-clamp-1 italic">{item.status}</p>
                         <Progress
                           value={item.progress}
                           className={"w-full mt-1"}

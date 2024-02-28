@@ -1,15 +1,10 @@
 import useGlobalContext from "@/hooks/useGlobalContext";
 import { Fragment } from "react";
-import { FaInfoCircle } from "react-icons/fa";
 import DasboardCardPost from "../DasboardCards/DasboardCardPost";
 import FeedWrapper from "../FeedWrapper/FeedWrapper";
 
 const FeedContent = ({ posts }) => {
   const {openModal} = useGlobalContext();
-
-  const infoClicked = () => {
-    openModal({title: 'This is the feed page', content: <h1>This is feed</h1>});
-  }
 
   return (
     <Fragment>
@@ -20,7 +15,6 @@ const FeedContent = ({ posts }) => {
             <h1 className="hidden lg:block cursor-default pl-[10px]  font-semibold">
               Feed
             </h1>
-            <FaInfoCircle onClick={infoClicked} />
             </div>
             <hr className="hidden lg:block mt-[10px] h-1 border-x-none   border-t-[#4B4E6D] " />
           </div>

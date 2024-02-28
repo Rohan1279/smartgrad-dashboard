@@ -29,6 +29,8 @@ const NewEventsCard = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
     slidesToScroll: 1,
     arrows: false,
   };

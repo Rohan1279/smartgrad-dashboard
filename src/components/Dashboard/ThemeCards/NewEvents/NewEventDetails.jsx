@@ -5,7 +5,13 @@ const NewEventDetails = ({ item }) => {
   return (
     <Fragment>
       <Link to={item.url}>
-        <img src={item.image} alt="event" className="w-full h-40" />
+        <img src={item.image} alt="event" className="w-full h-44" />
+
+        <p className="mt-3 text-md font-semibold line-clamp-1">Resources and Strategies for Higher Score.
+        </p>
+        <p className="text-slate-400 line-clamp-1 ">Deadline: 12th August, 2021
+        </p>
+
       </Link>
     </Fragment>
   );

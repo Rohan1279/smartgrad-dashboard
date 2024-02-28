@@ -62,9 +62,9 @@ const NetworksCard = () => {
         <NetworkIcon className={"min-w-8 max-w-8 fill-none stroke-primary"} />
         <h1 className="text-md xl:text-lg font-semibold">Networks</h1>
       </div>
-      <div className="flex flex-row rounded-lg mt-4" ref={imageContainerRef}>
+      <div className="flex flex-row rounded-lg" ref={imageContainerRef}>
         <div
-          className="slide-container"
+          className="slide-container shadow-lg rounded-sm"
           style={{
             maxWidth: parentWidth + "px",
           }}
