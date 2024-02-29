@@ -2,6 +2,7 @@ import axios from "@/api/axios";
 import { Progress } from "@/components/ui/progress";
 import router from "@/routes/routes";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import UniversityIcon from "../../../ThemeIcons/UniversityIcon";
 import { DasboardCardTheme } from "../../DasboardCards/DasboardCardTheme";
@@ -10,28 +11,6 @@ const UniversitiesCard = () => {
   const slider = useRef(null);
   const parentContainerRef = useRef(null);
   const [parentWidth, setParentWidth] = useState(400);
-  // const universities = [
-  //   {
-  //     name: "Southwest Minnesota University",
-  //     status: "Awating Approval",
-  //     progress: 33,
-  //   },
-  //   {
-  //     name: "Southwest Minnesota University",
-  //     status: "Awating Approval",
-  //     progress: 93,
-  //   },
-  //   {
-  //     name: "Southwest Minnesota University",
-  //     status: "Awating Approval",
-  //     progress: 43,
-  //   },
-  //   {
-  //     name: "Southwest Minnesota University",
-  //     status: "Awating Approval",
-  //     progress: 73,
-  //   },
-  // ];
 
   const [universities, setUniversities] = useState([]);
 
@@ -52,14 +31,16 @@ const UniversitiesCard = () => {
         },
       })
       .then(({ data }) => {
-        setUniversities(data.data.map((item) => {
-          return {
-            name: item.university,
-            status: item.programme,
-            progress: 50,
-            logo: item.university_logo
-          };
-        }))
+        setUniversities(
+          data.data.map((item) => {
+            return {
+              name: item.university,
+              status: item.programme,
+              progress: 50,
+              logo: item.university_logo,
+            };
+          })
+        );
       });
     console.log(universities);
   }, []);
@@ -89,48 +70,56 @@ const UniversitiesCard = () => {
             <h1 className="text-sm xl:text-lg font-semibold">Universities</h1>
           </div>
           {/* <ScrollArea className="h-[120px] p-2 py-4"> */}
-          <div
-            className="slide-container shadow-lg rounded-sm"
-            style={{
-              maxWidth: parentWidth + "px",
-            }}
-          >
-            <Slider
-              ref={slider}
-              {...settings}
-              className="w-full h-full mt-1"
+          {universities.length ? (
+            <div
+              className="slide-container shadow-lg rounded-sm"
+              style={{
+                maxWidth: parentWidth + "px",
+              }}
             >
-              {universities?.map((item, idx) => {
-                return (
-                  <div key={idx} className="hover:shadow-sm transition-all">
-                    <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
-                      <div className="w-14">
-                        <img
-                          src={item.logo}
-                          alt="university-logo"
-                          className="mt-auto"
-                        />
-                      </div>
-                      <div className="">
-                        <p className="text-sm lg:text-md font-semibold">{item.name}</p>
-                        <p className="text-xs lg:text-sm line-clamp-1 italic">{item.status}</p>
-                        <Progress
-                          value={item.progress}
-                          className={"w-full mt-1"}
-                        />
+              <Slider ref={slider} {...settings} className="w-full h-full mt-1">
+                {universities?.map((item, idx) => {
+                  return (
+                    <div key={idx} className="hover:shadow-sm transition-all">
+                      <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
+                        <div className="w-14">
+                          <img
+                            src={item.logo}
+                            alt="university-logo"
+                            className="mt-auto"
+                          />
+                        </div>
+                        <div className="">
+                          <p className="text-sm lg:text-md font-semibold">
+                            {item.name}
+                          </p>
+                          <p className="text-xs lg:text-sm line-clamp-1 italic">
+                            {item.status}
+                          </p>
+                          <Progress
+                            value={item.progress}
+                            className={"w-full mt-1"}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </Slider>
-          </div>
+                  );
+                })}
+              </Slider>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-[85%]">
+              <Link className="text-center my-auto text-lg font-light animate-pulse hover:animate-none underline" to="/dashboard/university">
+                Apply For Universities
+              </Link>
+            </div>
+          )}
           {/* </ScrollArea> */}
         </div>
         <div className="ml-auto flex flex-col justify-between items-center">
           <button
             onClick={() => {
-              router.navigate('/dashboard/university/applications')
+              router.navigate("/dashboard/university/applications");
             }}
             className="text-sm py-1 underline rounded-lg whitespace-nowrap"
           >
