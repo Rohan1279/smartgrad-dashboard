@@ -108,9 +108,9 @@ const UniversitiesCard = () => {
               </Slider>
             </div>
           ) : (
-            <div className="flex justify-center items-center h-[85%]">
-              <Link className="text-center my-auto text-lg font-light animate-pulse hover:animate-none underline" to="/dashboard/university">
-                Apply For Universities
+            <div className="flex">
+              <Link className="text-lg font-light animate-pulse hover:animate-none underline mt-2" to="/dashboard/university">
+                Find Your Programme
               </Link>
             </div>
           )}
@@ -126,7 +126,7 @@ const UniversitiesCard = () => {
             View All
           </button>
           <p className="text-6xl font-bold text-center">
-            {universities.length}
+            {universities.length > 0 ? universities.length : ""}
           </p>
         </div>
       </div>
