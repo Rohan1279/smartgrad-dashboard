@@ -1,38 +1,15 @@
-import axios from "@/api/axios";
-import CalenderButton from "@/components/Calendly/CalenderButton";
 import ScoreComponent from "@/components/ScoreComponent/ScoreComponent";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
-import { useNavigate } from "react-router-dom";
 import Overview from "../../ApplicationTab/TabContents/Overview";
 import Status from "../../ApplicationTab/TabContents/Status";
 import AdmissionRequirementsTab from "./AdmissionRequirementsTab";
 
 const RecommendationDetailPage = ({
-  hasBooking,
-  setHasBooking,
   currentRecommendationData,
   tabVisible,
   setTabVisible,
 }) => {
-  const [summary, setSummary] = useState(undefined);
-  const bookASession = () => {
-    axios.post(
-      "/university/bookings",
-      {
-        recommendation_id: currentRecommendationData?.id,
-      },
-      {
-        params: {
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
-    setHasBooking(1);
-  };
-
-  const navigate = useNavigate();
   console.log(currentRecommendationData);
 
   return (
@@ -65,32 +42,13 @@ const RecommendationDetailPage = ({
               <p className="text-[12px] ">
                 {currentRecommendationData?.university}
               </p>
-              {/* <div className="flex items-center ">
-                {[...Array(5)].map((_, i) => {
-                  return i < currentRecommendationData?.score ? (
-                    <StarIcon
-                      key={i}
-                      className="text-yellow-400 fill-yellow-400 h-4 w-4"
-                    />
-                  ) : (
-                    <StarIcon
-                      key={i}
-                      className="text-gray-300 fill-gray-300h-4 w-4"
-                    />
-                  );
-                })}
-              </div> */}
               <ScoreComponent score={currentRecommendationData?.score} />
 
-              {/* <div className="flex gap-x-2">
-                  <CalenderButton text="Apply Now!" cb={bookASession} />
-                </div> */}
-
-              {!hasBooking && (
+              {/* {!hasBooking && (
                 <div className="flex gap-x-2">
                   <CalenderButton text="Apply Now!" cb={bookASession} />
                 </div>
-              )}
+              )} */}
             </div>
           </div>
           <div className="z-40">

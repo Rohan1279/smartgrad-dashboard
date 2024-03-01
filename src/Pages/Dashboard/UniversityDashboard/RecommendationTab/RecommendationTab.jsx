@@ -12,11 +12,24 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
   const [allRecommendationData, setAllRecommendationData] = useState([]);
   const [isRecommendationsLoading, setIsRecommendationsLoading] =
     useState(false);
-  const [currentRecommendationData, setCurrentRecommendationData] = useState(
-    allRecommendationData?.find((item) => item?.id === id)
-  );
+  const [currentRecommendationData, setCurrentRecommendationData] = useState({});
   const navigate = useNavigate();
+  // const bookASession = () => {
+  //   axios.post(
+  //     "/university/bookings",
+  //     {
+  //       recommendation_id: currentRecommendationData?.id,
+  //     },
+  //     {
+  //       params: {
+  //         token: localStorage.getItem("token"),
+  //       },
+  //     }
+  //   );
+  //   setHasBooking(1);
+  // };
 
+  console.log(id);
   useEffect(() => {
     setIsRecommendationsLoading(true);
     axios
@@ -29,16 +42,18 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
         setIsRecommendationsLoading(false);
         setAllRecommendationData(data?.data);
         setHasBooking(data?.has_booking);
-        setCurrentRecommendationData(
-          data?.data?.find((item) => item?.id === id)
-        );
       });
-  }, [id, setHasBooking]);
+  }, [setHasBooking]);
 
   return (
     <ScrollArea className="flex flex-col gap-4 justify-center items-center">
       <div className="flex justify-center md:justify-end my-4">
         <Button className="mr-3">Ai Summary</Button>
+        {/* {!hasBooking && (
+                <div className="flex gap-x-2">
+                  <CalenderButton text="Apply Now!" cb={bookASession} />
+                </div>
+              )} */}
         <Button>Book A session</Button>
       </div>
       {tabVisible ? (
@@ -59,8 +74,6 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
           <RecommendationDetailPage
             tabVisible={tabVisible}
             setTabVisible={setTabVisible}
-            hasBooking={hasBooking}
-            setHasBooking={setHasBooking}
             currentRecommendationData={currentRecommendationData}
           />
         </ScrollArea>
