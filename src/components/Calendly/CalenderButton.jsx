@@ -19,7 +19,7 @@ const CalenderButton = ({ text, cb }) => {
   return (
     <button
       onClick={handleClick}
-      className="w-[128px] h-[30px] bg-primary rounded-[10px] text-white text-[12px] mt-1"
+      className="w-[128px] h-[30px] bg-primary rounded-[10px] text-white mt-1"
     >
       {text}
     </button>

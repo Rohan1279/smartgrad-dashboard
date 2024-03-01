@@ -52,9 +52,9 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
       <div className="flex justify-center md:justify-end my-4">
         <Button className="mr-3">Ai Summary</Button>
         {!hasBooking && (
-                <div className="flex gap-x-2">
+                <Button className="flex gap-x-2">
                   <CalenderButton text="Book A Session!" cb={bookASession} />
-                </div>
+                </Button>
               )}
         {/* <Button>Book A session</Button> */}
       </div>
