@@ -1,4 +1,5 @@
 import axios from "@/api/axios";
+import CalenderButton from "@/components/Calendly/CalenderButton";
 import RecommendationCard from "@/components/Dashboard/RecommendationCard/RecommendationCard";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -14,22 +15,23 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
     useState(false);
   const [currentRecommendationData, setCurrentRecommendationData] = useState({});
   const navigate = useNavigate();
-  // const bookASession = () => {
-  //   axios.post(
-  //     "/university/bookings",
-  //     {
-  //       recommendation_id: currentRecommendationData?.id,
-  //     },
-  //     {
-  //       params: {
-  //         token: localStorage.getItem("token"),
-  //       },
-  //     }
-  //   );
-  //   setHasBooking(1);
-  // };
+  
+  
+  const bookASession = () => {
+    axios.post(
+      "/university/bookings",
+      {
+        recommendation_id: currentRecommendationData?.id,
+      },
+      {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    setHasBooking(1);
+  };
 
-  console.log(id);
   useEffect(() => {
     setIsRecommendationsLoading(true);
     axios
@@ -49,12 +51,12 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
     <ScrollArea className="flex flex-col gap-4 justify-center items-center">
       <div className="flex justify-center md:justify-end my-4">
         <Button className="mr-3">Ai Summary</Button>
-        {/* {!hasBooking && (
+        {!hasBooking && (
                 <div className="flex gap-x-2">
-                  <CalenderButton text="Apply Now!" cb={bookASession} />
+                  <CalenderButton text="Book A Session!" cb={bookASession} />
                 </div>
-              )} */}
-        <Button>Book A session</Button>
+              )}
+        {/* <Button>Book A session</Button> */}
       </div>
       {tabVisible ? (
         allRecommendationData?.map((university, idx) => (
