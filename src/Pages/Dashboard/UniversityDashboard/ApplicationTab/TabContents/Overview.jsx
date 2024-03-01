@@ -18,7 +18,7 @@ const InfoSection = ({ Icon, title, subtitle }) => {
 
 const Overview = ({ universityData }) => {
   const {
-    tuition_fees,
+    tuition_fees = 0,
     start_date,
     duration,
     scholarship,
