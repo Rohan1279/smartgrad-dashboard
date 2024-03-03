@@ -42,7 +42,6 @@ const UniversitiesCard = () => {
           })
         );
       });
-    console.log(universities);
   }, []);
 
   useEffect(() => {
