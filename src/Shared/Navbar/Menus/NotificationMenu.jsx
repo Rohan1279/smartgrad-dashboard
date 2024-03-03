@@ -18,6 +18,9 @@ const NotificationMenu = () => {
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
 
+  const unreadCount = notifications.filter((data) => data?.unread).length;
+
+
   useEffect(() => {
     if (user?.id !== undefined) {
       const channel = pusher.subscribe(
@@ -69,9 +72,9 @@ const NotificationMenu = () => {
             alt="avatar-icon"
             className="w-5 cursor-pointer transition-all outline-none"
           />
-          {notifications.filter((data) => data?.unread).length > 0 && (
+          {unreadCount > 0 && (
             <span className="w-3 h-3 absolute rounded-full bg-[#F1662A] -top-1 -right-2 text-[9px] text-center text-white">
-              {notifications.filter((data) => data?.unread).length}
+              {unreadCount}
             </span>
           )}
         </DropdownMenuTrigger>
@@ -98,7 +101,8 @@ const NotificationMenu = () => {
               </Link>
             </DropdownMenuItem>
           ))}
-          <Button className="w-full bg-transparent text-primary">
+          
+            <Button className="w-full bg-transparent text-primary">
             View All
           </Button>
         </DropdownMenuContent>

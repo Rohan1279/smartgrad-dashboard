@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
-import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 import { LiaCoinsSolid } from "react-icons/lia";
+import NavIcon from "/assets/images/navbar/smartgrad-logo.png";
 
 import { Link, useLocation } from "react-router-dom";
 import NotificationMenu from "./Menus/NotificationMenu";
@@ -107,16 +107,16 @@ export default function Navbar() {
 
           {/* Profile and Settings */}
           <div className="absolute  inset-y-0 right-0 flex space-x-7 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className=" border border-primary rounded-[5px] text-xs text-primary  px-3 py-2  ">
+            {/* <div className=" border border-primary rounded-[5px] text-xs text-primary  px-3 py-2  ">
               EN
-            </div>
+            </div> */}
             <NotificationMenu />
-            {user?.credit && (
-              <Badge variant="outline" className={"text-primary py-2 px-3 "}>
+            {
+              <Badge variant="outline" className={"text-primary py-2 px-3"}>
                 <LiaCoinsSolid className="text-yellow-500 text-lg mr-1 animate-bounce" />
-                <span className="text-primary">{user?.credit}</span>
+                <span className="text-primary">{user?.credit || 0 }</span>
               </Badge>
-            )}
+            }
             <ProfileMenu />
           </div>
         </div>

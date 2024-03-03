@@ -1,9 +1,9 @@
 import axios from "@/api/axios";
-import SelectInput from "../../core/SelectInput";
-import PropTypes from "prop-types";
-import { useContext, useState } from "react";
 import { Authcontext } from "@/contexts/AuthContextProvider";
+import PropTypes from "prop-types";
+import { useContext } from "react";
 import { toast } from "sonner";
+import SelectInput from "../../core/SelectInput";
 
 const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
   const { user } = useContext(Authcontext);
@@ -106,7 +106,6 @@ const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
         }
       )
       .then((response) => {
-        console.log("Success:", response);
         cb?.success();
         // cb?.
         toast("Saved successfully", {
@@ -117,7 +116,6 @@ const Form = ({ currentForm, currentTab, setCurrentForm, cb }) => {
         });
       })
       .catch((error) => {
-        console.error("Error:", error);
         cb?.error;
         toast.error(
           error?.response?.data?.message ||
