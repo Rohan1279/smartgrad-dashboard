@@ -188,7 +188,7 @@ const CareerDashboard = () => {
             Saved Jobs
           </TabsContent>
           <TabsContent value="myNetwork">
-          <iframe src="https://langchainchatbot-3unenkkbsvf7sttsp4hzct.streamlit.app/?embed_options=light_theme&embed=true" width="340" height="500"></iframe>
+            My Network
           </TabsContent>
         </Tabs>
       </div>
