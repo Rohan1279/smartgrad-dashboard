@@ -1,11 +1,13 @@
 import Loader from "@/components/Loader/Loader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Select from 'react-select';
 import Jobs from "./Jobs/Jobs";
 
 const CareerDashboard = () => {
+  const [defaultTab, setDefaultTab] = useState("");
   const navigate = useNavigate();
 
   const datePostedOptions = [
@@ -47,6 +49,22 @@ const CareerDashboard = () => {
       neutral20: "transparent"
     },
   })
+
+  useEffect(() => {
+    if (location && location.pathname) {
+      const path = location.pathname;
+      if (path.includes("applications")) {
+        setDefaultTab("applications");
+        return;
+      }
+      if (path.includes("recommendation")) {
+        setDefaultTab("recommendation");
+        return;
+      } else {
+        setDefaultTab("jobs");
+      }
+    }
+  }, [location]);
 
   return (
     <div className="text-[#4B4E6D]">
@@ -128,12 +146,12 @@ const CareerDashboard = () => {
         </button>
       </div>
       <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
-        <Tabs defaultValue="search-form" className="">
+        <Tabs defaultValue="jobs"  value={defaultTab} className="">
           <TabsList>
             <TabsTrigger
               className="mr-[42px] relative group"
               value="jobs"
-              // onClick={() => navigate(`/dashboard/university`)}
+              onClick={() => navigate(`/dashboard/career`)}
             >
               Jobs
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2 group-data-[state=active]:block hidden" />
