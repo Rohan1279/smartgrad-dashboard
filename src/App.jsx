@@ -32,7 +32,7 @@ function App() {
           width="340"
           height="500"
         ></iframe>
-        <FaHatWizard className="text-white animate-bounce" size={40} />
+        <FaHatWizard className={`text-white ${botView ? "" :"animate-bounce"}`} size={40} />
       </div>
     </div>
   );

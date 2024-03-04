@@ -56,7 +56,7 @@ const RecommendationTab = ({ hasBooking, setHasBooking }) => {
                   <CalenderButton text="Book A Session!" cb={bookASession} />
                 </Button>
               )}
-        {/* <Button>Book A session</Button> */}
+        {hasBooking && <Button className="bg-[#F1662A] text-primary block md:hidden">Session Booked</Button>}
       </div>
       {tabVisible ? (
         allRecommendationData?.map((university, idx) => (

@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Select from 'react-select';
+import Jobs from "./Jobs/Jobs";
 
 const CareerDashboard = () => {
   const navigate = useNavigate();
@@ -181,7 +182,7 @@ const CareerDashboard = () => {
             </div>
           ) : (
             <TabsContent value="jobs">
-              Jobs
+              <Jobs/>
             </TabsContent>
           )}
           <TabsContent value="savedJobs">
