@@ -96,6 +96,177 @@ const jobsData = [
             requiredExperience: ["5+ years of experience in marketing"],
         },
     },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
+    {
+        image:"https://picsum.photos/200/200",
+        title: "Marketing Manager",
+        company: "Facebook",
+        location: "Menlo Park",
+        type: "Full-time",
+        details: {
+            employees: "60,000+",
+            description:
+            "Facebook is an American online social media and social networking service company. It is one of the world's largest social media platforms, with billions of users worldwide.",
+            keyResponsibilities: [
+            "Develop and implement marketing strategies",
+            "Analyze market trends and competitors",
+            "Manage advertising campaigns and promotional activities",
+            ],
+           educationalRequirements: ["Bachelor's or Master's degree in Marketing or Business"],
+            requiredExperience: ["5+ years of experience in marketing"],
+        },
+    },
   ];
   
   export default jobsData;
