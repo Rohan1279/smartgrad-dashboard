@@ -20,11 +20,11 @@ const JobDetails = ({data}) => {
                     </div>
                 </div>
             </div>
-            <div className="py-4">
+            <div className="py-2">
                 <h1 className="text-primary font-semibold">Job Description</h1>
                 <p className="text-sm">{data?.details?.description}</p>
             </div>
-            <div className="py-4">
+            <div className="py-2">
                 <h1 className="text-primary font-semibold">Key Responsibilities</h1>
                 <ul className="list-inside list-disc">
                     {data.details["keyResponsibilities"].map((item, index) => (
@@ -32,7 +32,7 @@ const JobDetails = ({data}) => {
                     ))}
                 </ul>
             </div>
-            <div className="py-4">
+            <div className="py-2">
                 <h1 className="text-primary font-semibold">Educational Requirements</h1>
                 <ul className="list-inside list-disc">
                     {data.details["educationalRequirements"].map((item, index) => (
@@ -40,7 +40,7 @@ const JobDetails = ({data}) => {
                     ))}
                 </ul>
             </div>
-            <div className="py-4">
+            <div className="py-2">
                 <h1 className="text-primary font-semibold">Required Experience</h1>
                 <ul className="list-inside list-disc">
                     {data.details["requiredExperience"].map((item, index) => (
@@ -48,7 +48,7 @@ const JobDetails = ({data}) => {
                     ))}
                 </ul>
             </div>
-            <div className="py-4">
+            <div className="py-2">
                 <h1 className="text-primary font-semibold">Company Details</h1>
                 <p className="text-sm">{data.details.employees}</p>
             </div>

@@ -31,7 +31,7 @@ const CareerDashboard = () => {
     <div className="text-[#4B4E6D]">
       <CareerDashboardHeader />
       
-      <div className=" h-fit bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
+      <div className="h-[74vh] bg-white mt-5 px-4 sm:px-9 py-5 rounded-xl">
         <Tabs defaultValue="jobs"  value={defaultTab} className="">
           <TabsList>
             <TabsTrigger

@@ -8,7 +8,7 @@ const Jobs = () => {
 
   return (
     <div className="flex gap-6 py-4">
-      <div className="w-2/5">
+      <div className="w-2/5 h-[63vh] overflow-y-auto">
         {jobsData.map((job, index) => {
           return (
             <div key={index} onClick={()=>setJobDetails(job)}>
@@ -17,7 +17,7 @@ const Jobs = () => {
           );
         })}
       </div>
-      <div className="w-3/5 p-4 bg-gray-100 rounded-lg">
+      <div className="w-3/5 p-4 bg-gray-100 rounded-lg h-[63vh] overflow-y-auto">
         {/* {jobDetails && } */}
         <JobDetails data={jobDetails} />
       </div>
