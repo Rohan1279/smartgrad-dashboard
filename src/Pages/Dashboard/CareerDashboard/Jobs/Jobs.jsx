@@ -28,7 +28,6 @@ const Jobs = () => {
   }, [isMobile]);
 
   
-console.log(selectedJobIndex, "selectedJobIndex");
   return (
     <div className="flex gap-6 py-4">
       {<ScrollArea  className={`w-full md:w-2/5 h-[50vh] md:h-[63vh] overflow-y-auto ${isMobile && selectedJobIndex != null ? "hidden" : "block"}`}>
