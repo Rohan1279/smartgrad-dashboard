@@ -14,18 +14,20 @@ const CareerDashboard = () => {
   useEffect(() => {
     if (location && location.pathname) {
       const path = location.pathname;
-      if (path.includes("applications")) {
-        setDefaultTab("applications");
+      if (path.includes("saved-jobs")) {
+        setDefaultTab("savedJobs");
         return;
       }
-      if (path.includes("recommendation")) {
-        setDefaultTab("recommendation");
+      if (path.includes("my-network")) {
+        setDefaultTab("myNetwork");
         return;
       } else {
         setDefaultTab("jobs");
       }
     }
-  }, [location]);
+  }, [location.pathname]);
+
+  // console.log(defaultTab, "defaultTab");
 
   return (
     <div className="text-[#4B4E6D]">
@@ -49,7 +51,7 @@ const CareerDashboard = () => {
                   : "text-primary"
               }`}
               value="savedJobs"
-              // onClick={() => navigate(`/dashboard/university/recommendation`)}
+              onClick={() => navigate(`/dashboard/career/saved-jobs`)}
               // disabled={recommendationData?.length === 0}
             >
               <div className="flex gap-x-1">
@@ -72,7 +74,7 @@ const CareerDashboard = () => {
             <TabsTrigger
               className="mr-[42px] relative group"
               value="myNetwork"
-              // onClick={() => navigate(`/dashboard/university/applications`)}
+              onClick={() => navigate(`/dashboard/career/my-network`)}
             >
               My Network
               <hr className="border mt-[10px] border-primary w-1/2 absolute -bottom-[11px] translate-x-1/2  group-data-[state=active]:block hidden" />

@@ -67,11 +67,15 @@ const router = createBrowserRouter([
         element: <UniversityDashboard />,
       },
       {
-        path: "career/jobs",
+        path: "career",
         element: <CareerDashboard />,
       },
       {
-        path: "career",
+        path: "career/saved-jobs",
+        element: <CareerDashboard />,
+      },
+      {
+        path: "career/my-network",
         element: <CareerDashboard />,
       },
       {
