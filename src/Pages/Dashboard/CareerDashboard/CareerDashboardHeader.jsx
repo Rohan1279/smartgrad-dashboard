@@ -37,9 +37,10 @@ const CareerDashboardHeader = () => {
         <div className="w-1/2 md:w-full">
         <select
           name="datePosted"
+          defaultValue={"anyTime"}
           className="h-10 bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border focus:border-2 text-sm px-3 rounded-[7px] border-blue-gray-200 outline-none border-[#595959] w-full mb-2 md:mb-0 md:w-1/2 appearance-none"
         >
-          <option value="anyTime" disabled selected>
+          <option value="anyTime" disabled>
             Date Posted
           </option>
           <option value="anyTime">Any Time</option>

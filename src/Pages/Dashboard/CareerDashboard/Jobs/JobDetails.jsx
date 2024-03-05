@@ -8,16 +8,16 @@ const JobDetails = ({data}) => {
     return (
         <div className="">
             <div className="flex items-center space-x-4">
-                <img src={data.image} alt="" className="w-14 h-14 rounded-full" />
+                <img src={data?.image} alt="" className="w-14 h-14 rounded-full" />
                 <div className="">
-                    <h1 className="text-primary font-semibold">{data.title}</h1>
+                    <h1 className="text-primary font-semibold">{data?.title}</h1>
                     <div className="flex items-center my-0.5">
                         <FaBriefcase size={14} className="mb-1 mr-2" />
-                        {data.company}
+                        {data?.company}
                     </div>
                     <div className="flex items-center">
                         <IoLocationOutline size={14} className="mb-1 mr-2" />
-                        <p className="text-sm">{`${data.location} (${data.type})`}</p>
+                        <p className="text-sm">{`${data?.location} (${data?.type})`}</p>
                     </div>
                 </div>
             </div>
