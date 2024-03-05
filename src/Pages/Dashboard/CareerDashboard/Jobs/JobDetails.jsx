@@ -37,6 +37,7 @@ JobDetails.propTypes = {
       title: PropTypes.string.isRequired,
       company: PropTypes.string.isRequired,
       location: PropTypes.string.isRequired,
+      apply: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       details: PropTypes.string.isRequired,
     }).isRequired,
