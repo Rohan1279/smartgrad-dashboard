@@ -16,11 +16,11 @@ const UniversitiesCard = () => {
 
   const settings = {
     dots: true,
-    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    infinite: universities.length > 3
   };
 
   useEffect(() => {
@@ -77,38 +77,42 @@ const UniversitiesCard = () => {
               }}
             >
               <Slider ref={slider} {...settings} className="w-full h-full mt-1">
-                {universities?.map((item, idx) => {
-                  return (
-                    <div key={idx} className="hover:shadow-sm transition-all">
-                      <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
-                        <div className="w-14">
-                          <img
-                            src={item.logo}
-                            alt="university-logo"
-                            className="mt-auto"
-                          />
-                        </div>
-                        <div className="">
-                          <p className="text-sm lg:text-md font-semibold">
-                            {item.name}
-                          </p>
-                          <p className="text-xs lg:text-sm line-clamp-1 italic">
-                            {item.status}
-                          </p>
-                          <Progress
-                            value={item.progress}
-                            className={"w-full mt-1"}
-                          />
+                  {universities.map((item, idx) => {
+                    console.log(item, "item");
+                    return (
+                      <div key={idx} className="hover:shadow-sm transition-all">
+                        <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
+                          <div className="w-14">
+                            <img
+                              src={item.logo}
+                              alt="university-logo"
+                              className="mt-auto"
+                            />
+                          </div>
+                          <div className="">
+                            <p className="text-sm lg:text-md font-semibold">
+                              {item.name}
+                            </p>
+                            <p className="text-xs lg:text-sm line-clamp-1 italic">
+                              {item.status}
+                            </p>
+                            <Progress
+                              value={item.progress}
+                              className={"w-full mt-1"}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </Slider>
             </div>
           ) : (
             <div className="flex">
-              <Link className="text-lg font-light animate-pulse hover:animate-none underline mt-2" to="/dashboard/university">
+              <Link
+                className="text-lg font-light animate-pulse hover:animate-none underline mt-2"
+                to="/dashboard/university"
+              >
                 Find Your Programme
               </Link>
             </div>
