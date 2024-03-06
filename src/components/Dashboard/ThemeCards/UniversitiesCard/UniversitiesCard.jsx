@@ -78,7 +78,6 @@ const UniversitiesCard = () => {
             >
               <Slider ref={slider} {...settings} className="w-full h-full mt-1">
                   {universities.map((item, idx) => {
-                    console.log(item, "item");
                     return (
                       <div key={idx} className="hover:shadow-sm transition-all">
                         <div className="flex items-center space-x-2 mb-2 cursor-pointer rounded-md">
